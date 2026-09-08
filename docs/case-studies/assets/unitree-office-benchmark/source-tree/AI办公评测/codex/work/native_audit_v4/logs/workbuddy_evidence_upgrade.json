@@ -1,0 +1,293 @@
+{
+  "module": "workbuddy_claim_evidence_upgrade",
+  "sources": {
+    "excel": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技经营与财务分析底稿.xlsx",
+      "bytes": 30685,
+      "mtimeEpoch": 1788454080.178629,
+      "sha256": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378"
+    },
+    "word": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/output/ba8ec3f1-0a2a-4b93-af35-5d24f9300683/stage3/宇树科技公司研究报告.docx",
+      "bytes": 54491,
+      "mtimeEpoch": 1788457365.039198,
+      "sha256": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441"
+    },
+    "ppt": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报/宇树科技研究汇报.pptx",
+      "bytes": 62713,
+      "mtimeEpoch": 1788474025.3223758,
+      "sha256": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387"
+    },
+    "ordinaryPng": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸.png",
+      "bytes": 1122050,
+      "mtimeEpoch": 1788484694.117362,
+      "sha256": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a"
+    },
+    "inkPng": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸-水墨.png",
+      "bytes": 2003145,
+      "mtimeEpoch": 1788486728.9222493,
+      "sha256": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869"
+    },
+    "html": {
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技交互式研究速览/index.html",
+      "bytes": 40869,
+      "mtimeEpoch": 1788489944.0097394,
+      "sha256": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110"
+    }
+  },
+  "sourceNamingFinding": {
+    "excelRows": [
+      {
+        "row": 5,
+        "values": {
+          "B": "宇树科技2025年年度报告（688836）",
+          "C": "定期报告（A级）",
+          "D": "宇树科技",
+          "E": "2026年上半年披露",
+          "F": "2025年度",
+          "G": "2025年度收入构成（产品/地域）、研发费用14,496.56万元、销售毛利率60.44%、净利润数据",
+          "H": "www.sse.com.cn",
+          "I": "A股财务数据库转引年报数据，建议核对年报原文"
+        }
+      },
+      {
+        "row": 6,
+        "values": {
+          "B": "宇树科技2026年第一季度报告（688836）",
+          "C": "定期报告（A级）",
+          "D": "宇树科技",
+          "E": "2026年4月",
+          "F": "2026Q1、2025Q1",
+          "G": "2026Q1营收42,284.05万元（+68.49%）、扣非4,025.36万元（-52.55%）、毛利率58.42%、研发费用6,319.31万元",
+          "H": "www.sse.com.cn",
+          "I": "媒体及行情数据库转引，建议核对原文"
+        }
+      }
+    ],
+    "officialArchiveQuery": {
+      "endpoint": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do",
+      "archiveWindow": "2025-01-01 through 2026-08-30",
+      "periodicReportQuery": {
+        "status": "fetched",
+        "queryEcho": {
+          "productId": "688836",
+          "beginDate": "2025-01-01",
+          "endDate": "2026-08-30",
+          "reportType": "ALL",
+          "reportType2": "DQBG"
+        },
+        "total": 0,
+        "returnedRows": 0,
+        "titles": []
+      },
+      "allAnnouncementControlQuery": {
+        "status": "fetched",
+        "queryEcho": {
+          "productId": "688836",
+          "beginDate": "2025-01-01",
+          "endDate": "2026-08-30",
+          "reportType": "ALL",
+          "reportType2": ""
+        },
+        "total": 17,
+        "returnedRows": 17,
+        "titles": [
+          "宇树科技公司章程",
+          "宇树科技首次公开发行股票科创板上市公告书提示性公告",
+          "宇树科技首次公开发行股票科创板上市公告书",
+          "宇树科技首次公开发行股票并在科创板上市发行结果公告",
+          "宇树科技首次公开发行股票并在科创板上市招股说明书",
+          "宇树科技首次公开发行股票并在科创板上市招股说明书提示性公告",
+          "宇树科技首次公开发行股票并在科创板上市网下初步配售结果及网上中签结果公告",
+          "宇树科技首次公开发行股票并在科创板上市网上发行申购情况及中签率公告",
+          "中信证券股份有限公司关于宇树科技股份有限公司首次公开发行股票并在科创板上市参与战略配售的投资者的专项核查报告",
+          "宇树科技首次公开发行股票并在科创板上市投资风险特别公告",
+          "宇树科技首次公开发行股票并在科创板上市发行公告",
+          "北京市君泽君律师事务所关于宇树科技股份有限公司首次公开发行股票并在科创板上市参与战略配售的投资者专项核查法律意见书",
+          "宇树科技首次公开发行股票并在科创板上市网上路演公告",
+          "宇树科技首次公开发行股票并在科创板上市招股意向书提示性公告",
+          "宇树科技首次公开发行股票并在科创板上市招股意向书",
+          "宇树科技首次公开发行股票并在科创板上市发行安排及初步询价公告",
+          "宇树科技首次公开发行股票并在科创板上市招股意向书附录"
+        ]
+      },
+      "evidence": [
+        "logs/sse_query_periodic_688836_2025-01-01_2026-08-30.json",
+        "logs/sse_query_all_688836_2025-01-01_2026-08-30.json",
+        "evidence/reused_v3/workbuddy_excel_sheet_07_first.png"
+      ]
+    },
+    "neutralFinding": "截至2026-08-30，上交所公司公告接口在相同证券代码与日期区间能返回IPO公告，但‘定期报告’筛选返回0条；未能定位与底稿所列‘2025年年度报告’和‘2026年第一季度报告’标题相符的上交所正式披露。底稿自身又称数据为数据库/媒体转引。",
+    "prohibitedWording": "不得仅凭未检索到结果写成‘虚构来源’或推断主观故意。",
+    "recommendedWording": "‘来源名称与A级评级未获上交所公告目录支持，且实际为数据库/媒体转引；应改列为未验证二手来源，待作品方提供原始公告URL或更正来源名称。’",
+    "confidence": "high_for_non_location_and_misclassification; not_a_fraud_finding",
+    "vendorResponseRequired": "若WorkBuddy能提供截止日前正式上交所公告URL、公告编号和发布日期，应复核并更新定性。"
+  },
+  "predictionThreeColumn": {
+    "columns": [
+      "预测输入",
+      "底稿结论",
+      "截止日前实际/可复算结果"
+    ],
+    "row": {
+      "预测输入": {
+        "sheet": "预测参考(非事实)",
+        "cell": "D12",
+        "value": "Q1受费用前置拖累，Q2回升（据券商拆分）",
+        "attribute": "招股书预告区间推导/预测参考",
+        "range": "31.11%-34.42%"
+      },
+      "底稿结论": {
+        "sheet": "分析结论",
+        "cell": "B9",
+        "value": "阶段性的“增收不增利”信号：2026Q1扣非同比-52.55%、2026H1扣非同比-19.34%；2026H1研发费用1.36亿元（+152%）、销售费用1.64亿元（已超2025年全年），费用前置是主因，2026Q2扣非净利率已回升（招股书预告区间31.11%-34.42%）。",
+        "attribute": "被写成‘已回升’的完成时判断"
+      },
+      "截止日前实际/可复算结果": {
+        "inputs": {
+          "2026H1营业收入万元": 115224.56,
+          "2026H1扣非归母净利润万元": 24393.03,
+          "2026Q1营业收入万元": 42284.05,
+          "2026Q1扣非归母净利润万元": 4025.36
+        },
+        "formula": "(H1扣非-Q1扣非)/(H1收入-Q1收入)",
+        "derivedQ2Margin": 0.27923674,
+        "derivedQ2MarginPercent": 27.9237,
+        "attribute": "基于截止日前披露实际数的派生值；Q2单季并非单独披露",
+        "officialEvidence": [
+          "SSE listing announcement page 36: H1 actuals",
+          "SSE prospectus/inquiry disclosure: Q1 actuals"
+        ]
+      }
+    },
+    "defensibleConclusion": "31.11%-34.42%是预告区间推导，不应写成已实现；用截止日前H1与Q1实际数复算，Q2扣非净利率约27.9237%，不在该区间内。",
+    "classification": "prediction_attribute_error"
+  },
+  "fundraisingThreeColumn": {
+    "columns": [
+      "Excel上游",
+      "下游首次引入",
+      "官方发行事实"
+    ],
+    "row": {
+      "Excel上游": {
+        "sheet": "原始数据-业务",
+        "cell": "B48",
+        "value": "420,200万元（42.02亿元）",
+        "valueNormalized": "420,200万元",
+        "attribute": "拟募集/募投计划金额"
+      },
+      "下游首次引入": {
+        "artifact": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/output/ba8ec3f1-0a2a-4b93-af35-5d24f9300683/stage3/宇树科技公司研究报告.docx",
+        "firstRelevantParagraph": {
+          "paragraphIndexZeroBased": 45,
+          "paragraphNumberOneBased": 46,
+          "text": "盈利具备现金流支撑：2025年公司经营活动现金净流入超6.7亿元，较2024年增加约4.8亿元（据招股书，主要系收入规模快速增长）。截至2026年6月30日，公司资产总额38.45亿元（较2025年末增长19.85%），其中流动资产28.88亿元（增长30.13%），叠加IPO募集资金到位，资金面稳健，为研发投入提供了充足弹药。"
+        },
+        "allRelevantParagraphs": [
+          {
+            "paragraphIndexZeroBased": 45,
+            "paragraphNumberOneBased": 46,
+            "text": "盈利具备现金流支撑：2025年公司经营活动现金净流入超6.7亿元，较2024年增加约4.8亿元（据招股书，主要系收入规模快速增长）。截至2026年6月30日，公司资产总额38.45亿元（较2025年末增长19.85%），其中流动资产28.88亿元（增长30.13%），叠加IPO募集资金到位，资金面稳健，为研发投入提供了充足弹药。"
+          },
+          {
+            "paragraphIndexZeroBased": 56,
+            "paragraphNumberOneBased": 57,
+            "text": "资金与股东资源。IPO募资42.02亿元到账，叠加美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东资源，为研发、产能与生态扩张提供支撑。"
+          }
+        ],
+        "attributeChange": "从计划/拟募集升级为到位/到账"
+      },
+      "官方发行事实": {
+        "募投项目拟使用募集资金万元": 420171.12,
+        "实际募集资金总额万元": 609932.22,
+        "实际募集资金净额万元": 591714.92,
+        "source": [
+          "SSE prospectus 2026-08-14 page 41",
+          "SSE listing announcement 2026-08-18 page 33"
+        ],
+        "attribute": "420,171.12为计划用途；609,932.22/591,714.92为发行事实"
+      }
+    },
+    "defensibleConclusion": "‘42.02亿元’与募投计划金额接近，不是实际募资总额或净额；Word首先把计划属性改写为‘到位/到账’，后续终稿继续传播。",
+    "classification": "downstream_attribute_change"
+  },
+  "propagationOrigin": {
+    "rootFinding": {
+      "artifact": "Word",
+      "origin": {
+        "paragraphIndexZeroBased": 45,
+        "paragraphNumberOneBased": 46,
+        "text": "盈利具备现金流支撑：2025年公司经营活动现金净流入超6.7亿元，较2024年增加约4.8亿元（据招股书，主要系收入规模快速增长）。截至2026年6月30日，公司资产总额38.45亿元（较2025年末增长19.85%），其中流动资产28.88亿元（增长30.13%），叠加IPO募集资金到位，资金面稳健，为研发投入提供了充足弹药。"
+      },
+      "reason": "Excel只写拟募集/计划金额；Word是六类链路中首次出现到位/到账完成时。"
+    },
+    "descendants": [
+      {
+        "artifact": "PPT",
+        "hits": [
+          {
+            "slide": 14,
+            "text": "五大优势构成盈利护城河：全栈自研是毛利率领先的根本\n来源：招股说明书（含问询回复）、2025年年度报告、上市公告书；Figure AI出货量为媒体转引\n14\n规模化盈利\n全球少数\"规模+盈利\"双兑现\n① 全栈自研自产\n核心部组件自研+自有产线，成为产品定价锚定者；毛利率约60%显著高于可比公司的根本原因\n② 盈利稀缺性\n2024年起持续盈利，2025年扣非净利率约34.8%，经营净流入超6.7亿元同步验证盈利质量\n③ 出货量全球第一\n2025年人形出货5,500+台全球第一；Figure AI约150台（21世纪经济报道转引），规模-数据-成本正循环\n④ 品牌与渠道势能\n2025年央视春晚人形机器人演出\"一战成名\"，境内市场快速打开，2026年延续品牌推广策略\n⑤ 资金与股东资源\nIPO募资42.02亿元到账，叠加美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东"
+          }
+        ],
+        "evidence": "evidence/reused_v3/workbuddy_ppt_slide_14_edit.png"
+      },
+      {
+        "artifact": "普通PNG",
+        "hits": [
+          {
+            "kind": "ordinary",
+            "source": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸.png",
+            "bboxPx": [
+              1180,
+              1680,
+              2440,
+              2130
+            ],
+            "evidence": "evidence/workbuddy_ordinary_fundraising_crop.png",
+            "visualObservation": "可见‘IPO募资42.02亿元到账’表述。"
+          }
+        ]
+      },
+      {
+        "artifact": "水墨PNG",
+        "hits": [
+          {
+            "kind": "ink",
+            "source": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸-水墨.png",
+            "bboxPx": [
+              1120,
+              2250,
+              2440,
+              2800
+            ],
+            "evidence": "evidence/workbuddy_ink_fundraising_crop.png",
+            "visualObservation": "可见‘IPO募资42.02亿元到账’表述。"
+          }
+        ]
+      },
+      {
+        "artifact": "HTML",
+        "hits": [
+          {
+            "line": 208,
+            "text": "<p class=\"sub\">IPO 募资 42.02 亿元到账，叠加美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东；其中约 36 亿元投向三个研发项目，为「大脑」补课提供资金保障。</p>"
+          },
+          {
+            "line": 212,
+            "text": "<div class=\"cell\"><div class=\"v\"><span class=\"cnt\" data-v=\"42.02\" data-d=\"2\">0</span><small> 亿元</small></div><div class=\"k\">IPO 募资总额</div></div>"
+          },
+          {
+            "line": 379,
+            "text": "<p>IPO 募资 42.02 亿元到账，叠加美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东。</p>"
+          }
+        ]
+      }
+    ],
+    "antiDoublePenaltyRule": "传播图只登记一个根因。若六任务独立计分，下游文件可因自身对Excel的不一致失分；但同一文件内不得既按数值错误又按属性错误重复扣分，跨链汇总也不得把5次传播当5个独立根因。"
+  }
+}

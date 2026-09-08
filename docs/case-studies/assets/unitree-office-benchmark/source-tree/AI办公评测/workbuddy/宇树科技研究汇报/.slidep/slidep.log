@@ -1,0 +1,131 @@
+=== boot pid=40639 ts=2026-09-04 06:06:24.977 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/01.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:06:24.968] [WARN ] [pid=40639] [validate] validation FAIL slideId=01 error=JSX parse error: we.split is not a function ms=201
+=== boot pid=40647 ts=2026-09-04 06:06:46.095 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/01.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:06:46.091] [INFO ] [pid=40647] [validate] ok slideId=01 status=ready ms=793
+=== boot pid=40651 ts=2026-09-04 06:06:55.807 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/01.slide ===
+[2026-09-04 06:06:55.802] [INFO ] [pid=40651] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:06:55.853] [INFO ] [pid=40651] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:06:55.865] [INFO ] [pid=40651] [mcp] mcp:slide_get_info ok ms=8
+=== boot pid=40690 ts=2026-09-04 06:07:44.285 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/02.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:07:44.283] [INFO ] [pid=40690] [validate] ok slideId=02 status=ready ms=581
+=== boot pid=40691 ts=2026-09-04 06:07:46.205 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/02.slide ===
+[2026-09-04 06:07:46.199] [INFO ] [pid=40691] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:07:46.241] [INFO ] [pid=40691] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:07:46.249] [INFO ] [pid=40691] [mcp] mcp:slide_get_info ok ms=6
+=== boot pid=40730 ts=2026-09-04 06:08:14.650 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/03.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:08:14.647] [INFO ] [pid=40730] [validate] ok slideId=03 status=ready ms=982
+=== boot pid=40735 ts=2026-09-04 06:08:16.326 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/03.slide ===
+[2026-09-04 06:08:16.320] [INFO ] [pid=40735] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:08:16.362] [INFO ] [pid=40735] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:08:16.370] [INFO ] [pid=40735] [mcp] mcp:slide_get_info ok ms=3
+=== boot pid=40817 ts=2026-09-04 06:09:14.687 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/04.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:09:14.684] [INFO ] [pid=40817] [validate] ok slideId=04 status=ready ms=665
+=== boot pid=40818 ts=2026-09-04 06:09:16.378 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/04.slide ===
+[2026-09-04 06:09:16.372] [INFO ] [pid=40818] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:09:16.424] [INFO ] [pid=40818] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:09:16.431] [INFO ] [pid=40818] [mcp] mcp:slide_get_info ok ms=4
+=== boot pid=40878 ts=2026-09-04 06:10:04.220 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/05.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:10:04.218] [INFO ] [pid=40878] [validate] ok slideId=05 status=ready ms=650
+=== boot pid=40879 ts=2026-09-04 06:10:05.862 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/05.slide ===
+[2026-09-04 06:10:05.856] [INFO ] [pid=40879] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:10:05.914] [INFO ] [pid=40879] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:10:05.921] [INFO ] [pid=40879] [mcp] mcp:slide_get_info ok ms=2
+=== boot pid=40916 ts=2026-09-04 06:10:38.043 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/06.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:10:38.040] [INFO ] [pid=40916] [validate] ok slideId=06 status=ready ms=635
+=== boot pid=40945 ts=2026-09-04 06:10:40.830 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/06.slide ===
+[2026-09-04 06:10:40.826] [INFO ] [pid=40945] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:10:40.926] [INFO ] [pid=40945] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:10:40.962] [INFO ] [pid=40945] [mcp] mcp:slide_get_info ok ms=23
+=== boot pid=41030 ts=2026-09-04 06:11:24.755 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/07.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:11:24.751] [WARN ] [pid=41030] [validate] validation FAIL slideId=07 error=JSX parse error:   [31m×[0m Unterminated string constant
+    ╭─[39:1]
+ [2m36[0m │             </Box>
+ [2m37[0m │             <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+ [2m38[0m │                 <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>以价换量是主动策略</Text>
+ [2m39[0m │                 <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}">G1等中低价位产品放量 + 主动下调价格，均价连降是为做大规模、摊薄成本，而非被动降价。</Text>
+    · [35;1m                                                                                                                                                    ────────────────────────────────────────────────────────────────────────────────────────────[0m
+ [2m40[0m │             </Box>
+ [2m41[0m │         </Box>
+ [2m42[0m │     </Box>
+    ╰────
+  [31m×[0m Expected '</', got 'string literal'
+    ╭─[39:1]
+ [2m36[0m │             </Box>
+ [2m37[0m │             <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+ [2m38[0m │                 <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>以价换量是主动策略</Text>
+ [2m39[0m │                 <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}">G1等中低价位产品放量 + 主动下调价格，均价连降是为做大规模、摊薄成本，而非被动降价。</Text>
+    · [35;1m                                                                                                                                                    ────────────────────────────────────────────────────────────────────────────────────────────[0m
+ [2m40[0m │             </Box>
+ [2m41[0m │         </Box>
+ [2m42[0m │     </Box>
+    ╰────
+
+
+Caused by:
+    Syntax Error ms=72
+=== boot pid=41065 ts=2026-09-04 06:11:47.462 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/07.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:11:47.454] [INFO ] [pid=41065] [validate] ok slideId=07 status=ready ms=807
+=== boot pid=41073 ts=2026-09-04 06:11:50.654 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/07.slide ===
+[2026-09-04 06:11:50.648] [INFO ] [pid=41073] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:11:50.711] [INFO ] [pid=41073] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:11:50.725] [INFO ] [pid=41073] [mcp] mcp:slide_get_info ok ms=9
+=== boot pid=41171 ts=2026-09-04 06:12:32.450 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/08.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:12:32.444] [INFO ] [pid=41171] [validate] ok slideId=08 status=ready ms=659
+=== boot pid=41181 ts=2026-09-04 06:12:34.783 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/08.slide ===
+[2026-09-04 06:12:34.756] [INFO ] [pid=41181] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:12:34.907] [INFO ] [pid=41181] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:12:35.033] [INFO ] [pid=41181] [mcp] mcp:slide_get_info ok ms=41
+=== boot pid=41316 ts=2026-09-04 06:13:38.015 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/09.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:13:38.010] [INFO ] [pid=41316] [validate] ok slideId=09 status=ready ms=636
+=== boot pid=41317 ts=2026-09-04 06:13:39.924 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/09.slide ===
+[2026-09-04 06:13:39.918] [INFO ] [pid=41317] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:13:39.975] [INFO ] [pid=41317] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:13:39.987] [INFO ] [pid=41317] [mcp] mcp:slide_get_info ok ms=9
+=== boot pid=41363 ts=2026-09-04 06:14:05.159 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/10.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:14:05.129] [INFO ] [pid=41363] [validate] ok slideId=10 status=ready ms=629
+=== boot pid=41364 ts=2026-09-04 06:14:06.733 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/10.slide ===
+[2026-09-04 06:14:06.729] [INFO ] [pid=41364] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:14:06.781] [INFO ] [pid=41364] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:14:06.793] [INFO ] [pid=41364] [mcp] mcp:slide_get_info ok ms=3
+=== boot pid=41419 ts=2026-09-04 06:14:55.482 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/11.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:14:55.477] [INFO ] [pid=41419] [validate] ok slideId=11 status=ready ms=735
+=== boot pid=41421 ts=2026-09-04 06:14:57.396 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/11.slide ===
+[2026-09-04 06:14:57.386] [INFO ] [pid=41421] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:14:57.592] [INFO ] [pid=41421] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:14:57.625] [INFO ] [pid=41421] [mcp] mcp:slide_get_info ok ms=26
+=== boot pid=41473 ts=2026-09-04 06:15:42.625 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/12.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:15:42.619] [INFO ] [pid=41473] [validate] ok slideId=12 status=ready ms=1442
+=== boot pid=41474 ts=2026-09-04 06:15:45.654 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/12.slide ===
+[2026-09-04 06:15:45.648] [INFO ] [pid=41474] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:15:45.705] [INFO ] [pid=41474] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:15:45.730] [INFO ] [pid=41474] [mcp] mcp:slide_get_info ok ms=10
+=== boot pid=41538 ts=2026-09-04 06:16:11.010 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/13.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:16:11.004] [INFO ] [pid=41538] [validate] ok slideId=13 status=ready ms=582
+=== boot pid=41546 ts=2026-09-04 06:16:12.835 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/13.slide ===
+[2026-09-04 06:16:12.828] [INFO ] [pid=41546] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:16:12.872] [INFO ] [pid=41546] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:16:12.880] [INFO ] [pid=41546] [mcp] mcp:slide_get_info ok ms=6
+=== boot pid=41683 ts=2026-09-04 06:17:45.190 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/14.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:17:45.187] [INFO ] [pid=41683] [validate] ok slideId=14 status=ready ms=768
+=== boot pid=41689 ts=2026-09-04 06:17:46.893 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/14.slide ===
+[2026-09-04 06:17:46.887] [INFO ] [pid=41689] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:17:46.942] [INFO ] [pid=41689] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:17:46.950] [INFO ] [pid=41689] [mcp] mcp:slide_get_info ok ms=4
+=== boot pid=41788 ts=2026-09-04 06:18:48.429 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/15.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:18:48.425] [INFO ] [pid=41788] [validate] ok slideId=15 status=ready ms=1450
+=== boot pid=41799 ts=2026-09-04 06:18:49.859 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/15.slide ===
+[2026-09-04 06:18:49.854] [INFO ] [pid=41799] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:18:49.909] [INFO ] [pid=41799] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:18:49.919] [INFO ] [pid=41799] [mcp] mcp:slide_get_info ok ms=3
+=== boot pid=41933 ts=2026-09-04 06:19:45.840 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/15.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:19:45.838] [INFO ] [pid=41933] [validate] ok slideId=15 status=ready ms=556
+=== boot pid=41935 ts=2026-09-04 06:19:47.113 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/15.slide --page-index 14 ===
+[2026-09-04 06:19:47.098] [INFO ] [pid=41935] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:19:47.159] [INFO ] [pid=41935] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:19:47.171] [INFO ] [pid=41935] [mcp] mcp:slide_get_info ok ms=8
+=== boot pid=41977 ts=2026-09-04 06:20:23.438 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep-validate slides/16.slide --project /Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 ===
+[2026-09-04 06:20:23.434] [INFO ] [pid=41977] [validate] ok slideId=16 status=ready ms=427
+=== boot pid=41978 ts=2026-09-04 06:20:24.663 cwd=/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报 argv=/Users/guoqingtao/.workbuddy/binaries/node/versions/22.22.2-2/bin/slidep upsert-dsl 宇树科技研究汇报.pptx --dsl-file slides/16.slide ===
+[2026-09-04 06:20:24.660] [INFO ] [pid=41978] [server-url] env TENCENT_DOCS_LOCAL_MCP = http://127.0.0.1:39099/mcp
+[2026-09-04 06:20:24.693] [INFO ] [pid=41978] [mcp] mcp:slide_get_info send url=http://127.0.0.1:39099/mcp args={"file_id":"sid_mtm2q10s_hi1kqydx"}
+[2026-09-04 06:20:24.700] [INFO ] [pid=41978] [mcp] mcp:slide_get_info ok ms=4

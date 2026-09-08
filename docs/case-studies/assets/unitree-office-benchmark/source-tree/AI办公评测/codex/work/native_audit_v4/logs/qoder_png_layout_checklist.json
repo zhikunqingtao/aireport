@@ -1,0 +1,296 @@
+{
+  "module": "qoder_png_layout_checklist",
+  "protocol": {
+    "sourcePixelReview": "逐区检查原始4800x3000像素，不以缩略图替代。",
+    "screenSimulation": "1920x1080等比适应屏幕，不裁剪。",
+    "printSimulation": "A4横向300dpi等比适应页面，不裁剪。",
+    "classificationRule": "G1表示用户无需放大即可看到、且会阻止按原Prompt直接交付的一级版式缺陷；major表示必须返工但核心数据仍可恢复。"
+  },
+  "artifacts": [
+    {
+      "kind": "ordinary",
+      "source": {
+        "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_投资人汇报_一页全景图.png",
+        "bytes": 822176,
+        "mtimeEpoch": 1788484133.4491382,
+        "sha256": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94"
+      },
+      "dimensionsPx": [
+        4800,
+        3000
+      ],
+      "decode": "passed",
+      "checklist": [
+        {
+          "zoneId": "Z1",
+          "label": "上排左图标题/副标题",
+          "bboxPx": [
+            140,
+            560,
+            1530,
+            690
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z2",
+          "label": "上排中图标题/副标题",
+          "bboxPx": [
+            1700,
+            560,
+            3110,
+            690
+          ],
+          "status": "pass"
+        },
+        {
+          "zoneId": "Z3",
+          "label": "上排右图标题/副标题",
+          "bboxPx": [
+            3260,
+            560,
+            4690,
+            690
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z4",
+          "label": "下排左图标题/副标题",
+          "bboxPx": [
+            140,
+            1580,
+            1530,
+            1720
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z5",
+          "label": "下排中图标题/副标题",
+          "bboxPx": [
+            1700,
+            1580,
+            3110,
+            1720
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z6",
+          "label": "下排右图标题/副标题",
+          "bboxPx": [
+            3260,
+            1580,
+            4690,
+            1720
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z7",
+          "label": "下排左图横轴/底栏边界",
+          "bboxPx": [
+            140,
+            2470,
+            1530,
+            2675
+          ],
+          "status": "fail_partial_crop"
+        },
+        {
+          "zoneId": "Z8",
+          "label": "下排中图横轴/底栏边界",
+          "bboxPx": [
+            1700,
+            2470,
+            3110,
+            2675
+          ],
+          "status": "fail_partial_crop"
+        },
+        {
+          "zoneId": "Z9",
+          "label": "页脚来源与最小文字",
+          "bboxPx": [
+            3000,
+            2820,
+            4795,
+            2995
+          ],
+          "status": "present_but_too_small_when_fit"
+        }
+      ],
+      "simulations": [
+        {
+          "scenario": "100_percent_source_pixels",
+          "status": "failed_professional_readiness",
+          "evidence": "evidence/qoder_ordinary_100pct_annotated.png",
+          "detailCrops": "evidence/qoder_ordinary_defect_crops_contact_sheet.png",
+          "observation": "标题叠印和底部边界问题在原始像素中已存在，不是查看器缩放造成。"
+        },
+        {
+          "scenario": "1920x1080_fit_screen",
+          "status": "failed_investor_projection_readiness",
+          "evidence": "evidence/qoder_ordinary_screen_1920x1080.png",
+          "renderRule": "4800x3000等比缩至1728x1080，左右各96px留边",
+          "observation": "六图标题冲突仍可见；来源和说明文字缩小后不能作为投屏核验入口。"
+        },
+        {
+          "scenario": "A4_landscape_300dpi",
+          "status": "failed_publication_readiness",
+          "evidence": "evidence/qoder_ordinary_a4_landscape_300dpi.png",
+          "renderRule": "A4横向3508x2480@300dpi，整图等比居中",
+          "observation": "打印不会修复烧录在像素中的标题冲突；来源/注释字号仍不足以舒适核验。"
+        }
+      ],
+      "severity": "major",
+      "grade": "G1",
+      "gradeRationale": "原Prompt明确要求投资人汇报、排版精美且不能有错；多个图表标题在原像素中叠印，并伴随下排轴标签/底栏边界冲突，正常用户必须返工后才能交付。",
+      "capBoundary": "核心数值大多仍可辨认，文件也可正常解码，因此定为major/G1交付缺陷，不等同于事实错误或文件不可用，不据此单独触发39/59分封顶。"
+    },
+    {
+      "kind": "ink",
+      "source": {
+        "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_水墨中国风_一页全景图.png",
+        "bytes": 965161,
+        "mtimeEpoch": 1788486472.8601134,
+        "sha256": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4"
+      },
+      "dimensionsPx": [
+        4800,
+        3000
+      ],
+      "decode": "passed",
+      "checklist": [
+        {
+          "zoneId": "Z1",
+          "label": "上排左图标题/副标题",
+          "bboxPx": [
+            140,
+            650,
+            1530,
+            780
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z2",
+          "label": "上排中图标题/副标题",
+          "bboxPx": [
+            1700,
+            650,
+            3110,
+            780
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z3",
+          "label": "上排右图标题/副标题",
+          "bboxPx": [
+            3260,
+            650,
+            4690,
+            780
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z4",
+          "label": "下排左图标题/副标题",
+          "bboxPx": [
+            140,
+            1660,
+            1530,
+            1800
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z5",
+          "label": "下排中图标题/副标题",
+          "bboxPx": [
+            1700,
+            1660,
+            3110,
+            1800
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z6",
+          "label": "下排右图标题/副标题",
+          "bboxPx": [
+            3260,
+            1660,
+            4690,
+            1800
+          ],
+          "status": "fail_overlap"
+        },
+        {
+          "zoneId": "Z7",
+          "label": "下排左图横轴/底栏边界",
+          "bboxPx": [
+            140,
+            2470,
+            1530,
+            2675
+          ],
+          "status": "borderline_footer_intrusion"
+        },
+        {
+          "zoneId": "Z8",
+          "label": "下排中图横轴/底栏边界",
+          "bboxPx": [
+            1700,
+            2470,
+            3110,
+            2675
+          ],
+          "status": "borderline_footer_intrusion"
+        },
+        {
+          "zoneId": "Z9",
+          "label": "页脚来源与最小文字",
+          "bboxPx": [
+            3000,
+            2820,
+            4795,
+            2995
+          ],
+          "status": "present_but_low_contrast_and_too_small_when_fit"
+        }
+      ],
+      "simulations": [
+        {
+          "scenario": "100_percent_source_pixels",
+          "status": "failed_professional_readiness",
+          "evidence": "evidence/qoder_ink_100pct_annotated.png",
+          "detailCrops": "evidence/qoder_ink_defect_crops_contact_sheet.png",
+          "observation": "标题叠印和底部边界问题在原始像素中已存在，不是查看器缩放造成。"
+        },
+        {
+          "scenario": "1920x1080_fit_screen",
+          "status": "failed_investor_projection_readiness",
+          "evidence": "evidence/qoder_ink_screen_1920x1080.png",
+          "renderRule": "4800x3000等比缩至1728x1080，左右各96px留边",
+          "observation": "六图标题冲突仍可见；来源和说明文字缩小后不能作为投屏核验入口。"
+        },
+        {
+          "scenario": "A4_landscape_300dpi",
+          "status": "failed_publication_readiness",
+          "evidence": "evidence/qoder_ink_a4_landscape_300dpi.png",
+          "renderRule": "A4横向3508x2480@300dpi，整图等比居中",
+          "observation": "打印不会修复烧录在像素中的标题冲突；来源/注释字号仍不足以舒适核验。"
+        }
+      ],
+      "severity": "major",
+      "grade": "G1",
+      "gradeRationale": "原Prompt明确要求投资人汇报、排版精美且不能有错；多个图表标题在原像素中叠印，并伴随下排轴标签/底栏边界冲突，正常用户必须返工后才能交付。",
+      "capBoundary": "核心数值大多仍可辨认，文件也可正常解码，因此定为major/G1交付缺陷，不等同于事实错误或文件不可用，不据此单独触发39/59分封顶。"
+    }
+  ],
+  "crossArtifactConclusion": "水墨版不是独立新故障：它保持普通版的数据和几何布局，也继承了相同标题/底栏问题。两件终稿分别评价各自可交付性，但传播链中只记录一个共同版式根因。"
+}

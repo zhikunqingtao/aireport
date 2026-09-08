@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>证据包说明｜AI Report</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --text: #152033;
+      --muted: #5b6678;
+      --line: #dbe3ee;
+      --accent: #2457d6;
+      --warning-bg: #fff8e6;
+      --warning-line: #efc65a;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text); background: var(--bg); }
+
+    main {
+      width: min(880px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0 72px;
+    }
+
+    a { color: var(--accent); }
+    .back { display: inline-block; margin-bottom: 32px; font-weight: 700; text-decoration: none; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.04em; }
+    .lead { max-width: 720px; color: var(--muted); font-size: 1.1rem; line-height: 1.75; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 28px 0;
+    }
+
+    .metric, section {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--surface);
+    }
+
+    .metric { padding: 18px; }
+    .metric strong { display: block; font-size: 1.6rem; }
+    .metric span { color: var(--muted); font-size: 0.9rem; }
+    section { margin-top: 16px; padding: 24px; }
+    section h2 { margin: 0 0 12px; font-size: 1.15rem; }
+    section p, section li { color: var(--muted); line-height: 1.7; }
+    section ul { margin: 0; padding-left: 1.25rem; }
+    code { overflow-wrap: anywhere; }
+
+    .warning { border-color: var(--warning-line); background: var(--warning-bg); }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .button.primary { border-color: var(--accent); color: #fff; background: var(--accent); }
+
+    @media (max-width: 660px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">← 返回报告入口</a>
+    <h1>证据包说明</h1>
+    <p class="lead">本包记录五款 AI 办公工具在同一组六项连续任务中的固定样本交付物、复核材料、报告数据和文件级完整性清单。</p>
+
+    <div class="grid" aria-label="证据包摘要">
+      <div class="metric"><strong>v4.5</strong><span>唯一正式报告版本</span></div>
+      <div class="metric"><strong>30</strong><span>固定终稿样本</span></div>
+      <div class="metric"><strong>1,598</strong><span>清单记录</span></div>
+    </div>
+
+    <section>
+      <h2>内容组成</h2>
+      <ul>
+        <li><code>source-tree/</code>：任务目录与原生复核材料。</li>
+        <li><code>report/</code>：自包含报告、活动数据、复算与最终 QA 材料。</li>
+        <li><code>extracted-media/</code>：报告显示层使用的媒体载荷。</li>
+        <li><code>external-snapshots/</code>：打包时取得的静态外部资料。</li>
+        <li><code>stakeholder-responses/</code>：非计分的工具自评回复材料。</li>
+        <li><code>manifests/</code>：来源、路径、SHA-256、重复组与排除记录。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>完整性核验</h2>
+      <p>从仓库根目录运行 <code>node scripts/verify-unitree-office-benchmark.mjs --repo .</code>。SHA-256 只证明文件相对清单的字节一致性，不证明捕获时间、作者身份、内容真实性或证据独立性。</p>
+    </section>
+
+    <section class="warning">
+      <h2>完整原始证据保留说明</h2>
+      <p>完整证据包含未经脱敏的截图、日志、文档和网页快照，可能涉及个人信息、本机路径、第三方配置、Office 作者元数据以及第三方版权。发布者选择保留这些原始材料；访问、下载或再发布者应自行评估相关风险。</p>
+    </section>
+
+    <nav class="actions" aria-label="相关入口">
+      <a class="button primary" href="case-studies/AI办公工具对比测评_宇树科技_截至2026-08-30.html">打开交互式报告</a>
+      <a class="button" href="index.html">返回报告入口</a>
+    </nav>
+  </main>
+</body>
+</html>

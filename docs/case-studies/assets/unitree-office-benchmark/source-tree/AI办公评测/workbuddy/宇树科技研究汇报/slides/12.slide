@@ -1,0 +1,42 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>研发投入加码：2026H1半年投入接近2025全年，补齐"大脑"短板</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 32, alignItems: 'stretch', marginTop: 12 }}>
+        <Box style={{ width: '30%', background: '#061F32', padding: '28px 24px', flexDirection: 'column', justifyContent: 'center', gap: 20 }}>
+            <Text style={{ fontSize: 72, color: '#08A6F6', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>+152%</Text>
+            <Text style={{ fontSize: 18, color: '#FFFFFF', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1研发费用同比增速，半年投入1.36亿元已接近2025全年（1.45亿元）</Text>
+            <Box style={{ width: '100%', height: 1, background: '#44546A' }} />
+            <Text style={{ fontSize: 16, color: '#99BDED', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>投向：具身智能大模型、运动控制算法、本体与结构研发；2025年前三季度云算力租赁费835万元，为2024全年的近8倍。</Text>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', gap: 12 }}>
+            <Chart
+                style={{ height: 380 }}
+                chartType='barChart'
+                title='研发费用（万元）'
+                titleColor='#061F32'
+                showLegend={false}
+                showDataLabels={true}
+                dataLabelColor='#061F32'
+                axisColor='#808080'
+                colors={['#001965']}
+                background='#FFFFFF'
+                data={[
+                    ['报告期', '研发费用'],
+                    ['2023', 4995],
+                    ['2024*', 6983],
+                    ['2025', 14497],
+                    ['2026H1', 13591],
+                ]}
+            />
+            <Box style={{ background: '#F5F5F5', padding: '14px 20px', borderLeft: '3px solid #08A6F6' }}>
+                <Text style={{ fontSize: 17, color: '#061F32', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2025年研发费用率8.53%，低于优必选（&gt;25%）与科创板中位数（12.5%）——<span style={{ fontWeight: 'bold' }}>强项在"小脑"（本体/电机/运控），"大脑"（具身大模型）需要补课</span>；IPO募投约36亿元投向三个研发项目提供资金保障。</Text>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：招股说明书、上市公告书；*2024年研发费用为按17.8%费用率的推算值；可比公司数据为证券时报转引</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>12</Text>
+    </Box>
+</Slide>

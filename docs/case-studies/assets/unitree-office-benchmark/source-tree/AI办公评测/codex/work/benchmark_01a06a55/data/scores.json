@@ -1,0 +1,5688 @@
+{
+  "meta": {
+    "title": "五款AI办公工具六类产物客观评测",
+    "cutoff": "2026-08-30",
+    "assessmentDate": "2026-09-04",
+    "artifactCount": 30,
+    "toolCount": 5,
+    "equalArtifactWeight": 0.16666666666666666,
+    "criticalCap": 59,
+    "scoringVersion": "2.0-causal-chain",
+    "excelOnlyExternalFactCheck": true
+  },
+  "methodology": {
+    "excelReference": "独立官方事实账本",
+    "downstreamReference": "同一工具自己的Excel",
+    "inheritedExcelError": "只展示传播，不扣分，不封顶",
+    "downstreamNewError": "按严重度扣分，符合重大条件时封顶"
+  },
+  "kindLabels": {
+    "excel": "Excel",
+    "word": "Word",
+    "ppt": "PPT",
+    "image": "普通信息图",
+    "ink": "水墨信息图",
+    "html": "交互HTML"
+  },
+  "tools": [
+    "豆包",
+    "千问",
+    "Qoder",
+    "WorkBuddy",
+    "ZhikunCode"
+  ],
+  "kinds": [
+    "excel",
+    "word",
+    "ppt",
+    "image",
+    "ink",
+    "html"
+  ],
+  "artifacts": [
+    {
+      "tool": "豆包",
+      "kind": "excel",
+      "criteria": [
+        {
+          "key": "excel_factual_accuracy",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.8,
+          "weighted": 22.8,
+          "basis": "年度与2026H1核心财务数大体准确，但2024人形收入错40万元，2025产品结构漏列11,065.34万元，并有少量精确数被约数替代。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.2,
+          "weighted": 6.4,
+          "basis": "有S1-S11及9个URL文本，但无真实超链接、页码，未保留2026-08-14正式招股书直接PDF，部分核心取自镜像或转引。",
+          "group": "reliability"
+        },
+        {
+          "key": "cutoff_period_prediction_boundary",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "A/E与实际/预测分区清楚，未纳入截止日后行情；仅上市公告书披露日期写早1日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 3.0,
+          "weighted": 6.0,
+          "basis": "年度总表正确，但业务表2024分产品合计差40万元、2025分产品合计少11,065.34万元，文字均价与公式结果也不一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "excel_delivery_1",
+          "name": "数据完整",
+          "weight": 8,
+          "rating": 4.2,
+          "weighted": 6.72,
+          "basis": "10张Sheet覆盖来源、年度/期间、业务、IPO、计算、图表、结论和待核验；2025组件及其他主营明细未正确落表。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_2",
+          "name": "公式勾稽",
+          "weight": 12,
+          "rating": 4.2,
+          "weighted": 10.08,
+          "basis": "全簿142公式/137数值硬编码，核心计算53/0为100%公式；但产品结构勾稽公式未识别缺口并将错误继续传入图表。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_3",
+          "name": "原生图表",
+          "weight": 6,
+          "rating": 4.0,
+          "weighted": 4.8,
+          "basis": "6张均为原生、可编辑且引用单元格；图3的2025组件及其他被计算为0，内容不完整。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_4",
+          "name": "结构可用",
+          "weight": 8,
+          "rating": 3.8,
+          "weighted": 6.08,
+          "basis": "结构和配色清楚，但仅1张表冻结窗格、无筛选/表格对象，142个公式均无缓存。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_5",
+          "name": "结论与待核验",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "结论主题完整，预测边界与12项人工核验清单明确；产品结构结论未揭示底层勾稽失败。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 77.88,
+      "capTriggered": false,
+      "finalScore": 77.88,
+      "findings": [
+        {
+          "id": "DOUBAO-001",
+          "tool": "豆包",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "04_业务经营数据!D5,D9,D18；08_分析结论!C7",
+          "summary": "2024年人形机器人收入写成10,689.76万元，正式数为10,729.76万元，导致分产品合计38,727.28万元而非38,767.28万元，均价公式25.95与结论26.04不一致。",
+          "officialReference": "正式招股说明书分产品收入/销量表；2024人形收入10,729.76万元、销量412台。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-DOUBAO-PRODUCT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-002",
+          "tool": "豆包",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "04_业务经营数据!E7:E12；07_趋势图表!E19；图3",
+          "summary": "2025年组件和其他主营收入为空，主营合计公式少11,065.34万元，组件及其他占比及图3数值变为0。",
+          "officialReference": "正式招股说明书：2025主营收入167,611.09万元，其中组件10,373.67万元、其他691.67万元。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-DOUBAO-PRODUCT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-003",
+          "tool": "豆包",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "02_原始数据_年度!E18；03_原始数据_期间!D5,D8；01_资料来源!F8",
+          "summary": "销售费用、2025H1收入/现金流存在小额约数或尾差，上市公告书披露日写为8月17日而非上交所8月18日。",
+          "officialReference": "正式数为销售费用14,120.32、2025H1收入77,571.92、经营现金流34,319.36万元；上市公告书上交所披露日2026-08-18。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-DOUBAO-PRODUCT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-004",
+          "tool": "豆包",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "01_资料来源!G4:G14",
+          "summary": "保留了URL文本但无可点击超链接和具体页码，正式招股书直接PDF缺失。",
+          "officialReference": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/688836_20260814_AJKD.pdf",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-DOUBAO-PRODUCT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-005",
+          "tool": "豆包",
+          "kind": "excel",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "全工作簿",
+          "summary": "无实际Excel错误值；核心计算和图表数据区均100%公式化，6张图均为原生引用型图表。",
+          "officialReference": "OOXML只读检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-DOUBAO-PRODUCT",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "Excel",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技经营财务分析底稿_截至20260830.xlsx",
+      "name": "宇树科技经营财务分析底稿_截至20260830.xlsx",
+      "bytes": 35523,
+      "sha256": "4942b044499cb7abb982ed82cde6b54430112c223115ae9b7968b98686a5257a",
+      "metadata": {
+        "sheets": 10,
+        "nativeCharts": 6,
+        "formulas": 142
+      },
+      "preview": "doubao_excel.webp",
+      "previewType": "render",
+      "reliabilityScore": 44.8,
+      "deliveryScore": 33.08
+    },
+    {
+      "tool": "千问",
+      "kind": "excel",
+      "criteria": [
+        {
+          "key": "excel_factual_accuracy",
+          "name": "事实",
+          "weight": 30,
+          "rating": 4.9,
+          "weighted": 29.4,
+          "basis": "正式年度数、2025H1比较数、2026H1实际数、产品和费用明细与权威披露高度一致，未发现实质财务事实错误。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 2.4,
+          "weighted": 4.8,
+          "basis": "列出S1-S6及文件名称，但无完整URL、超链接、页码；招股书主要取上会稿镜像，正式稿仍待人工复核。",
+          "group": "reliability"
+        },
+        {
+          "key": "cutoff_period_prediction_boundary",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "审计、审阅、未审计及预测性质分得清楚，预测与实际并列但不混同，未使用截止日后数据。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "原始数据、计算和结论之间的数字口径一致，设置了多项分产品/毛利/CAGR勾稽；扣分主要来自图表引用与计算区方向不一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "excel_delivery_1",
+          "name": "数据完整",
+          "weight": 8,
+          "rating": 4.5,
+          "weighted": 7.2,
+          "basis": "6张Sheet较精简但覆盖来源、年度、期间/IPO、计算、图表和结论；缺独立待核验Sheet及更细来源页码。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_2",
+          "name": "公式勾稽",
+          "weight": 12,
+          "rating": 5.0,
+          "weighted": 12.0,
+          "basis": "核心计算122个公式、0数值硬编码，公式率100%，并设置收入、毛利及同比差异校验，未见公式错误值。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_3",
+          "name": "原生图表",
+          "weight": 6,
+          "rating": 1.0,
+          "weighted": 1.2,
+          "basis": "5张虽为原生图表，但5/5系列均按年份而非指标组织，存在倒序范围及分类轴/数值长度不匹配，图意不可靠。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_4",
+          "name": "结构可用",
+          "weight": 8,
+          "rating": 3.7,
+          "weighted": 5.92,
+          "basis": "工作簿紧凑、两张原始表有冻结窗格；无筛选/表格对象，所有公式无缓存，图表页可用性受错误引用影响。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_5",
+          "name": "结论与待核验",
+          "weight": 6,
+          "rating": 4.6,
+          "weighted": 5.52,
+          "basis": "结论谨慎且有数据支撑，说明页保留需核验边界；缺独立清单及逐页来源定位。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 85.64,
+      "capTriggered": false,
+      "finalScore": 85.64,
+      "findings": [
+        {
+          "id": "QIANWEN-001",
+          "tool": "千问",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "xl/charts/chart1.xml至chart5.xml；核心计算!B57:D69",
+          "summary": "5张图全部把年份误设为系列。图1应为2系列却有5系列，并出现$C$58:$B$58等倒序两格范围；图2应为2系列却有3系列，其余图同类错误。",
+          "officialReference": "OOXML图表系列公式与核心计算图表数据区的只读交叉检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QIANWEN-CHART",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QIANWEN-002",
+          "tool": "千问",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "说明与来源!A14:F20",
+          "summary": "来源有文件名称和来源编号，但0个完整URL、0个超链接、0个页码，正式注册稿关键数字仅声明已交叉验证。",
+          "officialReference": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/688836_20260814_AJKD.pdf",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QIANWEN-CHART",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QIANWEN-003",
+          "tool": "千问",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "全工作簿公式单元格",
+          "summary": "122个公式均无缓存结果；虽设fullCalcOnLoad=1，非重算型预览器可能显示空白。",
+          "officialReference": "OOXML workbook calcPr及单元格缓存检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QIANWEN-CHART",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QIANWEN-004",
+          "tool": "千问",
+          "kind": "excel",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "原始数据-年度；原始数据-期间与IPO；核心计算",
+          "summary": "关键财务、产品及H1比较数字准确，核心计算100%公式化，未发现预测当事实或截止日越界。",
+          "officialReference": "正式招股说明书及上市公告书。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QIANWEN-CHART",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "Excel",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技经营与财务分析底稿.xlsx",
+      "name": "宇树科技经营与财务分析底稿.xlsx",
+      "bytes": 25672,
+      "sha256": "84ad4d0b1657a878b891b77b6666a45219ea1048104c522658e5d63b1f33bd7b",
+      "metadata": {
+        "sheets": 6,
+        "nativeCharts": 5,
+        "formulas": 122
+      },
+      "preview": "qianwen_excel.webp",
+      "previewType": "render",
+      "reliabilityScore": 53.8,
+      "deliveryScore": 31.84
+    },
+    {
+      "tool": "Qoder",
+      "kind": "excel",
+      "criteria": [
+        {
+          "key": "excel_factual_accuracy",
+          "name": "事实",
+          "weight": 30,
+          "rating": 4.0,
+          "weighted": 24.0,
+          "basis": "底层财务、业务、IPO及H1数据整体完整，但底稿误称2026H1研发费用绝对值未披露，并把CFO/营收比率命名为‘收现比’；这两项根错误按v2口径只回扣Excel。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.4,
+          "weighted": 6.8,
+          "basis": "S1-S10记录正式文件日期、文号并映射到表号，但使用无协议东方财富镜像路径，无上交所直接链接、实际超链接和页码。",
+          "group": "reliability"
+        },
+        {
+          "key": "cutoff_period_prediction_boundary",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A/B/C/D/E性质体系最完整，预测、未审计和测算严格区分；二级市场数据明确止于8月28日并排除8月31日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 3.2,
+          "weighted": 6.4,
+          "basis": "数值逻辑和勾稽较强，但百分比/EPS格式与单位列严重不一致，部分结论把推断写得过于确定。",
+          "group": "reliability"
+        },
+        {
+          "key": "excel_delivery_1",
+          "name": "数据完整",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "11张Sheet、4,248个非空单元格，覆盖发行、财务、产品、客户同业、股权募投、计算、19图、结论和核验，完整度最高。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_2",
+          "name": "公式勾稽",
+          "weight": 12,
+          "rating": 4.7,
+          "weighted": 11.28,
+          "basis": "全簿557公式；核心计算349公式/4数值硬编码，公式率98.9%，图表源区208公式/0硬编码；无实际公式错误，主要扣分为输出格式。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_3",
+          "name": "原生图表",
+          "weight": 6,
+          "rating": 5.0,
+          "weighted": 6.0,
+          "basis": "19张均为原生、可编辑、单元格引用型图表，系列数量和引用方向检查正常。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_4",
+          "name": "结构可用",
+          "weight": 8,
+          "rating": 3.2,
+          "weighted": 5.12,
+          "basis": "分表清晰、信息丰富，但11张长表无冻结窗格、筛选或表格对象，557公式无缓存，且百分比格式错误影响阅读。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_5",
+          "name": "结论与待核验",
+          "weight": 6,
+          "rating": 4.3,
+          "weighted": 5.16,
+          "basis": "结论和待核验事项最全面，事实/预测边界清楚；个别因果和盈利质量表述应降格为推断。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 82.76,
+      "capTriggered": false,
+      "finalScore": 82.76,
+      "findings": [
+        {
+          "id": "QODER-001",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "02_发行上市原始数据!B43；03_财务原始数据!C95:D96,C103:D104；07_核心计算!C53:F53,D78:E78,C79:E80,E83,C84:E85,C122:D122,E123",
+          "summary": "至少31个明显数字格式错误：每股收益0.69使用百分比格式显示69.00%，多项ROE、负债率和核心百分比公式使用金额格式，显示值相差100倍。",
+          "officialReference": "上市公告书发行指标表与H1主要财务指标表；底层存储值正确，number format错误。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-002",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "01_资料来源!G4:G13",
+          "summary": "正式文件识别准确但均为无协议镜像/文字路径，0个完整URL、0个真实超链接、0个页码，不满足最佳追溯性。",
+          "officialReference": "上交所正式招股说明书及上市公告书直接PDF。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-003",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "01_资料来源!D10",
+          "summary": "证监会注册批复日期写2026-07-02，应区分批复落款/核准日2026-07-01与网页披露日期。",
+          "officialReference": "https://www.csrc.gov.cn/csrc/c105906/c7642867/content.shtml",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-004",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "medium",
+          "locator": "09_分析结论（C-02、C-03、C-14）",
+          "summary": "建议同时分析归母与扣非，不宜把股份支付简单等同一次性；H1利润/现金流承压与年均价下降、负债上升构成之间的因果缺乏H1分产品或负债明细直接证据，应标注为推断。",
+          "officialReference": "正式招股说明书风险因素及上市公告书H1附表。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-005",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "全工作簿视图设置",
+          "summary": "11张Sheet均无冻结窗格和筛选，557个公式均无缓存；Excel可强制重算，但非重算预览兼容性较弱。",
+          "officialReference": "OOXML只读检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-006",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "03_财务原始数据；04_业务结构原始数据；08_趋势图表",
+          "summary": "最终口径关键数据基本准确，19张图结构正确，8月31日行情被明确排除，预测和实际性质标识完整。",
+          "officialReference": "正式招股说明书及上市公告书。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-QODER-FORMAT",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-X-V2-01",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "07_核心计算!J77；上市公告书附件二第86页",
+          "summary": "底稿称2026H1研发费用绝对值未披露，但上市公告附件二已披露13,590.65万元；该根错误从下游移回Excel计分。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": "excel_factual_accuracy"
+        },
+        {
+          "id": "QODER-X-V2-02",
+          "tool": "Qoder",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "07_核心计算!I60；09_分析结论现金流章节",
+          "summary": "将经营活动现金流净额/营业收入比率命名为‘收现比’，术语与通常的销售收现口径不同。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": "excel_factual_accuracy"
+        }
+      ],
+      "label": "Excel",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+      "name": "宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+      "bytes": 114648,
+      "sha256": "e9336817003d54e50149dacc63f00dcb2d26e5070e7a12818ff0566eeb9724ea",
+      "metadata": {
+        "sheets": 11,
+        "nativeCharts": 19,
+        "formulas": 557
+      },
+      "preview": "qoder_excel.webp",
+      "previewType": "render",
+      "reliabilityScore": 47.2,
+      "deliveryScore": 35.56
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "excel",
+      "criteria": [
+        {
+          "key": "excel_factual_accuracy",
+          "name": "事实",
+          "weight": 30,
+          "rating": 1.5,
+          "weighted": 9.0,
+          "basis": "虚构2025年年报/2026一季报来源，2025净利润口径错误，多项2024和H1数字混用旧稿或约数，并将预测利润率表述为已实现。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 1.0,
+          "weighted": 2.0,
+          "basis": "7条来源无完整URL/页码，两份不存在的定期报告被列为A级，主要链接只是域名或转引。",
+          "group": "reliability"
+        },
+        {
+          "key": "cutoff_period_prediction_boundary",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 1.5,
+          "weighted": 3.0,
+          "basis": "虽然另设预测Sheet，但结论把预测区间当作Q2已实现；混用2022、旧申报稿和最终口径，来源日期范围写到2026-09。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 1.5,
+          "weighted": 3.0,
+          "basis": "主营收入结构使用营业收入分母，年度净利润及少数股东解释与正式披露冲突，预测Sheet与结论相互矛盾。",
+          "group": "reliability"
+        },
+        {
+          "key": "excel_delivery_1",
+          "name": "数据完整",
+          "weight": 8,
+          "rating": 3.2,
+          "weighted": 5.12,
+          "basis": "8张Sheet覆盖主要模块，但精确资产负债、最终年度数据和正式来源缺失或被约数替代。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_2",
+          "name": "公式勾稽",
+          "weight": 12,
+          "rating": 3.8,
+          "weighted": 9.12,
+          "basis": "核心计算32公式/1硬编码，公式率97%，且74公式均保存缓存；但错误分母和错误输入被公式稳定传播。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_3",
+          "name": "原生图表",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "5张图均为原生引用型且结构正常，但产品结构及历史财务图引用了错误或混合口径数据。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_4",
+          "name": "结构可用",
+          "weight": 8,
+          "rating": 3.5,
+          "weighted": 5.6,
+          "basis": "分区直观、两张表冻结且公式缓存完整；无筛选/表格对象，来源和口径标签误导使用者。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_5",
+          "name": "结论与待核验",
+          "weight": 6,
+          "rating": 1.5,
+          "weighted": 1.8,
+          "basis": "有待核验列表，但错误把预测写成事实，并基于错误分母、旧数和虚构少数股东口径形成结论。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 42.84,
+      "capTriggered": true,
+      "finalScore": 42.84,
+      "findings": [
+        {
+          "id": "WORKBUDDY-001",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "资料来源!B5:B6,E5:E6,I5:I6",
+          "summary": "列出截至截止日并不存在的《宇树科技2025年年度报告》和《宇树科技2026年第一季度报告》，并归为A级来源。公司2026年8月才上市，相关数实际来自IPO文件或媒体。",
+          "officialReference": "上交所688836公告清单、正式招股说明书及上市公告书。",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-002",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "分析结论!B9；预测参考(非事实)!B12",
+          "summary": "把招股书预计数推导的31.11%-34.42%表述为“2026Q2扣非净利率已回升”，直接违反不得把预测写成已发生事实的要求。",
+          "officialReference": "正式招股说明书2026H1管理层预计区间；上市公告书实际H1数据。",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-003",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "原始数据-财务!E3:E6,F4:F5,G3:G8",
+          "summary": "混用旧申报稿和约数：2024收入39,237.06、归母9,450.18、扣非7,750；2025归母约27,800并虚构净利润28,800及少数股东差异；H1比较数也未用已披露精确值。",
+          "officialReference": "正式年度数为39,277.07、9,547.47、7,847.65、27,821.05万元；公司无少数股东损益。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-004",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "原始数据-业务!A3:C17,A25:E25；分析结论!B6:B7；趋势图表图4/图5",
+          "summary": "名为主营结构却把其他业务收入计入分母，导致人形51.07%、四足41.05%、境外43.06%；正确主营口径为51.78%、41.62%、43.65%。",
+          "officialReference": "正式招股说明书2025主营收入167,611.09万元及分产品/分地区表。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-005",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "资料来源!E8；说明与口径!B7；原始数据-财务表头及备注",
+          "summary": "将2022及2025Q1-3旧申报稿序列与最终2023-2025口径并列，且来源期间写到2026-09，统一口径和截止控制不足。",
+          "officialReference": "正式招股说明书报告期为2023-2025；截止日2026-08-30。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-006",
+          "tool": "WorkBuddy",
+          "kind": "excel",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "核心计算；趋势图表",
+          "summary": "5张图均为原生且公式结构正常；是五份中唯一为全部74个公式保存缓存值的文件。",
+          "officialReference": "OOXML只读检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-WORKBUDDY-FORECAST",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "Excel",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技经营与财务分析底稿.xlsx",
+      "name": "宇树科技经营与财务分析底稿.xlsx",
+      "bytes": 30685,
+      "sha256": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378",
+      "metadata": {
+        "sheets": 8,
+        "nativeCharts": 5,
+        "formulas": 75
+      },
+      "preview": "workbuddy_excel.webp",
+      "previewType": "render",
+      "reliabilityScore": 17.0,
+      "deliveryScore": 25.84
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "excel",
+      "criteria": [
+        {
+          "key": "excel_factual_accuracy",
+          "name": "事实",
+          "weight": 30,
+          "rating": 2.2,
+          "weighted": 13.2,
+          "basis": "高层趋势多为正确，但未使用正式稿已披露精确数，误称H1现金流未披露，并有销量、资产、毛利率和监管风险表述错误。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 1.6,
+          "weighted": 3.2,
+          "basis": "列30条来源但21条写未获取，仅9个URL文本，部分未获取或媒体转引仍标✅，证券之星转述被归为官方披露。",
+          "group": "reliability"
+        },
+        {
+          "key": "cutoff_period_prediction_boundary",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 1.0,
+          "weighted": 2.0,
+          "basis": "明确将2026-08-31来源、行情、市值、PE和图表纳入8月30日截止底稿；预测虽有🔮标识，但正式/申报/倒算口径混用。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 1.8,
+          "weighted": 3.6,
+          "basis": "主营毛利率行混入H1综合毛利率，全年与9M、公司与同业9M口径混比；核心百分比公式多为General格式。",
+          "group": "reliability"
+        },
+        {
+          "key": "excel_delivery_1",
+          "name": "数据完整",
+          "weight": 8,
+          "rating": 3.5,
+          "weighted": 5.6,
+          "basis": "9张Sheet覆盖面广并有核验清单，但H1现金流、正式年度精确资产负债和多个产品/员工数据缺失或用近似数代替。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_2",
+          "name": "公式勾稽",
+          "weight": 12,
+          "rating": 3.0,
+          "weighted": 7.2,
+          "basis": "核心计算59公式/14硬编码，公式率80.8%；有同比、CAGR和交叉验证，但大量计算基于倒算数，至少14个百分比公式格式不当。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_3",
+          "name": "原生图表",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "7张均为原生引用型且系列结构正常；图7直接使用8月31日越界行情，其余若干图基于旧稿/约数。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_4",
+          "name": "结构可用",
+          "weight": 8,
+          "rating": 4.2,
+          "weighted": 6.72,
+          "basis": "9张Sheet全部冻结窗格、导航和数据质量图例清楚；无筛选/表格对象，公式缓存为空且数字格式粗糙。",
+          "group": "delivery"
+        },
+        {
+          "key": "excel_delivery_5",
+          "name": "结论与待核验",
+          "weight": 6,
+          "rating": 2.5,
+          "weighted": 3.0,
+          "basis": "结论与待核验结构完整，但8月31日估值进入结论、同业期间不匹配、FCC措辞过强，且多项已可由正式披露解决的问题仍列待核。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 48.72,
+      "capTriggered": true,
+      "finalScore": 48.72,
+      "findings": [
+        {
+          "id": "ZHIKUN-001",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "资料来源!D18；原始数据_IPO与股东!A57:D57；核心计算!A47:F47；趋势图表!A50:B50及图7；分析结论!A33",
+          "summary": "明确使用2026-08-31资料和行情计算约2,285亿元市值及821倍PE，并进入图表和结论，超过用户指定的2026-08-30截止日。",
+          "officialReference": "资料截止日2026-08-30；截止日前最后交易日为2026-08-28。",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-002",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "原始数据_财务!B5:H11,B55:B57；核心计算!B56:E57；分析结论!A40",
+          "summary": "正式披露已有精确数却使用倒算/约数：2024收入39,276.6，2026H1为115,200/27,400/24,400，2025年末资产等用约数，并误称H1经营现金流未披露。",
+          "officialReference": "正式数：2024收入39,277.07；2026H1收入115,224.56、归母27,399.99、扣非24,393.03、经营现金流23,154.53；2025年末资产320,853.83、负债60,387.99、权益260,465.85万元。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-003",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "原始数据_财务!A8:H8",
+          "summary": "同一行标题为主营业务毛利率，2026H1列却放入综合毛利率56.01%，跨期指标口径不一致。",
+          "officialReference": "正式招股说明书年度主营毛利率；上市公告书H1利润表综合毛利率。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-004",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "原始数据_财务!D48:F50；待核验事项!C10:C11",
+          "summary": "2025四足销量用约25,500台而非收入确认销量23,037台；2024人形销量410、均价26.07沿用旧稿，正式为412台、26.04万元/台。",
+          "officialReference": "正式招股说明书分产品销量及平均单价表。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-005",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "资料来源!A2:G31",
+          "summary": "30条来源中21条写未获取，仍有多条标✅；仅9个URL文本且无实际超链接，证券之星转述被归为官方披露，可靠性图例失真。",
+          "officialReference": "上交所正式招股说明书及上市公告书应作为核心直接来源。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-006",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "major",
+          "confidence": "medium",
+          "locator": "分析结论!A26,A28",
+          "summary": "用公司2025全年研发率与可比公司2025年前三季度均值直接比较；FCC限制被写成即日全面禁令，强于招股书风险提示，均需降格或补原始法规。",
+          "officialReference": "正式招股说明书同业比较及风险因素；FCC原始规则需另行核验。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-007",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "核心计算!B5:D5,B10:D11,B15:E15,B20",
+          "summary": "至少14个明确的同比、净利率、研发费用率和CAGR公式使用General格式，打开重算后显示小数而非百分数。",
+          "officialReference": "OOXML number format检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "excel_root",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-008",
+          "tool": "ZhikunCode",
+          "kind": "excel",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "全工作簿视图及趋势图表",
+          "summary": "9张Sheet均冻结窗格，7张图均为原生可编辑且引用结构正常，预测类内容普遍有🔮标识。",
+          "officialReference": "OOXML只读检查。",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "EXCEL-ZHIKUN-CUTOFF",
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "Excel",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_经营与财务分析底稿.xlsx",
+      "name": "宇树科技_经营与财务分析底稿.xlsx",
+      "bytes": 42541,
+      "sha256": "258470bbce6e90016b4b7f29a5046cc9b599acc4b95495cf72733720316e0439",
+      "metadata": {
+        "sheets": 9,
+        "nativeCharts": 7,
+        "formulas": 108
+      },
+      "preview": "zhikun_excel.webp",
+      "previewType": "render",
+      "reliabilityScore": 22.0,
+      "deliveryScore": 26.72
+    },
+    {
+      "tool": "豆包",
+      "kind": "word",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "Word中的年度、产品、地区、费用、IPO及H1数字均可在豆包Excel中找到同值或同一显式判断；原来相对官方口径的差错属于Excel根错误，不再扣下游。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "文末完整保留S1-S11、文件名与URL，和Excel来源表的映射基本一一对应；Excel自身使用镜像或提示公告的问题仅作继承记录。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "万元/亿元换算、A/E、年度/Q1/H1及未经审计属性均沿用Excel；业绩预告与实际分表，制造基地产能明确为规划。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "Word与Excel的显式结论及PPT判断一致。Excel内部产品公式与文字判断的冲突由Word继承后不重复扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "six_required_areas",
+          "name": "六项必答覆盖",
+          "weight": 14,
+          "rating": 5.0,
+          "weighted": 14.0,
+          "basis": "主营业务与产品结构、收入与盈利、研发投入、竞争优势、增长变量、主要风险均有独立正文。",
+          "group": "delivery"
+        },
+        {
+          "key": "analysis_depth",
+          "name": "分析深度",
+          "weight": 8,
+          "rating": 4.5,
+          "weighted": 7.2,
+          "basis": "在Excel可用范围内完成量价、地区、利润质量、现金流、研发和募投的解释；个别分析仍以概括为主。",
+          "group": "delivery"
+        },
+        {
+          "key": "editable_structure",
+          "name": "可编辑结构",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "正文、标题与6张表均为原生Word对象，结构可继续编辑。",
+          "group": "delivery"
+        },
+        {
+          "key": "writing_quality",
+          "name": "表达质量",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "核心判断先行，事实、测算、计划和风险边界清楚；少量重复口径提示略显冗长。",
+          "group": "delivery"
+        },
+        {
+          "key": "layout_and_source_appendix",
+          "name": "版式与来源附录",
+          "weight": 6,
+          "rating": 3.0,
+          "weighted": 3.6,
+          "basis": "七页结构紧凑且有来源附录；未嵌入宋体/黑体，跨平台渲染观察到中文方框或丢字。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 95.6,
+      "capTriggered": false,
+      "finalScore": 95.6,
+      "findings": [
+        {
+          "id": "DOUBAO-W-I01",
+          "tool": "豆包",
+          "kind": "word",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "Word第2、3、6页；Excel 02_原始数据_年度、04_业务经营数据",
+          "summary": "Word使用10,689.76、38,727.28、17,116.54和14,120.93等值，均与豆包Excel相同；这些值即使相对统一官方基准有误，也属于原样继承。",
+          "officialReference": "02_原始数据_年度!D6,E18；04_业务经营数据!D5,D23",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-W-I02",
+          "tool": "豆包",
+          "kind": "word",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "Word第2页表1及正文；Excel 04_业务经营数据!E5:E12、08_分析结论!C7",
+          "summary": "Word的2025产品占比51.78%/41.62%/约6.6%沿用Excel显式结论；Excel原始行留空导致公式区内部冲突，属于Excel根错误，不视为Word新冲突。",
+          "officialReference": "08_分析结论!C7；04_业务经营数据!G5,G12",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-W-N01",
+          "tool": "豆包",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word第1-7页跨平台渲染",
+          "summary": "宋体/黑体未嵌入，LibreOffice渲染出现中文方框或丢字；属于Word成品的兼容性缺陷。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "layout_and_source_appendix"
+        }
+      ],
+      "label": "Word",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技公司研究报告_截至20260830.docx",
+      "name": "宇树科技公司研究报告_截至20260830.docx",
+      "bytes": 50075,
+      "sha256": "2f575523d944bcabe48f0a9e54a4c1e17a9bda39f4a651064496d2f23df8cc35",
+      "metadata": {
+        "paragraphXml": 559,
+        "tables": 6,
+        "images": 0,
+        "pages": 7
+      },
+      "preview": "doubao_word.webp",
+      "previewType": "render",
+      "reliabilityScore": 60.0,
+      "deliveryScore": 35.6
+    },
+    {
+      "tool": "豆包",
+      "kind": "ppt",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "显性数字、图表数据和核心判断均继承豆包Excel；未发现PPT自行新增并与Excel冲突的经营财务事实。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "内容页保留S编号/文件名，末页映射S1-S11；相较Excel和Word省略完整URL与表格定位，追溯精度略降。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "图表亿元换算清楚，H1未审计、A/E及预测对照均与Excel一致，规划产能未写成现实产量。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "与Excel显式结论及Word口径一致；产品结构与地区数据的外部差错属于共同继承。",
+          "group": "reliability"
+        },
+        {
+          "key": "one_core_point_per_slide",
+          "name": "单页单观点",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "除执行摘要外，各内容页均有结论式标题和单一叙事任务。",
+          "group": "delivery"
+        },
+        {
+          "key": "verified_chart_reuse",
+          "name": "图表复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "7张原生图表与嵌入数据均可回溯到豆包Excel对应数据块；Excel根错误不扣PPT复用分。",
+          "group": "delivery"
+        },
+        {
+          "key": "editability",
+          "name": "可编辑性",
+          "weight": 7,
+          "rating": 5.0,
+          "weighted": 7.0,
+          "basis": "文字、形状、表格、图表及嵌入工作簿均为原生对象。",
+          "group": "delivery"
+        },
+        {
+          "key": "visual_hierarchy",
+          "name": "视觉层级",
+          "weight": 10,
+          "rating": 2.5,
+          "weighted": 5.0,
+          "basis": "设计系统统一，但PingFang SC/Helvetica Neue未嵌入导致跨平台大量中文不可见，负数坐标轴亦影响备用解析。",
+          "group": "delivery"
+        },
+        {
+          "key": "footer_source_readability",
+          "name": "页脚来源可读性",
+          "weight": 5,
+          "rating": 4.0,
+          "weighted": 4.0,
+          "basis": "内容页均有稳定来源页脚和页码，字号偏小但可读。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 92.0,
+      "capTriggered": false,
+      "finalScore": 92.0,
+      "findings": [
+        {
+          "id": "DOUBAO-P-I01",
+          "tool": "豆包",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT第5、7页图表；Excel 04_业务经营数据、08_分析结论",
+          "summary": "图表及文字使用的2024产品/地区数、2025产品占比均来自豆包Excel，不因Excel自身的外部或内部根错误扣PPT分。",
+          "officialReference": "04_业务经营数据!D5,D23,E5:E12；08_分析结论!C7:C8",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "DOUBAO-P-N01",
+          "tool": "豆包",
+          "kind": "ppt",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "PPT第2-16页来源脚注及第16页来源清单",
+          "summary": "PPT保留S编号与名称，但未完整携带Excel来源表中的URL和具体表格定位，链路压缩后需回Excel二次检索。",
+          "officialReference": "01_资料来源!B3:H14",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "source_chain_quality"
+        },
+        {
+          "id": "DOUBAO-P-N02",
+          "tool": "豆包",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT全稿跨平台渲染",
+          "summary": "未嵌入中文字体导致LibreOffice渲染大面积丢字，图表负数坐标轴又使备用解析器导入失败。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "visual_hierarchy"
+        }
+      ],
+      "label": "PPT",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技内部汇报_截至20260830.pptx",
+      "name": "宇树科技内部汇报_截至20260830.pptx",
+      "bytes": 876840,
+      "sha256": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2",
+      "metadata": {
+        "slides": 16,
+        "nativeCharts": 7,
+        "media": 2,
+        "embeddings": 7
+      },
+      "preview": "doubao_ppt.webp",
+      "previewType": "render",
+      "reliabilityScore": 59.0,
+      "deliveryScore": 33.0
+    },
+    {
+      "tool": "千问",
+      "kind": "word",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "年度、产品、量价、费用、H1、IPO及风险数字均可在千问Excel找到同值、公式结果或同一判断，未见下游新增冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "文末保留六类来源并在表后标注文件，但没有像Excel那样逐行携带S编号与用途，定位颗粒度略降。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "经审计/经审阅/未经审计和管理层预计四类性质与Excel完全一致，单位与期间标签清楚。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "抽查Word、PPT和Excel的数值、单位、审计属性及判断均一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "six_required_areas",
+          "name": "六项必答覆盖",
+          "weight": 14,
+          "rating": 5.0,
+          "weighted": 14.0,
+          "basis": "六项必答均完整覆盖，文末另有结论、口径与来源。",
+          "group": "delivery"
+        },
+        {
+          "key": "analysis_depth",
+          "name": "分析深度",
+          "weight": 8,
+          "rating": 4.5,
+          "weighted": 7.2,
+          "basis": "较充分解释产品结构、量价、毛利、费用、现金流、研发、估值与风险，四页篇幅下取舍有效。",
+          "group": "delivery"
+        },
+        {
+          "key": "editable_structure",
+          "name": "可编辑结构",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "正文与表格均为原生可编辑对象，标题层级清楚。",
+          "group": "delivery"
+        },
+        {
+          "key": "writing_quality",
+          "name": "表达质量",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "文字紧凑，事实、判断和预测边界明确。",
+          "group": "delivery"
+        },
+        {
+          "key": "layout_and_source_appendix",
+          "name": "版式与来源附录",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "版式简洁且有来源页；第4页利用率偏低，SimSun未嵌入造成跨平台中文缺字。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 95.2,
+      "capTriggered": false,
+      "finalScore": 95.2,
+      "findings": [
+        {
+          "id": "QIANWEN-W-I01",
+          "tool": "千问",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word第3-4页来源段；Excel 说明与来源!A15:F20",
+          "summary": "Excel自身主要给出上交所路径和PDF镜像，Word沿用这些来源；不因缺正式直链或页码再次扣分。",
+          "officialReference": "说明与来源!A15:F20",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "QIANWEN-W-N01",
+          "tool": "千问",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word表1、表2后的来源行及文末[1]-[6]",
+          "summary": "从Excel到Word后，多数具体数据只保留文件级来源，没有逐项保留Excel的S编号、用途和行级锚点。",
+          "officialReference": "说明与来源!A14:F20；原始数据各表来源列",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "source_chain_quality"
+        },
+        {
+          "id": "QIANWEN-W-N02",
+          "tool": "千问",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word第4页及全稿跨平台渲染",
+          "summary": "来源续页较空，且未嵌入SimSun，跨平台渲染观察到中文缺字。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "layout_and_source_appendix"
+        }
+      ],
+      "label": "Word",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技公司研究报告.docx",
+      "name": "宇树科技公司研究报告.docx",
+      "bytes": 17721,
+      "sha256": "5c6426d3a2c4228a4b609ccf72a13b4c78fa08bfde7fb7b7ec3bfc16bed9986f",
+      "metadata": {
+        "paragraphXml": 296,
+        "tables": 2,
+        "images": 0,
+        "pages": 4
+      },
+      "preview": "qianwen_word.webp",
+      "previewType": "render",
+      "reliabilityScore": 59.0,
+      "deliveryScore": 36.2
+    },
+    {
+      "tool": "千问",
+      "kind": "ppt",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "关键财务、产品、H1、IPO和风险信息均与千问Excel一致，未发现新增方向或期间错误。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "每页有文件级来源，末页列主要来源；未携带Excel行级S编号和表格位置，需回底稿二次定位。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "H1未经审计、管理层预计与实际对照、万元/亿元换算均沿用Excel且表达清楚。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "PPT与Excel、Word的数字、口径和结论一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "one_core_point_per_slide",
+          "name": "单页单观点",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "绝大多数页面是观点式标题；第11页把增长变量与风险并置，严格标准下略有双主题。",
+          "group": "delivery"
+        },
+        {
+          "key": "verified_chart_reuse",
+          "name": "图表复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "6张关键原生图表及嵌入数据与千问Excel一致，覆盖产品、量价、成长、盈利质量与研发。",
+          "group": "delivery"
+        },
+        {
+          "key": "editability",
+          "name": "可编辑性",
+          "weight": 7,
+          "rating": 5.0,
+          "weighted": 7.0,
+          "basis": "文字、形状、图表和嵌入工作簿均为标准原生对象。",
+          "group": "delivery"
+        },
+        {
+          "key": "visual_hierarchy",
+          "name": "视觉层级",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "暗色主题稳定，标题、KPI、图表和结论层级清楚，溢出检查通过。",
+          "group": "delivery"
+        },
+        {
+          "key": "footer_source_readability",
+          "name": "页脚来源可读性",
+          "weight": 5,
+          "rating": 4.5,
+          "weighted": 4.5,
+          "basis": "来源、截止日、页码与免责声明固定且可读，仅定位颗粒度可提升。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 97.5,
+      "capTriggered": false,
+      "finalScore": 97.5,
+      "findings": [
+        {
+          "id": "QIANWEN-P-N01",
+          "tool": "千问",
+          "kind": "ppt",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "PPT第1-12页页脚及第12页来源列表",
+          "summary": "页脚从Excel的逐行来源压缩为泛化文件名，未保留S编号、表号和精确位置。",
+          "officialReference": "说明与来源!A14:F20；原始数据来源列",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "source_chain_quality"
+        },
+        {
+          "id": "QIANWEN-P-N02",
+          "tool": "千问",
+          "kind": "ppt",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "PPT第11页",
+          "summary": "同页并列增长变量和主要风险，严格按一页一观点可拆成两页。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "one_core_point_per_slide"
+        }
+      ],
+      "label": "PPT",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技内部汇报.pptx",
+      "name": "宇树科技内部汇报.pptx",
+      "bytes": 14909444,
+      "sha256": "e4c0b2c0b9672bed6cf5088297fcabf2a54860a9755839312048ecdeb0ae1fba",
+      "metadata": {
+        "slides": 12,
+        "nativeCharts": 6,
+        "media": 3,
+        "embeddings": 7
+      },
+      "preview": "qianwen_ppt.webp",
+      "previewType": "render",
+      "reliabilityScore": 59.0,
+      "deliveryScore": 38.5
+    },
+    {
+      "tool": "Qoder",
+      "kind": "word",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "Word逐表引用Qoder Excel的S编号、表号和A-E性质；原来关于H1研发绝对额的外部错误与Excel完全一致，属于继承。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "正文、表格和附录持续保留S1-S10、底稿表号与数据性质，是五款Word中链路最完整者；Excel镜像来源问题不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A-E五级性质、万元/亿元、报告期与截止日均严格沿用Excel，明确排除8月31日及之后数据。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "Word与Excel的数字、计算、表号和判断高度一致，未发现Word自行改变方向或性质。",
+          "group": "reliability"
+        },
+        {
+          "key": "six_required_areas",
+          "name": "六项必答覆盖",
+          "weight": 14,
+          "rating": 5.0,
+          "weighted": 14.0,
+          "basis": "六项均有深入专节，另含发行、估值、事实边界和待核验附录。",
+          "group": "delivery"
+        },
+        {
+          "key": "analysis_depth",
+          "name": "分析深度",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "量价拆解、产品毛利、客户、渠道、季节性、现金流、会计估计、同业、治理与估值均有量化分析。",
+          "group": "delivery"
+        },
+        {
+          "key": "editable_structure",
+          "name": "可编辑结构",
+          "weight": 6,
+          "rating": 4.5,
+          "weighted": 5.4,
+          "basis": "253段、51张表均为原生Word对象，层级和表格可编辑。",
+          "group": "delivery"
+        },
+        {
+          "key": "writing_quality",
+          "name": "表达质量",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "论证严谨，但27页明显偏长，重复边界提示与高密度表格降低内部简报效率。",
+          "group": "delivery"
+        },
+        {
+          "key": "layout_and_source_appendix",
+          "name": "版式与来源附录",
+          "weight": 6,
+          "rating": 3.0,
+          "weighted": 3.6,
+          "basis": "附录完整但页面密度高、字号偏小；未嵌入宋体/黑体导致跨平台中文缺字。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 95.2,
+      "capTriggered": false,
+      "finalScore": 95.2,
+      "findings": [
+        {
+          "id": "QODER-W-I01",
+          "tool": "Qoder",
+          "kind": "word",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "Word第11、17页；Excel 07_核心计算!J77、10_待人工核验V-11",
+          "summary": "Word称2026H1研发费用绝对额未披露，完整继承Excel的同一判断；即使该判断相对外部原文有误，也不扣Word分、不触发cap。",
+          "officialReference": "07_核心计算!J77；10_待人工核验V-11",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-W-I02",
+          "tool": "Qoder",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word来源附录；Excel 01_资料来源",
+          "summary": "S1/S2主要使用东方财富披露镜像而非上交所直链，Word未改变该来源链，故不重复扣分。",
+          "officialReference": "01_资料来源!A4:H5",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-W-N01",
+          "tool": "Qoder",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word全稿",
+          "summary": "27页正文与51张表形成较高阅读密度，且未嵌入中文字体，跨平台渲染有缺字。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "layout_and_source_appendix"
+        }
+      ],
+      "label": "Word",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+      "name": "宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+      "bytes": 91371,
+      "sha256": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95",
+      "metadata": {
+        "paragraphXml": 3971,
+        "tables": 51,
+        "images": 0,
+        "pages": 27
+      },
+      "preview": "qoder_word.webp",
+      "previewType": "render",
+      "reliabilityScore": 60.0,
+      "deliveryScore": 35.2
+    },
+    {
+      "tool": "Qoder",
+      "kind": "ppt",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 2.5,
+          "weighted": 15.0,
+          "basis": "大部分数字忠实复用Excel，但第10页把Excel的“同比走弱”改成正值指标“转负”，构成核心方向性新错误。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "每页均保留底稿表号、S编号与数据性质，末页集中列S1-S10；Excel镜像来源问题作为继承项不扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "预测、测算、未审计、行情时点和万元单位标记完整，未见新增预测冒充事实。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除第10页方向错误外，其余内容与Excel/Word一致；该根因已在事实维度扣分，本维度按去重规则不再二次扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "one_core_point_per_slide",
+          "name": "单页单观点",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "总体采用结论式标题与单主题页面，摘要和事实边界页为合理例外。",
+          "group": "delivery"
+        },
+        {
+          "key": "verified_chart_reuse",
+          "name": "图表复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "12张原生图表及嵌入数据覆盖主要分析，均可追溯到Qoder Excel。",
+          "group": "delivery"
+        },
+        {
+          "key": "editability",
+          "name": "可编辑性",
+          "weight": 7,
+          "rating": 5.0,
+          "weighted": 7.0,
+          "basis": "文字、形状、表格、图表和嵌入工作簿均为标准可编辑对象。",
+          "group": "delivery"
+        },
+        {
+          "key": "visual_hierarchy",
+          "name": "视觉层级",
+          "weight": 10,
+          "rating": 2.5,
+          "weighted": 5.0,
+          "basis": "卡片层级清楚但信息密度高；微软雅黑字体名未被跨平台解析，负数坐标轴影响备用渲染。",
+          "group": "delivery"
+        },
+        {
+          "key": "footer_source_readability",
+          "name": "页脚来源可读性",
+          "weight": 5,
+          "rating": 4.5,
+          "weighted": 4.5,
+          "basis": "每页固定保留来源、表号、性质与页码，结构一致且可读。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 78.5,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "QODER-P-N01",
+          "tool": "Qoder",
+          "kind": "ppt",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "PPT第10页标题",
+          "summary": "标题称“扣非净利与经营现金流双双转负”，而同页及Excel显示水平分别为正24,393.03万元和正23,154.53万元；Excel判断仅为同比-19.34%和-32.53%的“同步走弱”。",
+          "officialReference": "03_财务原始数据表3-3；09_分析结论!C7",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "PPT-QODER-SIGN",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "facts_excel_inheritance"
+        },
+        {
+          "id": "QODER-P-I01",
+          "tool": "Qoder",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT第18、19页；Excel 07_核心计算!J77、10_待人工核验V-11",
+          "summary": "对2026H1研发绝对额披露情况的遗漏/误判来自Excel，PPT未另行改变，不扣分、不触发cap。",
+          "officialReference": "07_核心计算!J77；10_待人工核验V-11",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-QODER-SIGN",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "QODER-P-N02",
+          "tool": "Qoder",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT全稿跨平台渲染",
+          "summary": "中文字体与负数坐标轴存在兼容性问题；首尾页越界对象经复核为背景出血，不另扣正文溢出。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-QODER-SIGN",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "visual_hierarchy"
+        }
+      ],
+      "label": "PPT",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+      "name": "宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+      "bytes": 168427,
+      "sha256": "71f2606f61dc977ea1e39daa5a9ff5589976e24640f5b4142e4ef2349cc23617",
+      "metadata": {
+        "slides": 20,
+        "nativeCharts": 12,
+        "media": 0,
+        "embeddings": 12
+      },
+      "preview": "qoder_ppt.webp",
+      "previewType": "render",
+      "reliabilityScore": 45.0,
+      "deliveryScore": 33.5
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "word",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "主体数字与判断多能回到WorkBuddy Excel；事实继承项只因把42.02亿元‘拟募集/拟投’改成‘到账/募资总额’这一项核心融资性质改写而扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "文末列招股书、公告、媒体、官网和预测来源，并明确Excel为唯一底稿；相较Excel未保留链接和单元格锚点，略有链路损耗。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "Excel中的Q2推算及来源错误属于继承；但Word新引2026-09-02报道及Figure AI比较，明确超出8月30日截止日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在事实/截止维度计分的两项newError外，Word与Excel/PPT大体一致；为避免同根重复，本维度不再扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "six_required_areas",
+          "name": "六项必答覆盖",
+          "weight": 14,
+          "rating": 5.0,
+          "weighted": 14.0,
+          "basis": "六项内容形式上均完整覆盖。",
+          "group": "delivery"
+        },
+        {
+          "key": "analysis_depth",
+          "name": "分析深度",
+          "weight": 8,
+          "rating": 3.5,
+          "weighted": 5.6,
+          "basis": "覆盖产品、财务、研发、竞争优势和风险，但链路校验、现金流与资产负债拆解较浅。",
+          "group": "delivery"
+        },
+        {
+          "key": "editable_structure",
+          "name": "可编辑结构",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "段落和表格可编辑，但标题样式在中后段中断，导航结构不完整。",
+          "group": "delivery"
+        },
+        {
+          "key": "writing_quality",
+          "name": "表达质量",
+          "weight": 6,
+          "rating": 3.5,
+          "weighted": 4.2,
+          "basis": "语言顺畅、观点明确，但存在过强确定性措辞和较多约数/来源免责。",
+          "group": "delivery"
+        },
+        {
+          "key": "layout_and_source_appendix",
+          "name": "版式与来源附录",
+          "weight": 6,
+          "rating": 2.5,
+          "weighted": 3.0,
+          "basis": "五页紧凑且有来源页；标题层级不连续，微软雅黑未嵌入导致跨平台缺字。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 75.0,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "WORKBUDDY-W-I01",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "Word第1-3页；Excel 原始数据-财务、原始数据-业务",
+          "summary": "2024营收39,237.06、归母9,450.18、扣非7,750及51.07%/55.58%等旧口径均直接来自WorkBuddy Excel，不扣下游事实分。",
+          "officialReference": "原始数据-财务!E3:E9；原始数据-业务!B5:C25",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-W-I02",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "Word第3页；Excel 分析结论!B9、预测参考(非事实)!B12:D12",
+          "summary": "“Q2扣非净利率已回升至31.11%-34.42%”及“费用集中一季度”的判断在Excel中已出现，Word属原样继承；按新规则不扣分、不触发cap。",
+          "officialReference": "分析结论!B9；预测参考(非事实)!B12:D12",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-W-I03",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "Word第1、5页来源；Excel 资料来源!B5:B6",
+          "summary": "Word引用的“2025年年度报告”“2026年一季报”已存在于Excel来源表；来源是否真实属于Excel根问题，本次不扣Word且不触发cap。",
+          "officialReference": "资料来源!B5:B6",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-W-N01",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "Word第3-4页，段落“叠加IPO募集资金到位”及“IPO募资42.02亿元到账”",
+          "summary": "Excel只把420,200/420,171.12万元列为拟募集/计划募资，Word将其升级为已经到账，改变了资金性质。",
+          "officialReference": "原始数据-业务!B48；预测参考(非事实)未含到账事实",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "facts_excel_inheritance"
+        },
+        {
+          "id": "WORKBUDDY-W-N02",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "Word第4页竞争优势及第5页来源：Figure AI 2025年约150台、约为宇树1/36；21世纪经济报道2026-09-02",
+          "summary": "150台和1/36比较未出现在WorkBuddy Excel，且其明确来源日期晚于资料截止日2026-08-30。",
+          "officialReference": "全簿未检出Figure AI、150台或1/36",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "period_unit_prediction_discipline"
+        },
+        {
+          "id": "WORKBUDDY-W-N03",
+          "tool": "WorkBuddy",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word全稿",
+          "summary": "标题层级中断且中文字体未嵌入，跨平台渲染存在缺字。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "layout_and_source_appendix"
+        }
+      ],
+      "label": "Word",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/output/ba8ec3f1-0a2a-4b93-af35-5d24f9300683/stage3/宇树科技公司研究报告.docx",
+      "name": "宇树科技公司研究报告.docx",
+      "bytes": 54491,
+      "sha256": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441",
+      "metadata": {
+        "paragraphXml": 469,
+        "tables": 16,
+        "images": 0,
+        "pages": 5
+      },
+      "preview": "workbuddy_word.webp",
+      "previewType": "render",
+      "reliabilityScore": 44.0,
+      "deliveryScore": 31.0
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "ppt",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "主体数字与判断多能回到WorkBuddy Excel；事实继承项只因把42.02亿元‘拟募集/拟投’改成‘到账/募资总额’这一项核心融资性质改写而扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "各页有文件级来源，但未保留Excel链接/单元格定位；Excel中来源真伪问题按继承不扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "Q2修复判断继承Excel不扣；Figure AI比较来自Word明确列示的2026-09-02报道，PPT继续使用，构成新增截止日后信息。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在事实/截止维度扣分的newError外，其余数字和判断与Excel及Word一致；去重后本维度不再重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "one_core_point_per_slide",
+          "name": "单页单观点",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "章节页和内容页总体单一；第15页同时放置三项增长变量和三类风险。",
+          "group": "delivery"
+        },
+        {
+          "key": "verified_chart_reuse",
+          "name": "图表复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "主要收入、产品、利润、毛利和研发图表均忠实采用WorkBuddy Excel数据；Excel根错误不扣复用分。",
+          "group": "delivery"
+        },
+        {
+          "key": "editability",
+          "name": "可编辑性",
+          "weight": 7,
+          "rating": 2.5,
+          "weighted": 3.5,
+          "basis": "文字和形状可编辑；6个图表放在非标准ppt/slides/charts路径且无嵌入工作簿，数据编辑可靠性不足。",
+          "group": "delivery"
+        },
+        {
+          "key": "visual_hierarchy",
+          "name": "视觉层级",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "章节分隔、留白和图表布局成熟，自动溢出检查通过。",
+          "group": "delivery"
+        },
+        {
+          "key": "footer_source_readability",
+          "name": "页脚来源可读性",
+          "weight": 5,
+          "rating": 4.0,
+          "weighted": 4.0,
+          "basis": "页脚位置与字号可读，来源为文件级名称、缺表号和链接。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 75.5,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "WORKBUDDY-P-I01",
+          "tool": "WorkBuddy",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT第4、5、7-12页；Excel 原始数据-财务、原始数据-业务、分析结论",
+          "summary": "旧年度数、产品/地区口径、Q2盈利修复判断及来源表问题均来自WorkBuddy Excel，按新规则不扣PPT、不触发cap。",
+          "officialReference": "原始数据-财务；原始数据-业务；分析结论!B3:B14；资料来源!B3:B9",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-WORKBUDDY-PREDICT",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-P-N01",
+          "tool": "WorkBuddy",
+          "kind": "ppt",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "PPT第14页",
+          "summary": "写“IPO募资42.02亿元到账”，而Excel仅将42.02亿元定义为拟募集/募投计划金额，PPT改变了性质。",
+          "officialReference": "原始数据-业务!B48",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "PPT-WORKBUDDY-FUND",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "facts_excel_inheritance"
+        },
+        {
+          "id": "WORKBUDDY-P-N02",
+          "tool": "WorkBuddy",
+          "kind": "ppt",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "PPT第14页：Figure AI约150台",
+          "summary": "Excel全簿没有Figure AI、150台或1/36比较；配套Word把该数字定位到2026-09-02报道，因此属于下游新增且超截止日。",
+          "officialReference": "全簿未检出Figure AI、150台或1/36",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "PPT-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "period_unit_prediction_discipline"
+        },
+        {
+          "id": "WORKBUDDY-P-N03",
+          "tool": "WorkBuddy",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT图表对象包结构",
+          "summary": "6个图表无标准嵌入工作簿，PowerPoint中的“编辑数据”可靠性不足。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "editability"
+        },
+        {
+          "id": "WORKBUDDY-P-N04",
+          "tool": "WorkBuddy",
+          "kind": "ppt",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "PPT第15页",
+          "summary": "同页并列三项增长变量与三类风险，严格一页一观点标准下信息任务过多。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-WORKBUDDY-PREDICT",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "one_core_point_per_slide"
+        }
+      ],
+      "label": "PPT",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报/宇树科技研究汇报.pptx",
+      "name": "宇树科技研究汇报.pptx",
+      "bytes": 62713,
+      "sha256": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387",
+      "metadata": {
+        "slides": 16,
+        "nativeCharts": 0,
+        "media": 0,
+        "embeddings": 0
+      },
+      "preview": "workbuddy_ppt.webp",
+      "previewType": "render",
+      "reliabilityScore": 43.0,
+      "deliveryScore": 32.5
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "word",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "Word中的约数、倒算值、H1 CFO未披露判断、8月31日行情和估值均在ZhikunCode Excel中已有同值与同性质描述，未发现新的事实冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "文末列19类来源并标注官方/媒体/机构性质，但多数未携带Excel中的URL、编号与精确表格锚点。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "报告期、单位、约数/待核/预测标签基本沿用Excel；8月31日行情虽违反外部截止要求，但属于Excel已明确纳入的继承项，本轮不扣且不触发cap。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "Word与Excel/PPT的关键数字、约数性质和判断高度一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "six_required_areas",
+          "name": "六项必答覆盖",
+          "weight": 14,
+          "rating": 5.0,
+          "weighted": 14.0,
+          "basis": "六项必答主题均完整出现，并另有公司概况、估值和来源说明。",
+          "group": "delivery"
+        },
+        {
+          "key": "analysis_depth",
+          "name": "分析深度",
+          "weight": 8,
+          "rating": 4.0,
+          "weighted": 6.4,
+          "basis": "覆盖产品、量价、地区、财务、研发、产能、市场份额、增长变量及风险，分析维度较丰富。",
+          "group": "delivery"
+        },
+        {
+          "key": "editable_structure",
+          "name": "可编辑结构",
+          "weight": 6,
+          "rating": 4.0,
+          "weighted": 4.8,
+          "basis": "段落和7张表均为原生对象，结构基本可编辑。",
+          "group": "delivery"
+        },
+        {
+          "key": "writing_quality",
+          "name": "表达质量",
+          "weight": 6,
+          "rating": 4.0,
+          "weighted": 4.8,
+          "basis": "约数、单一来源、管理层表态和第三方预测大多明确标注；部分内容偏长。",
+          "group": "delivery"
+        },
+        {
+          "key": "layout_and_source_appendix",
+          "name": "版式与来源附录",
+          "weight": 6,
+          "rating": 3.0,
+          "weighted": 3.6,
+          "basis": "十页结构完整并有来源；SimSun/SimHei未嵌入，跨平台渲染中文缺字。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 91.6,
+      "capTriggered": false,
+      "finalScore": 91.6,
+      "findings": [
+        {
+          "id": "ZHIKUN-W-I01",
+          "tool": "ZhikunCode",
+          "kind": "word",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "Word第3-8页；Excel 原始数据_财务、核心计算、分析结论",
+          "summary": "2024倒算营收、H1 CFO未披露、单一来源资产负债和2026-08-31收盘价/市值/PE均已存在于Excel；全部作为继承项，不扣分且不得触发cap。",
+          "officialReference": "原始数据_财务!D5,F11；核心计算!A43:F48；分析结论!A31:A34",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-ZHIKUN-CUTOFF",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-W-N01",
+          "tool": "ZhikunCode",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word第9页资料来源",
+          "summary": "从Excel来源表到Word后，多数URL、来源编号及可靠性标记被压缩为文件/机构名称。",
+          "officialReference": "资料来源!A2:G32",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "source_chain_quality"
+        },
+        {
+          "id": "ZHIKUN-W-N02",
+          "tool": "ZhikunCode",
+          "kind": "word",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "Word全稿跨平台渲染",
+          "summary": "未嵌入SimSun/SimHei，跨平台渲染观察到中文缺字。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "WORD-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "layout_and_source_appendix"
+        }
+      ],
+      "label": "Word",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_公司研究报告.docx",
+      "name": "宇树科技_公司研究报告.docx",
+      "bytes": 47923,
+      "sha256": "222a42509ab98dc4a88f19e25ff330dab311ef36aeb01f75f0b3dea1b73c6049",
+      "metadata": {
+        "paragraphXml": 595,
+        "tables": 7,
+        "images": 0,
+        "pages": 10
+      },
+      "preview": "zhikun_word.webp",
+      "previewType": "render",
+      "reliabilityScore": 58.0,
+      "deliveryScore": 33.6
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "ppt",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实（Excel继承一致性）",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "PPT的年度、产品、现金流、H1、市场份额和8月31日估值数据均直接复用ZhikunCode Excel，没有下游新增冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源质量（链路）",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "每页有文件/机构级来源，但相较Excel缺来源编号、URL与单元格定位。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "期间、单位与预测纪律",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "万元/亿元、申报稿/注册稿、待核和第三方预测均有标注；8月31日行情为Excel已纳入的继承项，本轮不扣且不cap。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "跨文件一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "PPT与Excel/Word关键数据和判断一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "one_core_point_per_slide",
+          "name": "单页单观点",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "内容页均为结论式标题与单一主题，摘要和风险页为合理汇总。",
+          "group": "delivery"
+        },
+        {
+          "key": "verified_chart_reuse",
+          "name": "图表复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "11张原生图表覆盖面广且忠实复用ZhikunCode Excel；Excel中的旧值和超截止日行情不扣下游复用分。",
+          "group": "delivery"
+        },
+        {
+          "key": "editability",
+          "name": "可编辑性",
+          "weight": 7,
+          "rating": 5.0,
+          "weighted": 7.0,
+          "basis": "文字、形状、表格、11张图表及嵌入工作簿均为标准可编辑对象。",
+          "group": "delivery"
+        },
+        {
+          "key": "visual_hierarchy",
+          "name": "视觉层级",
+          "weight": 10,
+          "rating": 2.5,
+          "weighted": 5.0,
+          "basis": "卡片和图表布局统一，但微软雅黑字体名未被跨平台渲染器解析，负数坐标轴亦影响备用导入。",
+          "group": "delivery"
+        },
+        {
+          "key": "footer_source_readability",
+          "name": "页脚来源可读性",
+          "weight": 5,
+          "rating": 4.0,
+          "weighted": 4.0,
+          "basis": "内容页均保留来源、截止日、页码与免责声明，布局稳定可读。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 91.0,
+      "capTriggered": false,
+      "finalScore": 91.0,
+      "findings": [
+        {
+          "id": "ZHIKUN-P-I01",
+          "tool": "ZhikunCode",
+          "kind": "ppt",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "PPT第5、7、10、12-14页；Excel 原始数据_财务、核心计算、分析结论",
+          "summary": "约数/旧稿、H1 CFO遗漏以及8月31日收盘价564.90元、市值约2,285亿元、PE约821倍均在Excel中已有，PPT原样继承；不扣分、不触发cap。",
+          "officialReference": "原始数据_财务!D5,F11；核心计算!A43:F48；分析结论!A31:A34",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-ZHIKUN-CUTOFF",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZHIKUN-P-N01",
+          "tool": "ZhikunCode",
+          "kind": "ppt",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "PPT第1-15页页脚与第15页来源",
+          "summary": "来源压缩为文件/媒体名称，没有保留Excel的来源编号、URL与可靠性等级。",
+          "officialReference": "资料来源!A2:G32",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "source_chain_quality"
+        },
+        {
+          "id": "ZHIKUN-P-N02",
+          "tool": "ZhikunCode",
+          "kind": "ppt",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "PPT全稿跨平台渲染",
+          "summary": "微软雅黑字体名未被跨平台渲染器解析，中文大面积不可见；含负数坐标轴的图表使备用解析器失败。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "PPT-ZHIKUN-CUTOFF",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": "visual_hierarchy"
+        }
+      ],
+      "label": "PPT",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_公司研究汇报.pptx",
+      "name": "宇树科技_公司研究汇报.pptx",
+      "bytes": 3910365,
+      "sha256": "8167c308608b3d49ea21d3d7906e7da540e470a0434ecf6b904292ca19592dec",
+      "metadata": {
+        "slides": 15,
+        "nativeCharts": 11,
+        "media": 2,
+        "embeddings": 11
+      },
+      "preview": "zhikun_ppt.webp",
+      "previewType": "render",
+      "reliabilityScore": 58.0,
+      "deliveryScore": 33.0
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "image",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "08-31市值、2025-09员工480/研发175、2024倒算营收等均可在Zhikun Excel找到；下游未发现新增冲突数字。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.6,
+          "weighted": 7.2,
+          "basis": "保留核心文件、机构与管理层来源名称，但相较Excel 30条清单压缩明显且没有URL/页码，属于下游证据链损失。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "08-31明确标作补充且来自Excel；预测、约数和待核验标签也得到保留，根截止错误不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.9,
+          "weighted": 9.8,
+          "basis": "核心KPI、估值、员工期间和风险判断均与Excel选用口径一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "image_delivery_1",
+          "name": "信息取舍",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "6个KPI及增长、结构、盈利、商业化、IPO、风险覆盖完整。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_2",
+          "name": "层级",
+          "weight": 10,
+          "rating": 4.6,
+          "weighted": 9.2,
+          "basis": "科技主视觉、KPI带、双栏和结论区阅读路径清楚。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_3",
+          "name": "图表/标签可读",
+          "weight": 10,
+          "rating": 4.3,
+          "weighted": 8.6,
+          "basis": "原尺寸图表清晰；整页缩放后脚注和右栏注释偏小。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_4",
+          "name": "投资人视觉",
+          "weight": 10,
+          "rating": 4.7,
+          "weighted": 9.4,
+          "basis": "专业克制，KPI与风险并列，适合作为投资人一页纸。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 93.2,
+      "capTriggered": false,
+      "finalScore": 93.2,
+      "findings": [
+        {
+          "id": "ZhikunCode-image-01",
+          "tool": "ZhikunCode",
+          "kind": "image",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "IPO与二级市场模块",
+          "summary": "‘2026-08-31收盘市值约2,285亿元’与Excel原始数据_IPO与股东!A57:D57、核心计算!A47:F47一致。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-image-02",
+          "tool": "ZhikunCode",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "头部公司概况/增长图",
+          "summary": "480/175人和39,276.6万元均直接继承Excel所选旧期/倒算口径。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-image-03",
+          "tool": "ZhikunCode",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "页脚来源",
+          "summary": "Excel有30条来源、9个URL文本；PNG仅保留来源类别和少量名称，无URL/页码。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        }
+      ],
+      "label": "普通信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_投资人一页纸.png",
+      "name": "宇树科技_投资人一页纸.png",
+      "bytes": 1611215,
+      "sha256": "81fbcebb33662576d32d6f9504661e75de6b6035ddbd70753b74d0e5c9782898",
+      "metadata": {
+        "width": 2560,
+        "height": 3620
+      },
+      "preview": "zhikun_image.webp",
+      "previewType": "render",
+      "reliabilityScore": 57.0,
+      "deliveryScore": 36.2
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "ink",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "核心数字及原Excel既有问题均为继承，水墨化未新增事实冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.6,
+          "weighted": 7.2,
+          "basis": "保留核心来源名称，但相较Excel丢失明细、URL和逐数映射。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "08-31补充行情及约数/待核/预测标签均按Excel继承，取消原截止日处罚。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.9,
+          "weighted": 9.8,
+          "basis": "普通版与Excel的核心模块、数字和判断保持一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "ink_delivery_1",
+          "name": "层级保持",
+          "weight": 8,
+          "rating": 4.5,
+          "weighted": 7.2,
+          "basis": "保留KPI—增长/结构—盈利/IPO—结论顺序。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_2",
+          "name": "水墨浪漫",
+          "weight": 14,
+          "rating": 4.8,
+          "weighted": 13.44,
+          "basis": "山水、远山、飞鸟、竖排题名、印章和机器人剪影构成实质视觉重绘。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_3",
+          "name": "可读",
+          "weight": 8,
+          "rating": 4.1,
+          "weighted": 6.56,
+          "basis": "正文清楚，米色低对比脚注和小字号来源在缩放后偏弱。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_4",
+          "name": "专业构图",
+          "weight": 10,
+          "rating": 4.7,
+          "weighted": 9.4,
+          "basis": "主视觉与数据网格结合自然，留白和视觉重心成熟。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 93.6,
+      "capTriggered": false,
+      "finalScore": 93.6,
+      "findings": [
+        {
+          "id": "ZhikunCode-ink-01",
+          "tool": "ZhikunCode",
+          "kind": "ink",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "伍·发行与市场",
+          "summary": "08-31市值约2,285亿元直接继承Excel，原cap取消。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-ink-02",
+          "tool": "ZhikunCode",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "主视觉下公司信息",
+          "summary": "2025-09员工480/研发175在Excel原始数据_财务!B67:C67已有。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-ink-03",
+          "tool": "ZhikunCode",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "整体版式",
+          "summary": "主视觉实质重绘，但数据卡片位置多沿用普通版。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-ZHIKUN-ORIGINAL",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        }
+      ],
+      "label": "水墨信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_投资人一页纸_水墨版.png",
+      "name": "宇树科技_投资人一页纸_水墨版.png",
+      "bytes": 6863329,
+      "sha256": "0b6938cacb5736c54c10fc4b87dcfd8d312c390a80dcf1288b496231f2b54dd5",
+      "metadata": {
+        "width": 2560,
+        "height": 3620
+      },
+      "preview": "zhikun_ink.webp",
+      "previewType": "render",
+      "reliabilityScore": 57.0,
+      "deliveryScore": 36.6
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "html",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "08-31行情、5215台待核、员工旧期和扩展经营数据均能回到Zhikun Excel；未发现相对Excel新增的核心冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "保留18项来源及分类，但Excel 30项/9个URL文本被缩减为约18项/1个可点击URL。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "越界行情和待核标签均按Excel明确呈现；预测、机构观点及管理层表态标签完整。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "扩展内容总体与Excel一致；来源清单有压缩但未改变核心数字方向。",
+          "group": "reliability"
+        },
+        {
+          "key": "html_delivery_1",
+          "name": "信息复用",
+          "weight": 8,
+          "rating": 4.8,
+          "weighted": 7.68,
+          "basis": "扩展为历程、产品、财务、研发、市场、IPO、风险和方法说明。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_2",
+          "name": "有效交互",
+          "weight": 12,
+          "rating": 4.6,
+          "weighted": 11.04,
+          "basis": "3个数据页签、待核手风琴、导航高亮、返回顶部、计数及tooltip均有事件绑定。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_3",
+          "name": "响应式易用",
+          "weight": 8,
+          "rating": 4.4,
+          "weighted": 7.04,
+          "basis": "有760/1080断点、横向滚动导航与宽表容器。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_4",
+          "name": "加载容错可移植",
+          "weight": 5,
+          "rating": 2.8,
+          "weighted": 2.8,
+          "basis": "单文件且背景内嵌，但ECharts依赖jsDelivr并仅以unpkg作网络回退。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_5",
+          "name": "视觉性能",
+          "weight": 7,
+          "rating": 4.6,
+          "weighted": 6.44,
+          "basis": "图表懒加载并处理减少动效偏好；2.33MB内嵌背景增加初始负载。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 92.6,
+      "capTriggered": false,
+      "finalScore": 92.6,
+      "findings": [
+        {
+          "id": "ZhikunCode-html-01",
+          "tool": "ZhikunCode",
+          "kind": "html",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "HTML第403、606行及capLabels附近",
+          "summary": "正文与图表的08-31点对应Excel原始数据和图7。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-html-02",
+          "tool": "ZhikunCode",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第642行附近pending",
+          "summary": "5215台写为芝能科技待核，完全继承Excel待核验事项!C10及生成底稿说明。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-html-03",
+          "tool": "ZhikunCode",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第651行起sources",
+          "summary": "相较Excel来源清单，HTML只保留约18项且仅1个可点击URL。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "ZhikunCode-html-04",
+          "tool": "ZhikunCode",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "script src",
+          "summary": "两个外部ECharts CDN，断网时图表不可用但有文字提示。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        }
+      ],
+      "label": "交互HTML",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_交互式数据报告.html",
+      "name": "宇树科技_交互式数据报告.html",
+      "bytes": 2331238,
+      "sha256": "4f3df2d71d04421dd770c4c8887bf3b9646849127e64ac5a492718939ab3a3d1",
+      "metadata": {
+        "externalScripts": 2,
+        "externalStyles": 0,
+        "buttons": 4,
+        "eventListeners": 7,
+        "mediaQueries": 3
+      },
+      "preview": "zhikun_html.webp",
+      "previewType": "source-structure",
+      "reliabilityScore": 57.6,
+      "deliveryScore": 35.0
+    },
+    {
+      "tool": "豆包",
+      "kind": "image",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "所有核心数字和‘前三季度产销率超95%’均来自豆包Excel；51.78%也已写入Excel备注/分析结论，未见下游新增冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "保留S1-S11完整来源索引，但Excel中的URL文本和更细用途映射未进入PNG。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A已实现、E预测、H1未经审计和规划产能均按Excel分列。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "采用Excel分析结论口径，未因Excel内部原始表缺项而重复扣下游分。",
+          "group": "reliability"
+        },
+        {
+          "key": "image_delivery_1",
+          "name": "信息取舍",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "增长、产品、盈利、市场、研发、现金流、风险和变量取舍成熟。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_2",
+          "name": "层级",
+          "weight": 10,
+          "rating": 4.7,
+          "weighted": 9.4,
+          "basis": "5个KPI加双栏模块，标题、结论和注释层级稳定。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_3",
+          "name": "图表/标签可读",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "图表标签清楚，底部来源在整页缩放时略小。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_4",
+          "name": "投资人视觉",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "蓝白专业、结论导向，适合内部投研。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 95.0,
+      "capTriggered": false,
+      "finalScore": 95.0,
+      "findings": [
+        {
+          "id": "豆包-image-01",
+          "tool": "豆包",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "投资要点‘产销顺畅’",
+          "summary": "‘2025年前三季度人形产销率超95%’已见Excel 04_业务经营数据!C37。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "豆包-image-02",
+          "tool": "豆包",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "产品结构",
+          "summary": "51.78%虽与Excel缺组件的公式区有张力，但Excel 04表备注及08_分析结论!C7已明确采用51.78%；下游不是新增。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "豆包-image-03",
+          "tool": "豆包",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "页脚来源",
+          "summary": "S1-S11保留，但Excel 9个URL文本和逐项用途未进入图片。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        }
+      ],
+      "label": "普通信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技投资人一图通_截至20260830.png",
+      "name": "宇树科技投资人一图通_截至20260830.png",
+      "bytes": 1048626,
+      "sha256": "c6c4deb2dc118aa78a48395582207be22b159b46fde99aa7ca8852d3ebcac6ac",
+      "metadata": {
+        "width": 2800,
+        "height": 3920
+      },
+      "preview": "doubao_image.webp",
+      "previewType": "render",
+      "reliabilityScore": 58.0,
+      "deliveryScore": 37.0
+    },
+    {
+      "tool": "豆包",
+      "kind": "ink",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "数据与普通版及豆包Excel一致，产销率表述为Excel继承。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "保留S1-S11，但不含Excel中的URL与细化映射。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "事实、预计、规划和未审计口径按Excel清楚区分。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "普通版数字、判断和A/E逻辑完整保留。",
+          "group": "reliability"
+        },
+        {
+          "key": "ink_delivery_1",
+          "name": "层级保持",
+          "weight": 8,
+          "rating": 4.8,
+          "weighted": 7.68,
+          "basis": "KPI和双栏信息结构稳定。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_2",
+          "name": "水墨浪漫",
+          "weight": 14,
+          "rating": 4.4,
+          "weighted": 12.32,
+          "basis": "宣纸、竹石机器人、印章与红墨点题有效；主体卡片几何仍接近普通版。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_3",
+          "name": "可读",
+          "weight": 8,
+          "rating": 4.2,
+          "weighted": 6.72,
+          "basis": "正文清楚，浅灰小字对比略低。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_4",
+          "name": "专业构图",
+          "weight": 10,
+          "rating": 4.5,
+          "weighted": 9.0,
+          "basis": "装饰集中页首，不侵占数据区。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 93.72,
+      "capTriggered": false,
+      "finalScore": 93.72,
+      "findings": [
+        {
+          "id": "豆包-ink-01",
+          "tool": "豆包",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "投资要点‘产销顺畅’",
+          "summary": "超95%文字直接继承Excel 04_业务经营数据!C37。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "豆包-ink-02",
+          "tool": "豆包",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "整体版式",
+          "summary": "主题重绘充分，但正文双栏、卡片和图表位置与普通版近一一对应。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        }
+      ],
+      "label": "水墨信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技投资人一图通_水墨风_截至20260830.png",
+      "name": "宇树科技投资人一图通_水墨风_截至20260830.png",
+      "bytes": 5592823,
+      "sha256": "580d2d39353f3f4d06ebf24f728da0098f86716c4d2bcd3a95d25311d3250f3c",
+      "metadata": {
+        "width": 2800,
+        "height": 3920
+      },
+      "preview": "doubao_ink.webp",
+      "previewType": "render",
+      "reliabilityScore": 58.0,
+      "deliveryScore": 35.72
+    },
+    {
+      "tool": "豆包",
+      "kind": "html",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "核心财务、产销、发行PE待核和产品结构均逐项继承豆包Excel。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "完整保留S1-S11并将Excel文本路径转为10个可点击链接；Excel源头的二手/镜像质量不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A/E、审计/审阅/未审计、规划与实际严格分开。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "与Excel分析结论及两张PNG同口径。",
+          "group": "reliability"
+        },
+        {
+          "key": "html_delivery_1",
+          "name": "信息复用",
+          "weight": 8,
+          "rating": 4.8,
+          "weighted": 7.68,
+          "basis": "扩展为10节并增加季度、A/E对比、来源和明细表。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_2",
+          "name": "有效交互",
+          "weight": 12,
+          "rating": 4.6,
+          "weighted": 11.04,
+          "basis": "产品及地区占比/金额切换是真实数据切换，另有懒加载、计数、导航。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_3",
+          "name": "响应式易用",
+          "weight": 8,
+          "rating": 4.3,
+          "weighted": 6.88,
+          "basis": "980px以下主要网格改单列、导航横滚；极窄屏宽表仍可能拥挤。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_4",
+          "name": "加载容错可移植",
+          "weight": 5,
+          "rating": 5.0,
+          "weighted": 5.0,
+          "basis": "ECharts完整内嵌，除点击来源外无运行时联网依赖。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_5",
+          "name": "视觉性能",
+          "weight": 7,
+          "rating": 4.5,
+          "weighted": 6.3,
+          "basis": "图表懒加载，约1.08MB单文件体量合理。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 96.9,
+      "capTriggered": false,
+      "finalScore": 96.9,
+      "findings": [
+        {
+          "id": "豆包-html-01",
+          "tool": "豆包",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第550行附近",
+          "summary": "‘前三季度产销率超95%’来自Excel 04_业务经营数据!C37。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "豆包-html-02",
+          "tool": "豆包",
+          "kind": "html",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "发行信息卡",
+          "summary": "219.23倍标‘媒体口径待核’也直接继承Excel 06_IPO与募投!B12:D12。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "豆包-html-03",
+          "tool": "豆包",
+          "kind": "html",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "来源区/脚本依赖",
+          "summary": "10个链接与内嵌ECharts相较Excel和其他下游增强了追溯与可移植性。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "交互HTML",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技经营财务交互看板_截至20260830.html",
+      "name": "宇树科技经营财务交互看板_截至20260830.html",
+      "bytes": 1076359,
+      "sha256": "6c5ea0fd528787e2d1346bccb7523d16836a2161afc07c43b240a55b8dc21737",
+      "metadata": {
+        "externalScripts": 0,
+        "externalStyles": 0,
+        "buttons": 5,
+        "eventListeners": 5,
+        "mediaQueries": 1
+      },
+      "preview": "doubao_html.webp",
+      "previewType": "source-structure",
+      "reliabilityScore": 60.0,
+      "deliveryScore": 36.9
+    },
+    {
+      "tool": "千问",
+      "kind": "image",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 4.0,
+          "weighted": 24.0,
+          "basis": "Excel核心财务全部正确继承；但PNG新增Optimus Gen-3小批量试产、2025H2 WMA/VLA发布、行业销售费率23.88%、发行后股东27,666户等Excel外事实/数字。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.8,
+          "weighted": 7.6,
+          "basis": "Excel本身仅有S1-S6文件名且无完整URL；PNG保留主要文件名，但新增事实无对应Excel来源。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "审计、审阅、未审计和管理层预计边界完整保留。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "核心财务、产品、发行口径与Excel一致；扣分只来自Excel外扩展。",
+          "group": "reliability"
+        },
+        {
+          "key": "image_delivery_1",
+          "name": "信息取舍",
+          "weight": 10,
+          "rating": 4.7,
+          "weighted": 9.4,
+          "basis": "突出增长、结构、毛利、经营、风险和资本。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_2",
+          "name": "层级",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "深色卡片、编号章节、KPI和图表组织清晰。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_3",
+          "name": "图表/标签可读",
+          "weight": 10,
+          "rating": 4.6,
+          "weighted": 9.2,
+          "basis": "图例、标签、单位和数字清晰，底部来源略小。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_4",
+          "name": "投资人视觉",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "完成度高、重点突出。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 89.0,
+      "capTriggered": false,
+      "finalScore": 89.0,
+      "findings": [
+        {
+          "id": "千问-image-01",
+          "tool": "千问",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "经营要点/前瞻判断/发行与股东结构",
+          "summary": "Optimus Gen-3小批量试产、WMA/VLA于2025H2发布、行业销售费用率23.88%、股东27,666户均未见千问Excel。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "千问-image-02",
+          "tool": "千问",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "页脚来源",
+          "summary": "只列主要披露文件，新增技术/竞品数字没有Excel来源映射。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "千问-image-03",
+          "tool": "千问",
+          "kind": "image",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "核心KPI与图表",
+          "summary": "5511出货、5215销量、516/184员工、59.17亿募资净额等均与Excel一致。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        }
+      ],
+      "label": "普通信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技投资人一页纸.png",
+      "name": "宇树科技投资人一页纸.png",
+      "bytes": 848079,
+      "sha256": "c382d80c6ea9df7f7e36b87e65de3c361d53e574218ec07bf6fb8977fca55c27",
+      "metadata": {
+        "width": 2480,
+        "height": 3508
+      },
+      "preview": "qianwen_image.webp",
+      "previewType": "render",
+      "reliabilityScore": 51.2,
+      "deliveryScore": 37.8
+    },
+    {
+      "tool": "千问",
+      "kind": "ink",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 4.0,
+          "weighted": 24.0,
+          "basis": "核心数完整继承Excel，但与普通版相同的Gen-3、WMA/VLA发布期、23.88%行业费率和27,666户为Excel外新增。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.8,
+          "weighted": 7.6,
+          "basis": "保留Excel已有来源名称；新增事实未建立Excel来源映射。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "数据性质和预测标签完整。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "核心数与Excel、普通版和HTML一致，外围事实超出Excel。",
+          "group": "reliability"
+        },
+        {
+          "key": "ink_delivery_1",
+          "name": "层级保持",
+          "weight": 8,
+          "rating": 4.8,
+          "weighted": 7.68,
+          "basis": "关键章节与图表阅读顺序未受装饰干扰。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_2",
+          "name": "水墨浪漫",
+          "weight": 14,
+          "rating": 4.5,
+          "weighted": 12.6,
+          "basis": "书法题名、印章、远山、宣纸色和传统编号风格完整。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_3",
+          "name": "可读",
+          "weight": 8,
+          "rating": 4.4,
+          "weighted": 7.04,
+          "basis": "核心数字清楚，浅色小号宋体与来源对比略弱。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_4",
+          "name": "专业构图",
+          "weight": 10,
+          "rating": 4.8,
+          "weighted": 9.6,
+          "basis": "装饰克制、边框统一、留白良好。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 88.12,
+      "capTriggered": false,
+      "finalScore": 88.12,
+      "findings": [
+        {
+          "id": "千问-ink-01",
+          "tool": "千问",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "经营要点/风险/发行模块",
+          "summary": "Gen-3、WMA/VLA 2025H2、23.88%行业费率及27,666户超出Excel。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "千问-ink-02",
+          "tool": "千问",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "整体版式",
+          "summary": "美术重绘充分但主体网格与普通版一一对应。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "千问-ink-03",
+          "tool": "千问",
+          "kind": "ink",
+          "severity": "info",
+          "confidence": "high",
+          "locator": "核心经营数据",
+          "summary": "产量/出货/销量与所有财务KPI均继承Excel。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        }
+      ],
+      "label": "水墨信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技投资人一页纸·水墨风.png",
+      "name": "宇树科技投资人一页纸·水墨风.png",
+      "bytes": 1828356,
+      "sha256": "6bd38d2c21295caab58224d423aa6265fa2de65590295232242ac910a46a75d1",
+      "metadata": {
+        "width": 2480,
+        "height": 3508
+      },
+      "preview": "qianwen_ink.webp",
+      "previewType": "render",
+      "reliabilityScore": 51.2,
+      "deliveryScore": 36.92
+    },
+    {
+      "tool": "千问",
+      "kind": "html",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.4,
+          "weighted": 20.4,
+          "basis": "核心Excel数据继承准确；HTML额外新增262项专利/20项境内发明、2026H1奔跑10米/秒世界纪录、Gen-3试产、约20%原材料经代理进口等Excel外数字。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.7,
+          "weighted": 7.4,
+          "basis": "保留Excel六类来源文件名，但新增技术、竞品与供应链数字没有Excel来源映射。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A/B/C/D及预计非盈利预测的边界清楚。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 4.7,
+          "weighted": 9.4,
+          "basis": "核心数据与Excel及PNG一致；扩展事实超出Excel基准。",
+          "group": "reliability"
+        },
+        {
+          "key": "html_delivery_1",
+          "name": "信息复用",
+          "weight": 8,
+          "rating": 4.8,
+          "weighted": 7.68,
+          "basis": "8节完整复用一页纸，并扩展同业、预测区间和发行明细。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_2",
+          "name": "有效交互",
+          "weight": 12,
+          "rating": 3.2,
+          "weighted": 7.68,
+          "basis": "8张图有tooltip，并有导航、滚动显现和计数；无筛选/切换/钻取。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_3",
+          "name": "响应式易用",
+          "weight": 8,
+          "rating": 3.8,
+          "weighted": 6.08,
+          "basis": "960px以下改单列；多列表格无横向滚动容器。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_4",
+          "name": "加载容错可移植",
+          "weight": 5,
+          "rating": 1.5,
+          "weighted": 1.5,
+          "basis": "依赖单一cdnjs ECharts且无加载失败兜底。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_5",
+          "name": "视觉性能",
+          "weight": 7,
+          "rating": 4.7,
+          "weighted": 6.58,
+          "basis": "现成1440×6400截图证明一次桌面渲染成功，文件仅31KB。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 76.72,
+      "capTriggered": false,
+      "finalScore": 76.72,
+      "findings": [
+        {
+          "id": "千问-html-01",
+          "tool": "千问",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第176、209行附近",
+          "summary": "262/20项专利、10米/秒世界纪录、Gen-3试产、约20%代理进口均未见千问Excel。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "千问-html-02",
+          "tool": "千问",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML来源区",
+          "summary": "Excel已有来源名被保留；但上述新增数字无来源映射，0个可点击URL不再因Excel根缺失重复扣，只对新增项和证据损失扣分。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "千问-html-03",
+          "tool": "千问",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第7行及图表初始化",
+          "summary": "单一cdnjs依赖且无window.echarts检查。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "千问-html-04",
+          "tool": "千问",
+          "kind": "html",
+          "severity": "minor",
+          "confidence": "high",
+          "locator": "运行态限制",
+          "summary": "现成ix_full.png证明一次桌面成功渲染；未复核控制台和移动端，未知运行态不扣分。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "observation",
+          "dimension": ""
+        }
+      ],
+      "label": "交互HTML",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技交互研究报告.html",
+      "name": "宇树科技交互研究报告.html",
+      "bytes": 31426,
+      "sha256": "eb9a294a2c2603e83c315011de39bfb04ea5228fe06e946b9739dd0bd0ec86dd",
+      "metadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 3,
+        "mediaQueries": 1
+      },
+      "preview": "qianwen_html.webp",
+      "previewType": "existing-runtime-capture",
+      "reliabilityScore": 47.2,
+      "deliveryScore": 29.52
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "image",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "主体数字多继承Excel；事实继承项只因把42.02亿元‘拟募集/拟投’改成‘到账/募资总额’这一项核心融资性质改写而扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.2,
+          "weighted": 8.4,
+          "basis": "页脚基本继承Excel来源名称；不存在的年报/一季报名是Excel根错误，不重复扣，仍因来源细节压缩小幅扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "Excel根预测问题不重复扣；但Figure AI约150台来自配套Word明确列示的2026-09-02报道，是下游新增且晚于8月30日截止日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在继承和截止维度计分的两项新增错误外，其余内容与Excel及其他下游一致；按单一根因规则不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "image_delivery_1",
+          "name": "信息取舍",
+          "weight": 10,
+          "rating": 4.2,
+          "weighted": 8.4,
+          "basis": "覆盖成长、结构、利润、H1、优势与展望；部分媒体对标挤占篇幅。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_2",
+          "name": "层级",
+          "weight": 10,
+          "rating": 4.2,
+          "weighted": 8.4,
+          "basis": "章节清楚，但2480×4348明显长于常规一页比例。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_3",
+          "name": "图表/标签可读",
+          "weight": 10,
+          "rating": 3.8,
+          "weighted": 7.6,
+          "basis": "原尺寸清楚；整页适配时正文、脚注与五列优势卡偏小。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_4",
+          "name": "投资人视觉",
+          "weight": 10,
+          "rating": 4.3,
+          "weighted": 8.6,
+          "basis": "视觉专业，但新增融资状态错误削弱直接投用性。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 76.4,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "WorkBuddy-image-01",
+          "tool": "WorkBuddy",
+          "kind": "image",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "盈利质量右侧及资金股东资源",
+          "summary": "Excel原始数据-业务!B48写‘拟募集资金420,200万元’，PNG写‘IPO募资42.02亿元到账’。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-image-02",
+          "tool": "WorkBuddy",
+          "kind": "image",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "成长与结构",
+          "summary": "51.07%已存在Excel原始数据-业务!D5/E25及分析结论!B6，属根分母错误。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-image-03",
+          "tool": "WorkBuddy",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "页脚资料来源",
+          "summary": "‘2025年度报告、2026第一季度报告’均在Excel资料来源!B5:B6已有。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-IMAGE-V2-FIGURE",
+          "tool": "WorkBuddy",
+          "kind": "image",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "竞争优势/出货量全球第一模块",
+          "summary": "新增Figure AI约150台比较；WorkBuddy Excel无此锚点，配套Word将其来源定位为2026-09-02报道。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "period_unit_attribute_inheritance"
+        }
+      ],
+      "label": "普通信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸.png",
+      "name": "宇树科技投资者一页纸.png",
+      "bytes": 1122050,
+      "sha256": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a",
+      "metadata": {
+        "width": 2480,
+        "height": 4348
+      },
+      "preview": "workbuddy_image.webp",
+      "previewType": "render",
+      "reliabilityScore": 43.4,
+      "deliveryScore": 33.0
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "ink",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "主体数字多继承Excel；事实继承项只因把42.02亿元‘拟募集/拟投’改成‘到账/募资总额’这一项核心融资性质改写而扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.2,
+          "weighted": 8.4,
+          "basis": "错误报告名来自Excel，不重复扣；水墨版仍仅压缩保留来源名称。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "Excel根预测问题不重复扣；但Figure AI约150台来自配套Word明确列示的2026-09-02报道，是下游新增且晚于8月30日截止日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在继承和截止维度计分的两项新增错误外，其余内容与Excel及其他下游一致；按单一根因规则不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "ink_delivery_1",
+          "name": "层级保持",
+          "weight": 8,
+          "rating": 4.0,
+          "weighted": 6.4,
+          "basis": "阅读顺序清楚，但页面增至5704px。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_2",
+          "name": "水墨浪漫",
+          "weight": 14,
+          "rating": 4.6,
+          "weighted": 12.88,
+          "basis": "书法、印章、日轮、山形页脚和传统编号构成实质重设计。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_3",
+          "name": "可读",
+          "weight": 8,
+          "rating": 3.5,
+          "weighted": 5.6,
+          "basis": "原尺寸可读，但超长画布整页缩放明显。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_4",
+          "name": "专业构图",
+          "weight": 10,
+          "rating": 3.8,
+          "weighted": 7.6,
+          "basis": "气质统一，但顶部与底部留白过多。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 75.88,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "WorkBuddy-ink-01",
+          "tool": "WorkBuddy",
+          "kind": "ink",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "盈利质量与竞争优势伍",
+          "summary": "‘叠加IPO募资42.02亿元到账’与Excel‘拟募集资金’语义冲突。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-ink-02",
+          "tool": "WorkBuddy",
+          "kind": "ink",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "成长与结构",
+          "summary": "51.07%直接来自Excel，撤销该项下游事实扣分和cap。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-ink-03",
+          "tool": "WorkBuddy",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "画布比例",
+          "summary": "2480×5704，比普通版高31.2%，整页适配可读性下降。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-INK-V2-FIGURE",
+          "tool": "WorkBuddy",
+          "kind": "ink",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "竞争优势/出货量全球第一模块",
+          "summary": "新增Figure AI约150台比较；WorkBuddy Excel无此锚点，配套Word将其来源定位为2026-09-02报道。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": "IMAGE-WORKBUDDY-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "period_unit_attribute_inheritance"
+        }
+      ],
+      "label": "水墨信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸-水墨.png",
+      "name": "宇树科技投资者一页纸-水墨.png",
+      "bytes": 2003145,
+      "sha256": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869",
+      "metadata": {
+        "width": 2480,
+        "height": 5704
+      },
+      "preview": "workbuddy_ink.webp",
+      "previewType": "render",
+      "reliabilityScore": 43.4,
+      "deliveryScore": 32.48
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "html",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "主体数字多继承Excel；事实继承项只因把42.02亿元‘拟募集/拟投’改成‘到账/募资总额’这一项核心融资性质改写而扣分。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.2,
+          "weighted": 8.4,
+          "basis": "核心来源名继承Excel；根来源错误取消处罚，仍因只有概括段、无逐项链接略扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "Excel根预测问题不重复扣；但Figure AI约150台来自配套Word明确列示的2026-09-02报道，是下游新增且晚于8月30日截止日。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在继承和截止维度计分的两项新增错误外，其余内容与Excel及其他下游一致；按单一根因规则不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "html_delivery_1",
+          "name": "信息复用",
+          "weight": 8,
+          "rating": 4.5,
+          "weighted": 7.2,
+          "basis": "完整复用一页纸并扩展至9节和8张图。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_2",
+          "name": "有效交互",
+          "weight": 12,
+          "rating": 3.0,
+          "weighted": 7.2,
+          "basis": "导航、滚动进度、计数、tooltip有效；无数据筛选/切换。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_3",
+          "name": "响应式易用",
+          "weight": 8,
+          "rating": 2.5,
+          "weighted": 4.0,
+          "basis": "moatGrid行内固定五列不能被媒体查询覆盖，移动端卡片会被挤窄。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_4",
+          "name": "加载容错可移植",
+          "weight": 5,
+          "rating": 3.5,
+          "weighted": 3.5,
+          "basis": "依赖jsDelivr，但检查window.echarts并在4秒后显示文字兜底。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_5",
+          "name": "视觉性能",
+          "weight": 7,
+          "rating": 4.3,
+          "weighted": 6.02,
+          "basis": "桌面视觉完整、图表懒加载；移动端五列硬编码是主要风险。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 71.32,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "WorkBuddy-html-01",
+          "tool": "WorkBuddy",
+          "kind": "html",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "HTML第208、212、379行附近",
+          "summary": "Excel写‘拟募集资金420,200万元’，HTML三次写成募资到账或募资总额。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-html-02",
+          "tool": "WorkBuddy",
+          "kind": "html",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "HTML结构切换及c-human数据",
+          "summary": "51.07%与‘占主营’表述已存在Excel原始数据-业务及分析结论。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-html-03",
+          "tool": "WorkBuddy",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第433-434行来源说明",
+          "summary": "错误年报/一季报名和08-17日期均源自Excel资料来源，取消根错误重复扣分。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "WorkBuddy-html-04",
+          "tool": "WorkBuddy",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "#moatGrid行内样式",
+          "summary": "repeat(5,1fr)写在style属性，960px媒体查询只覆盖.g5。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "WORKBUDDY-HTML-V2-FIGURE",
+          "tool": "WorkBuddy",
+          "kind": "html",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "竞争优势/出货量全球第一模块",
+          "summary": "新增Figure AI约150台比较；WorkBuddy Excel无此锚点，配套Word将其来源定位为2026-09-02报道。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": "period_unit_attribute_inheritance"
+        }
+      ],
+      "label": "交互HTML",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技交互式研究速览/index.html",
+      "name": "index.html",
+      "bytes": 40869,
+      "sha256": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110",
+      "metadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 3,
+        "mediaQueries": 4
+      },
+      "preview": "workbuddy_html.webp",
+      "previewType": "source-structure",
+      "reliabilityScore": 43.4,
+      "deliveryScore": 27.92
+    },
+    {
+      "tool": "Qoder",
+      "kind": "image",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "核心KPI、8-28行情、股份支付解释和CFO/营收‘收现比’均可回到Qoder Excel；未见PNG新增冲突。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.2,
+          "weighted": 6.4,
+          "basis": "Excel有S1-S10名称、日期、用途和路径；PNG仅保留S1/S2/S9简写，证据链下游损失明显。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "8-28行情、审计事实和测算性质均按Excel标注。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "数字、期间和判断与Excel及水墨版一致。",
+          "group": "reliability"
+        },
+        {
+          "key": "image_delivery_1",
+          "name": "信息取舍",
+          "weight": 10,
+          "rating": 4.0,
+          "weighted": 8.0,
+          "basis": "6个KPI、6张图和三项结论全面，但横版信息过密。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_2",
+          "name": "层级",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "至少5处主标题与副标题叠印，底栏压住图表。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_3",
+          "name": "图表/标签可读",
+          "weight": 10,
+          "rating": 1.8,
+          "weighted": 3.6,
+          "basis": "下排横轴及标签被裁切，标题重叠。",
+          "group": "delivery"
+        },
+        {
+          "key": "image_delivery_4",
+          "name": "投资人视觉",
+          "weight": 10,
+          "rating": 2.0,
+          "weighted": 4.0,
+          "basis": "配色专业，但排版故障不宜直接汇报。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 76.0,
+      "capTriggered": false,
+      "finalScore": 76.0,
+      "findings": [
+        {
+          "id": "Qoder-image-01",
+          "tool": "Qoder",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "经营现金流图副标题",
+          "summary": "CFO/营收39.43%称‘收现比’已见Excel 07_核心计算!I60，属继承。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-ORIGINAL",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-image-02",
+          "tool": "Qoder",
+          "kind": "image",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "六个图表标题及下排图表底部",
+          "summary": "多处标题叠印、横轴被底栏裁切。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-ORIGINAL",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-image-03",
+          "tool": "Qoder",
+          "kind": "image",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "页脚来源",
+          "summary": "Excel S1-S10被压缩为S1/S2/S9，且无路径/页码。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-ORIGINAL",
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        }
+      ],
+      "label": "普通信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_投资人汇报_一页全景图.png",
+      "name": "宇树科技(688836)_投资人汇报_一页全景图.png",
+      "bytes": 822176,
+      "sha256": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94",
+      "metadata": {
+        "width": 4800,
+        "height": 3000
+      },
+      "preview": "qoder_image.webp",
+      "previewType": "render",
+      "reliabilityScore": 56.4,
+      "deliveryScore": 19.6
+    },
+    {
+      "tool": "Qoder",
+      "kind": "ink",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 5.0,
+          "weighted": 30.0,
+          "basis": "完整继承Qoder Excel与普通版；现金流术语也是Excel既有表述。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 3.2,
+          "weighted": 6.4,
+          "basis": "只保留S1/S2/S9简写，相较Excel来源表明显丢失。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "截止日与数据性质按Excel保持。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "普通版数字和判断完整保留。",
+          "group": "reliability"
+        },
+        {
+          "key": "ink_delivery_1",
+          "name": "层级保持",
+          "weight": 8,
+          "rating": 1.8,
+          "weighted": 2.88,
+          "basis": "三列两排层级保留，但标题叠印和底部裁切也保留。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_2",
+          "name": "水墨浪漫",
+          "weight": 14,
+          "rating": 3.0,
+          "weighted": 8.4,
+          "basis": "有宣纸、山影、印章和书法字体，但主要是同构换肤。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_3",
+          "name": "可读",
+          "weight": 8,
+          "rating": 1.5,
+          "weighted": 2.4,
+          "basis": "书法字体进一步削弱标签清晰度，裁切仍严重。",
+          "group": "delivery"
+        },
+        {
+          "key": "ink_delivery_4",
+          "name": "专业构图",
+          "weight": 10,
+          "rating": 1.8,
+          "weighted": 3.6,
+          "basis": "装饰与数据板式未重新平衡。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 73.68,
+      "capTriggered": false,
+      "finalScore": 73.68,
+      "findings": [
+        {
+          "id": "Qoder-ink-01",
+          "tool": "Qoder",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "经营现金流图",
+          "summary": "‘收现比39.43%’继承Excel 07_核心计算!I60，事实扣分取消。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-INK",
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-ink-02",
+          "tool": "Qoder",
+          "kind": "ink",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "全图六个图表区",
+          "summary": "标题叠印和底部裁切与普通版相同。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-INK",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-ink-03",
+          "tool": "Qoder",
+          "kind": "ink",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "整体版式",
+          "summary": "几何与普通版相同，仅更换字体、色彩、背景和装饰。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": "IMAGE-QODER-INK",
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        }
+      ],
+      "label": "水墨信息图",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_水墨中国风_一页全景图.png",
+      "name": "宇树科技(688836)_水墨中国风_一页全景图.png",
+      "bytes": 965161,
+      "sha256": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4",
+      "metadata": {
+        "width": 4800,
+        "height": 3000
+      },
+      "preview": "qoder_ink.webp",
+      "previewType": "render",
+      "reliabilityScore": 56.4,
+      "deliveryScore": 17.28
+    },
+    {
+      "tool": "Qoder",
+      "kind": "html",
+      "criteria": [
+        {
+          "key": "excel_inheritance_fidelity",
+          "name": "事实",
+          "weight": 30,
+          "rating": 3.5,
+          "weighted": 21.0,
+          "basis": "大部分数据继承Excel；但HTML新增‘2025差额=股份支付34,906.55万’，而Excel明确净差额为31,254.23万元、34,906.55万元为税前费用。",
+          "group": "reliability"
+        },
+        {
+          "key": "source_inheritance_traceability",
+          "name": "来源",
+          "weight": 10,
+          "rating": 4.4,
+          "weighted": 8.8,
+          "basis": "保留Excel S1-S10的文件、日期和性质；虽丢失Excel中的路径/用途，但根路径非完整URL问题不重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "period_unit_attribute_inheritance",
+          "name": "口径/截止/预测",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "A/B/C/D/E分级与8-28截止完整继承。",
+          "group": "reliability"
+        },
+        {
+          "key": "internal_cross_file_consistency",
+          "name": "一致性",
+          "weight": 10,
+          "rating": 5.0,
+          "weighted": 10.0,
+          "basis": "除已在继承一致性30分中计入的股份支付等式错误外，其余核心KPI与Excel一致；按单一根因规则不在本项重复扣。",
+          "group": "reliability"
+        },
+        {
+          "key": "html_delivery_1",
+          "name": "信息复用",
+          "weight": 8,
+          "rating": 5.0,
+          "weighted": 8.0,
+          "basis": "11节、14张图，覆盖经营、结构、利润、研发、同业、H1、估值、风险和来源。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_2",
+          "name": "有效交互",
+          "weight": 12,
+          "rating": 3.4,
+          "weighted": 8.16,
+          "basis": "tooltip、导航、计数和滚动显现有效；无筛选/切换/钻取。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_3",
+          "name": "响应式易用",
+          "weight": 8,
+          "rating": 3.5,
+          "weighted": 5.6,
+          "basis": "768px以下改单列并隐藏导航；极窄屏来源表可能裁切。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_4",
+          "name": "加载容错可移植",
+          "weight": 5,
+          "rating": 1.8,
+          "weighted": 1.8,
+          "basis": "单一jsDelivr ECharts依赖且无加载失败兜底。",
+          "group": "delivery"
+        },
+        {
+          "key": "html_delivery_5",
+          "name": "视觉性能",
+          "weight": 7,
+          "rating": 4.2,
+          "weighted": 5.88,
+          "basis": "文件轻、分节完整；14张图同步初始化。",
+          "group": "delivery"
+        }
+      ],
+      "preCapScore": 79.24,
+      "capTriggered": true,
+      "finalScore": 59,
+      "findings": [
+        {
+          "id": "Qoder-html-01",
+          "tool": "Qoder",
+          "kind": "html",
+          "severity": "critical",
+          "confidence": "high",
+          "locator": "盈利质量图表副标题（HTML第313行附近）",
+          "summary": "HTML写‘2025差额 = 股份支付34,906.55万’；Excel 07_核心计算!I35及09_分析结论!C6区分净差额31,254.23万与股份支付34,906.55万。",
+          "officialReference": "",
+          "capTrigger": true,
+          "capReason": "True",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-html-02",
+          "tool": "Qoder",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "营收章节经营现金流图",
+          "summary": "CFO/营收39.43%称‘收现比’已存在Excel 07_核心计算!I60，取消下游事实扣分。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": false,
+          "classification": "inherited",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-html-03",
+          "tool": "Qoder",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "来源表",
+          "summary": "S1-S10文件名、日期、性质得到保留，但Excel中的获取路径和用途列未进入HTML。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "downstream_new",
+          "dimension": ""
+        },
+        {
+          "id": "Qoder-html-04",
+          "tool": "Qoder",
+          "kind": "html",
+          "severity": "major",
+          "confidence": "high",
+          "locator": "HTML第7行及图表初始化",
+          "summary": "单一外部ECharts依赖且无window.echarts兜底。",
+          "officialReference": "",
+          "capTrigger": false,
+          "capReason": "",
+          "evidenceId": null,
+          "deducted": true,
+          "classification": "delivery",
+          "dimension": ""
+        }
+      ],
+      "label": "交互HTML",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_交互全景.html",
+      "name": "宇树科技(688836)_交互全景.html",
+      "bytes": 46709,
+      "sha256": "320f9ccb682470eaad31c9dcd664f0e9bfc44a76b7becc0e1b8e92fd548fd387",
+      "metadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 16,
+        "mediaQueries": 1
+      },
+      "preview": "qoder_html.webp",
+      "previewType": "source-structure",
+      "reliabilityScore": 49.8,
+      "deliveryScore": 29.44
+    }
+  ],
+  "products": [
+    {
+      "tool": "豆包",
+      "overall": 91.85,
+      "reliability": 94.39,
+      "delivery": 88.04,
+      "factual": 76.0,
+      "excelFactual": 76.0,
+      "inheritance": 100.0,
+      "criticalCount": 0,
+      "cappedArtifacts": 0,
+      "inheritedObservations": 8,
+      "summary": "因果链口径下综合第一。五件后续产物均能回到本工具Excel的显式数字或结论，HTML与两张信息图完成度突出；Excel本身仍有产品结构录入与勾稽缺陷。",
+      "strengths": [
+        "后续继承一致性指数100，六连任务的传递损耗最低",
+        "交互HTML完全离线、来源链接与加载容错最好",
+        "Word、PPT和两张信息图兼顾编辑性、信息密度与预测标识"
+      ],
+      "risks": [
+        "Excel中2024人形收入错40万元，2025组件及其他原始行漏录11,065.34万元",
+        "Excel原始行、公式结果与文字结论并存冲突，后续选择了文字结论口径",
+        "部分一级来源仍使用镜像或转引，正式交付前需回到上交所原文"
+      ],
+      "fit": "适合连续生成研究、汇报和网页；使用前应先修复Excel根数据，后续产物可随同重刷。",
+      "rank": 1
+    },
+    {
+      "tool": "千问",
+      "overall": 88.7,
+      "reliability": 89.28,
+      "delivery": 87.83,
+      "factual": 98.0,
+      "excelFactual": 98.0,
+      "inheritance": 85.6,
+      "criticalCount": 0,
+      "cappedArtifacts": 0,
+      "inheritedObservations": 3,
+      "summary": "综合第二，且Excel事实准确与PPT交付均居首。Word/PPT继承稳定；两张信息图和HTML加入多项Excel之外的技术、竞品及股东数字，因此在严格链路口径下失分。",
+      "strengths": [
+        "Excel事实准确指数98，核心财务与产量/出货/销量口径最稳",
+        "PPT单项第一，叙事、原生图表、编辑性和视觉层级均衡",
+        "Word紧凑清晰，预测、审计属性与实际数据边界明确"
+      ],
+      "risks": [
+        "Excel 5张原生图表的系列方向均配置错误",
+        "信息图/HTML新增Gen-3、技术进展、股东户数等Excel外数字，缺链路锚点",
+        "HTML交互较浅，依赖单一CDN且无加载失败兜底"
+      ],
+      "fit": "适合财务底稿和内部PPT；生成图像或网页时应限制为底稿白名单字段并补逐项来源。",
+      "rank": 2
+    },
+    {
+      "tool": "Qoder",
+      "overall": 74.27,
+      "reliability": 87.44,
+      "delivery": 71.08,
+      "factual": 80.0,
+      "excelFactual": 80.0,
+      "inheritance": 84.0,
+      "criticalCount": 2,
+      "cappedArtifacts": 2,
+      "inheritedObservations": 6,
+      "summary": "综合第四。Word继承最完整、研究深度最高，Excel计算与图表体系也最丰富；但PPT与HTML各新增一项改变核心含义的错误并被封顶，两张信息图存在明显排版故障。",
+      "strengths": [
+        "Word以S编号、表号和A/B/C/D/E属性完整传承Excel，单项95.2",
+        "Excel含19张结构正确的原生图表，公式化与研究维度最深",
+        "待核验、估值口径、量价及盈利质量分析最系统"
+      ],
+      "risks": [
+        "Excel误称H1研发绝对额未披露，并把CFO/营收比率称为收现比",
+        "PPT把正的扣非净利和CFO写成“双双转负”；HTML把两个不同金额写成等式",
+        "两张一页图标题叠印、横轴裁切，且Excel有多处数字格式风险"
+      ],
+      "fit": "适合深度研究底稿和长报告；PPT、网页及图片必须设置自动一致性检查和视觉验收。",
+      "rank": 4
+    },
+    {
+      "tool": "WorkBuddy",
+      "overall": 56.31,
+      "reliability": 65.06,
+      "delivery": 76.14,
+      "factual": 30.0,
+      "excelFactual": 30.0,
+      "inheritance": 70.0,
+      "criticalCount": 12,
+      "cappedArtifacts": 6,
+      "inheritedObservations": 9,
+      "summary": "综合第五。版式与叙事具备专业感，但Excel根数据和来源质量最低；五件后续产物又把Excel的42.02亿元拟募/拟投改成到账或募资总额，并新增截止日后的Figure AI比较，全部封顶。",
+      "strengths": [
+        "PPT视觉层级清楚，叙事结构完整",
+        "Excel是唯一完整保留公式缓存的底稿",
+        "水墨版重构幅度较大"
+      ],
+      "risks": [
+        "Excel引用并不存在的2025年报、2026一季报，预测与主营分母也有根错误",
+        "所有后续产物改变42.02亿元的资金性质，形成真正的链路新增错误",
+        "后续新增Figure AI约150台，来源日期2026-09-02，超过截止日"
+      ],
+      "fit": "适合借鉴版式与叙事，不适合作为未经重建和链路校验的研究材料。",
+      "rank": 5
+    },
+    {
+      "tool": "ZhikunCode",
+      "overall": 85.12,
+      "reliability": 86.0,
+      "delivery": 83.8,
+      "factual": 44.0,
+      "excelFactual": 44.0,
+      "inheritance": 100.0,
+      "criticalCount": 1,
+      "cappedArtifacts": 1,
+      "inheritedObservations": 8,
+      "summary": "因果链口径下升至第三。Excel仍因8月31日行情和旧口径被封顶，但五件后续产物对该Excel的继承一致性达到100，图片与HTML的视觉完成度突出。",
+      "strengths": [
+        "五件后续均未自行篡改Excel关键数据，继承一致性指数100",
+        "普通图、水墨图及HTML视觉成熟，水墨改造完成度高",
+        "Excel九张Sheet全部冻结窗格，来源与待核状态有结构化标识"
+      ],
+      "risks": [
+        "Excel纳入8月31日股价、市值及PE，超过8月30日截止日",
+        "多项数值沿用约数、旧申报稿或单一媒体，并误称H1现金流未披露",
+        "下游虽忠实继承，但会稳定放大底稿根问题；来源URL在压缩过程中也有损失"
+      ],
+      "fit": "适合从既有底稿快速生成视觉与交互材料；前提是先把Excel事实层清洗为最终正式口径。",
+      "rank": 3
+    }
+  ],
+  "ranking": [
+    {
+      "tool": "豆包",
+      "overall": 91.85,
+      "reliability": 94.39,
+      "delivery": 88.04,
+      "factual": 76.0,
+      "excelFactual": 76.0,
+      "inheritance": 100.0,
+      "criticalCount": 0,
+      "cappedArtifacts": 0,
+      "inheritedObservations": 8,
+      "summary": "因果链口径下综合第一。五件后续产物均能回到本工具Excel的显式数字或结论，HTML与两张信息图完成度突出；Excel本身仍有产品结构录入与勾稽缺陷。",
+      "strengths": [
+        "后续继承一致性指数100，六连任务的传递损耗最低",
+        "交互HTML完全离线、来源链接与加载容错最好",
+        "Word、PPT和两张信息图兼顾编辑性、信息密度与预测标识"
+      ],
+      "risks": [
+        "Excel中2024人形收入错40万元，2025组件及其他原始行漏录11,065.34万元",
+        "Excel原始行、公式结果与文字结论并存冲突，后续选择了文字结论口径",
+        "部分一级来源仍使用镜像或转引，正式交付前需回到上交所原文"
+      ],
+      "fit": "适合连续生成研究、汇报和网页；使用前应先修复Excel根数据，后续产物可随同重刷。",
+      "rank": 1
+    },
+    {
+      "tool": "千问",
+      "overall": 88.7,
+      "reliability": 89.28,
+      "delivery": 87.83,
+      "factual": 98.0,
+      "excelFactual": 98.0,
+      "inheritance": 85.6,
+      "criticalCount": 0,
+      "cappedArtifacts": 0,
+      "inheritedObservations": 3,
+      "summary": "综合第二，且Excel事实准确与PPT交付均居首。Word/PPT继承稳定；两张信息图和HTML加入多项Excel之外的技术、竞品及股东数字，因此在严格链路口径下失分。",
+      "strengths": [
+        "Excel事实准确指数98，核心财务与产量/出货/销量口径最稳",
+        "PPT单项第一，叙事、原生图表、编辑性和视觉层级均衡",
+        "Word紧凑清晰，预测、审计属性与实际数据边界明确"
+      ],
+      "risks": [
+        "Excel 5张原生图表的系列方向均配置错误",
+        "信息图/HTML新增Gen-3、技术进展、股东户数等Excel外数字，缺链路锚点",
+        "HTML交互较浅，依赖单一CDN且无加载失败兜底"
+      ],
+      "fit": "适合财务底稿和内部PPT；生成图像或网页时应限制为底稿白名单字段并补逐项来源。",
+      "rank": 2
+    },
+    {
+      "tool": "ZhikunCode",
+      "overall": 85.12,
+      "reliability": 86.0,
+      "delivery": 83.8,
+      "factual": 44.0,
+      "excelFactual": 44.0,
+      "inheritance": 100.0,
+      "criticalCount": 1,
+      "cappedArtifacts": 1,
+      "inheritedObservations": 8,
+      "summary": "因果链口径下升至第三。Excel仍因8月31日行情和旧口径被封顶，但五件后续产物对该Excel的继承一致性达到100，图片与HTML的视觉完成度突出。",
+      "strengths": [
+        "五件后续均未自行篡改Excel关键数据，继承一致性指数100",
+        "普通图、水墨图及HTML视觉成熟，水墨改造完成度高",
+        "Excel九张Sheet全部冻结窗格，来源与待核状态有结构化标识"
+      ],
+      "risks": [
+        "Excel纳入8月31日股价、市值及PE，超过8月30日截止日",
+        "多项数值沿用约数、旧申报稿或单一媒体，并误称H1现金流未披露",
+        "下游虽忠实继承，但会稳定放大底稿根问题；来源URL在压缩过程中也有损失"
+      ],
+      "fit": "适合从既有底稿快速生成视觉与交互材料；前提是先把Excel事实层清洗为最终正式口径。",
+      "rank": 3
+    },
+    {
+      "tool": "Qoder",
+      "overall": 74.27,
+      "reliability": 87.44,
+      "delivery": 71.08,
+      "factual": 80.0,
+      "excelFactual": 80.0,
+      "inheritance": 84.0,
+      "criticalCount": 2,
+      "cappedArtifacts": 2,
+      "inheritedObservations": 6,
+      "summary": "综合第四。Word继承最完整、研究深度最高，Excel计算与图表体系也最丰富；但PPT与HTML各新增一项改变核心含义的错误并被封顶，两张信息图存在明显排版故障。",
+      "strengths": [
+        "Word以S编号、表号和A/B/C/D/E属性完整传承Excel，单项95.2",
+        "Excel含19张结构正确的原生图表，公式化与研究维度最深",
+        "待核验、估值口径、量价及盈利质量分析最系统"
+      ],
+      "risks": [
+        "Excel误称H1研发绝对额未披露，并把CFO/营收比率称为收现比",
+        "PPT把正的扣非净利和CFO写成“双双转负”；HTML把两个不同金额写成等式",
+        "两张一页图标题叠印、横轴裁切，且Excel有多处数字格式风险"
+      ],
+      "fit": "适合深度研究底稿和长报告；PPT、网页及图片必须设置自动一致性检查和视觉验收。",
+      "rank": 4
+    },
+    {
+      "tool": "WorkBuddy",
+      "overall": 56.31,
+      "reliability": 65.06,
+      "delivery": 76.14,
+      "factual": 30.0,
+      "excelFactual": 30.0,
+      "inheritance": 70.0,
+      "criticalCount": 12,
+      "cappedArtifacts": 6,
+      "inheritedObservations": 9,
+      "summary": "综合第五。版式与叙事具备专业感，但Excel根数据和来源质量最低；五件后续产物又把Excel的42.02亿元拟募/拟投改成到账或募资总额，并新增截止日后的Figure AI比较，全部封顶。",
+      "strengths": [
+        "PPT视觉层级清楚，叙事结构完整",
+        "Excel是唯一完整保留公式缓存的底稿",
+        "水墨版重构幅度较大"
+      ],
+      "risks": [
+        "Excel引用并不存在的2025年报、2026一季报，预测与主营分母也有根错误",
+        "所有后续产物改变42.02亿元的资金性质，形成真正的链路新增错误",
+        "后续新增Figure AI约150台，来源日期2026-09-02，超过截止日"
+      ],
+      "fit": "适合借鉴版式与叙事，不适合作为未经重建和链路校验的研究材料。",
+      "rank": 5
+    }
+  ],
+  "winners": [
+    {
+      "kind": "excel",
+      "label": "Excel",
+      "tool": "千问",
+      "score": 85.64
+    },
+    {
+      "kind": "word",
+      "label": "Word",
+      "tool": "豆包",
+      "score": 95.6
+    },
+    {
+      "kind": "ppt",
+      "label": "PPT",
+      "tool": "千问",
+      "score": 97.5
+    },
+    {
+      "kind": "image",
+      "label": "普通信息图",
+      "tool": "豆包",
+      "score": 95.0
+    },
+    {
+      "kind": "ink",
+      "label": "水墨信息图",
+      "tool": "豆包",
+      "score": 93.72
+    },
+    {
+      "kind": "html",
+      "label": "交互HTML",
+      "tool": "豆包",
+      "score": 96.9
+    }
+  ],
+  "propagation": [
+    {
+      "id": "P-DOUBAO-PRODUCT",
+      "tool": "豆包",
+      "label": "产品结构录入与公式冲突",
+      "origin": "excel",
+      "spread": [
+        "word",
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "只扣Excel；后续为继承观察",
+      "impact": "Excel原始行存在错录/漏录，但备注和结论另有明确口径；后续能回到这些Excel锚点，因此不重复处罚。"
+    },
+    {
+      "id": "P-QIANWEN-ADD",
+      "tool": "千问",
+      "label": "图片与HTML加入Excel外信息",
+      "origin": "image",
+      "spread": [
+        "ink",
+        "html"
+      ],
+      "scoreMode": "各下游作为新增信息计分",
+      "impact": "Gen-3、技术进展、股东户数、专利/速度等多项数字不在千问Excel，降低严格继承一致性，但未达到封顶条件。"
+    },
+    {
+      "id": "P-QODER-ROOT",
+      "tool": "Qoder",
+      "label": "H1研发披露误读与收现比术语",
+      "origin": "excel",
+      "spread": [
+        "word",
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "只扣Excel；后续为继承观察",
+      "impact": "两项根问题回归Excel事实分；后续原样使用时不再扣分。"
+    },
+    {
+      "id": "P-QODER-PPT",
+      "tool": "Qoder",
+      "label": "同比下降误写成绝对值转负",
+      "origin": "ppt",
+      "spread": [],
+      "scoreMode": "PPT新增错误，计分并封顶",
+      "impact": "Excel和同页数据均显示24,393.03万元扣非净利与23,154.53万元CFO为正，PPT将其改写为“双双转负”。"
+    },
+    {
+      "id": "P-QODER-HTML",
+      "tool": "Qoder",
+      "label": "利润差额等同税前股份支付",
+      "origin": "html",
+      "spread": [],
+      "scoreMode": "HTML新增错误，计分并封顶",
+      "impact": "Excel区分31,254.23万元净差额与34,906.55万元税前股份支付，HTML却写成等式。"
+    },
+    {
+      "id": "P-WB-SOURCES",
+      "tool": "WorkBuddy",
+      "label": "不存在的定期报告与预测误标",
+      "origin": "excel",
+      "spread": [
+        "word",
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "只扣Excel；后续为继承观察",
+      "impact": "来源与预测属性问题已经存在于Excel；后续原样继承，不因同一根因再次扣分。"
+    },
+    {
+      "id": "P-WB-FUND",
+      "tool": "WorkBuddy",
+      "label": "42.02亿元拟募/拟投改成到账",
+      "origin": "word",
+      "spread": [
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "五件下游分别计分并封顶",
+      "impact": "Excel仅写拟募集或项目计划金额，后续统一升级为到账或募资总额，改变资金性质。"
+    },
+    {
+      "id": "P-WB-FIGURE",
+      "tool": "WorkBuddy",
+      "label": "新增截止日后Figure AI比较",
+      "origin": "word",
+      "spread": [
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "五件下游分别计分并封顶",
+      "impact": "Excel无约150台锚点；Word将来源明确列为2026-09-02报道，五件下游均超过8月30日截止日。"
+    },
+    {
+      "id": "P-ZHIKUN-CUTOFF",
+      "tool": "ZhikunCode",
+      "label": "8月31日行情越过截止日",
+      "origin": "excel",
+      "spread": [
+        "word",
+        "ppt",
+        "image",
+        "ink",
+        "html"
+      ],
+      "scoreMode": "Excel计分并封顶；后续不扣",
+      "impact": "8月31日行情在Excel已经存在，五件后续忠实传播；新版取消后续五件封顶，只保留Excel责任。"
+    }
+  ],
+  "verification": [
+    {
+      "item": "五个参评HTML的实际点击、控制台与移动端状态",
+      "status": "人工核验",
+      "reason": "内置浏览器策略禁止运行本地file://；本报告只按源码与现成截图评价，不据此扣除未知运行态分。"
+    },
+    {
+      "item": "桌面版Excel打开后完整重算与逐图复核",
+      "status": "人工核验",
+      "reason": "除WorkBuddy外公式缓存为空；多数文件设置打开时重算，但静态预览器可能不同。"
+    },
+    {
+      "item": "WorkBuddy PPT图表的“编辑数据”能力",
+      "status": "人工核验",
+      "reason": "图表OOXML位于非标准路径且无嵌入工作簿。"
+    },
+    {
+      "item": "豆包“前三季度产销率超95%”原始分母",
+      "status": "人工核验",
+      "reason": "若以5,511/5,716计算则是出货率；若为旧申报稿1-9月独立口径需原表。"
+    },
+    {
+      "item": "市场份额、竞品产量、FCC及外部行情原始链接",
+      "status": "人工核验",
+      "reason": "多为媒体或二手转引，未用来支持本评测的核心事实基准。"
+    },
+    {
+      "item": "中文字体与水墨图100%打印尺寸可读性",
+      "status": "人工核验",
+      "reason": "LibreOffice字体环境与本机Office可能不同。"
+    }
+  ],
+  "previews": [
+    {
+      "tool": "豆包",
+      "kind": "excel",
+      "file": "doubao_excel.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "豆包",
+      "kind": "word",
+      "file": "doubao_word.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "豆包",
+      "kind": "ppt",
+      "file": "doubao_ppt.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "豆包",
+      "kind": "image",
+      "file": "doubao_image.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "豆包",
+      "kind": "ink",
+      "file": "doubao_ink.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "豆包",
+      "kind": "html",
+      "file": "doubao_html.webp",
+      "previewType": "source-structure"
+    },
+    {
+      "tool": "千问",
+      "kind": "excel",
+      "file": "qianwen_excel.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "千问",
+      "kind": "word",
+      "file": "qianwen_word.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "千问",
+      "kind": "ppt",
+      "file": "qianwen_ppt.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "千问",
+      "kind": "image",
+      "file": "qianwen_image.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "千问",
+      "kind": "ink",
+      "file": "qianwen_ink.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "千问",
+      "kind": "html",
+      "file": "qianwen_html.webp",
+      "previewType": "existing-runtime-capture"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "excel",
+      "file": "qoder_excel.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "word",
+      "file": "qoder_word.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "ppt",
+      "file": "qoder_ppt.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "image",
+      "file": "qoder_image.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "ink",
+      "file": "qoder_ink.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "Qoder",
+      "kind": "html",
+      "file": "qoder_html.webp",
+      "previewType": "source-structure"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "excel",
+      "file": "workbuddy_excel.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "word",
+      "file": "workbuddy_word.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "ppt",
+      "file": "workbuddy_ppt.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "image",
+      "file": "workbuddy_image.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "ink",
+      "file": "workbuddy_ink.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "WorkBuddy",
+      "kind": "html",
+      "file": "workbuddy_html.webp",
+      "previewType": "source-structure"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "excel",
+      "file": "zhikun_excel.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "word",
+      "file": "zhikun_word.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "ppt",
+      "file": "zhikun_ppt.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "image",
+      "file": "zhikun_image.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "ink",
+      "file": "zhikun_ink.webp",
+      "previewType": "render"
+    },
+    {
+      "tool": "ZhikunCode",
+      "kind": "html",
+      "file": "zhikun_html.webp",
+      "previewType": "source-structure"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EXCEL-DOUBAO-PRODUCT",
+      "file": "evidence/excel-doubao-product.webp"
+    },
+    {
+      "id": "EXCEL-QIANWEN-CHART",
+      "file": "evidence/excel-qianwen-chart.webp"
+    },
+    {
+      "id": "EXCEL-QODER-FORMAT",
+      "file": "evidence/excel-qoder-format.webp"
+    },
+    {
+      "id": "EXCEL-WORKBUDDY-FORECAST",
+      "file": "evidence/excel-workbuddy-forecast.webp"
+    },
+    {
+      "id": "EXCEL-ZHIKUN-CUTOFF",
+      "file": "evidence/excel-zhikun-cutoff.webp"
+    },
+    {
+      "id": "PPT-QODER-SIGN",
+      "file": "evidence/ppt-qoder-sign.webp"
+    },
+    {
+      "id": "PPT-WORKBUDDY-FUND",
+      "file": "evidence/ppt-workbuddy-fund.webp"
+    },
+    {
+      "id": "PPT-WORKBUDDY-PREDICT",
+      "file": "evidence/ppt-workbuddy-predict.webp"
+    },
+    {
+      "id": "WORD-WORKBUDDY-PREDICT",
+      "file": "evidence/word-workbuddy-predict.webp"
+    },
+    {
+      "id": "PPT-ZHIKUN-CUTOFF",
+      "file": "evidence/ppt-zhikun-cutoff.webp"
+    },
+    {
+      "id": "WORD-ZHIKUN-CUTOFF",
+      "file": "evidence/word-zhikun-cutoff.webp"
+    },
+    {
+      "id": "IMAGE-QODER-ORIGINAL",
+      "file": "evidence/image-qoder-original.webp"
+    },
+    {
+      "id": "IMAGE-QODER-INK",
+      "file": "evidence/image-qoder-ink.webp"
+    },
+    {
+      "id": "IMAGE-WORKBUDDY-ORIGINAL",
+      "file": "evidence/image-workbuddy-original.webp"
+    },
+    {
+      "id": "IMAGE-ZHIKUN-ORIGINAL",
+      "file": "evidence/image-zhikun-original.webp"
+    }
+  ]
+}

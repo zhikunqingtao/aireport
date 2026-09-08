@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:1240px; height:1754px; overflow:hidden; }
+  body {
+    background:#0A1626; color:#EAF2FB;
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .page { width:1240px; height:1754px; padding:44px 48px 30px; position:relative; }
+  .topline { position:absolute; top:0; left:0; width:100%; height:5px; background:#00C2FF; }
+  /* header */
+  .hd { display:flex; justify-content:space-between; align-items:flex-end; padding-bottom:16px; border-bottom:1px solid #1E3A5C; }
+  .hd .l .kick { color:#00C2FF; font-size:12px; letter-spacing:4px; font-weight:600; }
+  .hd .l h1 { font-size:34px; font-weight:800; color:#F5F8FC; margin-top:8px; letter-spacing:1px; }
+  .hd .l h1 span { color:#F7B731; }
+  .hd .l .sub { margin-top:8px; font-size:12.5px; color:#8CA3BF; }
+  .hd .r { text-align:right; font-size:11.5px; color:#8CA3BF; line-height:1.7; }
+  .hd .r b { color:#F5F8FC; font-size:13px; letter-spacing:1px; }
+  /* section title */
+  .st { display:flex; align-items:center; gap:10px; margin:24px 0 13px; }
+  .st .no { color:#F7B731; font-size:12px; font-weight:800; letter-spacing:2px; }
+  .st .t { font-size:15.5px; font-weight:700; color:#F5F8FC; letter-spacing:1px; }
+  .st .bar { width:26px; height:3px; background:#00C2FF; }
+  .st .ln { flex:1; height:1px; background:#1E3A5C; }
+  /* KPI */
+  .kpis { display:grid; grid-template-columns:repeat(6,1fr); gap:12px; }
+  .kpi { background:#10233C; border:1px solid #1E3A5C; border-radius:8px; padding:14px 14px 13px; position:relative; }
+  .kpi::before { content:""; position:absolute; left:0; top:10px; bottom:10px; width:3px; border-radius:2px; background:var(--c,#00C2FF); }
+  .kpi .lb { font-size:10.5px; color:#8CA3BF; letter-spacing:.5px; }
+  .kpi .v { font-size:23px; font-weight:800; color:var(--c,#00C2FF); margin-top:6px; letter-spacing:.2px; font-variant-numeric:tabular-nums; }
+  .kpi .v small { font-size:12px; font-weight:600; color:#B9CBDF; margin-left:2px; }
+  .kpi .s { font-size:9.8px; color:#8CA3BF; margin-top:6px; line-height:1.5; }
+  /* charts */
+  .charts { display:grid; grid-template-columns:1.06fr 1fr 1fr; gap:12px; }
+  .panel { background:#10233C; border:1px solid #1E3A5C; border-radius:8px; padding:12px 10px 8px; }
+  .panel .pt { font-size:12px; font-weight:700; color:#D7E3F2; text-align:center; letter-spacing:.5px; }
+  .panel .pu { font-size:9.5px; color:#8CA3BF; text-align:center; margin-top:2px; }
+  svg { display:block; margin:4px auto 0; }
+  svg text { font-family:"PingFang SC","Microsoft YaHei",sans-serif; }
+  /* two-col blocks */
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .blk { background:#10233C; border:1px solid #1E3A5C; border-radius:8px; padding:13px 16px 12px; }
+  .blk h3 { font-size:13px; font-weight:800; letter-spacing:1px; margin-bottom:9px; }
+  .blk h3.cy { color:#00C2FF; } .blk h3.au { color:#F7B731; } .blk h3.rd { color:#FF7A6B; }
+  .blk ul { list-style:none; }
+  .blk li { font-size:11.6px; line-height:1.66; color:#D7E3F2; padding-left:14px; position:relative; margin-bottom:8px; }
+  .blk li::before { content:""; position:absolute; left:0; top:7px; width:6px; height:6px; border-radius:1px; background:var(--bc,#00C2FF); }
+  .blk li b { color:#F5F8FC; }
+  .blk li .au { color:#F7B731; font-weight:700; } .blk li .cy { color:#00C2FF; font-weight:700; } .blk li .rd { color:#FF7A6B; font-weight:700; }
+  /* footer */
+  .ft { position:absolute; left:48px; right:48px; bottom:26px; border-top:1px solid #1E3A5C; padding-top:10px; }
+  .ft .a { font-size:9.8px; color:#8CA3BF; line-height:1.7; }
+  .ft .b { display:flex; justify-content:space-between; margin-top:6px; font-size:9.5px; color:#5F7A99; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="topline"></div>
+
+  <div class="hd">
+    <div class="l">
+      <div class="kick">UNITREE · 688836.SH · 上交所科创板</div>
+      <h1>宇树科技 <span>｜</span> 投资人一页纸概览</h1>
+      <div class="sub">人形机器人第一股的账本：高增长 · 高毛利 · 高投入 —— 基于上海证券交易所披露文件</div>
+    </div>
+    <div class="r">
+      <b>ONE-PAGE INVESTOR BRIEF</b><br>
+      资料截止 2026-08-30　·　2026-08-19 上市<br>
+      来源：招股说明书(上会稿) / 上市公告书
+    </div>
+  </div>
+
+  <div class="st"><span class="no">01</span><span class="bar"></span><span class="t">关键指标 KEY METRICS</span><span class="ln"></span></div>
+  <div class="kpis">
+    <div class="kpi" style="--c:#00C2FF"><div class="lb">2025 营业收入</div><div class="v">16.99<small>亿元</small></div><div class="s">2023-2025 CAGR 226.8%<br>2026H1 11.52亿元 +48.5%*</div></div>
+    <div class="kpi" style="--c:#35D0A5"><div class="lb">2025 扣非归母净利润</div><div class="v">5.91<small>亿元</small></div><div class="s">2023 为 -1,801.91 万元<br>扣非净利率约 34.8%</div></div>
+    <div class="kpi" style="--c:#F7B731"><div class="lb">2025 主营业务毛利率</div><div class="v">60.13<small>%</small></div><div class="s">同行业可比均值 44.44%<br>2023 为 44.22%</div></div>
+    <div class="kpi" style="--c:#F5F8FC"><div class="lb">2025 人形机器人出货</div><div class="v">5,511<small>台</small></div><div class="s">全球第一 · 销量 5,215 台<br>四足累计销量超 33,000 台</div></div>
+    <div class="kpi" style="--c:#00C2FF"><div class="lb">发行价 / 发行后市值</div><div class="v">150.80<small>元</small></div><div class="s">市值约 609.93 亿元<br>PE 219.23x · 行业PE 38.56x</div></div>
+    <div class="kpi" style="--c:#F7B731"><div class="lb">募资净额 / 募投</div><div class="v">59.17<small>亿元</small></div><div class="s">募投 42.02 亿元<br>模型+本体研发约 31.32 亿元</div></div>
+  </div>
+
+  <div class="st"><span class="no">02</span><span class="bar"></span><span class="t">增长与结构 GROWTH & MIX（2023-2025，经审计）</span><span class="ln"></span></div>
+  <div class="charts">
+    <div class="panel">
+      <div class="pt">营业收入与同比增速</div><div class="pu">柱：亿元（左轴）　线：%（右轴）</div>
+      <svg width="372" height="252" viewBox="0 0 372 252">
+        <g stroke="#1E3A5C" stroke-width="1">
+          <line x1="44" y1="20" x2="44" y2="200"/><line x1="44" y1="200" x2="344" y2="200"/>
+          <line x1="44" y1="140" x2="344" y2="140" stroke-dasharray="3 4" opacity=".55"/>
+          <line x1="44" y1="80" x2="344" y2="80" stroke-dasharray="3 4" opacity=".55"/>
+          <line x1="44" y1="20" x2="344" y2="20" stroke-dasharray="3 4" opacity=".55"/>
+        </g>
+        <g fill="#8CA3BF" font-size="9.5" text-anchor="end">
+          <text x="38" y="203">0</text><text x="38" y="143">6</text><text x="38" y="83">12</text><text x="38" y="24">18</text>
+        </g>
+        <g fill="#8CA3BF" font-size="9">
+          <text x="348" y="203">0</text><text x="348" y="143">120</text><text x="348" y="83">240</text><text x="348" y="24">360%</text>
+        </g>
+        <rect x="72" y="184.1" width="46" height="15.9" fill="#00C2FF"/>
+        <rect x="176" y="160.7" width="46" height="39.3" fill="#00C2FF"/>
+        <rect x="272" y="30.1" width="46" height="169.9" fill="#00C2FF"/>
+        <g fill="#EAF2FB" font-size="10" font-weight="700" text-anchor="middle">
+          <text x="95" y="178">1.59</text><text x="199" y="154">3.93</text><text x="295" y="24">16.99</text>
+        </g>
+        <polyline points="199,126.6 295,33.7" fill="none" stroke="#F7B731" stroke-width="2.5"/>
+        <circle cx="199" cy="126.6" r="3.5" fill="#F7B731"/><circle cx="295" cy="33.7" r="3.5" fill="#F7B731"/>
+        <g fill="#F7B731" font-size="9.5" font-weight="700">
+          <text x="150" y="120">146.8%</text><text x="288" y="46" text-anchor="end">332.6%</text>
+        </g>
+        <g fill="#8CA3BF" font-size="10" text-anchor="middle">
+          <text x="95" y="216">2023</text><text x="199" y="216">2024</text><text x="295" y="216">2025</text>
+        </g>
+        <g font-size="9.5"><rect x="110" y="230" width="10" height="10" fill="#00C2FF"/><text x="125" y="239" fill="#8CA3BF">营业收入(亿元)</text>
+        <line x1="215" y1="235" x2="235" y2="235" stroke="#F7B731" stroke-width="2.5"/><text x="240" y="239" fill="#8CA3BF">营收YoY(%)</text></g>
+      </svg>
+    </div>
+    <div class="panel">
+      <div class="pt">主营业务收入构成</div><div class="pu">占比 %（合计=100%）</div>
+      <svg width="340" height="252" viewBox="0 0 340 252">
+        <g stroke="#1E3A5C"><line x1="30" y1="20" x2="30" y2="200"/><line x1="30" y1="200" x2="330" y2="200"/></g>
+        <!-- 2023 -->
+        <rect x="52" y="63.6" width="52" height="136.4" fill="#00C2FF"/>
+        <rect x="52" y="60.2" width="52" height="3.4" fill="#F7B731"/>
+        <rect x="52" y="20" width="52" height="40.2" fill="#5B7A9D"/>
+        <text x="78" y="135" fill="#06263C" font-size="10" font-weight="700" text-anchor="middle">75.8</text>
+        <text x="78" y="43" fill="#06263C" font-size="9.5" font-weight="700" text-anchor="middle">22.3</text>
+        <line x1="104" y1="61.9" x2="118" y2="52" stroke="#F7B731" stroke-width="1"/>
+        <text x="120" y="50" fill="#F7B731" font-size="9.5" font-weight="700">1.9</text>
+        <!-- 2024 -->
+        <rect x="152" y="93" width="52" height="107" fill="#00C2FF"/>
+        <rect x="152" y="43.2" width="52" height="49.8" fill="#F7B731"/>
+        <rect x="152" y="20" width="52" height="23.2" fill="#5B7A9D"/>
+        <text x="178" y="150" fill="#06263C" font-size="10" font-weight="700" text-anchor="middle">59.5</text>
+        <text x="178" y="71" fill="#06263C" font-size="10" font-weight="700" text-anchor="middle">27.7</text>
+        <text x="178" y="34.5" fill="#06263C" font-size="9" font-weight="700" text-anchor="middle">12.9</text>
+        <!-- 2025 -->
+        <rect x="252" y="125.1" width="52" height="74.9" fill="#00C2FF"/>
+        <rect x="252" y="31.9" width="52" height="93.2" fill="#F7B731"/>
+        <rect x="252" y="20" width="52" height="11.9" fill="#5B7A9D"/>
+        <text x="278" y="166" fill="#06263C" font-size="10" font-weight="700" text-anchor="middle">41.6</text>
+        <text x="278" y="82" fill="#06263C" font-size="10" font-weight="700" text-anchor="middle">51.8</text>
+        <line x1="304" y1="26" x2="316" y2="18" stroke="#8CA3BF" stroke-width="1"/>
+        <text x="306" y="14" fill="#8CA3BF" font-size="9">6.6</text>
+        <g fill="#8CA3BF" font-size="10" text-anchor="middle">
+          <text x="78" y="216">2023</text><text x="178" y="216">2024</text><text x="278" y="216">2025</text>
+        </g>
+        <g font-size="9.5">
+          <rect x="72" y="230" width="10" height="10" fill="#00C2FF"/><text x="87" y="239" fill="#8CA3BF">四足</text>
+          <rect x="125" y="230" width="10" height="10" fill="#F7B731"/><text x="140" y="239" fill="#8CA3BF">人形</text>
+          <rect x="178" y="230" width="10" height="10" fill="#5B7A9D"/><text x="193" y="239" fill="#8CA3BF">组件及其他</text>
+        </g>
+      </svg>
+    </div>
+    <div class="panel">
+      <div class="pt">毛利率趋势</div><div class="pu">%</div>
+      <svg width="340" height="252" viewBox="0 0 340 252">
+        <g stroke="#1E3A5C" stroke-width="1">
+          <line x1="36" y1="20" x2="36" y2="200"/><line x1="36" y1="200" x2="316" y2="200"/>
+          <line x1="36" y1="110" x2="316" y2="110" stroke-dasharray="3 4" opacity=".55"/>
+          <line x1="36" y1="20" x2="316" y2="20" stroke-dasharray="3 4" opacity=".55"/>
+        </g>
+        <g fill="#8CA3BF" font-size="9.5" text-anchor="end">
+          <text x="30" y="203">0</text><text x="30" y="113">50</text><text x="30" y="24">100</text>
+        </g>
+        <polyline points="66,120.4 176,97.9 286,91.8" fill="none" stroke="#F5F8FC" stroke-width="2.5"/>
+        <polyline points="66,121.3 176,107 286,97.9" fill="none" stroke="#00C2FF" stroke-width="2.5"/>
+        <polyline points="66,42.2 176,75.3 286,86.3" fill="none" stroke="#F7B731" stroke-width="2.5"/>
+        <g>
+          <circle cx="66" cy="120.4" r="3" fill="#F5F8FC"/><circle cx="176" cy="97.9" r="3" fill="#F5F8FC"/><circle cx="286" cy="91.8" r="3" fill="#F5F8FC"/>
+          <circle cx="66" cy="121.3" r="3" fill="#00C2FF"/><circle cx="176" cy="107" r="3" fill="#00C2FF"/><circle cx="286" cy="97.9" r="3" fill="#00C2FF"/>
+          <circle cx="66" cy="42.2" r="3" fill="#F7B731"/><circle cx="176" cy="75.3" r="3" fill="#F7B731"/><circle cx="286" cy="86.3" r="3" fill="#F7B731"/>
+        </g>
+        <g font-size="9.5" font-weight="700">
+          <text x="44" y="36" fill="#F7B731">87.7</text>
+          <text x="292" y="84" fill="#F7B731">63.2</text>
+          <text x="292" y="95" fill="#F5F8FC">60.1</text>
+          <text x="292" y="106" fill="#00C2FF">56.7</text>
+          <text x="44" y="132" fill="#8CA3BF">44.2 / 43.7</text>
+        </g>
+        <g fill="#8CA3BF" font-size="10" text-anchor="middle">
+          <text x="66" y="216">2023</text><text x="176" y="216">2024</text><text x="286" y="216">2025</text>
+        </g>
+        <g font-size="9.5">
+          <line x1="66" y1="235" x2="86" y2="235" stroke="#F5F8FC" stroke-width="2.5"/><text x="91" y="239" fill="#8CA3BF">主营业务</text>
+          <line x1="150" y1="235" x2="170" y2="235" stroke="#00C2FF" stroke-width="2.5"/><text x="175" y="239" fill="#8CA3BF">四足</text>
+          <line x1="212" y1="235" x2="232" y2="235" stroke="#F7B731" stroke-width="2.5"/><text x="237" y="239" fill="#8CA3BF">人形</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="st"><span class="no">03</span><span class="bar"></span><span class="t">经营要点 BUSINESS HIGHLIGHTS</span><span class="ln"></span></div>
+  <div class="cols">
+    <div class="blk" style="--bc:#00C2FF">
+      <h3 class="cy">商业模式与量价</h3>
+      <ul>
+        <li><b>结构切换</b>：人形收入 296.71→86,783.19 万元，占比 <span class="cy">1.9%→51.8%</span>，2025 首超四足成为第一来源。</li>
+        <li><b>以价换量</b>：四足销量 3,121→23,037 台、单价 3.83→3.03 万元；人形销量 5→5,215 台、单价 59.34→16.64 万元。</li>
+        <li><b>市场地位</b>：2025 人形出货全球第一；四足累计超 33,000 台；境外收入占比超 40%。</li>
+        <li><b>效率优势</b>：2025 销售费用率 <span class="cy">8.31%</span>（行业均值 23.88%）；前五大客户仅 12.08%，无依赖。</li>
+      </ul>
+    </div>
+    <div class="blk" style="--bc:#F7B731">
+      <h3 class="au">研发 · 资本 · 现金流</h3>
+      <ul>
+        <li><b>研发投入</b>：4,995/7,002/14,497 万元（累计 2.65 亿元）；2026H1 1.36 亿元、同比 <span class="au">+8,203.74 万元</span>。</li>
+        <li><b>技术方向</b>：本体+运动控制全栈自研；2025H2 发布 WMA/VLA 具身大模型，尚未规模化应用。</li>
+        <li><b>资本储备</b>：募资净额 59.17 亿元；2026-06-30 资产负债率 25.11%，货币资金约 14.92 亿元。</li>
+        <li><b>盈利质量</b>：2025 经营现金流 6.70 亿元 ≈ 扣非净利 <span class="au">1.13 倍</span>；扣非 ROE 28.70%。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="st"><span class="no">04</span><span class="bar"></span><span class="t">前瞻判断 OUTLOOK</span><span class="ln"></span></div>
+  <div class="cols">
+    <div class="blk" style="--bc:#35D0A5">
+      <h3 class="cy" style="color:#35D0A5">增长变量</h3>
+      <ul>
+        <li>人形机器人场景渗透（科研、表演、巡检救援、智能服务），2026H1 人形收入仍较快增长。</li>
+        <li>具身大模型突破与数据采集/场景实训投入，决定工业·服务·家庭大市场期权。</li>
+        <li>制造基地扩产 + 超募弹性；“降本—降价—放量”路径由四足向人形复制。</li>
+      </ul>
+    </div>
+    <div class="blk" style="--bc:#FF7A6B">
+      <h3 class="rd">主要风险</h3>
+      <ul>
+        <li><b>增速与利润</b>：2026Q1 扣非 <span class="rd">-52.55%</span>（审阅）；2026H1 扣非 -19.34%（未审计）。</li>
+        <li><b>竞争</b>：Optimus Gen-3 小批量试产、国内车企/消费电子入局；人形毛利率 87.67%→63.18%。</li>
+        <li><b>贸易管制</b>：FCC 2026-07-28 新规限制新型号认证；2025 美国收入占 13.30%。</li>
+        <li><b>治理/估值</b>：特别表决权集中（≤65.31%）；后续股份支付增费；初期流通股仅 7.44%、PE 219.23x。</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="st"><span class="no">05</span><span class="bar"></span><span class="t">销量与资本 VOLUME & CAPITAL</span><span class="ln"></span></div>
+  <div class="cols">
+    <div class="panel" style="padding:12px 12px 8px;">
+      <div class="pt">机器人销量（台）</div><div class="pu">四足 vs 人形 · 2023-2025</div>
+      <svg width="546" height="238" viewBox="0 0 546 238">
+        <g stroke="#1E3A5C"><line x1="40" y1="20" x2="40" y2="190"/><line x1="40" y1="190" x2="530" y2="190"/>
+          <line x1="40" y1="105" x2="530" y2="105" stroke-dasharray="3 4" opacity=".55"/>
+          <line x1="40" y1="20" x2="530" y2="20" stroke-dasharray="3 4" opacity=".55"/></g>
+        <g fill="#8CA3BF" font-size="9.5" text-anchor="end"><text x="34" y="193">0</text><text x="34" y="108">12,000</text><text x="34" y="24">24,000</text></g>
+        <rect x="72" y="167.9" width="36" height="22.1" fill="#00C2FF"/><rect x="112" y="188.5" width="36" height="1.5" fill="#F7B731"/>
+        <rect x="245" y="139.5" width="36" height="50.5" fill="#00C2FF"/><rect x="285" y="187.1" width="36" height="2.9" fill="#F7B731"/>
+        <rect x="418" y="26.8" width="36" height="163.2" fill="#00C2FF"/><rect x="458" y="153.1" width="36" height="36.9" fill="#F7B731"/>
+        <g fill="#EAF2FB" font-size="9.5" font-weight="700" text-anchor="middle">
+          <text x="90" y="162">3,121</text><text x="130" y="182">5</text>
+          <text x="263" y="134">7,136</text><text x="303" y="181">412</text>
+          <text x="436" y="21">23,037</text><text x="476" y="147">5,215</text>
+        </g>
+        <g fill="#8CA3BF" font-size="10" text-anchor="middle"><text x="112" y="206">2023</text><text x="285" y="206">2024</text><text x="458" y="206">2025</text></g>
+        <g font-size="9.5"><rect x="200" y="220" width="10" height="10" fill="#00C2FF"/><text x="215" y="229" fill="#8CA3BF">四足机器人</text>
+          <rect x="290" y="220" width="10" height="10" fill="#F7B731"/><text x="305" y="229" fill="#8CA3BF">人形机器人（2025出货5,511台·全球第一）</text></g>
+      </svg>
+    </div>
+    <div class="blk" style="--bc:#00C2FF">
+      <h3 class="cy">发行与股东结构</h3>
+      <ul>
+        <li><b>发行方案</b>：新股 40,446,434 股（占发行后 10%），发行价 <span class="cy">150.80 元</span>，募资总额 60.99 亿元、净额 59.17 亿元。</li>
+        <li><b>估值锚</b>：发行后市值约 609.93 亿元（上市标准≥100亿元）；P/S≈35.9x；发行前末轮（2025-06）投后 127 亿元。</li>
+        <li><b>战略配售 20%</b>：社保基金、深度求索（锁定36个月）、昆仑资本、南网产融、天翼资本、启善（腾讯关联）、中证投资、员工资管计划。</li>
+        <li><b>治理</b>：特别表决权 1:10；王兴兴发行前表决权 68.78%，发行后 ≤65.31%；发行后股东 27,666 户。</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft">
+    <div class="a">数据口径：2023-2025 年度经审计（容诚审字[2026]230Z1692号）；2026Q1 经审阅；*2026H1 未经审计；招股书 2026H1 预计数据仅为管理层估计、不构成盈利预测。主要来源：[1] 上市公告书（2026-08-18，上交所披露） [2] 招股说明书（上会稿，上交所披露） [3] 注册批复 证监许可〔2026〕1612号。本图仅供投资人沟通参考，不构成投资建议。</div>
+    <div class="b"><span>UNITREE ROBOTICS · 688836.SH</span><span>ONE-PAGE BRIEF · 2026-08-30 CUT-OFF</span></div>
+  </div>
+</div>
+</body>
+</html>

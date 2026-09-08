@@ -1,0 +1,10 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#062032', padding: '0px 88px', flexDirection: 'row', alignItems: 'center' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 64, width: '100%' }}>
+        <Text style={{ fontSize: 260, color: '#FFFFFF', opacity: 0.14, fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>04</Text>
+        <Box style={{ flexDirection: 'column', gap: 16 }}>
+            <Text style={{ fontSize: 48, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>竞争力与展望</Text>
+            <Text style={{ fontSize: 20, color: '#99BDED', letterSpacing: 2, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>Moat &amp; Outlook</Text>
+            <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>五大优势构成盈利护城河，三大变量决定后续弹性</Text>
+        </Box>
+    </Box>
+</Slide>

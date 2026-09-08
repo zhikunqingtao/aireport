@@ -1,0 +1,139 @@
+{
+  "schema": "report-v4-release-verification/1.1",
+  "executedAt": "2026-09-06T15:12:00+08:00",
+  "environment": {
+    "os": "macOS 26.5.2 arm64",
+    "browser": "Google Chrome 152",
+    "office": "Microsoft Office 16.112.3"
+  },
+  "candidate": {
+    "role": "v4.2 runtime-tested prepublication build; final publication differs only by embedded release-provenance metadata and is hashed separately in the publication manifest",
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/AI办公工具对比测评_v4.2_候选.html",
+    "sha256": "497b5743f8920fd519dca52ce864b4ccb2ca20a8020a5a37e7e747b6fed08f5a",
+    "bytes": 41885642,
+    "dataPath": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4/report_v4.2_candidate.json",
+    "dataSha256": "6e459634b493027bc6d7cb578b0f2293486b2cfe45cf97de1bfc8ba58d961128",
+    "uiJavaScriptSha256": "752ca83ab90b756bff0a9487fd3866e73fe797ba014896d3825a4f9c4335408a",
+    "uiCssSha256": "b6d13d9811d3e5f3c901cc3968737c938bb8529eebd8494e42d34bd00d39c459"
+  },
+  "checks": [
+    {
+      "id": "release:chrome-load",
+      "status": "passed",
+      "actual": "Chrome 152直接加载自包含候选HTML成功；页面标题、七章结构、浅色默认主题和固定样本边界正确，运行期异常为0。"
+    },
+    {
+      "id": "release:ranking-two-official-plus-diagnostic",
+      "status": "passed",
+      "actual": "六任务等权与均衡投研实务两张正式榜均可切换；页面分数和次序与JSON重算一致。根因恢复值仅在敏感性区作为非因果诊断，不作为正式排名。"
+    },
+    {
+      "id": "release:scenario-browser",
+      "status": "passed",
+      "actual": "202项场景记录全部进入全量登记表和可筛选浏览器。"
+    },
+    {
+      "id": "release:finding-browser",
+      "status": "passed",
+      "actual": "200条finding全部进入问题浏览器及全量登记表；Qoder PPT第10页、豆包PPT Mac兼容性和WorkBuddy来源边界均可按工具、产物、闸门与严重度复现。"
+    },
+    {
+      "id": "release:compatibility-matrix",
+      "status": "passed",
+      "actual": "兼容矩阵共36行；通过、失败和未验证采用独立视觉编码，Windows PowerPoint及独立重新下载仍明确为未验证。"
+    },
+    {
+      "id": "release:dialogs-and-evidence",
+      "status": "passed",
+      "actual": "文件详情、完整两位计算结果、实得分/满分条、路径、SHA-256、finding与证据弹窗均可打开，Escape可关闭。"
+    },
+    {
+      "id": "release:responsive",
+      "status": "passed",
+      "actual": "1440×900、768×1024和390×844三档视口均完成截图；页面本体无横向溢出，宽表仅在自身可滚动容器内延伸。"
+    },
+    {
+      "id": "release:keyboard-theme-anchor",
+      "status": "passed",
+      "actual": "键盘Tab焦点可移动；章节导航、移动端下拉导航、浅深主题切换和锚点均工作。"
+    },
+    {
+      "id": "release:console",
+      "status": "passed",
+      "actual": "完成排名切换、文件弹窗、主题、三档视口和打印媒体模拟后，Chrome运行期异常为0。"
+    },
+    {
+      "id": "release:official-links",
+      "status": "passed_from_v4_1_unchanged_source_inventory",
+      "actual": "v4.2未改变11项来源清单及其URL；沿用已固化v4.1中对上交所两份PDF、上市通知、宇树官方说明和证监会批复的浏览器可达性记录。两份PDF的自动导航等待行为及限制仍保留，不据此扣分。"
+    },
+    {
+      "id": "release:process-records",
+      "status": "passed_with_disclosed_workbuddy_extraction_limit",
+      "actual": "五款工具的过程记录入口均保留且明确不计分。WorkBuddy分享页仅确认可访问入口与用户提供范围，正文跨域自动抽取限制继续显著披露。"
+    },
+    {
+      "id": "release:configuration-usage-evidence",
+      "status": "passed",
+      "actual": "豆包、千问、Qoder、WorkBuddy共8张配置/额度截图和ZhikunCode配置、混杂Kimi账单边界均在证据章节保留；仅作为过程旁证，不参与评分或跨产品成本比较。"
+    },
+    {
+      "id": "release:print",
+      "status": "passed",
+      "actual": "三种打印模式均由同一HTML数据源生成；摘要10页、正式版29页、全量版148页，均为A4且无空白页。"
+    },
+    {
+      "id": "release:content-conservation",
+      "status": "passed",
+      "actual": "浏览器实测入口计数为30件终稿、2177行全量登记（202+324+200+741+710）、32项事实、6项事实来源和5项过程来源；与JSON内容守恒清单一致。"
+    },
+    {
+      "id": "release:terminology",
+      "status": "passed",
+      "actual": "活动标题和可见界面不再把评测者实施的工作称为法定或独立审计；未发现‘冠军’‘绝对领先’或无证据的确定性排序措辞。财务资料自身的审计属性和历史版本名称未改写。"
+    },
+    {
+      "id": "release:print-summary",
+      "status": "passed",
+      "actual": "管理层摘要PDF共10页、1,493,147字节；首页、两榜、5×6分数矩阵、闸门矩阵和末页均完成视觉抽查，无整页空白、裁切或叠印。",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/report_v4.2_print_summary.pdf",
+      "sha256": "e5ef9eaa5b131b94b533f746551743d824e29334a578bb059ba582ccca0119d7",
+      "pages": 10
+    },
+    {
+      "id": "release:print-formal",
+      "status": "passed",
+      "actual": "正式报告PDF共29页、2,700,497字节；兼容矩阵、敏感性表、事实来源、方法页和末页均完成视觉抽查，无整页空白、裁切或叠印。",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/report_v4.2_print_formal.pdf",
+      "sha256": "0e4c0b4c0dda365e1b5bef170234fa350bdc182b4140c74ae4312d7082b96abf",
+      "pages": 29
+    },
+    {
+      "id": "release:print-full",
+      "status": "passed",
+      "actual": "全量证据PDF共148页、19,920,573字节；逐条登记覆盖202项场景、324项覆盖、200条finding、741项证据和710个媒体对象。全文检索确认最后一个媒体对象SHA存在；148页均含可提取文本，未发现整页空白。",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/report_v4.2_print_full.pdf",
+      "sha256": "c3395fccdb857e4928851ce673ebbc12806eee78e00dfce3639f3e7b92ceb19f",
+      "pages": 148
+    },
+    {
+      "id": "release:visual-regression",
+      "status": "passed",
+      "actual": "桌面、平板、手机三张发布前视觉对照图已生成并人工查看；机构投研浅色样式、排名点图、中性矩阵和移动端章节导航均正常。",
+      "screenshots": [
+        {"viewport": "1440x900", "sha256": "340854b7427df60b869f9b42a8acfd883eaf35778c5dc3993933f244d6a792e3"},
+        {"viewport": "768x1024", "sha256": "7bb9fd53f94540ba5049b3d6fe9e051dfa7ec7772a283c840ebec58ebaf11efc"},
+        {"viewport": "390x844", "sha256": "5e91a42c95ab613882dc290bc4be46a641d4d8589e731d8aacd91ca202d6c35f"}
+      ]
+    }
+  ],
+  "allRequiredPassed": true,
+  "limitations": [
+    "本报告是五款工具各一条六任务链的固定样本、固定Mac环境复核，不外推产品通常水平。",
+    "当前为单一评审者；敏感组仅提示小分差对权重与判断变化敏感，不代表置信区间或评审者间一致性。",
+    "未完成Windows PowerPoint交叉试验、独立重新下载或厂商正式回应。",
+    "WorkBuddy全过程正文仍受跨域自动抽取限制；过程完整性范围采用用户确认，不据此评分。",
+    "配置、额度和Kimi账单仅证明截图时点可见状态；单位、倍率、计费规则和混杂任务使其不能用于成本排名。",
+    "32项事实母表用于Excel核心事实复核，不等于对五本工作簿全部数字进行全量鉴证。"
+  ]
+}

@@ -1,0 +1,40 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1：营收+48.54%与扣非-19.34%并存，是费用前置的阶段性结果</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 40, alignItems: 'center', marginTop: 12 }}>
+        <Box style={{ width: '42%', flexDirection: 'column', gap: 30 }}>
+            <Box style={{ flexDirection: 'column', gap: 4 }}>
+                <Text style={{ fontSize: 64, color: '#5A0E13', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>+48.54%</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1营收同比（11.52亿元，2025年全年为+333%）</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 4 }}>
+                <Text style={{ fontSize: 64, color: '#177B57', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>-19.34%</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1扣非归母净利润同比（2.44亿元）</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 4 }}>
+                <Text style={{ fontSize: 64, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>56.01%</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1整体销售毛利率（2025年约60.3%）</Text>
+            </Box>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 18 }}>
+            <Box style={{ background: '#061F32', padding: '20px 24px' }}>
+                <Text style={{ fontSize: 20, color: '#FFFFFF', fontWeight: 'bold', marginBottom: 8, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>归因：费用前置，而非需求恶化</Text>
+                <Text style={{ fontSize: 18, color: '#99BDED', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>研发费用同比+152%、销售费用已超2025年全年；上市公告书将扣非下滑归因于期间费用同比增幅较大。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 20, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>收入端其实超预期</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>H1营收11.52亿元，超出招股书业绩预告区间上限（10.52–11.28亿元）。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 20, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>盈利端已在修复</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>据业绩预告区间推算，Q2扣非净利率回升至31.11%–34.42%，较Q1约9.5%明显修复——费用前置的影响集中在一季度。</Text>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：上市公告书（2026-08-17）、2026年一季报；Q2扣非净利率为按预告区间的推算值</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>11</Text>
+    </Box>
+</Slide>

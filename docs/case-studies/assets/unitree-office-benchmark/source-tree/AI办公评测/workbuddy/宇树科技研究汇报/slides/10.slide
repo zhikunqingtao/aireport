@@ -1,0 +1,10 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#062032', padding: '0px 88px', flexDirection: 'row', alignItems: 'center' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 64, width: '100%' }}>
+        <Text style={{ fontSize: 260, color: '#FFFFFF', opacity: 0.14, fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>03</Text>
+        <Box style={{ flexDirection: 'column', gap: 16 }}>
+            <Text style={{ fontSize: 48, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>换挡与投入</Text>
+            <Text style={{ fontSize: 20, color: '#99BDED', letterSpacing: 2, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>Gear Shift &amp; Investment</Text>
+            <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>增速回落与费用前置并存，研发加码补"大脑"短板</Text>
+        </Box>
+    </Box>
+</Slide>

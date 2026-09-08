@@ -1,0 +1,259 @@
+{
+  "module": "doubao_ppt_compatibility",
+  "source": {
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技内部汇报_截至20260830.pptx",
+    "bytes": 876840,
+    "mtimeEpoch": 1788474284.0372617,
+    "sha256": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2"
+  },
+  "packageIntegrity": {
+    "zipTest": "passed",
+    "firstBadZipEntry": null,
+    "packageEntryCount": 91,
+    "xmlRelsEntryCount": 80,
+    "xmlParseErrorCount": 0,
+    "xmlParseErrors": [],
+    "slidePartCount": 16,
+    "chartPartCount": 7,
+    "embeddedWorkbookCount": 7,
+    "interpretation": "ZIP与XML语法自检通过只能证明包结构可解析，不能证明PowerPoint实现兼容。"
+  },
+  "compatibilityMatrix": [
+    {
+      "environment": "Microsoft PowerPoint for Mac 16.112.3",
+      "testType": "native first open + repair copy",
+      "status": "repair_required_with_content_loss",
+      "verified": true,
+      "observed": "首次打开要求修复；修复后7个图表和7个嵌入工作簿被删除，第5–9、11–13页共8页为空白。",
+      "evidence": [
+        "evidence/reused_v3/doubao_ppt_002_repair_prompt.png",
+        "evidence/reused_v3/doubao_ppt_005_deleted_content_notice.png",
+        "evidence/reused_v3/doubao_ppt_sorter_overview.png",
+        "../native_audit_v3/logs/doubao_ppt_repair_comparison.json"
+      ]
+    },
+    {
+      "environment": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+      "testType": "headless direct PDF export from original",
+      "status": "opened_and_exported_16_pages",
+      "verified": true,
+      "observed": "LibreOffice直接导出16页，且Mac PowerPoint修复后为空的8页均仍有可提取文字和可见栅格内容；这证明至少存在另一实现可读取原始包，但不能替代Windows PowerPoint验证。",
+      "caveat": "LibreOffice栅格可见中文字体替换/字形兼容问题；仅用于文件可解析性对照，不据此评价设计质量。",
+      "evidence": [
+        "evidence/doubao_libreoffice/宇树科技内部汇报_截至20260830.pdf",
+        "evidence/doubao_libreoffice/slides_05_09_11_13_contact_sheet.png"
+      ]
+    },
+    {
+      "environment": "Microsoft PowerPoint for Windows",
+      "testType": "native first open, repair, edit-data, save/reopen",
+      "status": "not_tested",
+      "verified": false,
+      "requiredFor": "区分Mac实现特异兼容与跨平台文件损坏"
+    },
+    {
+      "environment": "independently re-downloaded original",
+      "testType": "new download hash + native open",
+      "status": "not_available",
+      "verified": false,
+      "observed": "现有备份与参评原件SHA-256一致，但创建/修改时间相同，只能证明复制一致，不能证明独立重新下载。",
+      "requiredFor": "排除首次保存/传输过程导致的单份样本异常"
+    }
+  ],
+  "unverifiedItems": [
+    {
+      "item": "Windows PowerPoint cross-check",
+      "owner": "需用户或厂商提供Windows环境",
+      "blockingFor": "通用损坏归因"
+    },
+    {
+      "item": "independent re-download and SHA comparison",
+      "owner": "需用户或豆包侧重新导出/重新下载",
+      "blockingFor": "排除单份传输或缓存异常"
+    },
+    {
+      "item": "vendor explanation of chart serialization",
+      "owner": "豆包产品/技术负责人",
+      "blockingFor": "根因归属，不影响Mac用户实际体验事实"
+    }
+  ],
+  "defensibleConclusion": "已证实的是：该字节样本在指定Mac PowerPoint版本首次打开需要修复且修复造成严重内容损失。未证实的是：文件在Windows PowerPoint同样损坏，或故障完全由生成端而非Mac兼容实现造成。",
+  "recommendedReportWording": "‘在本次Mac版PowerPoint 16.112.3实测中需修复并发生8页核心内容丢失；LibreOffice可直接解析16页，故跨平台损坏归因暂缓，待Windows PowerPoint与独立重下载复核。’",
+  "repairComparisonImported": {
+    "path": "/private/tmp/native_ppt_audit/doubao.pptx",
+    "sha256": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2",
+    "size": 876840,
+    "members": 91,
+    "slides": 16,
+    "charts": 7,
+    "media": 2,
+    "embeddings": 7,
+    "repaired": {
+      "path": "/private/tmp/native_ppt_audit/doubao_repaired_saved.pptx",
+      "sha256": "504eccca2eb004d12a61279b2409578fd2f7be8995311c7af07cd8da632c9797",
+      "size": 827990,
+      "members": 69,
+      "slides": 16,
+      "charts": 0,
+      "media": 2,
+      "embeddings": 0
+    },
+    "removedMembers": [
+      "ppt/charts/_rels/chart1.xml.rels",
+      "ppt/charts/_rels/chart2.xml.rels",
+      "ppt/charts/_rels/chart3.xml.rels",
+      "ppt/charts/_rels/chart4.xml.rels",
+      "ppt/charts/_rels/chart5.xml.rels",
+      "ppt/charts/_rels/chart6.xml.rels",
+      "ppt/charts/_rels/chart7.xml.rels",
+      "ppt/charts/chart1.xml",
+      "ppt/charts/chart2.xml",
+      "ppt/charts/chart3.xml",
+      "ppt/charts/chart4.xml",
+      "ppt/charts/chart5.xml",
+      "ppt/charts/chart6.xml",
+      "ppt/charts/chart7.xml",
+      "ppt/embeddings/Microsoft_Excel_Sheet1.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet2.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet3.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet4.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet5.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet6.xlsx",
+      "ppt/embeddings/Microsoft_Excel_Sheet7.xlsx",
+      "ppt/printerSettings/printerSettings1.bin"
+    ],
+    "addedMembers": []
+  },
+  "libreOfficeRun": {
+    "application": "LibreOfficeDev 26.8.0.0.alpha0 2c87e51eeaa2b413ff4ae097b2705eea1995d8e5",
+    "command": [
+      "/Users/guoqingtao/.cache/codex-runtimes/codex-primary-runtime/dependencies/bin/override/soffice",
+      "--headless",
+      "-env:UserInstallation=file:///private/var/folders/g_/cgkxr_w91xg7tx8n84hjt9zm0000gn/T/audit-v4-lo-profile-ngpdc8h0",
+      "--convert-to",
+      "pdf",
+      "--outdir",
+      "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v4/evidence/doubao_libreoffice",
+      "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技内部汇报_截至20260830.pptx"
+    ],
+    "exitCode": 0,
+    "stdout": "convert /Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技内部汇报_截至20260830.pptx as a Impress document -> /Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v4/evidence/doubao_libreoffice/宇树科技内部汇报_截至20260830.pdf using filter : impress_pdf_Export\nOverwriting: /Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v4/evidence/doubao_libreoffice/宇树科技内部汇报_截至20260830.pdf\n",
+    "stderr": "Fontconfig warning: no <cachedir> elements found. Check configuration.\nFontconfig warning: adding <cachedir>/@.__________________________________________________OOO/var/cache/fontconfig</cachedir>\nFontconfig warning: adding <cachedir prefix=\"xdg\">fontconfig</cachedir>\n\nFontconfig error: No writable cache directories\n\t/@.__________________________________________________OOO/var/cache/fontconfig\n\t/Users/guoqingtao/.cache/fontconfig\n\nFontconfig error: No writable cache directories\n\t/@.__________________________________________________OOO/var/cache/fontconfig\n\t/Users/guoqingtao/.cache/fontconfig\n",
+    "status": "passed",
+    "pdf": "evidence/doubao_libreoffice/宇树科技内部汇报_截至20260830.pdf",
+    "pdfSha256": "a375b3bf6e49555ffefa38ecd6aa37ff9413b64f69264c88777863e3d103fac8",
+    "pdfBytes": 809986,
+    "pageCount": 16,
+    "importantSlidesWithExtractableText": 8,
+    "importantSlideCount": 8,
+    "pages": [
+      {
+        "slide": 1,
+        "extractableTextCharacters": 119,
+        "textSample": "宇宇宇宇宇 688836.SH 宇 经经经经经经经经经 高高高高高高高高高高高高高高高高高高高高高高高高 内内内内 | 内内内内 2026-08-30 | 内内内内内内内内内内内内内内内内内内内 | A= 内内内内 E= 内内"
+      },
+      {
+        "slide": 2,
+        "extractableTextCharacters": 223,
+        "textSample": "CONTENTS 目目 01 业业业业业业业 内内内内 · 内内 / 内内 / 内内内内 02 业业业业业业业 内内内内 · 内内内内 · 2026H1 · 内内内 03 业业业业业业 内内内内 · 内内内内内内 04 业业业业业业业 内内内内内内内 · 内内内内内内 05 业业业业业业业 内内内内 · 内内内内 · 内内内内 来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来来 来来来来 688 88 36.SH 02"
+      },
+      {
+        "slide": 3,
+        "extractableTextCharacters": 465,
+        "textSample": "EXECUTIVE SUMMARY 目目目目目目目目目目目目目目“目目目目目目目目”目目目目 01 两两两两 CAGR 两 226.8% 两两两两两两两 2023→2025 营营 1.59→16.99 营营营营营营 2025 营营 +332.6% 营营营 2026H1 +48.5% 营 02 两两两两两两两两两两两两两 营营营营营营营 1.88%→51.78% 营营营 5→5,215 营营营营 59.34→16.64 营营营营营营营营 03 两两两两两两两两 2025 两两 "
+      },
+      {
+        "slide": 4,
+        "extractableTextCharacters": 491,
+        "textSample": "COMPANY OVERVIEW 目目目目目目目目目目目目目目目 2026-08-19 目目目目目 主主主主 高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高高“高高—高高高高高—高高高高高高”高高高 主主主主 高高高 H1/G1 高高高高高高高高高高 10 高高高高高高高 Go2/B2 高高高高高高高高高高高高高高高高高高高高高高高高 主主主主 高高高高高高高高高高高高高高高高高高高高高 21.44% 高高“高高高高≥ 100 高高”高高高高"
+      },
+      {
+        "slide": 5,
+        "extractableTextCharacters": 363,
+        "textSample": "PRODUCT MIX 目目目目目目目目目 1.9% 目目 51.8% 目目目目目目目目目目目目 2023A 2024A 2025A 0 2 4 6 8 10 12 14 16 18 8.68 6.98 1.11 人人 人人 人人人人人 图 1 图图图图图图图图图图图图图图图图 人人人人人人人人人 296.71 内→ 8.68 内内内内内内 51.78% 内 人人人人人人人人人人人 6.98 内内内内内内 75.78% 内内 41.62% 内 人人人人人 2025 内内内内 ",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_05.png",
+        "nonNearWhitePixelRatio": 0.134753
+      },
+      {
+        "slide": 6,
+        "extractableTextCharacters": 475,
+        "textSample": "VOLUME × PRICE 目目目目目目目 5,215 目目目目目目目目 16.64 目目——目目目目 2023A 2024A 2025A2023A 2024A 2025A 0 1,000 2,000 3,000 4,000 5,000 6,000 0.00 10.00 20.00 30.00 40.00 50.00 60.00 70.00 5215 16.64 人人人人人人人 人人人人人人人人人 / 人人 图 2 图图图图图图图图图图图图图图图图图图图图图图图图图图图图图",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_06.png",
+        "nonNearWhitePixelRatio": 0.080616
+      },
+      {
+        "slide": 7,
+        "extractableTextCharacters": 330,
+        "textSample": "GEOGRAPHY 2025 目目目目目目目目目目 56.35% 目目目目目目目目目目目 2023A 2024A 2025A 0 2 4 6 8 10 12 14 16 18 9.44 7.32 人人 人人 图 3 图图图图图图图图图图图图图 100% 图图图 2023–2024 人人人人 内内内内内 55.63%→55.74% 内 2025 人人人人 内内 9.44 内内 56.35% 内内内内 7.32 内内 43.65% 内内 人人人人人 内内内内内内内内内内内内内内内",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_07.png",
+        "nonNearWhitePixelRatio": 0.133538
+      },
+      {
+        "slide": 8,
+        "extractableTextCharacters": 459,
+        "textSample": "REVENUE GROWTH 目目目目 CAGR 目 226.8% 目目目目目目目目 332.6% 目目目 48.5% 2023A 2024A 2025A2023A 2024A 2025A 0 2 4 6 8 10 12 14 16 18 0.0% 50.0% 100.0% 150.0% 200.0% 250.0% 300.0% 350.0% 16.993.3264 人人人人人人人人 人人人人人人 图 4 图图图图图图图图图图图图图图图图图图图图图图 2023 图图图图图图 ",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_08.png",
+        "nonNearWhitePixelRatio": 0.100347
+      },
+      {
+        "slide": 9,
+        "extractableTextCharacters": 473,
+        "textSample": "PROFIT QUALITY 目目目目目目目目目目目目目目目目目目目目目目目目目目目 2023A 2024A 2025A2023A 2024A 2025A -1.00 0.00 1.00 2.00 3.00 4.00 5.00 6.00 7.00 0.0% 10.0% 20.0% 30.0% 40.0% 50.0% 60.0% 70.0% 2.78 5.910.6013 人人人人人 人人人人人人人 人人人人人 图 5 图图 / 图图图图图图图图图图图图图图图图图图图 人人人人",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_09.png",
+        "nonNearWhitePixelRatio": 0.077186
+      },
+      {
+        "slide": 10,
+        "extractableTextCharacters": 521,
+        "textSample": "1H2026: FORECAST vs ACTUAL 2026H1 目目目目目目目目目目目目目目目目目目目目目 -19.34% 指指指指指指 指指指指 (E) 指指指指 (E) 指指 (A) 指指 营营营营 105,200.00 112,800.00 115,224.56 内内内内 营营营营营 25,800.00 30,600.00 27,399.99 内内内 营营营营营营营 23,600.00 28,300.00 24,393.03 内内内 图 1 2026H1 图图图图图"
+      },
+      {
+        "slide": 11,
+        "extractableTextCharacters": 493,
+        "textSample": "CASH FLOW & BALANCE SHEET 目目目目目目目目目目 6.70 目目目目目目 2026H1 目目目目目目目 25.11% 2023A 2024A 2025A2023A 2024A 2025A 0.00 1.00 2.00 3.00 4.00 5.00 6.00 7.00 8.00 0.0% 5.0% 10.0% 15.0% 20.0% 25.0% 6.7 0.1882 人人人人人人人人人人人 人人人人人人人 图 6 图图图图图图图图图图图图图图图图图图图图",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_11.png",
+        "nonNearWhitePixelRatio": 0.09173
+      },
+      {
+        "slide": 12,
+        "extractableTextCharacters": 462,
+        "textSample": "R&D 目目目目目目目目目 1.45 目目目目目目目目目目目 8.53%—— 目目目目目目 2023A 2024A 2025A2023A 2024A 2025A 0.00 0.20 0.40 0.60 0.80 1.00 1.20 1.40 1.60 0.0% 5.0% 10.0% 15.0% 20.0% 25.0% 30.0% 35.0% 1.45 0.0853 人人人人人人人人 人人人人人 图 7 图图图图图图图图图图图图图图图图图图图图图 2.65 图图 人人人人人人 ",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_12.png",
+        "nonNearWhitePixelRatio": 0.117478
+      },
+      {
+        "slide": 13,
+        "extractableTextCharacters": 440,
+        "textSample": "COMPETITIVE EDGE 目目目目目目目目目目目目目 × 目目目目 × 目目目目 01 全全全全全全全全全 主主主主主 60.13% 主主主 / 主主主 / 主主主主 / 主主 / 主主主主主主主主主主主主主主主主主主主主主 02 全全全全全全全全 2025 主主主主主主 5,215 主主主主主主主主主主主 5,500 主主主主主主主主主主主 3.3 主主主 03 全全全全全全 2025 主主主主主主主主主主主 95% 主主主主主主主主主主主主主主主主主 04 全全全",
+        "rasterExitCode": 0,
+        "rasterEvidence": "evidence/doubao_libreoffice/slides/slide_13.png",
+        "nonNearWhitePixelRatio": 0.064802
+      },
+      {
+        "slide": 14,
+        "extractableTextCharacters": 441,
+        "textSample": "GROWTH DRIVERS 目目目目目目目目目目目目目目目目目目目目 本本本本本本本 A 本 人人人人 2025 主主主 51.78% 主主主 5,215 主主 人人人人人人 2025 主主主主主主 56.35% 主主主主主主主主主 7.32 主主 人人人人 主主主主主主主主主主 2025 1-9M 主主主主主 73.6% 主 人人人人 IPO 主主主主 59.17 主主主主主主主主主主主主主 本本本本本本 / 本本本 E 本 人人人人 主主主主主主主主主主主主主主主主主 "
+      },
+      {
+        "slide": 15,
+        "extractableTextCharacters": 443,
+        "textSample": "KEY RISKS 目目目目目目目目目目目目目目目目目目目目目目目目目目 01 本本本本本本本 内内 2025 1-9M 内 73.6% 内内内内内内内内内内内内内内内 9.01% 内 02 本本本本 / 本本本本 内内内内内内内内内内内内内内内内内内内内内内内内内内 03 本本本本本本本本本本 2025 内内内内内内内 -3.13 内内内内内内内内内内内内内内内内 04 本本本本本本本本 2026H1 内内内内 -19.34% 内 CFO 内内 -32.53% 内内内内内内"
+      },
+      {
+        "slide": 16,
+        "extractableTextCharacters": 498,
+        "textSample": "结结结结结结结结结结结“结结”结结“结结结结结结” 产产产产产产产→产产产产产产产产产产产产产产产产产产产产 产产产产产产产产产产产 2025 产产产产产 34.8% 产产产产 60.13% 产产产产产产产产 2026 产产产产产 产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产产 本本本本本本本 S1 招招招招招招招招招招招招招 auditId=2178 招招 S2 招招招招招招招招招招招 S3 招招招招招招招招 S4 招招招招招招 S5 "
+      }
+    ],
+    "contactSheet": "evidence/doubao_libreoffice/slides_05_09_11_13_contact_sheet.png",
+    "interpretation": "LibreOffice直接导出16页，且Mac PowerPoint修复后为空的8页均仍有可提取文字和可见栅格内容；这证明至少存在另一实现可读取原始包，但不能替代Windows PowerPoint验证。",
+    "knownDisplayCaveat": "LibreOffice栅格可见中文字体替换/字形兼容问题；仅用于文件可解析性对照，不据此评价设计质量。"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-09-06T13:55:25Z",
+  "packagedAt": "2026-09-06T17:14:58.588Z",
+  "snapshotPolicy": "静态资料保存打包时响应；豆包和WorkBuddy动态分享页仅探测可达性，不保存正文。所有快照均不等同于2026-08-30时点证据。",
+  "sourceReport": "report/activity-report-data-v4.5.json",
+  "records": [
+    {
+      "originalUrl": "https://shop.unitree.com/blogs/news/clarification-regarding-unitrees-2025-sales-data",
+      "finalUrl": "https://shop.unitree.com/blogs/news/clarification-regarding-unitrees-2025-sales-data",
+      "capturedAt": "2026-09-06T13:55:19Z",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 603888,
+      "sha256": "109cc125602440a6ff4a661a5b006d0e3d1c0f72121bb540970ee25d8aa8745e",
+      "note": "官方静态资料快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/01_shop.unitree.com_clarification-regarding-unitrees-2025-sales-data.html"
+    },
+    {
+      "originalUrl": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/688836_20260814_AJKD.pdf",
+      "finalUrl": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/688836_20260814_AJKD.pdf",
+      "capturedAt": "2026-09-06T13:55:20Z",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 6384851,
+      "sha256": "8d3202be6f4c4897a9d00c9a27a7c9db715efcf77bf6c5ea4f68116a45c35e83",
+      "note": "官方静态资料快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/02_static.sse.com.cn_688836_20260814_AJKD.pdf"
+    },
+    {
+      "originalUrl": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/688836_20260818_ROD1.pdf",
+      "finalUrl": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-18/688836_20260818_ROD1.pdf",
+      "capturedAt": "2026-09-06T13:55:21Z",
+      "httpStatus": 200,
+      "contentType": "application/pdf",
+      "bytes": 4086550,
+      "sha256": "360e6010d6434fe45ace0cf1cd837d53b1233d7c61409f59f0ba99a98483225f",
+      "note": "官方静态资料快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/03_static.sse.com.cn_688836_20260818_ROD1.pdf"
+    },
+    {
+      "originalUrl": "https://workbuddy.link/p/Xu9Shf5mQeNMp4bfvJ2AT7?ext2=copy_link",
+      "finalUrl": "https://www.workbuddy.link/p/Xu9Shf5mQeNMp4bfvJ2AT7?ext2=copy_link",
+      "capturedAt": "2026-09-06T13:55:21Z",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=utf-8",
+      "bytes": 0,
+      "sha256": null,
+      "note": "本次打包仅执行HTTP可达性探测，未新增保存或固化动态正文；该限制不否定冻结报告此前在Chrome 152页面DOM中记录的六项Prompt匹配结果。动态页面内容日后可能变化，本条记录也不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": null
+    },
+    {
+      "originalUrl": "https://www.csrc.gov.cn/csrc/c105906/c7642867/content.shtml",
+      "finalUrl": "https://www.csrc.gov.cn/csrc/c105906/c7642867/content.shtml",
+      "capturedAt": "2026-09-06T13:55:22Z",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "bytes": 22031,
+      "sha256": "a09e52a4c606fbc0103abfc890eeafc4ca304a32bec974faa51f9476493923d6",
+      "note": "官方静态资料快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/05_www.csrc.gov.cn_content.shtml"
+    },
+    {
+      "originalUrl": "https://www.doubao.com/thread/xadGdCku8rz4KpjVg",
+      "finalUrl": "https://www.doubao.com/thread/xadGdCku8rz4KpjVg",
+      "capturedAt": "2026-09-06T13:55:22Z",
+      "httpStatus": 200,
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 0,
+      "sha256": null,
+      "note": "本次打包仅执行HTTP可达性探测，未新增保存或固化动态正文；该限制不否定冻结报告此前在Chrome 152页面DOM中记录的六项Prompt匹配结果。动态页面内容日后可能变化，本条记录也不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": null
+    },
+    {
+      "originalUrl": "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260818_10829204.shtml",
+      "finalUrl": "https://www.sse.com.cn/disclosure/announcement/listing/ipo/c/c_20260818_10829204.shtml",
+      "capturedAt": "2026-09-06T13:55:23Z",
+      "httpStatus": 200,
+      "contentType": "text/html",
+      "bytes": 27651,
+      "sha256": "3d6b47439551284927acaf330c87d2a112ecdd847a3a56a4c34d92703fd5fbf3",
+      "note": "官方静态资料快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/07_www.sse.com.cn_c_20260818_10829204.shtml"
+    },
+    {
+      "originalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80%E5%88%86%E6%9E%90%E5%BA%95%E7%A8%BF_2026-09-05_15-56.md",
+      "finalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80%E5%88%86%E6%9E%90%E5%BA%95%E7%A8%BF_2026-09-05_15-56.md",
+      "capturedAt": "2026-09-06T13:55:23Z",
+      "httpStatus": 200,
+      "contentType": "text/markdown",
+      "bytes": 523356,
+      "sha256": "c900d64f8b4e356d1f08b4cd23954db64d75d503c00943b0930f514d31e253b6",
+      "note": "任务过程材料静态快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/08_zhikunshare.oss-cn-beijing.aliyuncs.com_宇树科技分析底稿_2026-09-05_15-56.md"
+    },
+    {
+      "originalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80%E7%BB%8F%E8%90%A5%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E5%BA%95%E7%A8%BF_2026-09-05_15-54.md",
+      "finalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80%E7%BB%8F%E8%90%A5%E8%B4%A2%E5%8A%A1%E5%88%86%E6%9E%90%E5%BA%95%E7%A8%BF_2026-09-05_15-54.md",
+      "capturedAt": "2026-09-06T13:55:23Z",
+      "httpStatus": 200,
+      "contentType": "text/markdown",
+      "bytes": 3651023,
+      "sha256": "4f39a62dad9dda6da443c1e2e5edbbd58eda6eca186eda78eae2cab66f8fdf5f",
+      "note": "任务过程材料静态快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/09_zhikunshare.oss-cn-beijing.aliyuncs.com_宇树科技经营财务分析底稿_2026-09-05_15-54.md"
+    },
+    {
+      "originalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/zhikuncode%E4%BB%BB%E5%8A%A1%E5%85%A8%E6%B5%81%E7%A8%8B%E6%BB%9A%E5%8A%A8%E6%88%AA%E5%B1%8F.png",
+      "finalUrl": "https://zhikunshare.oss-cn-beijing.aliyuncs.com/zhikuncode%E4%BB%BB%E5%8A%A1%E5%85%A8%E6%B5%81%E7%A8%8B%E6%BB%9A%E5%8A%A8%E6%88%AA%E5%B1%8F.png",
+      "capturedAt": "2026-09-06T13:55:24Z",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "bytes": 20738540,
+      "sha256": "e8d86c706b8dd92e6983f16eb3518db26cbbccd2035001c380bf30fa8efc9e6d",
+      "note": "任务过程材料静态快照。该文件/状态为打包时访问结果，不等同于2026-08-30时点形成或留存的独立证据。",
+      "snapshotPath": "external-snapshots/10_zhikunshare.oss-cn-beijing.aliyuncs.com_zhikuncode任务全流程滚动截屏.png"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "version": "4.5",
+  "publicationMode": "single_version",
+  "status": "prepared_locally_no_git_commit",
+  "active": {
+    "portableHtml": "../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+    "sourceSelfContained": "../source-self-contained-v4.5.html",
+    "activityData": "../activity-report-data-v4.5.json",
+    "portableData": "../portable-report-data-v4.5.json"
+  },
+  "provenanceNote": "provenance-inputs仅保存v4.5活动数据直接引用的精确计算输入和脚本，不是并行发布的旧版报告。",
+  "releaseFiles": [
+    {
+      "path": "adjudicate_v45.py",
+      "bytes": 82552,
+      "sha256": "7300a572f4e9a1fbb032ea65b4eefb8da49948959f72ef544bc99abddb44b9c7"
+    },
+    {
+      "path": "build_report_v4.py",
+      "bytes": 24880,
+      "sha256": "49b0fe8cc38a1b0a824806df9f31c6cfbfa3cbd1f7c806570070a9cff95ed768"
+    },
+    {
+      "path": "build_summary_final.json",
+      "bytes": 363,
+      "sha256": "940d9a88be2b359e4c0f508905cb4ba0938431744c6ec45a231eb4aed480b8df"
+    },
+    {
+      "path": "provenance-inputs/base-builder.py",
+      "bytes": 171741,
+      "sha256": "a4d37cb360e11e5e8bcb2c00bc95dbac730593e7960a4cb0399571b1e514a1e3"
+    },
+    {
+      "path": "provenance-inputs/initial-integrated-report-input.json",
+      "bytes": 2002272,
+      "sha256": "aafed32edb2f7dbc571290914906d64780ea100b9f420c2825134a5eee777a63"
+    },
+    {
+      "path": "provenance-inputs/pre-unified-rule-report-input.json",
+      "bytes": 2923894,
+      "sha256": "9f078e753554b92a823dc6d26ae78075a357f541042c736482e62e2ae127b6ab"
+    },
+    {
+      "path": "provenance-inputs/pre-v45-adjudicated-input.json",
+      "bytes": 4005129,
+      "sha256": "6ce5afa46204c0f892fe881155d82175bc77acb48c47bb829bc530c595bc7f32"
+    },
+    {
+      "path": "provenance-inputs/prior-adjudication-script.py",
+      "bytes": 139606,
+      "sha256": "058969751f7b158f7f001b09118a767d6ae2989a893db6a15eda6b429cd36673"
+    },
+    {
+      "path": "provenance-inputs/word-locator-checklist.json",
+      "bytes": 3951,
+      "sha256": "5a8041a6452cb83d257736c7546334928c77734ccf80baa348e86a3efda10646"
+    },
+    {
+      "path": "qa_interaction_affordance.json",
+      "bytes": 1369,
+      "sha256": "415045bc459235f4e5a5ce94e550bd007bbcdae59d5641419e94c24bc2ae31c5"
+    },
+    {
+      "path": "qa_report_postpublication_hardened.json",
+      "bytes": 43269,
+      "sha256": "405c9aea8302a45903684fcf1b95ce4c82ea4312b161d6fd62a596fb7ef70d18"
+    },
+    {
+      "path": "qa_v45.py",
+      "bytes": 18988,
+      "sha256": "ac9a57ac5884474e8250e0fbfa38c096380a55dee61f2b8832ce0144317557e9"
+    },
+    {
+      "path": "recompute_summary.json",
+      "bytes": 232257,
+      "sha256": "c610084069fec402881a10488d4d6383a6d746eb01e3ba5de63856096f62f98f"
+    },
+    {
+      "path": "report.css",
+      "bytes": 74373,
+      "sha256": "2f18995cf4ce8b2793b98ebf3a70f26d4ff2470f02f91b57db8becdf043efa5a"
+    },
+    {
+      "path": "report.js",
+      "bytes": 118855,
+      "sha256": "cc09059603beca98ef632f056ab9fe4c972f16b653e230171902f62ad070eee6"
+    },
+    {
+      "path": "report.template.html",
+      "bytes": 807,
+      "sha256": "d1484c5509f7fd0e9670d6809cfdfb7b17dcd940d7d1d798979c4355a31bbbcf"
+    },
+    {
+      "path": "report_v4.5_final.json",
+      "bytes": 6143184,
+      "sha256": "3f7765a2b82b2b3bc84f976f81d1e5fde1d9e21147c07e150032dd8d53c67258"
+    },
+    {
+      "path": "stamp_v45.py",
+      "bytes": 2726,
+      "sha256": "8e09a0265f06f412df5a85ddb17467f55ccf1330f3253c377d232992732f3512"
+    }
+  ],
+  "gitCommitPerformed": false,
+  "gitPushPerformed": false,
+  "presentationUpdate": {
+    "scope": "可点击性与动效提示增强",
+    "scoringChanged": false,
+    "reportDataChanged": false,
+    "browserRuntimeRetest": "not_run_browser_policy_blocked"
+  }
+}

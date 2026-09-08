@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="upv8BetlaNn6XFAwuAIyZp">
+<head data-page-node-id="8tgi3bbSJbVsBY8LB1W7Wm">
+<meta charset="UTF-8" data-page-node-id="qKEGZbf7njTmzggyd13Pp6">
+<title>宇树科技（688836.SH）投资者一页纸</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1240px;
+    background: #FFFFFF;
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    color: #1A2430;
+    -webkit-font-smoothing: antialiased;
+  }
+  .navy { color: #061F32; }
+  .cyan { color: #08A6F6; }
+  .muted { color: #6B7684; }
+
+  /* ============ Masthead ============ */
+  .masthead {
+    background: #061F32;
+    padding: 44px 56px 36px;
+    position: relative;
+  }
+  .masthead::after {
+    content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 4px;
+    background: #08A6F6;
+  }
+  .mast-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 26px; }
+  .mast-brand { font-size: 15px; letter-spacing: 5px; color: #08A6F6; font-weight: 600; }
+  .mast-meta { font-size: 13px; color: #8FA3B8; letter-spacing: 1px; }
+  .mast-title { font-size: 46px; font-weight: 700; color: #FFFFFF; line-height: 1.25; letter-spacing: 1px; }
+  .mast-title .code { color: #99BDED; font-size: 30px; font-weight: 600; margin-left: 14px; }
+  .mast-sub { margin-top: 14px; font-size: 17px; color: #B9CBE0; line-height: 1.7; max-width: 1050px; }
+
+  /* ============ KPI Band ============ */
+  .kpi-band { display: flex; border-bottom: 1px solid #D8DDE3; }
+  .kpi {
+    flex: 1; padding: 30px 28px 26px;
+    border-right: 1px solid #D8DDE3;
+  }
+  .kpi:last-child { border-right: none; }
+  .kpi .k-label { font-size: 13px; color: #6B7684; letter-spacing: 2px; margin-bottom: 10px; }
+  .kpi .k-value { font-size: 44px; font-weight: 700; color: #061F32; line-height: 1; }
+  .kpi .k-value .unit { font-size: 18px; font-weight: 600; margin-left: 4px; }
+  .kpi .k-note { font-size: 13px; margin-top: 10px; color: #6B7684; }
+  .up { color: #B03A2E; font-weight: 600; }
+  .down { color: #177B57; font-weight: 600; }
+
+  /* ============ Body grid ============ */
+  .sheet { padding: 34px 56px 0; }
+  .section { margin-bottom: 34px; }
+  .sec-head { display: flex; align-items: center; margin-bottom: 18px; }
+  .sec-bar { width: 5px; height: 20px; background: #061F32; margin-right: 12px; }
+  .sec-title { font-size: 20px; font-weight: 700; color: #061F32; letter-spacing: 2px; }
+  .sec-tag { margin-left: 14px; font-size: 13px; color: #6B7684; }
+  .row { display: flex; gap: 40px; }
+  .col { flex: 1; min-width: 0; }
+
+  /* ============ Bar chart (CSS) ============ */
+  .chart-title { font-size: 14px; font-weight: 600; color: #061F32; margin-bottom: 16px; }
+  .bars { display: flex; align-items: flex-end; height: 190px; border-bottom: 1.5px solid #061F32; }
+  .bar-cell { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; }
+  .bar { width: 58%; background: #061F32; }
+  .bar.half { background: #99BDED; }
+  .bar-val { font-size: 14px; font-weight: 700; color: #061F32; margin-bottom: 6px; }
+  .bar-labels { display: flex; margin-top: 8px; }
+  .bar-labels div { flex: 1; text-align: center; font-size: 12.5px; color: #6B7684; }
+  .chart-note { font-size: 12px; color: #8A93A0; margin-top: 10px; line-height: 1.6; }
+
+  /* ============ Progress bars ============ */
+  .prog { margin-bottom: 16px; }
+  .prog-head { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 6px; }
+  .prog-head .p-name { color: #1A2430; font-weight: 600; }
+  .prog-head .p-val { color: #061F32; font-weight: 700; }
+  .prog-track { height: 10px; background: #EEF1F4; }
+  .prog-fill { height: 10px; background: #061F32; }
+  .prog-fill.c { background: #08A6F6; }
+  .prog-fill.l { background: #99BDED; }
+
+  /* ============ Data table ============ */
+  table.fin { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  table.fin th {
+    text-align: right; font-size: 12px; color: #6B7684; font-weight: 600;
+    padding: 0 10px 8px; border-bottom: 1.5px solid #061F32;
+  }
+  table.fin th:first-child, table.fin td:first-child { text-align: left; padding-left: 0; }
+  table.fin td { text-align: right; padding: 8px 10px; border-bottom: 1px solid #E4E8EC; color: #1A2430; }
+  table.fin td.num { font-variant-numeric: tabular-nums; font-weight: 600; color: #061F32; }
+  table.fin tr:last-child td { border-bottom: 1.5px solid #061F32; }
+
+  /* ============ Shift panel ============ */
+  .shift { display: flex; background: #F5F7FA; border-left: 5px solid #061F32; }
+  .shift-kpi { flex: 0 0 380px; padding: 24px 28px; border-right: 1px solid #D8DDE3; }
+  .shift-kpi .sk-row { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-bottom: 1px dashed #D8DDE3; }
+  .shift-kpi .sk-row:last-child { border-bottom: none; }
+  .sk-name { font-size: 14px; color: #1A2430; }
+  .sk-val { font-size: 24px; font-weight: 700; color: #061F32; }
+  .shift-why { flex: 1; padding: 24px 28px; font-size: 14px; line-height: 1.8; color: #1A2430; }
+
+  /* ============ Advantages ============ */
+  .adv-grid { display: flex; gap: 18px; }
+  .adv {
+    flex: 1; border-top: 3px solid #061F32; padding: 14px 14px 4px;
+    background: #FBFCFD;
+  }
+  .adv .a-no { font-size: 12px; color: #08A6F6; font-weight: 700; letter-spacing: 1px; }
+  .adv .a-title { font-size: 15.5px; font-weight: 700; color: #061F32; margin: 5px 0 7px; }
+  .adv .a-desc { font-size: 12.5px; color: #55606D; line-height: 1.65; }
+
+  /* ============ Outlook ============ */
+  .outlook { display: flex; gap: 40px; }
+  .out-col { flex: 1; }
+  .out-head {
+    font-size: 15px; font-weight: 700; color: #FFFFFF; background: #061F32;
+    padding: 8px 16px; letter-spacing: 2px; margin-bottom: 14px;
+  }
+  .out-head.risk { background: #5A0E13; }
+  .out-item { display: flex; margin-bottom: 13px; }
+  .out-item .o-dot {
+    flex: 0 0 22px; height: 22px; background: #061F32; color: #fff;
+    font-size: 12px; font-weight: 700; text-align: center; line-height: 22px;
+    border-radius: 3px; margin-right: 12px; margin-top: 2px;
+  }
+  .out-item.risk .o-dot { background: #5A0E13; }
+  .out-item .o-title { font-size: 14.5px; font-weight: 700; color: #061F32; }
+  .out-item .o-desc { font-size: 13px; color: #55606D; line-height: 1.6; margin-top: 2px; }
+
+  /* ============ Footer ============ */
+  .footer {
+    margin-top: 8px; background: #061F32; padding: 22px 56px 26px;
+  }
+  .footer .f-src { font-size: 12px; color: #8FA3B8; line-height: 1.8; }
+  .footer .f-disc { font-size: 12px; color: #5F7285; line-height: 1.8; margin-top: 8px; padding-top: 8px; border-top: 1px solid #2A3D4F; }
+</style>
+</head>
+<body data-page-node-id="1al7AggejakyMwY1KvMPwp">
+
+<!-- Masthead -->
+<div class="masthead" data-page-node-id="XlstTFSczhaYWIgBmPZRsT">
+  <div class="mast-top" data-page-node-id="pjMmGNcJrBjGzCEywBVzce">
+    <div class="mast-brand" data-page-node-id="uzcSwhHWsc5GA5HbeSCt0l">UNITREE ROBOTICS · 公司速览</div>
+    <div class="mast-meta" data-page-node-id="bfLZmQLo1OIPuU6Np1AkxX">数据截止 2026-08-30　|　内部研究整理 · 非投资建议</div>
+  </div>
+  <div class="mast-title" data-page-node-id="ZLSCTAGuwlD7HE2mzCoNLf">宇树科技<span class="code" data-page-node-id="7HEzHJAAlJK0dwQb9wCCP5">688836.SH 科创板</span></div>
+  <div class="mast-sub" data-page-node-id="19qQFIvDmBwbyP4kMUZNdY">A股首家以人形机器人整机为主营业务的上市公司。2022–2025年营收复合增速约140%，2025年扣非净利率约34.8%，是全球人形机器人行业少数实现"规模化销售+盈利"的公司；2026年进入"增速换挡+费用前置"阶段。</div>
+</div>
+
+<!-- KPI Band -->
+<div class="kpi-band" data-page-node-id="hMVUASuWnh9cvxHOU9pV6B">
+  <div class="kpi" data-page-node-id="q0o3ZBF9kfFcZOhxLMybH0">
+    <div class="k-label" data-page-node-id="tZGgh8LDRLY30acQm7ygvi">2025年营业收入</div>
+    <div class="k-value" data-page-node-id="X0sXH2vGoV3T4sLGJPUaUQ">16.99<span class="unit" data-page-node-id="tELm6j2Yn8OeUbPTyrMpf3">亿元</span></div>
+    <div class="k-note" data-page-node-id="keFHosDlpA3KqQ9JZ3NQYU"><span class="up" data-page-node-id="JJbOVeMmG1tv2C3g5GsL1k">同比 +333%</span>　三年CAGR约140%</div>
+  </div>
+  <div class="kpi" data-page-node-id="Fq3W2RWhHZIPELIB5ztazj">
+    <div class="k-label" data-page-node-id="lxXNVf1CvvdWUPXj6FjMOj">2025年扣非归母净利润</div>
+    <div class="k-value" data-page-node-id="SdJNMHIQ2DfC1SYbnN5d2w">5.91<span class="unit" data-page-node-id="0MfPJvyq7L2bCF9hB53ZXW">亿元</span></div>
+    <div class="k-note" data-page-node-id="ZCUeGvrkgIqU12JmojBMCN"><span class="up" data-page-node-id="5d1N44tZTrQH0VU6PynOLs">同比 +652.78%</span>　扣非净利率约34.8%</div>
+  </div>
+  <div class="kpi" data-page-node-id="4DuoAjTHorv32hxPSkpdnN">
+    <div class="k-label" data-page-node-id="z2MlU6fAb352qAGG7xfq2x">2025年主营业务毛利率</div>
+    <div class="k-value" data-page-node-id="kz9eMdjF0B0iW10yFixUJR">≈60.3<span class="unit" data-page-node-id="ptKi1Ba4kQH3lpJEvdwIWP">%</span></div>
+    <div class="k-note" data-page-node-id="Ezt9OwYcg7CgGuk5jHw9YL">2022年为44.18%，两年抬升约16pct</div>
+  </div>
+  <div class="kpi" data-page-node-id="4WeM3wyYQGB9PcvGskdSdC">
+    <div class="k-label" data-page-node-id="lniCxESoj4LvCQ0HSOeJpi">2025年人形机器人出货</div>
+    <div class="k-value" data-page-node-id="APMa0pujZT5Y85yKCNAm5D">5,500<span class="unit" data-page-node-id="xCZZDDHeS5Cx5RAlvrCVNZ">+台</span></div>
+    <div class="k-note" data-page-node-id="7rSHUYAkMXQ7N28HmdndKa">出货量全球第一（纯人形，不含轮式）</div>
+  </div>
+</div>
+
+<div class="sheet" data-page-node-id="gEtcUPD829ofX8dXsWS5qU">
+
+  <!-- Growth & Structure -->
+  <div class="section" data-page-node-id="1l9vtJPWMwIBj0QGhM9gQZ">
+    <div class="sec-head" data-page-node-id="HKh8BM0wRQ6DhEOVduLkYd"><div class="sec-bar" data-page-node-id="D6mhkhlvF270RELOvS0eQ9"></div><div class="sec-title" data-page-node-id="bKuw2LjGd5BbDA4rrhCNz0">成长与结构</div><div class="sec-tag" data-page-node-id="TDxACHM0v96KT7PkJ0DZjZ">人形反超四足 · 境内反超境外</div></div>
+    <div class="row" data-page-node-id="aA0K7HefDzUDCDlxsbdj6t">
+      <div class="col" data-page-node-id="RDDMymlMxsBUG75Ogl2C3m">
+        <div class="chart-title" data-page-node-id="BROBO9Pf5WpxyQKyceEHCu">营业收入（亿元）</div>
+        <div class="bars" data-page-node-id="6A9vhdHnFWS6uuPYC7mCjK">
+          <div class="bar-cell" data-page-node-id="Q5JZAAzNnXgf7GUhf1ffjK"><div class="bar-val" data-page-node-id="kVBhmLUERtyZTcKkFDgTpa">1.23</div><div class="bar" style="height:7%" data-page-node-id="o6e5sSOYcCGyXANK67u81D"></div></div>
+          <div class="bar-cell" data-page-node-id="YUv1WrJkHkZ7w7ffsS9qGr"><div class="bar-val" data-page-node-id="tUvTg7MMAkuxJFSm3owHWW">1.59</div><div class="bar" style="height:9%" data-page-node-id="Fw56553JDVGcnZ1jFrKoiY"></div></div>
+          <div class="bar-cell" data-page-node-id="qkuYJQ2Zy7g4z8X12a1oMx"><div class="bar-val" data-page-node-id="fFgdmikmr2oufQP6Jbyt3o">3.92</div><div class="bar" style="height:23%" data-page-node-id="0lHzxHSyTUrQzatVKube7v"></div></div>
+          <div class="bar-cell" data-page-node-id="yJXhAdq1nYzPH2voLdCUv4"><div class="bar-val" data-page-node-id="MvIEXHPzHeeGdTrFCaEMjI">16.99</div><div class="bar" style="height:100%" data-page-node-id="N0qBJXvEEAqXCH1Ghvv35s"></div></div>
+          <div class="bar-cell" data-page-node-id="3egEWtb2xRiWt9GTzrfuzi"><div class="bar-val" data-page-node-id="Z8K1GOCEtVCWx7k8rxeti4">11.52</div><div class="bar half" style="height:68%" data-page-node-id="7cAFW7uWnE81YPDSkv2cYA"></div></div>
+        </div>
+        <div class="bar-labels" data-page-node-id="t4dRhTIVBgGHKFxfh92B4d"><div data-page-node-id="DrkT5U9b2FAgpVkmSYAAkI">2022</div><div data-page-node-id="0102dH3Z385mc5PEMFQWnl">2023</div><div data-page-node-id="W4yuFvgxDBVp7fLEH5BUoD">2024</div><div data-page-node-id="vg2DOzl0YbpV66UL0bRMTE">2025</div><div data-page-node-id="aweZuCeyruWKvGZHRGjULA">2026H1</div></div>
+        <div class="chart-note" data-page-node-id="uEYPjlsGlNF5WJHRtg9N46">2026H1为半年度数据（浅色柱），同比+48.54%；增速回落系公司自述的基数抬升、行业热度降温与竞争加剧。</div>
+      </div>
+      <div class="col" data-page-node-id="w424h5XI1MfFGZgAxulKke">
+        <div class="chart-title" data-page-node-id="jxG6olzllDGN7xF7AEy4VC">人形机器人收入占比：两年完成第一引擎切换</div>
+        <div class="prog" data-page-node-id="B9EobavjGvni5NvQvPMreu">
+          <div class="prog-head" data-page-node-id="8Z1geyPK6rCnCFk381CzdE"><span class="p-name" data-page-node-id="8lsXmCgzMnAboqgsBvKuxB">2023（H1上市当年）</span><span class="p-val" data-page-node-id="HsGxSnLqCeBiDiiT5clC5m">1.88%</span></div>
+          <div class="prog-track" data-page-node-id="ycB7eXyeKzAG1SD5lmTv3G"><div class="prog-fill l" style="width:3.7%" data-page-node-id="KuFOIO2lXgKwCdXQ1cc6JS"></div></div>
+        </div>
+        <div class="prog" data-page-node-id="T7GZAnoTVyDqxBReYh1Plg">
+          <div class="prog-head" data-page-node-id="anRysjgcLH04quKfLi19eQ"><span class="p-name" data-page-node-id="gRdmXpG2hH7N75d1kH7BIb">2024</span><span class="p-val" data-page-node-id="B8vlRRFnEh0iq6DEaCX0Dn">27.6%</span></div>
+          <div class="prog-track" data-page-node-id="7GgC1kxYf06QPhXzaOlpXE"><div class="prog-fill c" style="width:27.6%" data-page-node-id="nKEfUXQd8PC0rDc2d3LIjM"></div></div>
+        </div>
+        <div class="prog" style="margin-bottom:22px" data-page-node-id="a4U28RKgyUVQWN2KrYhhM4">
+          <div class="prog-head" data-page-node-id="cGI0laikSMLRH2CFAM3KPx"><span class="p-name" data-page-node-id="gH5AjqZ5KFUXHhxZAKoyfG">2025（收入8.68亿元，反超四足）</span><span class="p-val" data-page-node-id="rIjAOjlC3Hk6TFEbwrKrdN">51.07%</span></div>
+          <div class="prog-track" data-page-node-id="mqI0UShiJqpqI5sP0YLU20"><div class="prog-fill" style="width:51.07%" data-page-node-id="e2bQR0EdmbPuNg56z5nLRF"></div></div>
+        </div>
+        <div class="chart-title" style="margin-top:4px" data-page-node-id="7FJPscQoY0krXwjHlKdTMk">2025年地域结构：市场重心转回国内</div>
+        <div class="prog" data-page-node-id="Kttr098vxaw286yvP6b82Q">
+          <div class="prog-head" data-page-node-id="DIH1LaxHghEARWvFOx6fii"><span class="p-name" data-page-node-id="EjzC4vcVrUcBHOz7StIYNM">境内收入 9.44亿元（2022–2024境外占比均超50%）</span><span class="p-val" data-page-node-id="uq4L4ALhi6l8JKOaDY0oTX">55.58%</span></div>
+          <div class="prog-track" data-page-node-id="UmsBJWP9jItKI1YJDBJnB0"><div class="prog-fill" style="width:55.58%" data-page-node-id="1dVH6ZDF3KkOWxUmHDInH0"></div></div>
+        </div>
+        <div class="prog" data-page-node-id="H5E72auZG8ei2FpVPxJ7h1">
+          <div class="prog-head" data-page-node-id="jIXmRl09U9elszv2nAMNRE"><span class="p-name" data-page-node-id="QhvVcqgwxjkDYBlDPqzlLh">境外收入 7.32亿元</span><span class="p-val" data-page-node-id="fz8sNc0FydCQAimIKxxBSr">43.06%</span></div>
+          <div class="prog-track" data-page-node-id="cncgqEqms7KSyhDxbhpEoH"><div class="prog-fill l" style="width:43.06%" data-page-node-id="OCIYdEABU80HCGID8WZuDf"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profit quality -->
+  <div class="section" data-page-node-id="jFunK3FX7Oyezu3BBY6El5">
+    <div class="sec-head" data-page-node-id="6hdNygu1jU07MJ08kZlqjS"><div class="sec-bar" data-page-node-id="VlKfMMZuzxaghrVJZoNYxS"></div><div class="sec-title" data-page-node-id="qQr5arHq7eRjgL85kCDwE0">盈利质量</div><div class="sec-tag" data-page-node-id="HDDNvvrp3VRDWlVMqGHgBA">2024年扭亏 · 盈利具备现金流支撑</div></div>
+    <div class="row" data-page-node-id="deCU8AUPAGPw0o9wFJGeFn">
+      <div class="col" data-page-node-id="N2qA4TvgHsSCZQpD3l8pz6">
+        <table class="fin" data-page-node-id="GhRx3NmmvTNsthrqDLI9GD">
+          <tr data-page-node-id="9G4PvKPEM5ROdNphKC5FUc"><th data-page-node-id="zfDkqE6rdxiW3PRfvlkMO1">报告期</th><th data-page-node-id="7WGlkePFFds4rtq3rru4WL">归母净利润</th><th data-page-node-id="agwnn5VkWQvlGFFZEtEnui">扣非归母净利润</th><th data-page-node-id="aIcMlptaXk2Er7kqCVzC8T">主营毛利率</th></tr>
+          <tr data-page-node-id="K2f16jl7IuACrZAk0mbIZA"><td data-page-node-id="ohDfCrloQvrchnSjJocmZ9">2022</td><td class="num" data-page-node-id="ZzrR1QGOSckXAikYv42JqB">-0.22亿</td><td class="num" data-page-node-id="iARIdKfLZBp0nWdECIvPhD">-0.08亿</td><td class="num" data-page-node-id="Xuz7vr6getp2ECsaZ4swim">44.18%</td></tr>
+          <tr data-page-node-id="UzgJU5SVvHpRYx0miIiIWS"><td data-page-node-id="RY6weRLYSRbFanAf79zg8w">2023</td><td class="num" data-page-node-id="WnO6t5pTFSIuIUlJGdHjh3">-0.11亿</td><td class="num" data-page-node-id="4UO1dG2iEqZDllPdcsmC0l">-0.18亿</td><td class="num" data-page-node-id="U8BOZE0C9PPDLf56IyrVb6">44.22%</td></tr>
+          <tr data-page-node-id="UMrIVZqmCkW5mjOyemxG5h"><td data-page-node-id="Y1ErYO1oul6gFcpoUwrToJ">2024</td><td class="num" data-page-node-id="kR49RxWagEs4gtoLtRPt1T">+0.95亿</td><td class="num" data-page-node-id="4Ae38kiMiE7o3a8Gma0IHg">+0.78亿</td><td class="num" data-page-node-id="bdCeB9O9M2jjblAfB13I4I">56.41%</td></tr>
+          <tr data-page-node-id="67ZPDmw8jBNSLh36238lPW"><td data-page-node-id="WrNJmzpIEVI54DFmNBngrf">2025</td><td class="num" data-page-node-id="HizCMDtJID1tmxTSqk0Xgx">约+2.78亿</td><td class="num" data-page-node-id="DKIHedaAcrDjln7OdPYdBn">+5.91亿</td><td class="num" data-page-node-id="r75tGvAndU3uiiBYZ7Lqln">≈60.3%</td></tr>
+        </table>
+        <div class="chart-note" data-page-node-id="AWFCL2R59o8MLtWdXjg2jI">口径提示：2025年确认股份支付费用3.49亿元（非经常性损益），归母与扣非差异显著，阅读利润须区分口径。</div>
+      </div>
+      <div class="col" style="display:flex; flex-direction:column; justify-content:center; gap:14px" data-page-node-id="OZaHHYBn4yyYov5RnfNdmx">
+        <div style="font-size:14.5px; line-height:1.8" data-page-node-id="8POPfBfz8vKkafIwFAHBOG">2025年经营活动现金净流入<span class="navy" style="font-weight:700" data-page-node-id="VGbbGoUnHA4QER5IrTmyQx">超6.7亿元</span>（较2024年增加约4.8亿元），盈利质量获现金流同步验证；截至2026年6月末资产总额38.45亿元，叠加IPO募资42.02亿元到账，资金面稳健。</div>
+        <div style="font-size:14.5px; line-height:1.8" data-page-node-id="CiqeURfB2bbh7evdQ0jbGX">毛利率抬升双驱动：人形放量规模效应（人形毛利率2023年87.7%→2025年前三季62.9%）+ 核心部组件自研降本（组件毛利率48.8%→60.4%）。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2026 Shift -->
+  <div class="section" data-page-node-id="Wy2inlDZFZenJ4EZLaDkoX">
+    <div class="sec-head" data-page-node-id="wD2LVOfCmRyimKt7LoUAbB"><div class="sec-bar" data-page-node-id="A4XdHGH36ThdtKxTMmFlPL"></div><div class="sec-title" data-page-node-id="n7ZOyTn0DxpiVuL1jX0yJ6">2026H1：增速换挡 + 费用前置</div><div class="sec-tag" data-page-node-id="lDXKqBJA7IFXFfdWDtBH0l">阶段性"增收不增利"，Q2已现修复</div></div>
+    <div class="shift" data-page-node-id="6CzfCcBZN4t94BDYsu1gUg">
+      <div class="shift-kpi" data-page-node-id="0FucCPEie8ApkE90zaMSPM">
+        <div class="sk-row" data-page-node-id="hGME5AcOD9MXkQ1FCvB175"><span class="sk-name" data-page-node-id="Y4oK0HYsUx8F231IBcKzIO">营业收入 11.52亿元</span><span class="sk-val up" style="font-size:22px" data-page-node-id="NwwjNBW5jsWaQoftrkhVyE">+48.54%</span></div>
+        <div class="sk-row" data-page-node-id="Wlnj92QzDzh39yzxGG2FBA"><span class="sk-name" data-page-node-id="wIshHVrdiuE36QOTw0TODl">扣非归母净利润 2.44亿元</span><span class="sk-val down" style="font-size:22px" data-page-node-id="OGIpMmIeX9olCogZAtPLV2">-19.34%</span></div>
+        <div class="sk-row" data-page-node-id="aXqRlTXWctElT57sdrRyZq"><span class="sk-name" data-page-node-id="TecTn1iPoz8vdO9cz1Wtr4">整体销售毛利率</span><span class="sk-val" style="font-size:22px" data-page-node-id="S3cywAzAdA5MccTAo7eAh2">56.01%</span></div>
+        <div class="sk-row" data-page-node-id="FAuIDoNDVn4kjchPUuVRG1"><span class="sk-name" data-page-node-id="YqnPHnMEEErjDnTAZVgJYf">研发费用 1.36亿元</span><span class="sk-val up" style="font-size:22px" data-page-node-id="S2eu3rM9fTv0VzNzNc4BJR">+152%</span></div>
+      </div>
+      <div class="shift-why" data-page-node-id="XIycmUAUwV1PaO4XmCq7Cp">
+        <b data-page-node-id="KdPjZJ4F9c3IfdnuU41uOn">归因：费用前置，而非需求恶化。</b>研发与销售费用同比大幅前置（销售费用已超2025年全年），拖累扣非表现；收入端实际超预期——H1营收已超出招股书业绩预告区间上限（10.52–11.28亿元）。据预告区间推算，Q2扣非净利率已回升至31.11%–34.42%（Q1约9.5%），费用前置影响集中在一季度。研发投向具身智能大模型与运动控制，补齐"大脑"短板。
+      </div>
+    </div>
+  </div>
+
+  <!-- Advantages -->
+  <div class="section" data-page-node-id="IAsHGgwYTDRAa3CstA7sjB">
+    <div class="sec-head" data-page-node-id="EpZZmQLozPbn2uFhF74YcL"><div class="sec-bar" data-page-node-id="QIqxMz5FucewaL75L8bT3p"></div><div class="sec-title" data-page-node-id="JFBQqrOAAHJr3awQFdiDPk">竞争优势</div><div class="sec-tag" data-page-node-id="goGiAb5Z6UKE06LdP4AkEm">五大优势构成盈利护城河</div></div>
+    <div class="adv-grid" data-page-node-id="EZLrgCfaabNmsTnj4csmNb">
+      <div class="adv" data-page-node-id="H7xBmHdglHEH18OpKEhiko"><div class="a-no" data-page-node-id="Py8mQYh5gN954bOb7Qrl7K">01</div><div class="a-title" data-page-node-id="faCWXUoN7c45jZa9nYqLyn">全栈自研自产</div><div class="a-desc" data-page-node-id="EfHAi6NVQGb7ORD1xqYKLO">核心部组件自研+自有产线，产品定价锚定者；毛利率显著高于优必选、越疆等可比公司的根本原因</div></div>
+      <div class="adv" data-page-node-id="470Ij272Vy3cadHSB8ApEi"><div class="a-no" data-page-node-id="IoRFqm6HrCTF6U2tZkY8J9">02</div><div class="a-title" data-page-node-id="HQm6SliZ16KZuHpXYbA7fF">盈利稀缺性</div><div class="a-desc" data-page-node-id="eUXoCQCLJVI9ECgAfMjWg1">普遍亏损烧钱的行业中2024年起持续盈利，2025年扣非净利率约34.8%，现金流同步验证</div></div>
+      <div class="adv" data-page-node-id="IeLBOoRlrtcgvD8lnFG1Ss"><div class="a-no" data-page-node-id="vdKqTLYTnA3xPY2BBFyQdd">03</div><div class="a-title" data-page-node-id="Ic4UdgWAnE0vLRCVCkZEDC">规模全球第一</div><div class="a-desc" data-page-node-id="zjrVv0ZyDM6EnpbgSlve8f">人形出货5,500+台全球第一（Figure AI约150台，媒体转引）；四足累计销量超3万台</div></div>
+      <div class="adv" data-page-node-id="lfxkpJYJ8HUVDG255tyw5Y"><div class="a-no" data-page-node-id="a2pPd6zzeOPlCChwg83LSl">04</div><div class="a-title" data-page-node-id="E9lfJpr8yJIfYxM6f4WHaA">品牌渠道势能</div><div class="a-desc" data-page-node-id="vvmjwy1WOKz1BtCWm6AtSV">2025央视春晚演出"一战成名"，境内市场快速打开，2026年延续品牌推广策略</div></div>
+      <div class="adv" data-page-node-id="wakgsjRFgFfDSRIiFYyFta"><div class="a-no" data-page-node-id="nSOeVLCJDEdH2h9Fdv8YBu">05</div><div class="a-title" data-page-node-id="P8DOC2a7lLoeyRL43H7QHr">资金股东资源</div><div class="a-desc" data-page-node-id="wyg8rEecWPsaUCNVRpRNah">IPO募资42.02亿元到账；美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东</div></div>
+    </div>
+  </div>
+
+  <!-- Outlook -->
+  <div class="section" data-page-node-id="uSYkoy8BodvH7GbntmoGJI">
+    <div class="sec-head" data-page-node-id="2o8lkAwsHoG0JmY3gHjeCj"><div class="sec-bar" data-page-node-id="yiGHT1iVTIN3IScGLcMtn6"></div><div class="sec-title" data-page-node-id="vaH19Jg9LQPLBUJQm3R7Zw">展望</div><div class="sec-tag" data-page-node-id="yN1o0CsXtPDeaJbAWCWZ4W">三大变量决定弹性 · 三类风险决定底线</div></div>
+    <div class="outlook" data-page-node-id="elokjcD8BmF0GKZgEnj96U">
+      <div class="out-col" data-page-node-id="7m5K8FLiqtz5Qkd0zTOA8g">
+        <div class="out-head" data-page-node-id="bEEDQGIiZPjr2OyGfDhiFJ">增长变量</div>
+        <div class="out-item" data-page-node-id="UxJ7rDMW0osV1e9JIaBWbZ"><div class="o-dot" data-page-node-id="WtLFcz9U2E69PzuWx6blfY">1</div><div data-page-node-id="IyyZRb64XgrFgaQh7dVbPL"><div class="o-title" data-page-node-id="ZWzNLJVVPaH1wNCES7UNLX">工业/商用订单兑现（最关键）</div><div class="o-desc" data-page-node-id="Y4IOcsPaYqYdGGYoH0odwH">下游73.6%集中于科研教育（2025年前三季度占人形收入）；工业订单放量决定营收能否重回高增长</div></div></div>
+        <div class="out-item" data-page-node-id="ksZkZBlbsWG2BKYCVIiyNv"><div class="o-dot" data-page-node-id="wyFUSXqHdaHcCHBFqRkkfZ">2</div><div data-page-node-id="TwMrwqzrRDcCbHRzbf47by"><div class="o-title" data-page-node-id="BPHQHAdoIRefqMDrfmuKmp">"大脑"能力补强进度</div><div class="o-desc" data-page-node-id="D56ksMm3NcNwCUDe68u9Uy">募投约36亿元投向三个研发项目，具身大模型与运控融合决定产品能否从"表演科研"升级为"可干活"</div></div></div>
+        <div class="out-item" data-page-node-id="BCTX7kDXfspjdUufDR6otq"><div class="o-dot" data-page-node-id="rdYDOWCZoYeuGarixp4t3P">3</div><div data-page-node-id="RHBOs1oZcxvjkHfBY9m5HH"><div class="o-title" data-page-node-id="XFGMxglTYO600DAK61X74I">海外渗透与组件生态</div><div class="o-desc" data-page-node-id="lGlSdYRuSv53F27DB0Erch">境外收入占比43.06%仍是重要来源；组件业务毛利率60%+，有望贡献第二增长曲线</div></div></div>
+      </div>
+      <div class="out-col" data-page-node-id="keVhZ8U63E2U2IVrGobQ5k">
+        <div class="out-head risk" data-page-node-id="Lvxk2HVxl9RfFbCsw8zUkL">主要风险</div>
+        <div class="out-item risk" data-page-node-id="Rl9ro6EzbqmLOiGoxSj6Vm"><div class="o-dot" data-page-node-id="JBUStPkvIULyhmLJu4eySB">1</div><div data-page-node-id="5LuvgbQSTA0AGgK4lLrtEA"><div class="o-title" data-page-node-id="F5DJkUTDInlbg2uMsKnFdc">竞争加剧与场景集中</div><div class="o-desc" data-page-node-id="4YvVVboyO23QIN48mFHC9V">整车厂、消费电子企业及智元、优必选加速入局；工业化落地慢于预期将影响收入持续性</div></div></div>
+        <div class="out-item risk" data-page-node-id="rcni3XNpZ2bIw1VcWxLYbu"><div class="o-dot" data-page-node-id="Jk757626sw3ntBIrWcwbpB">2</div><div data-page-node-id="JAy5jFMfkCwmM8ZvSDcEku"><div class="o-title" data-page-node-id="SEHwcXWRX6PVbeHqh2633h">毛利率下行</div><div class="o-desc" data-page-node-id="WSf8mRdDX50HXo71cQSnS4">以价换量下人形毛利率由87.7%收窄至62.9%，2026H1整体毛利率降至56.01%</div></div></div>
+        <div class="out-item risk" data-page-node-id="4DfzwmWOfgJuk1Q2H4SIGd"><div class="o-dot" data-page-node-id="sBoXZoCTmDPq6yZn8vMyMn">3</div><div data-page-node-id="oVX81DQScP1LbB6AYF6VjF"><div class="o-title" data-page-node-id="X6sfsik6Py9z45GAOHgkJi">高估值消化</div><div class="o-desc" data-page-node-id="qd8Ez1IyQKKupVukAVqSqw">发行市盈率约219倍；机构预测分歧大（野村2026E营收26.87亿 vs 招商30.97亿，均为预测、非事实）</div></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer" data-page-node-id="Z5OShQuzAmQDuE5EUVHLT6">
+  <div class="f-src" data-page-node-id="kxGEpdWjpBTYqJ8WG5iQ6Z">资料来源：公司《首次公开发行股票并在科创板上市招股说明书（申报稿）》（上交所，2026-03-20）、《科创板上市公告书》（2026-08-17）、2025年年度报告、2026年第一季度报告、公司官网及公开报道。所有数据以《宇树科技经营与财务分析底稿.xlsx》为唯一底稿；标注"约/推算/转引"的数据请以交易所披露原文为准。</div>
+  <div class="f-disc" data-page-node-id="ABddZGz28RPhl1oR71EARQ">免责声明：本页由AI基于公开信息整理生成，不代表任何持牌机构观点，不构成投资建议；文中涉及的盈利预测均为第三方机构观点且已标注为预测，非已发生事实。市场有风险，投资需谨慎。</div>
+</div>
+
+</body>
+</html>

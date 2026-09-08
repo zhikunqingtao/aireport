@@ -1,0 +1,49 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>营收三年约14倍：2025年+333%后，2026年转入中高速增长</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 32, alignItems: 'center', marginTop: 12 }}>
+        <Box style={{ width: '62%', flexDirection: 'column' }}>
+            <Chart
+                style={{ height: 460 }}
+                chartType='barChart'
+                title='营业收入（亿元）'
+                titleColor='#061F32'
+                showLegend={false}
+                showDataLabels={true}
+                dataLabelColor='#061F32'
+                axisColor='#808080'
+                colors={['#061F32']}
+                background='#FFFFFF'
+                data={[
+                    ['报告期', '营业收入'],
+                    ['2022', 1.23],
+                    ['2023', 1.59],
+                    ['2024', 3.92],
+                    ['2025', 16.99],
+                    ['2026H1', 11.52],
+                ]}
+            />
+            <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>注：2026H1为半年度数据；同比增速2023年+29.5%、2024年+146.6%、2025年+333%、2026H1 +48.54%。</Text>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 20 }}>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #061F32', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>双轮驱动</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>四足机器人稳步增长 + 人形机器人爆发式放量，2022–2025营收CAGR约140%。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>增速换挡属公司自述的合理回落</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>上市公告书归因：营收基数抬升、行业热度降温、竞争加剧；公司同时提示增速放缓与业绩波动风险。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #061F32', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>+48.54%仍是中高速</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1营收11.52亿元，已超出招股书业绩预告区间上限（10.52–11.28亿元）。</Text>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：招股说明书、2025年年度报告、上市公告书（2026-08-17）</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>05</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,44 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>目录</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'column', flex: 1, justifyContent: 'center', gap: 40, marginTop: 12 }}>
+        <Box style={{ flexDirection: 'row', gap: 40 }}>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 24, alignItems: 'flex-start', borderTop: '2px solid #061F32', paddingTop: 20 }}>
+                <Text style={{ fontSize: 44, color: '#08A6F6', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>01</Text>
+                <Box style={{ flexDirection: 'column', gap: 8 }}>
+                    <Text style={{ fontSize: 26, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>成长兑现</Text>
+                    <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>营收三年约14倍，2024年扭亏后盈利快速放大，2025年扣非净利率约34.8%</Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 24, alignItems: 'flex-start', borderTop: '2px solid #061F32', paddingTop: 20 }}>
+                <Text style={{ fontSize: 44, color: '#08A6F6', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>02</Text>
+                <Box style={{ flexDirection: 'column', gap: 8 }}>
+                    <Text style={{ fontSize: 26, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>结构切换</Text>
+                    <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>人形机器人收入占比过半、反超四足；境内收入占比55.58%、反超境外</Text>
+                </Box>
+            </Box>
+        </Box>
+        <Box style={{ flexDirection: 'row', gap: 40 }}>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 24, alignItems: 'flex-start', borderTop: '2px solid #061F32', paddingTop: 20 }}>
+                <Text style={{ fontSize: 44, color: '#08A6F6', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>03</Text>
+                <Box style={{ flexDirection: 'column', gap: 8 }}>
+                    <Text style={{ fontSize: 26, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>换挡与投入</Text>
+                    <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026年增速回落至+48.54%，研发与销售费用前置，扣非阶段性回落</Text>
+                </Box>
+            </Box>
+            <Box style={{ flex: 1, flexDirection: 'row', gap: 24, alignItems: 'flex-start', borderTop: '2px solid #061F32', paddingTop: 20 }}>
+                <Text style={{ fontSize: 44, color: '#08A6F6', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>04</Text>
+                <Box style={{ flexDirection: 'column', gap: 8 }}>
+                    <Text style={{ fontSize: 26, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>竞争力与展望</Text>
+                    <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>五大优势构成盈利护城河；增长变量、主要风险与后续跟踪指标</Text>
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>宇树科技（688836.SH）公司研究 · 内部汇报</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>02</Text>
+    </Box>
+</Slide>

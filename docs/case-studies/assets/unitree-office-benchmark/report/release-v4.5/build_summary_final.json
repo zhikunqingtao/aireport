@@ -1,0 +1,9 @@
+{
+  "path": "report/source-self-contained-v4.5.html",
+  "bytes": 39561482,
+  "sha256": "9e70577e6452e2c6283837f071617f30d819df0ca01513cbb300aed3ec723603",
+  "embeddedMedia": 710,
+  "missingMedia": 0,
+  "reportDataEncoding": "gzip-base64",
+  "changeScope": "仅增强可点击性提示、焦点反馈与克制动效；未重新评分，活动数据未改变。"
+}

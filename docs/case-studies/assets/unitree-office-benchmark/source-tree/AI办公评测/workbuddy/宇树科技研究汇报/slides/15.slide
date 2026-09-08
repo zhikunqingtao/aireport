@@ -1,0 +1,64 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>展望：三大增长变量决定弹性，三类风险决定底线</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 32, marginTop: 16 }}>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 16 }}>
+            <Box style={{ background: '#061F32', padding: '10px 20px' }}>
+                <Text style={{ fontSize: 22, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>增长变量</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#061F32', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>1</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>工业/商用订单兑现（最关键）</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>下游73.6%集中于科研教育（2025年前三季度占人形收入）；工业订单放量决定营收能否重回高增长。</Text>
+                </Box>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#061F32', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>"大脑"能力补强进度</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>募投约36亿元投向三个研发项目；具身大模型与运控融合决定产品能否从"表演科研"升级为"可干活"。</Text>
+                </Box>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#061F32', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>3</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>海外渗透与组件生态</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>境外收入占比43.06%仍是重要来源；组件业务毛利率60%+，有望贡献第二增长曲线。</Text>
+                </Box>
+            </Box>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 16 }}>
+            <Box style={{ background: '#5A0E13', padding: '10px 20px' }}>
+                <Text style={{ fontSize: 22, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>主要风险</Text>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#5A0E13', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>1</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>竞争加剧与场景集中</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>整车厂、消费电子企业及智元、优必选加速入局；若工业化落地慢于预期，收入持续性受影响。</Text>
+                </Box>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#5A0E13', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>毛利率下行</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>以价换量下人形毛利率由87.7%（2023）收窄至62.9%（2025前三季），2026H1整体毛利率降至56.01%。</Text>
+                </Box>
+            </Box>
+            <Box style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', borderTop: '1px solid #E7E6E6', paddingTop: 14 }}>
+                <Box style={{ width: 28, height: 28, background: '#5A0E13', borderRadius: 4, justifyContent: 'center', alignItems: 'center', marginTop: 2 }}><Text style={{ fontSize: 16, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>3</Text></Box>
+                <Box style={{ flex: 1, flexDirection: 'column', gap: 4 }}>
+                    <Text style={{ fontSize: 19, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>高估值消化</Text>
+                    <Text style={{ fontSize: 16, color: '#44546A', lineHeight: 1.45, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>发行市盈率约219倍；若业绩兑现低于预期，估值存在回调压力。机构预测分歧大（野村2026E营收26.87亿 vs 招商30.97亿），<span style={{ fontWeight: 'bold' }}>均为预测、非事实</span>。</Text>
+                </Box>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：招股说明书、上市公告书、2025年年度报告；机构预测为媒体转引、未经研报原文核验</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>15</Text>
+    </Box>
+</Slide>

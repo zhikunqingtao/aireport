@@ -1,0 +1,49 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>盈利质量：2024年扭亏、2025年扣非5.91亿元，毛利率升至约60%</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 32, alignItems: 'center', marginTop: 12 }}>
+        <Box style={{ width: '40%', flexDirection: 'column', gap: 20 }}>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #061F32', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>扭亏后盈利快速放大</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2024年归母净利润9,450万元实现扭亏；2025年扣非归母5.91亿元（+652.78%），扣非净利率约34.8%。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #08A6F6', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>毛利率两年抬升约16pct</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>主营毛利率44.18%（2022）→56.41%（2024）→约60.3%（2025）：人形规模效应 + 核心部组件自研降本。</Text>
+            </Box>
+            <Box style={{ flexDirection: 'column', gap: 6, borderLeft: '3px solid #061F32', paddingLeft: 16 }}>
+                <Text style={{ fontSize: 22, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>读利润须区分口径</Text>
+                <Text style={{ fontSize: 18, color: '#44546A', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2025年确认股份支付3.49亿元（非经常性），归母（约2.78亿）与扣非（5.91亿）差异显著。</Text>
+            </Box>
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column' }}>
+            <Chart
+                style={{ height: 460 }}
+                chartType='barChart'
+                title='归母净利润 vs 扣非归母净利润（亿元）'
+                titleColor='#061F32'
+                showLegend={true}
+                showDataLabels={true}
+                legendColor='#44546A'
+                dataLabelColor='#061F32'
+                axisColor='#808080'
+                colors={['#99BDED', '#061F32']}
+                background='#FFFFFF'
+                data={[
+                    ['年度', '归母净利润', '扣非归母净利润'],
+                    ['2022', -0.22, -0.08],
+                    ['2023', -0.11, -0.18],
+                    ['2024', 0.95, 0.78],
+                    ['2025', 2.78, 5.91],
+                ]}
+            />
+            <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>注：2025年归母净利润为约数（年报口径）；扣非口径剔除股份支付等非经常性损益。</Text>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：招股说明书、2025年年度报告</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>09</Text>
+    </Box>
+</Slide>

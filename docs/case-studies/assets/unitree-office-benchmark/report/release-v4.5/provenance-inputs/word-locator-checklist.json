@@ -1,0 +1,71 @@
+{
+  "protocolVersion": "v4.4-symmetric-six-theme",
+  "application": "Microsoft Word for Mac 16.112.3",
+  "environment": "macOS 26.5.2",
+  "scope": "文档检索便利性，不评价六项主题的内容质量",
+  "stoppedAtUserRequest": true,
+  "noFurtherWordOperation": true,
+  "scoreFormula": {
+    "ctrlFFind": {"maxPoints": 2, "formula": "通过主题数/6×2"},
+    "firstHitCorrectSection": {"maxPoints": 2, "formula": "通过主题数/6×2"},
+    "nativeNavigation": {"maxPoints": 1, "formula": "导航窗格两步直达通过主题数/6×1"}
+  },
+  "interpretationLimit": "原Prompt只要求可编辑Word研究报告，未要求导航窗格或自动目录；检索成功和首次命中合计4分，原生导航便利性最多1分。原生标题与导航是同一结构能力，不重复计分；导航缺失不单独触发G1/G2，也不与可编辑结构重复扣分。",
+  "artifacts": {
+    "artifact:doubao:word": {
+      "pages": 9,
+      "headingCoveragePassed": 6,
+      "navigationPassed": 6,
+      "ctrlFPassed": 6,
+      "firstHitPassed": 6,
+      "score": 5,
+      "landingPages": [2, 4, 6, 6, 7, 7],
+      "evidence": ["evidence:native:1fb4c60cf3b9348e71", "evidence:native:b71ed05d5f834a00f9", "evidence:native:6fbcf23d60f9e28e8b", "evidence:native:05c4060e66df833d51", "evidence:native:b60547b5f5fd9959b4"],
+      "note": "六个主题均存在原生标题并可从导航窗格直达；Word搜索均命中对应一级主题。"
+    },
+    "artifact:qianwen:word": {
+      "pages": 5,
+      "headingCoveragePassed": 6,
+      "navigationPassed": 6,
+      "ctrlFPassed": 6,
+      "firstHitPassed": 6,
+      "score": 5,
+      "landingPages": [1, 2, 3, 3, 4, 4],
+      "evidence": ["evidence:native:7fbffbe7cbf554bb48", "evidence:native:2e58b88d7842d7b0dd", "evidence:native:f91f873e5507f1faac", "evidence:native:7cfc48a9b964a5ae2a", "evidence:native:b2fa35cdeb4a8592f3"],
+      "note": "六个主题均存在原生标题并可从导航窗格直达；Word搜索均命中对应主题。"
+    },
+    "artifact:qoder:word": {
+      "pages": 32,
+      "headingCoveragePassed": 0,
+      "navigationPassed": 0,
+      "ctrlFPassed": 6,
+      "firstHitPassed": 6,
+      "score": 4,
+      "landingPages": [5, 8, 13, 15, 18, 20],
+      "evidence": ["evidence:native:373ae5e917b40d53b1", "EV-QW-LOCATOR-LOG", "EV-QW-PAGE-MAIN-BUSINESS", "EV-QW-PAGE-REVENUE-PROFIT", "EV-QW-PAGE-RD", "EV-QW-PAGE-ADVANTAGE", "EV-QW-PAGE-GROWTH", "EV-QW-PAGE-RISK"],
+      "note": "导航窗格为空，但六个检索任务均可通过Word查找定位到正确章节。"
+    },
+    "artifact:workbuddy:word": {
+      "pages": 8,
+      "headingCoveragePassed": 2,
+      "navigationPassed": 2,
+      "ctrlFPassed": 6,
+      "firstHitPassed": 6,
+      "score": 4.333333,
+      "landingPages": [2, 3, 5, 6, 6, 7],
+      "evidence": ["evidence:native:dce084ab68ff75cc3c", "evidence:native:0a79a6749551c8b842", "evidence:native:9a424bcac88440fb83", "evidence:native:fb45a645083d656982", "evidence:native:6112f775249e006ca2", "evidence:native:69d361af90a597c722"],
+      "note": "导航原生标题覆盖主营业务和收入两项；其余主题可通过正文检索定位。竞争优势与增长变量的原生截图未单独保留，结论由固定DOCX中唯一一级标题、完整原生页截图及同一Word会话的搜索观察共同支持。"
+    },
+    "artifact:zhikuncode:word": {
+      "pages": 12,
+      "headingCoveragePassed": 0,
+      "navigationPassed": 0,
+      "ctrlFPassed": 6,
+      "firstHitPassed": 6,
+      "score": 4,
+      "landingPages": [3, 5, 7, 8, 8, 9],
+      "evidence": ["evidence:native:6f74a832243fdf7b8c", "evidence:native:ac55589fe7df3d8624", "evidence:native:bb15fcbed9302518dc", "evidence:native:9866f5a082487aad65", "evidence:native:43f7555484106a03e0", "evidence:native:b833ea9e3ab4771552"],
+      "note": "导航窗格为空；六项Word搜索均命中对应一级主题，页面落点由原生会话截图确认。"
+    }
+  }
+}

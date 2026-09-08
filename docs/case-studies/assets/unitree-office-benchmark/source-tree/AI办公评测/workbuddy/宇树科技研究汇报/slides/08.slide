@@ -1,0 +1,55 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#FFFFFF', padding: '44px 56px 24px 56px', flexDirection: 'column' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Text style={{ fontSize: 32, color: '#061F32', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2025年收入结构：人形过半、境内反超，市场重心转回国内</Text>
+        <Box style={{ width: '100%', height: 1, background: '#061F32', marginTop: 12 }} />
+    </Box>
+    <Box style={{ flexDirection: 'row', flex: 1, gap: 32, alignItems: 'center', marginTop: 12 }}>
+        <Box style={{ width: '50%', flexDirection: 'column' }}>
+            <Chart
+                style={{ height: 440 }}
+                chartType='doughnutChart'
+                title='2025年主营收入结构：分产品（亿元）'
+                titleColor='#061F32'
+                showLegend={true}
+                showDataLabels={true}
+                legendColor='#44546A'
+                dataLabelColor='#FFFFFF'
+                colors={['#061F32', '#08A6F6', '#99BDED']}
+                background='#FFFFFF'
+                data={[
+                    ['产品', '收入'],
+                    ['人形机器人 8.68', 8.68],
+                    ['四足机器人 6.98', 6.98],
+                    ['机器人组件 1.04', 1.04],
+                ]}
+            />
+        </Box>
+        <Box style={{ flex: 1, flexDirection: 'column', gap: 16 }}>
+            <Chart
+                style={{ height: 250 }}
+                chartType='barChart'
+                barDirection='bar'
+                title='2025年主营收入结构：分地域（亿元）'
+                titleColor='#061F32'
+                showLegend={false}
+                showDataLabels={true}
+                dataLabelColor='#061F32'
+                axisColor='#808080'
+                colors={['#001965']}
+                background='#FFFFFF'
+                data={[
+                    ['地域', '收入'],
+                    ['境内 55.58%', 9.44],
+                    ['境外 43.06%', 7.32],
+                ]}
+            />
+            <Box style={{ background: '#F5F5F5', padding: '16px 20px', borderLeft: '3px solid #08A6F6' }}>
+                <Text style={{ fontSize: 18, color: '#061F32', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2022–2024年境外占比均超50%；<span style={{ fontWeight: 'bold' }}>央视春晚演出后国内品牌势能兑现</span>，2025年境内占比升至55.58%——同时也意味着对国内科研教育采购的依赖上升。</Text>
+            </Box>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 12 }}>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：公司2025年年度报告（占比之和与100%的差异为其他业务收入口径所致）</Text>
+        <Text style={{ fontSize: 14, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>08</Text>
+    </Box>
+</Slide>

@@ -1,0 +1,945 @@
+{
+  "schemaVersion": "3.0-native-office-preflight",
+  "createdAt": "2026-09-04T14:32:29.901389+08:00",
+  "environment": {
+    "os": "macOS",
+    "osVersion": "26.5.2",
+    "machine": "arm64",
+    "office": {
+      "excel": {
+        "path": "/Applications/Microsoft Excel.app",
+        "version": "16.112.3",
+        "build": "16.112.26083020"
+      },
+      "word": {
+        "path": "/Applications/Microsoft Word.app",
+        "version": "16.112.3",
+        "build": "16.112.26083020"
+      },
+      "powerpoint": {
+        "path": "/Applications/Microsoft PowerPoint.app",
+        "version": "16.112.3",
+        "build": "16.112.26083020"
+      }
+    },
+    "browser": {
+      "chrome": {
+        "path": "/Applications/Google Chrome.app",
+        "version": "152.0.7977.77",
+        "build": "7977.77"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "id": "doubao_excel",
+      "tool": "豆包",
+      "kind": "excel",
+      "name": "宇树科技经营财务分析底稿_截至20260830.xlsx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技经营财务分析底稿_截至20260830.xlsx",
+      "bytes": 35523,
+      "mtime": 1788453588.2503352,
+      "headerHex": "504b0304140000000800f804245d46c7",
+      "sha256": "4942b044499cb7abb982ed82cde6b54430112c223115ae9b7968b98686a5257a",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_excel/initial/宇树科技经营财务分析底稿_截至20260830.xlsx",
+          "sha256Before": "4942b044499cb7abb982ed82cde6b54430112c223115ae9b7968b98686a5257a"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_excel/edit/宇树科技经营财务分析底稿_截至20260830.xlsx",
+          "sha256Before": "4942b044499cb7abb982ed82cde6b54430112c223115ae9b7968b98686a5257a"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_excel/repair/宇树科技经营财务分析底稿_截至20260830.xlsx",
+          "sha256Before": "4942b044499cb7abb982ed82cde6b54430112c223115ae9b7968b98686a5257a"
+        }
+      },
+      "manifestMetadata": {
+        "sheets": 10,
+        "nativeCharts": 6,
+        "formulas": 142
+      }
+    },
+    {
+      "id": "doubao_word",
+      "tool": "豆包",
+      "kind": "word",
+      "name": "宇树科技公司研究报告_截至20260830.docx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技公司研究报告_截至20260830.docx",
+      "bytes": 50075,
+      "mtime": 1788456889.5801857,
+      "headerHex": "504b0304140000000800580c245d33c1",
+      "sha256": "2f575523d944bcabe48f0a9e54a4c1e17a9bda39f4a651064496d2f23df8cc35",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_word/initial/宇树科技公司研究报告_截至20260830.docx",
+          "sha256Before": "2f575523d944bcabe48f0a9e54a4c1e17a9bda39f4a651064496d2f23df8cc35"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_word/edit/宇树科技公司研究报告_截至20260830.docx",
+          "sha256Before": "2f575523d944bcabe48f0a9e54a4c1e17a9bda39f4a651064496d2f23df8cc35"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_word/repair/宇树科技公司研究报告_截至20260830.docx",
+          "sha256Before": "2f575523d944bcabe48f0a9e54a4c1e17a9bda39f4a651064496d2f23df8cc35"
+        }
+      },
+      "manifestMetadata": {
+        "paragraphXml": 559,
+        "tables": 6,
+        "images": 0,
+        "pages": 7
+      }
+    },
+    {
+      "id": "doubao_ppt",
+      "tool": "豆包",
+      "kind": "ppt",
+      "name": "宇树科技内部汇报_截至20260830.pptx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技内部汇报_截至20260830.pptx",
+      "bytes": 876840,
+      "mtime": 1788474284.0372617,
+      "headerHex": "504b03041400000008001633245d95bf",
+      "sha256": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ppt/initial/宇树科技内部汇报_截至20260830.pptx",
+          "sha256Before": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ppt/edit/宇树科技内部汇报_截至20260830.pptx",
+          "sha256Before": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ppt/repair/宇树科技内部汇报_截至20260830.pptx",
+          "sha256Before": "563a323f9196f32d9548cf5502e590a1ceb0663387a580a5fcb42f52ce5565f2"
+        }
+      },
+      "manifestMetadata": {
+        "slides": 16,
+        "nativeCharts": 7,
+        "media": 2,
+        "embeddings": 7
+      }
+    },
+    {
+      "id": "doubao_image",
+      "tool": "豆包",
+      "kind": "image",
+      "name": "宇树科技投资人一图通_截至20260830.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技投资人一图通_截至20260830.png",
+      "bytes": 1048626,
+      "mtime": 1788484376.9508054,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "c6c4deb2dc118aa78a48395582207be22b159b46fde99aa7ca8852d3ebcac6ac",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_image/initial/宇树科技投资人一图通_截至20260830.png",
+          "sha256Before": "c6c4deb2dc118aa78a48395582207be22b159b46fde99aa7ca8852d3ebcac6ac"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_image/edit/宇树科技投资人一图通_截至20260830.png",
+          "sha256Before": "c6c4deb2dc118aa78a48395582207be22b159b46fde99aa7ca8852d3ebcac6ac"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_image/repair/宇树科技投资人一图通_截至20260830.png",
+          "sha256Before": "c6c4deb2dc118aa78a48395582207be22b159b46fde99aa7ca8852d3ebcac6ac"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2800,
+        "height": 3920
+      }
+    },
+    {
+      "id": "doubao_ink",
+      "tool": "豆包",
+      "kind": "ink",
+      "name": "宇树科技投资人一图通_水墨风_截至20260830.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技投资人一图通_水墨风_截至20260830.png",
+      "bytes": 5592823,
+      "mtime": 1788486764.8634365,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "580d2d39353f3f4d06ebf24f728da0098f86716c4d2bcd3a95d25311d3250f3c",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ink/initial/宇树科技投资人一图通_水墨风_截至20260830.png",
+          "sha256Before": "580d2d39353f3f4d06ebf24f728da0098f86716c4d2bcd3a95d25311d3250f3c"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ink/edit/宇树科技投资人一图通_水墨风_截至20260830.png",
+          "sha256Before": "580d2d39353f3f4d06ebf24f728da0098f86716c4d2bcd3a95d25311d3250f3c"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_ink/repair/宇树科技投资人一图通_水墨风_截至20260830.png",
+          "sha256Before": "580d2d39353f3f4d06ebf24f728da0098f86716c4d2bcd3a95d25311d3250f3c"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2800,
+        "height": 3920
+      }
+    },
+    {
+      "id": "doubao_html",
+      "tool": "豆包",
+      "kind": "html",
+      "name": "宇树科技经营财务交互看板_截至20260830.html",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/豆包办公/宇树科技经营财务交互看板_截至20260830.html",
+      "bytes": 1076359,
+      "mtime": 1788491305.7321107,
+      "headerHex": "3c21444f43545950452068746d6c3e0a",
+      "sha256": "6c5ea0fd528787e2d1346bccb7523d16836a2161afc07c43b240a55b8dc21737",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_html/initial/宇树科技经营财务交互看板_截至20260830.html",
+          "sha256Before": "6c5ea0fd528787e2d1346bccb7523d16836a2161afc07c43b240a55b8dc21737"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_html/edit/宇树科技经营财务交互看板_截至20260830.html",
+          "sha256Before": "6c5ea0fd528787e2d1346bccb7523d16836a2161afc07c43b240a55b8dc21737"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/doubao_html/repair/宇树科技经营财务交互看板_截至20260830.html",
+          "sha256Before": "6c5ea0fd528787e2d1346bccb7523d16836a2161afc07c43b240a55b8dc21737"
+        }
+      },
+      "manifestMetadata": {
+        "externalScripts": 0,
+        "externalStyles": 0,
+        "buttons": 5,
+        "eventListeners": 5,
+        "mediaQueries": 1
+      }
+    },
+    {
+      "id": "qianwen_excel",
+      "tool": "千问",
+      "kind": "excel",
+      "name": "宇树科技经营与财务分析底稿.xlsx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技经营与财务分析底稿.xlsx",
+      "bytes": 25672,
+      "mtime": 1788454763.7270138,
+      "headerHex": "504b03041400000008006b07245d46c7",
+      "sha256": "84ad4d0b1657a878b891b77b6666a45219ea1048104c522658e5d63b1f33bd7b",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_excel/initial/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "84ad4d0b1657a878b891b77b6666a45219ea1048104c522658e5d63b1f33bd7b"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_excel/edit/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "84ad4d0b1657a878b891b77b6666a45219ea1048104c522658e5d63b1f33bd7b"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_excel/repair/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "84ad4d0b1657a878b891b77b6666a45219ea1048104c522658e5d63b1f33bd7b"
+        }
+      },
+      "manifestMetadata": {
+        "sheets": 6,
+        "nativeCharts": 5,
+        "formulas": 122
+      }
+    },
+    {
+      "id": "qianwen_word",
+      "tool": "千问",
+      "kind": "word",
+      "name": "宇树科技公司研究报告.docx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技公司研究报告.docx",
+      "bytes": 17721,
+      "mtime": 1788456620.6536021,
+      "headerHex": "504b03040a0000000000ca8b235d0000",
+      "sha256": "5c6426d3a2c4228a4b609ccf72a13b4c78fa08bfde7fb7b7ec3bfc16bed9986f",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_word/initial/宇树科技公司研究报告.docx",
+          "sha256Before": "5c6426d3a2c4228a4b609ccf72a13b4c78fa08bfde7fb7b7ec3bfc16bed9986f"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_word/edit/宇树科技公司研究报告.docx",
+          "sha256Before": "5c6426d3a2c4228a4b609ccf72a13b4c78fa08bfde7fb7b7ec3bfc16bed9986f"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_word/repair/宇树科技公司研究报告.docx",
+          "sha256Before": "5c6426d3a2c4228a4b609ccf72a13b4c78fa08bfde7fb7b7ec3bfc16bed9986f"
+        }
+      },
+      "manifestMetadata": {
+        "paragraphXml": 296,
+        "tables": 2,
+        "images": 0,
+        "pages": 4
+      }
+    },
+    {
+      "id": "qianwen_ppt",
+      "tool": "千问",
+      "kind": "ppt",
+      "name": "宇树科技内部汇报.pptx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技内部汇报.pptx",
+      "bytes": 14909444,
+      "mtime": 1788473698.4692497,
+      "headerHex": "504b03040a0000000000dcb1235d0000",
+      "sha256": "e4c0b2c0b9672bed6cf5088297fcabf2a54860a9755839312048ecdeb0ae1fba",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ppt/initial/宇树科技内部汇报.pptx",
+          "sha256Before": "e4c0b2c0b9672bed6cf5088297fcabf2a54860a9755839312048ecdeb0ae1fba"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ppt/edit/宇树科技内部汇报.pptx",
+          "sha256Before": "e4c0b2c0b9672bed6cf5088297fcabf2a54860a9755839312048ecdeb0ae1fba"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ppt/repair/宇树科技内部汇报.pptx",
+          "sha256Before": "e4c0b2c0b9672bed6cf5088297fcabf2a54860a9755839312048ecdeb0ae1fba"
+        }
+      },
+      "manifestMetadata": {
+        "slides": 12,
+        "nativeCharts": 6,
+        "media": 3,
+        "embeddings": 7
+      }
+    },
+    {
+      "id": "qianwen_image",
+      "tool": "千问",
+      "kind": "image",
+      "name": "宇树科技投资人一页纸.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技投资人一页纸.png",
+      "bytes": 848079,
+      "mtime": 1788484278.508681,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "c382d80c6ea9df7f7e36b87e65de3c361d53e574218ec07bf6fb8977fca55c27",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_image/initial/宇树科技投资人一页纸.png",
+          "sha256Before": "c382d80c6ea9df7f7e36b87e65de3c361d53e574218ec07bf6fb8977fca55c27"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_image/edit/宇树科技投资人一页纸.png",
+          "sha256Before": "c382d80c6ea9df7f7e36b87e65de3c361d53e574218ec07bf6fb8977fca55c27"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_image/repair/宇树科技投资人一页纸.png",
+          "sha256Before": "c382d80c6ea9df7f7e36b87e65de3c361d53e574218ec07bf6fb8977fca55c27"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2480,
+        "height": 3508
+      }
+    },
+    {
+      "id": "qianwen_ink",
+      "tool": "千问",
+      "kind": "ink",
+      "name": "宇树科技投资人一页纸·水墨风.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技投资人一页纸·水墨风.png",
+      "bytes": 1828356,
+      "mtime": 1788486584.9013872,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "6bd38d2c21295caab58224d423aa6265fa2de65590295232242ac910a46a75d1",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ink/initial/宇树科技投资人一页纸·水墨风.png",
+          "sha256Before": "6bd38d2c21295caab58224d423aa6265fa2de65590295232242ac910a46a75d1"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ink/edit/宇树科技投资人一页纸·水墨风.png",
+          "sha256Before": "6bd38d2c21295caab58224d423aa6265fa2de65590295232242ac910a46a75d1"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_ink/repair/宇树科技投资人一页纸·水墨风.png",
+          "sha256Before": "6bd38d2c21295caab58224d423aa6265fa2de65590295232242ac910a46a75d1"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2480,
+        "height": 3508
+      }
+    },
+    {
+      "id": "qianwen_html",
+      "tool": "千问",
+      "kind": "html",
+      "name": "宇树科技交互研究报告.html",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/千问办公/宇树科技交互研究报告.html",
+      "bytes": 31426,
+      "mtime": 1788489643.8440301,
+      "headerHex": "3c21444f43545950452068746d6c3e0a",
+      "sha256": "eb9a294a2c2603e83c315011de39bfb04ea5228fe06e946b9739dd0bd0ec86dd",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_html/initial/宇树科技交互研究报告.html",
+          "sha256Before": "eb9a294a2c2603e83c315011de39bfb04ea5228fe06e946b9739dd0bd0ec86dd"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_html/edit/宇树科技交互研究报告.html",
+          "sha256Before": "eb9a294a2c2603e83c315011de39bfb04ea5228fe06e946b9739dd0bd0ec86dd"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qianwen_html/repair/宇树科技交互研究报告.html",
+          "sha256Before": "eb9a294a2c2603e83c315011de39bfb04ea5228fe06e946b9739dd0bd0ec86dd"
+        }
+      },
+      "manifestMetadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 3,
+        "mediaQueries": 1
+      }
+    },
+    {
+      "id": "qoder_excel",
+      "tool": "Qoder",
+      "kind": "excel",
+      "name": "宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+      "bytes": 114648,
+      "mtime": 1788455928.6984403,
+      "headerHex": "504b0304140000000800580a245d46c7",
+      "sha256": "e9336817003d54e50149dacc63f00dcb2d26e5070e7a12818ff0566eeb9724ea",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_excel/initial/宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+          "sha256Before": "e9336817003d54e50149dacc63f00dcb2d26e5070e7a12818ff0566eeb9724ea"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_excel/edit/宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+          "sha256Before": "e9336817003d54e50149dacc63f00dcb2d26e5070e7a12818ff0566eeb9724ea"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_excel/repair/宇树科技(688836)_经营与财务分析底稿_资料截止20260830.xlsx",
+          "sha256Before": "e9336817003d54e50149dacc63f00dcb2d26e5070e7a12818ff0566eeb9724ea"
+        }
+      },
+      "manifestMetadata": {
+        "sheets": 11,
+        "nativeCharts": 19,
+        "formulas": 557
+      }
+    },
+    {
+      "id": "qoder_word",
+      "tool": "Qoder",
+      "kind": "word",
+      "name": "宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+      "bytes": 91371,
+      "mtime": 1788458315.6252985,
+      "headerHex": "504b0304140000000800510f245d33c1",
+      "sha256": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_word/initial/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+          "sha256Before": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_word/edit/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+          "sha256Before": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_word/repair/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+          "sha256Before": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95"
+        }
+      },
+      "manifestMetadata": {
+        "paragraphXml": 3971,
+        "tables": 51,
+        "images": 0,
+        "pages": 27
+      }
+    },
+    {
+      "id": "qoder_ppt",
+      "tool": "Qoder",
+      "kind": "ppt",
+      "name": "宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+      "bytes": 168427,
+      "mtime": 1788473905.8865573,
+      "headerHex": "504b03041400000008004c32245dbb42",
+      "sha256": "71f2606f61dc977ea1e39daa5a9ff5589976e24640f5b4142e4ef2349cc23617",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ppt/initial/宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+          "sha256Before": "71f2606f61dc977ea1e39daa5a9ff5589976e24640f5b4142e4ef2349cc23617"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ppt/edit/宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+          "sha256Before": "71f2606f61dc977ea1e39daa5a9ff5589976e24640f5b4142e4ef2349cc23617"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ppt/repair/宇树科技(688836)_内部汇报_资料截止20260830.pptx",
+          "sha256Before": "71f2606f61dc977ea1e39daa5a9ff5589976e24640f5b4142e4ef2349cc23617"
+        }
+      },
+      "manifestMetadata": {
+        "slides": 20,
+        "nativeCharts": 12,
+        "media": 0,
+        "embeddings": 12
+      }
+    },
+    {
+      "id": "qoder_image",
+      "tool": "Qoder",
+      "kind": "image",
+      "name": "宇树科技(688836)_投资人汇报_一页全景图.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_投资人汇报_一页全景图.png",
+      "bytes": 822176,
+      "mtime": 1788484133.4491382,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_image/initial/宇树科技(688836)_投资人汇报_一页全景图.png",
+          "sha256Before": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_image/edit/宇树科技(688836)_投资人汇报_一页全景图.png",
+          "sha256Before": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_image/repair/宇树科技(688836)_投资人汇报_一页全景图.png",
+          "sha256Before": "9bfe7617f6eeca68f0ae7d35bd061ffeeb7177b221b8ab1f11974bf8c5b98f94"
+        }
+      },
+      "manifestMetadata": {
+        "width": 4800,
+        "height": 3000
+      }
+    },
+    {
+      "id": "qoder_ink",
+      "tool": "Qoder",
+      "kind": "ink",
+      "name": "宇树科技(688836)_水墨中国风_一页全景图.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_水墨中国风_一页全景图.png",
+      "bytes": 965161,
+      "mtime": 1788486472.8601134,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ink/initial/宇树科技(688836)_水墨中国风_一页全景图.png",
+          "sha256Before": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ink/edit/宇树科技(688836)_水墨中国风_一页全景图.png",
+          "sha256Before": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_ink/repair/宇树科技(688836)_水墨中国风_一页全景图.png",
+          "sha256Before": "fd10791b86b05a2d406a44afe5a37c8f5a73ab67f7a7ddc7f79b4a7b040306b4"
+        }
+      },
+      "manifestMetadata": {
+        "width": 4800,
+        "height": 3000
+      }
+    },
+    {
+      "id": "qoder_html",
+      "tool": "Qoder",
+      "kind": "html",
+      "name": "宇树科技(688836)_交互全景.html",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_交互全景.html",
+      "bytes": 46709,
+      "mtime": 1788489634.8376615,
+      "headerHex": "3c21444f43545950452068746d6c3e0a",
+      "sha256": "320f9ccb682470eaad31c9dcd664f0e9bfc44a76b7becc0e1b8e92fd548fd387",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_html/initial/宇树科技(688836)_交互全景.html",
+          "sha256Before": "320f9ccb682470eaad31c9dcd664f0e9bfc44a76b7becc0e1b8e92fd548fd387"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_html/edit/宇树科技(688836)_交互全景.html",
+          "sha256Before": "320f9ccb682470eaad31c9dcd664f0e9bfc44a76b7becc0e1b8e92fd548fd387"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/qoder_html/repair/宇树科技(688836)_交互全景.html",
+          "sha256Before": "320f9ccb682470eaad31c9dcd664f0e9bfc44a76b7becc0e1b8e92fd548fd387"
+        }
+      },
+      "manifestMetadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 16,
+        "mediaQueries": 1
+      }
+    },
+    {
+      "id": "workbuddy_excel",
+      "tool": "WorkBuddy",
+      "kind": "excel",
+      "name": "宇树科技经营与财务分析底稿.xlsx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技经营与财务分析底稿.xlsx",
+      "bytes": 30685,
+      "mtime": 1788454080.178629,
+      "headerHex": "504b03041400000008000006245d46c7",
+      "sha256": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_excel/initial/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_excel/edit/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_excel/repair/宇树科技经营与财务分析底稿.xlsx",
+          "sha256Before": "189677d421f294bad17d62e646a1ecd879362f83ffeffd2f866ee9717241b378"
+        }
+      },
+      "manifestMetadata": {
+        "sheets": 8,
+        "nativeCharts": 5,
+        "formulas": 75
+      }
+    },
+    {
+      "id": "workbuddy_word",
+      "tool": "WorkBuddy",
+      "kind": "word",
+      "name": "宇树科技公司研究报告.docx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/output/ba8ec3f1-0a2a-4b93-af35-5d24f9300683/stage3/宇树科技公司研究报告.docx",
+      "bytes": 54491,
+      "mtime": 1788457365.039198,
+      "headerHex": "504b0304140000000800560d245d33c1",
+      "sha256": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_word/initial/宇树科技公司研究报告.docx",
+          "sha256Before": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_word/edit/宇树科技公司研究报告.docx",
+          "sha256Before": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_word/repair/宇树科技公司研究报告.docx",
+          "sha256Before": "a4984331bcca4fe11cb80582f5a799b88f1d253037674bee190dee1c4f27f441"
+        }
+      },
+      "manifestMetadata": {
+        "paragraphXml": 469,
+        "tables": 16,
+        "images": 0,
+        "pages": 5
+      }
+    },
+    {
+      "id": "workbuddy_ppt",
+      "tool": "WorkBuddy",
+      "kind": "ppt",
+      "name": "宇树科技研究汇报.pptx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技研究汇报/宇树科技研究汇报.pptx",
+      "bytes": 62713,
+      "mtime": 1788474025.3223758,
+      "headerHex": "504b03041400000800008c32245d0000",
+      "sha256": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ppt/initial/宇树科技研究汇报.pptx",
+          "sha256Before": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ppt/edit/宇树科技研究汇报.pptx",
+          "sha256Before": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ppt/repair/宇树科技研究汇报.pptx",
+          "sha256Before": "50aceeae88f34f9884096eb7f3c8bf9fc50eae30401a5e22c8c2aeedb62e3387"
+        }
+      },
+      "manifestMetadata": {
+        "slides": 16,
+        "nativeCharts": 0,
+        "media": 0,
+        "embeddings": 0
+      }
+    },
+    {
+      "id": "workbuddy_image",
+      "tool": "WorkBuddy",
+      "kind": "image",
+      "name": "宇树科技投资者一页纸.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸.png",
+      "bytes": 1122050,
+      "mtime": 1788484694.117362,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_image/initial/宇树科技投资者一页纸.png",
+          "sha256Before": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_image/edit/宇树科技投资者一页纸.png",
+          "sha256Before": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_image/repair/宇树科技投资者一页纸.png",
+          "sha256Before": "45f1ad7f2d232caa733232ab802ef7f73b19c0695a51fb88ddfebd5634cdbb5a"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2480,
+        "height": 4348
+      }
+    },
+    {
+      "id": "workbuddy_ink",
+      "tool": "WorkBuddy",
+      "kind": "ink",
+      "name": "宇树科技投资者一页纸-水墨.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技投资者一页纸-水墨.png",
+      "bytes": 2003145,
+      "mtime": 1788486728.9222493,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ink/initial/宇树科技投资者一页纸-水墨.png",
+          "sha256Before": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ink/edit/宇树科技投资者一页纸-水墨.png",
+          "sha256Before": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_ink/repair/宇树科技投资者一页纸-水墨.png",
+          "sha256Before": "0d02e264af4321f5ba190964e7e9a724f9d1d95d8f8a74fedd3cea6b99265869"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2480,
+        "height": 5704
+      }
+    },
+    {
+      "id": "workbuddy_html",
+      "tool": "WorkBuddy",
+      "kind": "html",
+      "name": "index.html",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/workbuddy/宇树科技交互式研究速览/index.html",
+      "bytes": 40869,
+      "mtime": 1788489944.0097394,
+      "headerHex": "3c21444f43545950452068746d6c3e0a",
+      "sha256": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_html/initial/index.html",
+          "sha256Before": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_html/edit/index.html",
+          "sha256Before": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/workbuddy_html/repair/index.html",
+          "sha256Before": "5f4a426cc0947a0e19de6141a17815091eb33674ff9698d8451f270714c01110"
+        }
+      },
+      "manifestMetadata": {
+        "externalScripts": 1,
+        "externalStyles": 0,
+        "buttons": 0,
+        "eventListeners": 3,
+        "mediaQueries": 4
+      }
+    },
+    {
+      "id": "zhikuncode_excel",
+      "tool": "ZhikunCode",
+      "kind": "excel",
+      "name": "宇树科技_经营与财务分析底稿.xlsx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_经营与财务分析底稿.xlsx",
+      "bytes": 42541,
+      "mtime": 1788455336.3178966,
+      "headerHex": "504b03041400000008001c09245d46c7",
+      "sha256": "258470bbce6e90016b4b7f29a5046cc9b599acc4b95495cf72733720316e0439",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_excel/initial/宇树科技_经营与财务分析底稿.xlsx",
+          "sha256Before": "258470bbce6e90016b4b7f29a5046cc9b599acc4b95495cf72733720316e0439"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_excel/edit/宇树科技_经营与财务分析底稿.xlsx",
+          "sha256Before": "258470bbce6e90016b4b7f29a5046cc9b599acc4b95495cf72733720316e0439"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_excel/repair/宇树科技_经营与财务分析底稿.xlsx",
+          "sha256Before": "258470bbce6e90016b4b7f29a5046cc9b599acc4b95495cf72733720316e0439"
+        }
+      },
+      "manifestMetadata": {
+        "sheets": 9,
+        "nativeCharts": 7,
+        "formulas": 108
+      }
+    },
+    {
+      "id": "zhikuncode_word",
+      "tool": "ZhikunCode",
+      "kind": "word",
+      "name": "宇树科技_公司研究报告.docx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_公司研究报告.docx",
+      "bytes": 47923,
+      "mtime": 1788457674.504628,
+      "headerHex": "504b0304140000000800fb0d245dad52",
+      "sha256": "222a42509ab98dc4a88f19e25ff330dab311ef36aeb01f75f0b3dea1b73c6049",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_word/initial/宇树科技_公司研究报告.docx",
+          "sha256Before": "222a42509ab98dc4a88f19e25ff330dab311ef36aeb01f75f0b3dea1b73c6049"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_word/edit/宇树科技_公司研究报告.docx",
+          "sha256Before": "222a42509ab98dc4a88f19e25ff330dab311ef36aeb01f75f0b3dea1b73c6049"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_word/repair/宇树科技_公司研究报告.docx",
+          "sha256Before": "222a42509ab98dc4a88f19e25ff330dab311ef36aeb01f75f0b3dea1b73c6049"
+        }
+      },
+      "manifestMetadata": {
+        "paragraphXml": 595,
+        "tables": 7,
+        "images": 0,
+        "pages": 10
+      }
+    },
+    {
+      "id": "zhikuncode_ppt",
+      "tool": "ZhikunCode",
+      "kind": "ppt",
+      "name": "宇树科技_公司研究汇报.pptx",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_公司研究汇报.pptx",
+      "bytes": 3910365,
+      "mtime": 1788474584.257099,
+      "headerHex": "504b0304140000000800b633245d50e0",
+      "sha256": "8167c308608b3d49ea21d3d7906e7da540e470a0434ecf6b904292ca19592dec",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ppt/initial/宇树科技_公司研究汇报.pptx",
+          "sha256Before": "8167c308608b3d49ea21d3d7906e7da540e470a0434ecf6b904292ca19592dec"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ppt/edit/宇树科技_公司研究汇报.pptx",
+          "sha256Before": "8167c308608b3d49ea21d3d7906e7da540e470a0434ecf6b904292ca19592dec"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ppt/repair/宇树科技_公司研究汇报.pptx",
+          "sha256Before": "8167c308608b3d49ea21d3d7906e7da540e470a0434ecf6b904292ca19592dec"
+        }
+      },
+      "manifestMetadata": {
+        "slides": 15,
+        "nativeCharts": 11,
+        "media": 2,
+        "embeddings": 11
+      }
+    },
+    {
+      "id": "zhikuncode_image",
+      "tool": "ZhikunCode",
+      "kind": "image",
+      "name": "宇树科技_投资人一页纸.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_投资人一页纸.png",
+      "bytes": 1611215,
+      "mtime": 1788485357.5956092,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "81fbcebb33662576d32d6f9504661e75de6b6035ddbd70753b74d0e5c9782898",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_image/initial/宇树科技_投资人一页纸.png",
+          "sha256Before": "81fbcebb33662576d32d6f9504661e75de6b6035ddbd70753b74d0e5c9782898"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_image/edit/宇树科技_投资人一页纸.png",
+          "sha256Before": "81fbcebb33662576d32d6f9504661e75de6b6035ddbd70753b74d0e5c9782898"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_image/repair/宇树科技_投资人一页纸.png",
+          "sha256Before": "81fbcebb33662576d32d6f9504661e75de6b6035ddbd70753b74d0e5c9782898"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2560,
+        "height": 3620
+      }
+    },
+    {
+      "id": "zhikuncode_ink",
+      "tool": "ZhikunCode",
+      "kind": "ink",
+      "name": "宇树科技_投资人一页纸_水墨版.png",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_投资人一页纸_水墨版.png",
+      "bytes": 6863329,
+      "mtime": 1788487540.239385,
+      "headerHex": "89504e470d0a1a0a0000000d49484452",
+      "sha256": "0b6938cacb5736c54c10fc4b87dcfd8d312c390a80dcf1288b496231f2b54dd5",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ink/initial/宇树科技_投资人一页纸_水墨版.png",
+          "sha256Before": "0b6938cacb5736c54c10fc4b87dcfd8d312c390a80dcf1288b496231f2b54dd5"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ink/edit/宇树科技_投资人一页纸_水墨版.png",
+          "sha256Before": "0b6938cacb5736c54c10fc4b87dcfd8d312c390a80dcf1288b496231f2b54dd5"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_ink/repair/宇树科技_投资人一页纸_水墨版.png",
+          "sha256Before": "0b6938cacb5736c54c10fc4b87dcfd8d312c390a80dcf1288b496231f2b54dd5"
+        }
+      },
+      "manifestMetadata": {
+        "width": 2560,
+        "height": 3620
+      }
+    },
+    {
+      "id": "zhikuncode_html",
+      "tool": "ZhikunCode",
+      "kind": "html",
+      "name": "宇树科技_交互式数据报告.html",
+      "sourcePath": "/Users/guoqingtao/Desktop/AI办公评测/zhikuncode/宇树科技_交互式数据报告.html",
+      "bytes": 2331238,
+      "mtime": 1788491562.439641,
+      "headerHex": "3c21444f43545950452068746d6c3e0a",
+      "sha256": "4f3df2d71d04421dd770c4c8887bf3b9646849127e64ac5a492718939ab3a3d1",
+      "copies": {
+        "initial": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_html/initial/宇树科技_交互式数据报告.html",
+          "sha256Before": "4f3df2d71d04421dd770c4c8887bf3b9646849127e64ac5a492718939ab3a3d1"
+        },
+        "edit": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_html/edit/宇树科技_交互式数据报告.html",
+          "sha256Before": "4f3df2d71d04421dd770c4c8887bf3b9646849127e64ac5a492718939ab3a3d1"
+        },
+        "repair": {
+          "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v3/copies/zhikuncode_html/repair/宇树科技_交互式数据报告.html",
+          "sha256Before": "4f3df2d71d04421dd770c4c8887bf3b9646849127e64ac5a492718939ab3a3d1"
+        }
+      },
+      "manifestMetadata": {
+        "externalScripts": 2,
+        "externalStyles": 0,
+        "buttons": 4,
+        "eventListeners": 7,
+        "mediaQueries": 3
+      }
+    }
+  ]
+}

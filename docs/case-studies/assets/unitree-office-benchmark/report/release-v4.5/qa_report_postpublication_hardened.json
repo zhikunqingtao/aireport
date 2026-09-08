@@ -1,0 +1,1870 @@
+{
+  "status": "passed",
+  "candidateJson": "work/benchmark_01a06a55/v4/report_v4.json",
+  "candidateJsonSha256": "3f7765a2b82b2b3bc84f976f81d1e5fde1d9e21147c07e150032dd8d53c67258",
+  "candidateHtml": "outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+  "candidateHtmlSha256": "f59e9f0f9f039ce33098d3e9a864e2235071b4d7ecc23691a97fd260c189890c",
+  "checks": [
+    {
+      "name": "count:artifacts",
+      "passed": true,
+      "detail": "30 != 30"
+    },
+    {
+      "name": "count:scenarioRuns",
+      "passed": true,
+      "detail": "180 != 180"
+    },
+    {
+      "name": "count:coverageItems",
+      "passed": true,
+      "detail": "324 != 324"
+    },
+    {
+      "name": "count:findings",
+      "passed": true,
+      "detail": "200 != 200"
+    },
+    {
+      "name": "count:evidence",
+      "passed": true,
+      "detail": "741 != 741"
+    },
+    {
+      "name": "count:media",
+      "passed": true,
+      "detail": "710 != 710"
+    },
+    {
+      "name": "count:facts",
+      "passed": true,
+      "detail": "32 != 32"
+    },
+    {
+      "name": "count:sources",
+      "passed": true,
+      "detail": "11 != 11"
+    },
+    {
+      "name": "artifact-grid",
+      "passed": true,
+      "detail": "Counter({('豆包', 'excel'): 1, ('豆包', 'word'): 1, ('豆包', 'ppt'): 1, ('豆包', 'image'): 1, ('豆包', 'ink'): 1, ('豆包', 'html'): 1, ('千问', 'excel'): 1, ('千问', 'word'): 1, ('千问', 'ppt'): 1, ('千问', 'image'): 1, ('千问', 'ink'): 1, ('千问', 'html'): 1, ('Qoder', 'excel'): 1, ('Qoder', 'word'): 1, ('Qoder', 'ppt'): 1, ('Qoder', 'image'): 1, ('Qoder', 'ink'): 1, ('Qoder', 'html'): 1, ('WorkBuddy', 'excel'): 1, ('WorkBuddy', 'word'): 1, ('WorkBuddy', 'ppt'): 1, ('WorkBuddy', 'image'): 1, ('WorkBuddy', 'ink'): 1, ('WorkBuddy', 'html'): 1, ('ZhikunCode', 'excel'): 1, ('ZhikunCode', 'word'): 1, ('ZhikunCode', 'ppt'): 1, ('ZhikunCode', 'image'): 1, ('ZhikunCode', 'ink'): 1, ('ZhikunCode', 'html'): 1})"
+    },
+    {
+      "name": "artifact-originals-frozen",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "rubric-weight:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:excel",
+      "passed": true,
+      "detail": "87.86 vs 87.86"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:word",
+      "passed": true,
+      "detail": "97.2 vs 97.2"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:ppt",
+      "passed": true,
+      "detail": "76.5 vs 76.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:image",
+      "passed": true,
+      "detail": "98.8 vs 98.8"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:ink",
+      "passed": true,
+      "detail": "97.5 vs 97.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:doubao:html",
+      "passed": true,
+      "detail": "89.0 vs 89.0"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:doubao:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:excel",
+      "passed": true,
+      "detail": "91.6 vs 91.6"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:word",
+      "passed": true,
+      "detail": "96.6 vs 96.6"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:ppt",
+      "passed": true,
+      "detail": "95.0 vs 95.0"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:image",
+      "passed": true,
+      "detail": "98.2 vs 98.2"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:ink",
+      "passed": true,
+      "detail": "94.5 vs 94.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qianwen:html",
+      "passed": true,
+      "detail": "85.5 vs 85.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qianwen:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:excel",
+      "passed": true,
+      "detail": "88.42 vs 88.42"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:word",
+      "passed": true,
+      "detail": "95.9 vs 95.9"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:ppt",
+      "passed": true,
+      "detail": "87.2 vs 87.2"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:image",
+      "passed": true,
+      "detail": "93.1 vs 93.1"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:ink",
+      "passed": true,
+      "detail": "88.0 vs 88.0"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:qoder:html",
+      "passed": true,
+      "detail": "80.0 vs 80.0"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:qoder:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:excel",
+      "passed": true,
+      "detail": "80.71 vs 80.71"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:word",
+      "passed": true,
+      "detail": "81.03 vs 81.03"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:ppt",
+      "passed": true,
+      "detail": "82.6 vs 82.6"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:image",
+      "passed": true,
+      "detail": "83.1 vs 83.1"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:ink",
+      "passed": true,
+      "detail": "80.5 vs 80.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:workbuddy:html",
+      "passed": true,
+      "detail": "72.5 vs 72.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:workbuddy:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:excel",
+      "passed": true,
+      "detail": "87.53 vs 87.53"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:excel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:word",
+      "passed": true,
+      "detail": "93.4 vs 93.4"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:ppt",
+      "passed": true,
+      "detail": "92.4 vs 92.4"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:image",
+      "passed": true,
+      "detail": "98.8 vs 98.8"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:ink",
+      "passed": true,
+      "detail": "97.0 vs 97.0"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "artifact-score:artifact:zhikuncode:html",
+      "passed": true,
+      "detail": "93.5 vs 93.5"
+    },
+    {
+      "name": "artifact-rubric-complete:artifact:zhikuncode:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "publication-state:final-meta",
+      "passed": true,
+      "detail": "final_v45_offline_qa_passed"
+    },
+    {
+      "name": "publication-state:final-scores",
+      "passed": true,
+      "detail": "{'final_v45_offline_qa_passed'}"
+    },
+    {
+      "name": "publication-state:final-rankings",
+      "passed": true,
+      "detail": "{'final_v45_offline_qa_passed'}"
+    },
+    {
+      "name": "publication-state:official-results",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim-ledger:unique-ids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim-ledger:all-locators",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim-ledger:all-evidence-linked",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim-ledger:evidence-resolves",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "claim-ledger:finding-resolves",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-recalc:豆包",
+      "passed": true,
+      "detail": "29.09"
+    },
+    {
+      "name": "source-recalc:豆包",
+      "passed": true,
+      "detail": "5.97"
+    },
+    {
+      "name": "atomic-subitems:豆包:external-facts",
+      "passed": true,
+      "detail": "29.09 vs 29.09"
+    },
+    {
+      "name": "atomic-subitems:豆包:sources",
+      "passed": true,
+      "detail": "5.97 vs 5.97"
+    },
+    {
+      "name": "atomic-subitems:豆包:period-unit-prediction",
+      "passed": true,
+      "detail": "7.0 vs 7.0"
+    },
+    {
+      "name": "source-four-subtests:豆包",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:豆包:identity",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:豆包:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:豆包:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:豆包:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:豆包:priority",
+      "passed": true,
+      "detail": "1.97 vs 1.97"
+    },
+    {
+      "name": "source-claims-resolve:豆包:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:豆包:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:豆包:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:豆包:locator",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:豆包:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:豆包:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:豆包:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:豆包:actionable",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:豆包:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:豆包:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:豆包:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-recalc:千问",
+      "passed": true,
+      "detail": "30.0"
+    },
+    {
+      "name": "source-recalc:千问",
+      "passed": true,
+      "detail": "6.0"
+    },
+    {
+      "name": "atomic-subitems:千问:external-facts",
+      "passed": true,
+      "detail": "30.0 vs 30.0"
+    },
+    {
+      "name": "atomic-subitems:千问:sources",
+      "passed": true,
+      "detail": "6.0 vs 6.0"
+    },
+    {
+      "name": "atomic-subitems:千问:period-unit-prediction",
+      "passed": true,
+      "detail": "7.0 vs 7.0"
+    },
+    {
+      "name": "source-four-subtests:千问",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:千问:identity",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:千问:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:千问:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:千问:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:千问:priority",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:千问:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:千问:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:千问:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:千问:locator",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:千问:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:千问:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:千问:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:千问:actionable",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:千问:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:千问:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:千问:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-recalc:Qoder",
+      "passed": true,
+      "detail": "29.32"
+    },
+    {
+      "name": "source-recalc:Qoder",
+      "passed": true,
+      "detail": "6.0"
+    },
+    {
+      "name": "atomic-subitems:Qoder:external-facts",
+      "passed": true,
+      "detail": "29.32 vs 29.32"
+    },
+    {
+      "name": "atomic-subitems:Qoder:sources",
+      "passed": true,
+      "detail": "6.0 vs 6.0"
+    },
+    {
+      "name": "atomic-subitems:Qoder:period-unit-prediction",
+      "passed": true,
+      "detail": "7.0 vs 7.0"
+    },
+    {
+      "name": "source-four-subtests:Qoder",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:Qoder:identity",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:Qoder:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:Qoder:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:Qoder:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:Qoder:priority",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:Qoder:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:Qoder:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:Qoder:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:Qoder:locator",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:Qoder:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:Qoder:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:Qoder:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:Qoder:actionable",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:Qoder:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:Qoder:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:Qoder:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-recalc:WorkBuddy",
+      "passed": true,
+      "detail": "23.47"
+    },
+    {
+      "name": "source-recalc:WorkBuddy",
+      "passed": true,
+      "detail": "3.44"
+    },
+    {
+      "name": "atomic-subitems:WorkBuddy:external-facts",
+      "passed": true,
+      "detail": "23.47 vs 23.47"
+    },
+    {
+      "name": "atomic-subitems:WorkBuddy:sources",
+      "passed": true,
+      "detail": "3.44 vs 3.44"
+    },
+    {
+      "name": "atomic-subitems:WorkBuddy:period-unit-prediction",
+      "passed": true,
+      "detail": "5.0 vs 5.0"
+    },
+    {
+      "name": "source-four-subtests:WorkBuddy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:WorkBuddy:identity",
+      "passed": true,
+      "detail": "1.44 vs 1.44"
+    },
+    {
+      "name": "source-claims-resolve:WorkBuddy:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:WorkBuddy:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:WorkBuddy:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:WorkBuddy:priority",
+      "passed": true,
+      "detail": "2.0 vs 2.0"
+    },
+    {
+      "name": "source-claims-resolve:WorkBuddy:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:WorkBuddy:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:WorkBuddy:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:WorkBuddy:locator",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:WorkBuddy:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:WorkBuddy:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:WorkBuddy:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:WorkBuddy:actionable",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:WorkBuddy:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:WorkBuddy:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:WorkBuddy:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-recalc:ZhikunCode",
+      "passed": true,
+      "detail": "27.6"
+    },
+    {
+      "name": "source-recalc:ZhikunCode",
+      "passed": true,
+      "detail": "4.93"
+    },
+    {
+      "name": "atomic-subitems:ZhikunCode:external-facts",
+      "passed": true,
+      "detail": "27.6 vs 27.6"
+    },
+    {
+      "name": "atomic-subitems:ZhikunCode:sources",
+      "passed": true,
+      "detail": "4.93 vs 4.93"
+    },
+    {
+      "name": "atomic-subitems:ZhikunCode:period-unit-prediction",
+      "passed": true,
+      "detail": "6.0 vs 6.0"
+    },
+    {
+      "name": "source-four-subtests:ZhikunCode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:ZhikunCode:identity",
+      "passed": true,
+      "detail": "1.21 vs 1.21"
+    },
+    {
+      "name": "source-claims-resolve:ZhikunCode:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:ZhikunCode:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:ZhikunCode:identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:ZhikunCode:priority",
+      "passed": true,
+      "detail": "1.86 vs 1.86"
+    },
+    {
+      "name": "source-claims-resolve:ZhikunCode:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:ZhikunCode:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:ZhikunCode:priority",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:ZhikunCode:locator",
+      "passed": true,
+      "detail": "0.0 vs 0.0"
+    },
+    {
+      "name": "source-claims-resolve:ZhikunCode:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:ZhikunCode:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:ZhikunCode:locator",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-mechanical:ZhikunCode:actionable",
+      "passed": true,
+      "detail": "1.86 vs 1.86"
+    },
+    {
+      "name": "source-claims-resolve:ZhikunCode:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-evidence-resolves:ZhikunCode:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source-input-class:ZhikunCode:actionable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:five-tools",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:denominator:豆包",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:rate:豆包",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:separate-criterion:豆包",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:denominator:千问",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:rate:千问",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:separate-criterion:千问",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:denominator:Qoder",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:rate:Qoder",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:separate-criterion:Qoder",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:denominator:WorkBuddy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:rate:WorkBuddy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:separate-criterion:WorkBuddy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:denominator:ZhikunCode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:rate:ZhikunCode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "fact-coverage:separate-criterion:ZhikunCode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:豆包:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:豆包:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:豆包:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:豆包:word",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:豆包:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:豆包:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:豆包:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:豆包:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:豆包:ppt",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:豆包:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:豆包:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:豆包:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:豆包:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:豆包:image",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:豆包:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:豆包:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:豆包:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:豆包:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:豆包:ink",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:豆包:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:豆包:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:豆包:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:豆包:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:豆包:html",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:豆包:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:千问:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:千问:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:千问:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:千问:word",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:千问:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:千问:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:千问:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:千问:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:千问:ppt",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:千问:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:千问:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:千问:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:千问:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:千问:image",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:千问:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:千问:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:千问:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:千问:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:千问:ink",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:千问:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:千问:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:千问:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:千问:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:千问:html",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:千问:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:Qoder:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:Qoder:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:Qoder:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:Qoder:word",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:Qoder:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:Qoder:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:Qoder:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:Qoder:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:Qoder:ppt",
+      "passed": true,
+      "detail": "20.0"
+    },
+    {
+      "name": "consistency-fail-evidence:Qoder:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:Qoder:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:Qoder:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:Qoder:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:Qoder:image",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:Qoder:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:Qoder:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:Qoder:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:Qoder:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:Qoder:ink",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:Qoder:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:Qoder:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:Qoder:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:Qoder:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:Qoder:html",
+      "passed": true,
+      "detail": "20.0"
+    },
+    {
+      "name": "consistency-fail-evidence:Qoder:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:WorkBuddy:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:WorkBuddy:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:WorkBuddy:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:WorkBuddy:word",
+      "passed": true,
+      "detail": "15.0"
+    },
+    {
+      "name": "consistency-fail-evidence:WorkBuddy:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:WorkBuddy:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:WorkBuddy:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:WorkBuddy:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:WorkBuddy:ppt",
+      "passed": true,
+      "detail": "15.0"
+    },
+    {
+      "name": "consistency-fail-evidence:WorkBuddy:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:WorkBuddy:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:WorkBuddy:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:WorkBuddy:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:WorkBuddy:image",
+      "passed": true,
+      "detail": "15.0"
+    },
+    {
+      "name": "consistency-fail-evidence:WorkBuddy:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:WorkBuddy:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:WorkBuddy:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:WorkBuddy:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:WorkBuddy:ink",
+      "passed": true,
+      "detail": "15.0"
+    },
+    {
+      "name": "consistency-fail-evidence:WorkBuddy:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:WorkBuddy:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:WorkBuddy:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:WorkBuddy:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:WorkBuddy:html",
+      "passed": true,
+      "detail": "15.0"
+    },
+    {
+      "name": "consistency-fail-evidence:WorkBuddy:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:ZhikunCode:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:ZhikunCode:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:ZhikunCode:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:ZhikunCode:word",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:ZhikunCode:word",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:ZhikunCode:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:ZhikunCode:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:ZhikunCode:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:ZhikunCode:ppt",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:ZhikunCode:ppt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:ZhikunCode:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:ZhikunCode:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:ZhikunCode:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:ZhikunCode:image",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:ZhikunCode:image",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:ZhikunCode:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:ZhikunCode:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:ZhikunCode:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:ZhikunCode:ink",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:ZhikunCode:ink",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-five-subtests:ZhikunCode:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-binary:ZhikunCode:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-sum:ZhikunCode:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "consistency-expected:ZhikunCode:html",
+      "passed": true,
+      "detail": "25.0"
+    },
+    {
+      "name": "consistency-fail-evidence:ZhikunCode:html",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qoder-g2:code",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qoder-g2:symmetric-rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qoder-g2:scope",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qoder-g2:separate-score",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "workbuddy-word:two-atomic-roots",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "workbuddy-word:distinct-findings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "zhikun-bridge:old-new",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "zhikun-bridge:sum",
+      "passed": true,
+      "detail": "19.93"
+    },
+    {
+      "name": "zhikun-bridge:criteria",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qianwen-lineage:expected-records",
+      "passed": true,
+      "detail": "[('patents', 'artifact:qianwen:word'), ('patents', 'artifact:qianwen:ppt'), ('patents', 'artifact:qianwen:html'), ('speed-record', 'artifact:qianwen:word'), ('speed-record', 'artifact:qianwen:ppt'), ('speed-record', 'artifact:qianwen:html'), ('gen3-trial', 'artifact:qianwen:word'), ('gen3-trial', 'artifact:qianwen:ppt'), ('gen3-trial', 'artifact:qianwen:image'), ('gen3-trial', 'artifact:qianwen:ink'), ('gen3-trial', 'artifact:qianwen:html'), ('proxy-share', 'artifact:qianwen:word'), ('proxy-share', 'artifact:qianwen:ppt'), ('proxy-share', 'artifact:qianwen:html')]"
+    },
+    {
+      "name": "qianwen-lineage:located-and-evidenced",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "qianwen-lineage:html-not-origin",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "image-judgment:single-reviewer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "image-judgment:sensitivity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "scenario-composition:arithmetic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "scenario-composition:ids",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "four-rankings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "ranking-recalc:standalone_equalTask",
+      "passed": true,
+      "detail": "[('豆包', 91.14), ('千问', 93.57), ('Qoder', 88.77), ('WorkBuddy', 80.07), ('ZhikunCode', 93.77)] vs [('ZhikunCode', 93.77), ('千问', 93.57), ('豆包', 91.14), ('Qoder', 88.77), ('WorkBuddy', 80.07)]"
+    },
+    {
+      "name": "ranking-recalc:standalone_practical",
+      "passed": true,
+      "detail": "[('豆包', 89.69), ('千问', 93.32), ('Qoder', 88.84), ('WorkBuddy', 80.14), ('ZhikunCode', 92.65)] vs [('千问', 93.32), ('ZhikunCode', 92.65), ('豆包', 89.69), ('Qoder', 88.84), ('WorkBuddy', 80.14)]"
+    },
+    {
+      "name": "ranking-recalc:firstOrigin_equalTask",
+      "passed": true,
+      "detail": "[('豆包', 91.14), ('千问', 93.57), ('Qoder', 88.77), ('WorkBuddy', 86.74), ('ZhikunCode', 93.77)] vs [('ZhikunCode', 93.77), ('千问', 93.57), ('豆包', 91.14), ('Qoder', 88.77), ('WorkBuddy', 86.74)]"
+    },
+    {
+      "name": "ranking-recalc:firstOrigin_practical",
+      "passed": true,
+      "detail": "[('豆包', 89.69), ('千问', 93.32), ('Qoder', 88.84), ('WorkBuddy', 85.64), ('ZhikunCode', 92.65)] vs [('千问', 93.32), ('ZhikunCode', 92.65), ('豆包', 89.69), ('Qoder', 88.84), ('WorkBuddy', 85.64)]"
+    },
+    {
+      "name": "exact-propagation-zero-first-origin",
+      "passed": true,
+      "detail": "[('impact:v45:artifact:workbuddy:ppt:excel-consistency', -0.0), ('impact:v45:artifact:workbuddy:image:excel-consistency', -0.0), ('impact:v45:artifact:workbuddy:ink:excel-consistency', -0.0), ('impact:v45:artifact:workbuddy:html:excel-consistency', -0.0)]"
+    },
+    {
+      "name": "exact-claims-no-first-origin-use",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "strict-lineage-diagnostic-only",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "finding-gate-separation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-word-reopen",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no-browser-retest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "vendor-self-review-not-evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-json-version",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-rankings-match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-publication-status-match",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-under-40MiB",
+      "passed": true,
+      "detail": "39550669"
+    },
+    {
+      "name": "html-self-contained-media",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-self-review-context-not-scoring-evidence",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "html-self-review-context-images-embedded",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "failures": []
+}

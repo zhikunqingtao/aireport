@@ -1,0 +1,209 @@
+{
+  "module": "qoder_word_locator_tasks",
+  "source": {
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/qoder/宇树科技(688836)_公司研究报告_资料截止20260830.docx",
+    "bytes": 91371,
+    "mtimeEpoch": 1788458315.6252985,
+    "sha256": "0d337d402902eb6e2d07f448d9b53fdf5373d74e9c53fa037736afc2dacfab95"
+  },
+  "nativeBaseline": {
+    "application": "Microsoft Word for Mac 16.112.3",
+    "open": "passed_without_repair",
+    "nativePages": 32,
+    "wordCount": 24333,
+    "tables": 51,
+    "images": 0,
+    "recognizedHeadingParagraphs": 0,
+    "nativeTOC": false,
+    "navigationPane": "empty",
+    "evidence": [
+      "evidence/reused_v3/qoder_word_document_map.png",
+      "evidence/reused_v3/qoder_word_print_preview.png"
+    ]
+  },
+  "measurementRule": "不使用个人主观耗时；只记录结构化导航是否可用、标准全文查找是否命中、命中数量与OOXML段落定位。",
+  "tasks": [
+    {
+      "taskId": "QW-L1",
+      "requiredTheme": "主营业务与产品结构",
+      "targetQuery": "二、主营业务与产品结构分析",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘主营业务与产品结构’。",
+        "若无标题入口，使用全文查找精确短语‘二、主营业务与产品结构分析’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 38,
+            "paragraphNumberOneBased": 39,
+            "style": "Normal",
+            "text": "二、主营业务与产品结构分析"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_04.png"
+    },
+    {
+      "taskId": "QW-L2",
+      "requiredTheme": "收入与盈利变化",
+      "targetQuery": "三、收入与盈利变化",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘收入与盈利变化’。",
+        "若无标题入口，使用全文查找精确短语‘三、收入与盈利变化’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 60,
+            "paragraphNumberOneBased": 61,
+            "style": "Normal",
+            "text": "三、收入与盈利变化"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_07.png"
+    },
+    {
+      "taskId": "QW-L3",
+      "requiredTheme": "研发投入",
+      "targetQuery": "四、研发投入与科创属性",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘研发投入’。",
+        "若无标题入口，使用全文查找精确短语‘四、研发投入与科创属性’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 104,
+            "paragraphNumberOneBased": 105,
+            "style": "Normal",
+            "text": "四、研发投入与科创属性"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_12.png"
+    },
+    {
+      "taskId": "QW-L4",
+      "requiredTheme": "竞争优势",
+      "targetQuery": "五、竞争优势",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘竞争优势’。",
+        "若无标题入口，使用全文查找精确短语‘五、竞争优势’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 119,
+            "paragraphNumberOneBased": 120,
+            "style": "Normal",
+            "text": "五、竞争优势"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_15.png"
+    },
+    {
+      "taskId": "QW-L5",
+      "requiredTheme": "增长变量",
+      "targetQuery": "六、增长变量",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘增长变量’。",
+        "若无标题入口，使用全文查找精确短语‘六、增长变量’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 141,
+            "paragraphNumberOneBased": 142,
+            "style": "Normal",
+            "text": "六、增长变量"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_18.png"
+    },
+    {
+      "taskId": "QW-L6",
+      "requiredTheme": "主要风险",
+      "targetQuery": "七、主要风险",
+      "protocol": [
+        "在Word打开字节一致副本并显示导航窗格。",
+        "尝试从导航窗格直接进入‘主要风险’。",
+        "若无标题入口，使用全文查找精确短语‘七、主要风险’。",
+        "进入首个命中并核对标题文字；不记录或比较个人操作耗时。"
+      ],
+      "directHeadingNavigation": {
+        "status": "failed_structural",
+        "reason": "初始文档可识别标题段落为0，导航窗格为空。"
+      },
+      "fullTextFallback": {
+        "status": "passed",
+        "matchCount": 1,
+        "matches": [
+          {
+            "paragraphIndexZeroBased": 159,
+            "paragraphNumberOneBased": 160,
+            "style": "Normal",
+            "text": "七、主要风险"
+          }
+        ]
+      },
+      "overallTaskResult": "passed_with_full_text_search_fallback",
+      "nativeVisualCorroboration": "evidence/reused_v3/qoder_word_page_19.png"
+    }
+  ],
+  "aggregate": {
+    "taskCount": 6,
+    "directHeadingNavigationPassed": 0,
+    "fullTextFallbackPassed": 6
+  },
+  "defensibleConclusion": "六项主题均能用标准全文查找定位，故不能称为‘内容不可找’；但32页、24,333字报告没有任何可识别标题和原生目录，六项任务均不能用导航窗格完成，属于可复现的长文检索摩擦。",
+  "severity": "moderate_workflow_defect",
+  "scoringBoundary": "只影响检索/编辑结构维度；不得同时在主题覆盖或分析深度维度重复扣分。"
+}

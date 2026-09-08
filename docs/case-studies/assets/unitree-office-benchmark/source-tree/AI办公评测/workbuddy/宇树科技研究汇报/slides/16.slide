@@ -1,0 +1,29 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#061F32', padding: '72px 88px 48px 88px', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginBottom: 32 }}>
+            <Box style={{ width: 48, height: 4, background: '#08A6F6' }} />
+            <Text style={{ fontSize: 18, color: '#08A6F6', letterSpacing: 4, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>结论与跟踪</Text>
+        </Box>
+        <Text style={{ fontSize: 44, color: '#FFFFFF', fontWeight: 'bold', lineHeight: 1.35, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>
+            高成长已兑现、盈利质量稀缺；<br />2026年看"换挡后再加速"的验证。
+        </Text>
+    </Box>
+    <Box style={{ flexDirection: 'row', gap: 24 }}>
+        <Box style={{ flex: 1, borderTop: '2px solid #08A6F6', paddingTop: 16, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 22, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>跟踪一：工业订单</Text>
+            <Text style={{ fontSize: 16, color: '#99BDED', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>人形机器人从科教（占比73.6%）走向工业/商用的订单兑现节奏</Text>
+        </Box>
+        <Box style={{ flex: 1, borderTop: '2px solid #08A6F6', paddingTop: 16, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 22, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>跟踪二：毛利率走势</Text>
+            <Text style={{ fontSize: 16, color: '#99BDED', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>2026H1已回落至56.01%，验证"以价换量"策略的可持续性</Text>
+        </Box>
+        <Box style={{ flex: 1, borderTop: '2px solid #08A6F6', paddingTop: 16, flexDirection: 'column', gap: 8 }}>
+            <Text style={{ fontSize: 22, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>跟踪三：费用率回归</Text>
+            <Text style={{ fontSize: 16, color: '#99BDED', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>研发与销售费用前置后的回归节奏，以及扣非净利率修复进度</Text>
+        </Box>
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 10 }}>
+        <Box style={{ width: '100%', height: 1, background: '#44546A' }} />
+        <Text style={{ fontSize: 14, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>本报告由AI基于公开信息整理生成，不构成投资建议；财务数据以《宇树科技经营与财务分析底稿.xlsx》为唯一底稿，精确数值请以交易所披露原文为准。市场有风险，投资需谨慎。</Text>
+    </Box>
+</Slide>

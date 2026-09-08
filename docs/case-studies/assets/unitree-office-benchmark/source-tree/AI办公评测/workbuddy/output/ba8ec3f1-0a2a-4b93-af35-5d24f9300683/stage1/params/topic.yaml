@@ -1,0 +1,15 @@
+detected_doc_type: "公司研究报告（个股跟踪）"
+volume_tier: "regular"
+target_length: 6000
+target_tone: "第三人称，专业金融研报，信息密度高，所有数字可追溯"
+industry: "具身智能 / 机器人"
+target_stocks: ["688836.SH"]
+report_category: "公司研究"
+analyst_info:
+  name: "——（AI基于公开资料整理，非执业分析师）"
+  title: "——"
+  cert_number: "——"
+mandatory_sections: ["核心观点", "主营业务与产品结构", "收入与盈利变化", "研发投入", "竞争优势", "增长变量", "风险提示", "数据来源", "免责声明"]
+risk_level: "high"
+data_cutoff: "2026-08-30"
+data_source_note: "全部数据以已核验的《宇树科技经营与财务分析底稿.xlsx》为准，不新增无法追溯的数字"

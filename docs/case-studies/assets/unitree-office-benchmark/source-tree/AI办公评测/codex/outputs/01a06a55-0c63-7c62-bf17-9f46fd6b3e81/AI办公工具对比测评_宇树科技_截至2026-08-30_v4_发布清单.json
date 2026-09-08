@@ -1,0 +1,152 @@
+{
+  "schema": "fixed-sample-evidence-review-publication-manifest/1.2",
+  "publishedAt": "2026-09-06T15:43:00+08:00",
+  "publicationStatus": "final_v4_2_fixed_environment",
+  "mainReport": {
+    "title": "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日",
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+    "bytes": 41887725,
+    "sha256": "20a328ee7110edf8ddd4a9efdf8fc7d3baab465b36da44319cb30e6430d43497",
+    "selfContained": true,
+    "embeddedMediaCount": 710,
+    "missingMediaCount": 0,
+    "atomicReplacement": true
+  },
+  "activeDataLedger": {
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4/report_v4.json",
+    "bytes": 2913216,
+    "sha256": "ecf803114500c487911938b5b59d53799afd9d035c30f32523cd2fd5d13f186f",
+    "schemaVersion": "4.2.0",
+    "presentationVersion": "4.2"
+  },
+  "historicalV4_1": {
+    "htmlPath": "/Users/guoqingtao/Desktop/AI办公评测/codex/outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30_v4.1_历史版.html",
+    "htmlBytes": 41933422,
+    "htmlSha256": "d3c4d969aaa16df8441c3e577130fec90e55dda859c0c0541e054f3595c32f17",
+    "jsonPath": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4/report_v4.1_frozen.json",
+    "jsonBytes": 2904734,
+    "jsonSha256": "b616869fc5b9b13688f4c411e29900f5e5f483b082573fab96512917d237fe51",
+    "unchanged": true
+  },
+  "historicalV4_0": {
+    "htmlPath": "/Users/guoqingtao/Desktop/AI办公评测/codex/outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30_v4.0_历史版.html",
+    "htmlSha256": "3ddfc202db273b9e87dda4882d6f5bfc15f831c9bdf33bd9532cad6313607c83",
+    "unchanged": true
+  },
+  "historicalV3": {
+    "htmlPath": "/Users/guoqingtao/Desktop/AI办公评测/codex/outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30_v3_历史版.html",
+    "htmlSha256": "03c432022efe3352421894e2ffbe53488e09696793be398d67fa857187348636",
+    "unchanged": true
+  },
+  "scoreAndSampleLock": {
+    "artifactCount": 30,
+    "scoresCompared": 30,
+    "gatesCompared": 30,
+    "originalPathsCompared": 30,
+    "originalSha256Compared": 30,
+    "officialRankingsCompared": 2,
+    "differences": 0,
+    "statement": "v4.2相对v4.1未重新评分；30件终稿的分数、闸门、路径、原件SHA及两张正式排名逐项相同。"
+  },
+  "contentInventory": {
+    "artifacts": 30,
+    "scenarioRecords": 202,
+    "coverageItems": 324,
+    "findings": 200,
+    "evidence": 741,
+    "media": 710,
+    "facts": 32,
+    "sources": 11,
+    "browserLedgerRows": 2177,
+    "browserAccessibleEntries": {
+      "artifacts": 30,
+      "facts": 32,
+      "factSources": 6,
+      "processSources": 5
+    }
+  },
+  "releaseVerification": {
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v4/logs/report_v4_release_verification.json",
+    "sha256": "99c13fe6c2cc2b23bfcc9370a5fc70ee23e302834b8448a53eb97118f38bc006",
+    "historicalV4_1Path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/native_audit_v4/logs/report_v4.1_release_verification_frozen.json",
+    "historicalV4_1Sha256": "2c7dd500cfcb993b276a1340b2014c11bae56bd59fb188b85ea4f1564813e308"
+  },
+  "changeTable": {
+    "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/outputs/01a06a55-0c63-7c62-bf17-9f46fd6b3e81/AI办公工具对比测评_宇树科技_截至2026-08-30_v4.1-v4.2_变更表.md",
+    "bytes": 3495,
+    "sha256": "5e6ff3cf25da89d19d7f4e032f27f0b608a757d7bef7f0e8e9707498d921f91a"
+  },
+  "buildComponents": {
+    "dataBuilderSha256": "a4d37cb360e11e5e8bcb2c00bc95dbac730593e7960a4cb0399571b1e514a1e3",
+    "uiBuilderSha256": "de2d6fe1e31cf191487a0a457cdd439602c53f3e68f3a94bee27258e4af0cf10",
+    "uiJavaScriptSha256": "752ca83ab90b756bff0a9487fd3866e73fe797ba014896d3825a4f9c4335408a",
+    "uiCssSha256": "b6d13d9811d3e5f3c901cc3968737c938bb8529eebd8494e42d34bd00d39c459",
+    "chromeSmokeScriptSha256": "e5d1da7260cd90c6a47f0e03ea826f97ab8a410d44370c6d3984344b24eeeb34"
+  },
+  "visualRegression": {
+    "desktop": {
+      "viewport": "1440x900",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/tests/screenshots_v42_published/desktop-1440x900.png",
+      "sha256": "130c4e48774fef1ba689a8ce266a5e1e12dd2d55d740d4f45448e0c5455e3230"
+    },
+    "tablet": {
+      "viewport": "768x1024",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/tests/screenshots_v42_published/tablet-768x1024.png",
+      "sha256": "7bb9fd53f94540ba5049b3d6fe9e051dfa7ec7772a283c840ebec58ebaf11efc"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "path": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4_ui/tests/screenshots_v42_published/mobile-390x844.png",
+      "sha256": "5e91a42c95ab613882dc290bc4be46a641d4d8589e731d8aacd91ca202d6c35f"
+    }
+  },
+  "printAcceptance": {
+    "engine": "Google Chrome 152 headless print",
+    "summary": {
+      "pages": 10,
+      "bytes": 1493147,
+      "sha256": "e5ef9eaa5b131b94b533f746551743d824e29334a578bb059ba582ccca0119d7"
+    },
+    "formal": {
+      "pages": 29,
+      "bytes": 2700497,
+      "sha256": "0e4c0b4c0dda365e1b5bef170234fa350bdc182b4140c74ae4312d7082b96abf"
+    },
+    "full": {
+      "pages": 148,
+      "bytes": 19920573,
+      "sha256": "c3395fccdb857e4928851ce673ebbc12806eee78e00dfce3639f3e7b92ceb19f",
+      "allPagesContainExtractableText": true,
+      "lastMediaShaLocated": true
+    }
+  },
+  "acceptance": {
+    "dataAssertions": {"passed": 50063, "failed": 0},
+    "scoringUnitTests": {"passed": 22, "failed": 0},
+    "uiBuildTests": {"passed": 8, "failed": 0},
+    "browser": {
+      "status": "passed",
+      "pageErrors": 0,
+      "viewports": ["1440x900", "768x1024", "390x844"],
+      "keyboard": "passed",
+      "theme": "passed",
+      "dialogs": "passed",
+      "printProfileVisibility": "passed"
+    },
+    "mainReportUnder40MiB": true,
+    "selfContained": true,
+    "atomicReplacement": true
+  },
+  "limitations": [
+    "固定30件样本、一次任务链和当前Mac Office/Chrome环境，不能外推产品通常水平。",
+    "用户确认各自使用测试时点的最强档，但底层模型、算力、成本、上下文及工具权限未构成严格控制实验。",
+    "单一评审者评分未测量评审者间一致性；敏感组不是置信区间或确定性优劣结论。",
+    "传播恢复值是非因果机械诊断，不作为正式排名。",
+    "32项事实母表不是五本Excel全部数字的全量鉴证。",
+    "Windows PowerPoint、独立重新下载和厂商正式回应仍未验证。",
+    "WorkBuddy分享页过程范围采用用户确认；自动抽取限制在报告中单独披露。",
+    "ZhikunCode没有产品计费页；Kimi账户日账单混有其他任务，不得作为六任务成本或性价比证据。",
+    "配置、用量与费用原图含可见账号标识，对外发布前需由发布者自行评估隐私风险。"
+  ],
+  "hashNote": "最终HTML的SHA-256登记在本清单中；若把该值写回HTML本体，文件字节及其哈希将再次变化。"
+}

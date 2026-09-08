@@ -1,0 +1,10 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#062032', padding: '0px 88px', flexDirection: 'row', alignItems: 'center' }}>
+    <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 64, width: '100%' }}>
+        <Text style={{ fontSize: 260, color: '#FFFFFF', opacity: 0.14, fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>02</Text>
+        <Box style={{ flexDirection: 'column', gap: 16 }}>
+            <Text style={{ fontSize: 48, color: '#FFFFFF', fontWeight: 'bold', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>结构切换</Text>
+            <Text style={{ fontSize: 20, color: '#99BDED', letterSpacing: 2, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>Structural Shift</Text>
+            <Text style={{ fontSize: 18, color: '#808080', lineHeight: 1.5, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>人形反超四足成为第一引擎，境内反超境外成为第一市场</Text>
+        </Box>
+    </Box>
+</Slide>

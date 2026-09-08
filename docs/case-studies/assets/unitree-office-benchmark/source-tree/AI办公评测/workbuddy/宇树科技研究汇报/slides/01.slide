@@ -1,0 +1,20 @@
+<Slide style={{ width: '1280px', height: '720px', background: '#061F32', padding: '72px 88px 56px 88px', flexDirection: 'column', justifyContent: 'space-between' }}>
+    <Box style={{ flexDirection: 'column' }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 16, marginBottom: 40 }}>
+            <Box style={{ width: 48, height: 4, background: '#08A6F6' }} />
+            <Text style={{ fontSize: 18, color: '#08A6F6', letterSpacing: 4, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>公司研究 · 内部汇报</Text>
+        </Box>
+        <Text style={{ fontSize: 26, color: '#99BDED', fontWeight: 'bold', marginBottom: 20, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>宇树科技（688836.SH）</Text>
+        <Text style={{ fontSize: 66, color: '#FFFFFF', fontWeight: 'bold', lineHeight: 1.25, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>
+            人形机器人第一股的<br />成长兑现与增速换挡
+        </Text>
+        <Text style={{ fontSize: 22, color: '#99BDED', marginTop: 28, fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>基于公开资料整理 · 非投资建议</Text>
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 12 }}>
+        <Box style={{ width: '100%', height: 1, background: '#44546A' }} />
+        <Box style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Text style={{ fontSize: 16, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>数据截止：2026年8月30日　|　报告日期：2026年9月4日</Text>
+            <Text style={{ fontSize: 16, color: '#808080', fontFamily: 'Arial, "PingFang SC", "Microsoft YaHei", sans-serif' }}>来源：上交所披露文件、公司公告及公开报道</Text>
+        </Box>
+    </Box>
+</Slide>

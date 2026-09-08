@@ -1,0 +1,527 @@
+{
+  "schema": "native-audit-v4-merge-supplement-1.0",
+  "evidenceCatalog": [
+    {
+      "id": "EV-DBPPT-SOURCE-SHA",
+      "type": "hash_record",
+      "path": "logs/source_hashes_before_after.json",
+      "description": "豆包PPT审计前后SHA-256一致。"
+    },
+    {
+      "id": "EV-DBPPT-MAC-REPAIR-PROMPT",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/doubao_ppt_002_repair_prompt.png",
+      "description": "Mac PowerPoint 16.112.3首次打开修复提示。"
+    },
+    {
+      "id": "EV-DBPPT-MAC-LOSS-NOTICE",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/doubao_ppt_005_deleted_content_notice.png",
+      "description": "修复副本提示删除内容。"
+    },
+    {
+      "id": "EV-DBPPT-MAC-SORTER-LOSS",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/doubao_ppt_sorter_overview.png",
+      "description": "修复后8/16页核心内容为空。"
+    },
+    {
+      "id": "EV-DBPPT-REPAIR-DIFF",
+      "type": "structured_log",
+      "path": "logs/doubao_ppt_compatibility.json#/repairComparisonImported",
+      "description": "修复前后7图表与7嵌入工作簿损失。"
+    },
+    {
+      "id": "EV-DBPPT-ZIP-XML",
+      "type": "structured_log",
+      "path": "logs/doubao_ppt_compatibility.json#/packageIntegrity",
+      "description": "原包ZIP通过且XML/RELS零解析错误。"
+    },
+    {
+      "id": "EV-DBPPT-LO-16PAGE",
+      "type": "cross_implementation_render",
+      "path": "evidence/doubao_libreoffice/slides_05_09_11_13_contact_sheet.png",
+      "description": "LibreOfficeDev 26.8直接导出16页；Mac修复丢失页仍有图表内容。"
+    },
+    {
+      "id": "EV-DBPPT-LO-RUNLOG",
+      "type": "structured_log",
+      "path": "logs/doubao_ppt_compatibility.json#/libreOfficeRun",
+      "description": "LibreOffice版本、命令、页数、逐页文本与像素统计。"
+    },
+    {
+      "id": "EV-QW-NAV-EMPTY",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_document_map.png",
+      "description": "Qoder Word初始文档导航窗格为空。"
+    },
+    {
+      "id": "EV-QW-LOCATOR-LOG",
+      "type": "structured_log",
+      "path": "logs/qoder_word_locator_tasks.json",
+      "description": "六项精确短语、命中数量和OOXML段落定位。"
+    },
+    {
+      "id": "EV-QI-ORD-100",
+      "type": "annotated_source_pixels",
+      "path": "evidence/qoder_ordinary_100pct_annotated.png",
+      "description": "Qoder普通图100%原像素九区标注。"
+    },
+    {
+      "id": "EV-QI-ORD-1920",
+      "type": "screen_simulation",
+      "path": "evidence/qoder_ordinary_screen_1920x1080.png",
+      "description": "Qoder普通图1920×1080等比投屏。"
+    },
+    {
+      "id": "EV-QI-ORD-A4",
+      "type": "print_simulation",
+      "path": "evidence/qoder_ordinary_a4_landscape_300dpi.png",
+      "description": "Qoder普通图A4横向300dpi模拟。"
+    },
+    {
+      "id": "EV-QI-INK-100",
+      "type": "annotated_source_pixels",
+      "path": "evidence/qoder_ink_100pct_annotated.png",
+      "description": "Qoder水墨图100%原像素九区标注。"
+    },
+    {
+      "id": "EV-QI-INK-1920",
+      "type": "screen_simulation",
+      "path": "evidence/qoder_ink_screen_1920x1080.png",
+      "description": "Qoder水墨图1920×1080等比投屏。"
+    },
+    {
+      "id": "EV-QI-INK-A4",
+      "type": "print_simulation",
+      "path": "evidence/qoder_ink_a4_landscape_300dpi.png",
+      "description": "Qoder水墨图A4横向300dpi模拟。"
+    },
+    {
+      "id": "EV-WB-EXCEL-SOURCES",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/workbuddy_excel_sheet_07_first.png",
+      "description": "WorkBuddy资料来源Sheet原生截图。"
+    },
+    {
+      "id": "EV-WB-SSE-PERIODIC-QUERY",
+      "type": "official_api_response",
+      "path": "logs/sse_query_periodic_688836_2025-01-01_2026-08-30.json",
+      "description": "上交所定期报告筛选在截止日前返回0条。"
+    },
+    {
+      "id": "EV-WB-SSE-ALL-CONTROL",
+      "type": "official_api_response",
+      "path": "logs/sse_query_all_688836_2025-01-01_2026-08-30.json",
+      "description": "相同代码/日期的全公告查询返回17条IPO公告，证明接口与代码有效。"
+    },
+    {
+      "id": "EV-WB-EXCEL-FUND-B48",
+      "type": "structured_cell_extract",
+      "path": "logs/workbuddy_evidence_upgrade.json#/fundraisingThreeColumn/row/Excel上游",
+      "description": "Excel原始数据-业务!B48为拟募集420,200万元。"
+    },
+    {
+      "id": "EV-WB-WORD-PAGE03",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/workbuddy_word_page_03.png",
+      "description": "WorkBuddy Word原生第3页。"
+    },
+    {
+      "id": "EV-WB-WORD-PAGE04",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/workbuddy_word_page_04.png",
+      "description": "WorkBuddy Word原生第4页。"
+    },
+    {
+      "id": "EV-WB-WORD-FUND-TEXT",
+      "type": "structured_ooxml_extract",
+      "path": "logs/workbuddy_evidence_upgrade.json#/fundraisingThreeColumn/row/下游首次引入",
+      "description": "Word精确段落显示募集资金到位/42.02亿元到账。"
+    },
+    {
+      "id": "EV-WB-OFFICIAL-FUND-FACTS",
+      "type": "fact_ledger_reference",
+      "path": "../benchmark_01a06a55/data/facts.json#F-FUND-PLAN,F-FUND-RAISED",
+      "description": "招股书第41页计划金额与上市公告书第33页实际总额/净额。"
+    },
+    {
+      "id": "EV-QW-PAGE-MAIN-BUSINESS",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_04.png",
+      "description": "Word原生页中可见‘二、主营业务与产品结构分析’相关章节。"
+    },
+    {
+      "id": "EV-QW-PAGE-REVENUE-PROFIT",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_07.png",
+      "description": "Word原生页中可见‘三、收入与盈利变化’相关章节。"
+    },
+    {
+      "id": "EV-QW-PAGE-RD",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_12.png",
+      "description": "Word原生页中可见‘四、研发投入与科创属性’相关章节。"
+    },
+    {
+      "id": "EV-QW-PAGE-ADVANTAGE",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_15.png",
+      "description": "Word原生页中可见‘五、竞争优势’相关章节。"
+    },
+    {
+      "id": "EV-QW-PAGE-GROWTH",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_18.png",
+      "description": "Word原生页中可见‘六、增长变量’相关章节。"
+    },
+    {
+      "id": "EV-QW-PAGE-RISK",
+      "type": "native_screenshot",
+      "path": "evidence/reused_v3/qoder_word_page_19.png",
+      "description": "Word原生页中可见‘七、主要风险’相关章节。"
+    }
+  ],
+  "compatibilityMatrixRows": [
+    {
+      "rowId": "DBPPT-COMP-01",
+      "test": "Mac PowerPoint同SHA首次打开",
+      "result": "修复提示复现",
+      "status": "verified",
+      "evidenceIds": [
+        "EV-DBPPT-SOURCE-SHA",
+        "EV-DBPPT-MAC-REPAIR-PROMPT"
+      ]
+    },
+    {
+      "rowId": "DBPPT-COMP-02",
+      "test": "Mac修复副本内容保持",
+      "result": "8/16页核心内容为空；7图表及7嵌入工作簿删除",
+      "status": "verified",
+      "evidenceIds": [
+        "EV-DBPPT-MAC-LOSS-NOTICE",
+        "EV-DBPPT-MAC-SORTER-LOSS",
+        "EV-DBPPT-REPAIR-DIFF"
+      ]
+    },
+    {
+      "rowId": "DBPPT-COMP-03",
+      "test": "原包ZIP/XML结构自检",
+      "result": "ZIP通过；XML/RELS解析错误0",
+      "status": "verified_but_not_equivalent_to_powerpoint_compatibility",
+      "evidenceIds": [
+        "EV-DBPPT-ZIP-XML"
+      ]
+    },
+    {
+      "rowId": "DBPPT-COMP-04",
+      "test": "LibreOfficeDev 26.8交叉实现",
+      "result": "直接导出16页；8个Mac损失页均保留图表/文字",
+      "status": "verified_with_font_substitution_caveat",
+      "evidenceIds": [
+        "EV-DBPPT-LO-16PAGE",
+        "EV-DBPPT-LO-RUNLOG"
+      ]
+    }
+  ],
+  "compatibilityUnverifiedRows": [
+    {
+      "rowId": "DBPPT-COMP-U01",
+      "test": "Windows PowerPoint首次打开/编辑数据/保存重开",
+      "status": "pending",
+      "reason": "当前无Windows环境证据。",
+      "evidenceIds": []
+    },
+    {
+      "rowId": "DBPPT-COMP-U02",
+      "test": "豆包侧独立重新下载/重新导出",
+      "status": "pending",
+      "reason": "现有备份同哈希且同时戳，不构成独立下载。",
+      "evidenceIds": [
+        "EV-DBPPT-SOURCE-SHA"
+      ]
+    }
+  ],
+  "rubricSubtests": [
+    {
+      "subtestId": "QW-L1",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位主营业务与产品结构",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-MAIN-BUSINESS"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QW-L2",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位收入与盈利变化",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-REVENUE-PROFIT"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QW-L3",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位研发投入",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-RD"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QW-L4",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位竞争优势",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-ADVANTAGE"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QW-L5",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位增长变量",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-GROWTH"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QW-L6",
+      "artifactId": "artifact:qoder:word",
+      "criterionId": "criterion:word:retrieval-expression",
+      "scenario": "定位主要风险",
+      "status": "passed_with_full_text_search_fallback",
+      "expected": "使用导航窗格或标准全文查找到达对应章节",
+      "actual": "导航窗格不可用；全文查找命中并可到达",
+      "findingId": "QODER-WORD-NAV-01",
+      "evidenceIds": [
+        "EV-QW-NAV-EMPTY",
+        "EV-QW-LOCATOR-LOG",
+        "EV-QW-PAGE-RISK"
+      ],
+      "deductionScope": "retrieval-expression only; one shared structural finding"
+    },
+    {
+      "subtestId": "QI-ORD-S1",
+      "artifactId": "artifact:qoder:image",
+      "criterionId": "criterion:image:readability-100pct",
+      "scenario": "100_percent_source_pixels",
+      "status": "failed_professional_readiness",
+      "findingId": "QODER-ORD-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-ORD-100"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "QI-ORD-S2",
+      "artifactId": "artifact:qoder:image",
+      "criterionId": "criterion:image:investor-visual",
+      "scenario": "1920x1080_fit_screen",
+      "status": "failed_investor_projection_readiness",
+      "findingId": "QODER-ORD-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-ORD-1920"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "QI-ORD-S3",
+      "artifactId": "artifact:qoder:image",
+      "criterionId": "criterion:image:investor-visual",
+      "scenario": "A4_landscape_300dpi",
+      "status": "failed_publication_readiness",
+      "findingId": "QODER-ORD-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-ORD-A4"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "QI-INK-S1",
+      "artifactId": "artifact:qoder:ink",
+      "criterionId": "criterion:ink:hierarchy-readability",
+      "scenario": "100_percent_source_pixels",
+      "status": "failed_professional_readiness",
+      "findingId": "QODER-INK-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-INK-100"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "QI-INK-S2",
+      "artifactId": "artifact:qoder:ink",
+      "criterionId": "criterion:ink:professional-composition",
+      "scenario": "1920x1080_fit_screen",
+      "status": "failed_investor_projection_readiness",
+      "findingId": "QODER-INK-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-INK-1920"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "QI-INK-S3",
+      "artifactId": "artifact:qoder:ink",
+      "criterionId": "criterion:ink:output-finish",
+      "scenario": "A4_landscape_300dpi",
+      "status": "failed_publication_readiness",
+      "findingId": "QODER-INK-G1-LAYOUT",
+      "evidenceIds": [
+        "EV-QI-INK-A4"
+      ],
+      "deductionScope": "single shared layout root within this artifact"
+    },
+    {
+      "subtestId": "WB-W-N01-NATIVE-PAGE-CHECK",
+      "artifactId": "artifact:workbuddy:word",
+      "criterionId": "criterion:word:period-unit-attribute",
+      "scenario": "核对42.02亿元由计划金额变为到位/到账",
+      "status": "verified_in_native_pages_and_ooxml",
+      "findingId": "WORKBUDDY-W-N01",
+      "evidenceIds": [
+        "EV-WB-EXCEL-FUND-B48",
+        "EV-WB-WORD-PAGE03",
+        "EV-WB-WORD-PAGE04",
+        "EV-WB-WORD-FUND-TEXT",
+        "EV-WB-OFFICIAL-FUND-FACTS"
+      ],
+      "deductionScope": "one attribute-change root in Word"
+    }
+  ],
+  "findingEvidenceLinks": {
+    "QODER-WORD-NAV-01": [
+      "EV-QW-NAV-EMPTY",
+      "EV-QW-LOCATOR-LOG",
+      "EV-QW-PAGE-MAIN-BUSINESS",
+      "EV-QW-PAGE-REVENUE-PROFIT",
+      "EV-QW-PAGE-RD",
+      "EV-QW-PAGE-ADVANTAGE",
+      "EV-QW-PAGE-GROWTH",
+      "EV-QW-PAGE-RISK"
+    ],
+    "QODER-ORD-G1-LAYOUT": [
+      "EV-QI-ORD-100",
+      "EV-QI-ORD-1920",
+      "EV-QI-ORD-A4"
+    ],
+    "QODER-INK-G1-LAYOUT": [
+      "EV-QI-INK-100",
+      "EV-QI-INK-1920",
+      "EV-QI-INK-A4"
+    ],
+    "WORKBUDDY-W-N01": [
+      "EV-WB-EXCEL-FUND-B48",
+      "EV-WB-WORD-PAGE03",
+      "EV-WB-WORD-PAGE04",
+      "EV-WB-WORD-FUND-TEXT",
+      "EV-WB-OFFICIAL-FUND-FACTS"
+    ]
+  },
+  "propagationScoreModeReview": {
+    "legacyCapModesDetected": [
+      {
+        "propagationId": "P-QODER-PPT",
+        "scoreMode": "PPT新增错误，计分并封顶",
+        "label": "同比下降误写成绝对值转负"
+      },
+      {
+        "propagationId": "P-QODER-HTML",
+        "scoreMode": "HTML新增错误，计分并封顶",
+        "label": "利润差额等同税前股份支付"
+      },
+      {
+        "propagationId": "P-WB-FUND",
+        "scoreMode": "五件下游分别计分并封顶",
+        "label": "42.02亿元拟募/拟投改成到账"
+      },
+      {
+        "propagationId": "P-WB-FIGURE",
+        "scoreMode": "五件下游分别计分并封顶",
+        "label": "新增截止日后Figure AI比较"
+      },
+      {
+        "propagationId": "P-ZHIKUN-CUTOFF",
+        "scoreMode": "Excel计分并封顶；后续不扣",
+        "label": "8月31日行情越过截止日"
+      }
+    ],
+    "finding": "v3仍有P-WB-FUND与P-WB-FIGURE写‘五件下游分别计分并封顶’，会把同一传播根因在总榜中重复放大。",
+    "replacementFields": {
+      "rootCauseCount": 1,
+      "rootFindingId": "first_artifact_that_introduces_the_change",
+      "rootArtifactScoring": {
+        "deduct": true,
+        "cap": "case_by_case_on_root_artifact_only"
+      },
+      "descendantScoring": {
+        "classification": "propagated_same_root",
+        "deduct": false,
+        "cap": false,
+        "standaloneRisk": true
+      },
+      "descendantException": "只有下游再次改变数值/单位/期间/方向/事实属性或新增独立错误，才建立新finding并重新判断封顶。",
+      "chainAggregatePenaltyCount": 1
+    },
+    "suggestedNonAppliedPatch": [
+      {
+        "targetPropagationId": "P-WB-FUND",
+        "removeField": "scoreMode",
+        "set": {
+          "scoreModeV4": "root_only; descendants_risk_only",
+          "rootFindingId": "WORKBUDDY-W-N01",
+          "descendantPolicy": "propagated_same_root_no_deduction_no_cap"
+        }
+      },
+      {
+        "targetPropagationId": "P-WB-FIGURE",
+        "removeField": "scoreMode",
+        "set": {
+          "scoreModeV4": "root_only; descendants_risk_only",
+          "rootFindingId": "WORKBUDDY-W-N02",
+          "descendantPolicy": "propagated_same_root_no_deduction_no_cap"
+        }
+      }
+    ],
+    "notApplied": true
+  }
+}

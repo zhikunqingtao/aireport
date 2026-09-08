@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="sCN5GL5yeacngdrtVVFbSo">
+
+<head data-page-node-id="ClSPjNg447uGGroopn6GTc">
+    <meta charset="UTF-8" data-page-node-id="sQHJsFVRUmLDfDpdcy1Vhx">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="yTir1wExF2a8ujsCPOI5gc">
+    <meta name="docx-page-size" content="A4" data-page-node-id="S6vR6Sfn7VcCHEP0fcA1B0">
+    <title>宇树科技 研究报告</title>
+    <style>
+        /* 在页脚的底部居中展示页码 */
+
+        @page {
+            @bottom-center {
+                content: counter(page);
+            }
+        }
+
+        @page cover {
+            @bottom-center {
+                content: none;
+            }
+        }
+
+        section[role="cover"] {
+            page: cover;
+        }
+
+        :root {
+            /* design tokens: business-modern */
+            --typography-fontFamily-heading: "微软雅黑", "Microsoft YaHei", "PingFang SC";
+            --typography-fontFamily-body: "微软雅黑", "Microsoft YaHei", "PingFang SC";
+            --typography-fontFamily-data: "DIN Next", Arial, sans-serif;
+            --typography-lineHeight-body: 1.6;
+            --typography-fontWeight-heading: 600;
+            --typography-fontSize-coverTitle: 22pt;
+            --typography-fontSize-coverCategory: 14pt;
+            --typography-fontSize-sectionHeader: 13pt;
+            --typography-fontSize-h2: 11pt;
+            --typography-fontSize-h3: 10pt;
+            --typography-fontSize-body: 9pt;
+            --typography-fontSize-small: 8pt;
+            --typography-fontSize-tiny: 7pt;
+            --color-primary-token: #1565C0;
+            --color-heading-token: #1A237E;
+            --color-text-token: #212121;
+            --color-textSecondary-token: #616161;
+            --color-divider-token: #E0E0E0;
+            --color-surface-token: #F5F7FA;
+            --color-accent-token: #00897B;
+
+            --fs-cover-title: var(--typography-fontSize-coverTitle);
+            --fs-cover-category: var(--typography-fontSize-coverCategory);
+            --fs-section-header: var(--typography-fontSize-sectionHeader);
+            --fs-h2: var(--typography-fontSize-h2);
+            --fs-h3: var(--typography-fontSize-h3);
+            --fs-body: var(--typography-fontSize-body);
+            --fs-small: var(--typography-fontSize-small);
+            --fs-tiny: var(--typography-fontSize-tiny);
+            --ff-heading: var(--typography-fontFamily-heading);
+            --ff-body: var(--typography-fontFamily-body);
+            --ff-mono: var(--typography-fontFamily-data);
+            --lh-body: var(--typography-lineHeight-body);
+            --fw-bold: var(--typography-fontWeight-heading);
+            --color-primary: var(--color-primary-token);
+            --color-text: var(--color-text-token);
+            --color-muted: var(--color-textSecondary-token);
+            --color-border: var(--color-divider-token);
+            --color-bg: #ffffff;
+            --color-bg-dark: var(--color-heading-token);
+            --color-card-bg: var(--color-surface-token);
+            --color-accent: var(--color-accent-token);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--ff-body);
+            font-size: var(--fs-body);
+            line-height: var(--lh-body);
+            color: var(--color-text);
+            background: var(--color-bg);
+            width: 21cm;
+            margin: 0 auto;
+            padding: 0;
+        }
+        /* ============================================================
+     封面（券商研报惯例：克制留白、标题为焦点、深蓝+灰配色）
+     自上而下：品牌区 → 核心区 → 数据区 → 元信息区
+     ============================================================ */
+
+        .cover-brand {
+            padding: 1.6cm 2cm 0.4cm;
+            border-bottom: 2px solid var(--color-primary);
+            margin-bottom: 1.6em;
+        }
+
+        .cover-org {
+            font-size: var(--fs-cover-category);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            color: var(--color-primary);
+            letter-spacing: 0.05em;
+        }
+
+        .cover-core {
+            padding: 1.2cm 2cm 0;
+        }
+
+        .cover-category {
+            font-size: var(--fs-cover-category);
+            color: var(--color-muted);
+            font-family: var(--ff-heading);
+            letter-spacing: 0.08em;
+            margin-bottom: 0.6em;
+        }
+
+        .cover-stock {
+            font-size: var(--fs-cover-category);
+            color: var(--color-text);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            margin-bottom: 0.5em;
+        }
+
+        .cover-rating {
+            font-size: var(--fs-section-header);
+            color: var(--color-accent);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            margin-bottom: 1.4em;
+        }
+
+        .cover-title {
+            font-size: var(--fs-cover-title);
+            font-weight: var(--fw-bold);
+            font-family: var(--ff-heading);
+            color: var(--color-primary);
+            line-height: 1.3;
+            margin-bottom: 1.6em;
+        }
+
+        .cover-data {
+            padding: 0 2cm;
+            margin-bottom: 1.4em;
+        }
+
+        .metrics-table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: var(--fs-small);
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .metrics-table td {
+            padding: 0.5em 0.6em;
+        }
+
+        .metrics-table .m-label {
+            color: var(--color-muted);
+            width: 12%;
+        }
+
+        .metrics-table .m-value {
+            font-weight: var(--fw-bold);
+            font-family: var(--ff-mono);
+            color: var(--color-text);
+            width: 13%;
+        }
+
+        .cover-meta {
+            padding: 0.6cm 2cm;
+            font-size: var(--fs-small);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .cover-author {
+            font-weight: var(--fw-bold);
+            color: var(--color-text);
+            margin-bottom: 0.3em;
+        }
+
+        .cover-cert,
+        .cover-contact,
+        .cover-date {
+            color: var(--color-muted);
+            margin-bottom: 0.2em;
+        }
+        /* ============================================================
+     标题四级层级（字号 + 字重 + 颜色/底色 三重区分）
+     章节 深底白字13pt > 小节 主色+左边框11pt > 子小节 主色加粗10pt > 正文9pt
+     段距纯段后距、em 单位随各级字号缩放
+     ============================================================ */
+
+        .section-header {
+            background: var(--color-bg-dark);
+            color: var(--color-bg);
+            font-size: var(--fs-section-header);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            padding: 0.4em 2cm;
+            margin-bottom: 0.9em;
+            margin-top: 1.6em;
+        }
+
+        .research-body {
+            padding: 0 2cm;
+        }
+
+        .research-body h2 {
+            font-size: var(--fs-h2);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            color: var(--color-primary);
+            border-left: 4px solid var(--color-primary);
+            padding-left: 0.8em;
+            line-height: 1.5;
+            margin-top: 0.8em;
+            margin-bottom: 0.7em;
+        }
+
+        .research-body h3 {
+            font-size: var(--fs-h3);
+            font-family: var(--ff-heading);
+            font-weight: var(--fw-bold);
+            color: var(--color-primary);
+            margin-bottom: 0.6em;
+        }
+
+        .research-body p {
+            font-size: var(--fs-body);
+            margin-bottom: 0.8em;
+        }
+
+        .research-body ul,
+        .research-body ol {
+            padding-left: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        .research-body li {
+            font-size: var(--fs-body);
+            margin-bottom: 0.4em;
+        }
+        /* ============================================================
+     多段落底纹卡片（核心观点/关键发现/风险提示）
+     裸单列 table 承载整块底纹 + 富文本多段落
+     ============================================================ */
+
+        .abstract-card {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 1.2em;
+        }
+
+        .abstract-card td {
+            background-color: var(--color-card-bg);
+            border-left: 3px solid var(--color-primary);
+            padding: 0.8em 1em;
+            font-size: var(--fs-body);
+        }
+
+        .abstract-card .card-title {
+            font-size: var(--fs-h3);
+            font-weight: var(--fw-bold);
+            color: var(--color-primary);
+            font-family: var(--ff-heading);
+            margin-bottom: 0.5em;
+        }
+
+        .abstract-card p {
+            margin-bottom: 0.5em;
+        }
+        /* Three-line table（财务数据三线表） */
+
+        .three-line-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 0.9em;
+            font-size: var(--fs-small);
+        }
+
+        .three-line-table thead tr:first-child {
+            border-top: 2px solid var(--color-text);
+        }
+
+        .three-line-table thead tr:last-child {
+            border-bottom: 1px solid var(--color-text);
+        }
+
+        .three-line-table tbody tr:last-child {
+            border-bottom: 2px solid var(--color-text);
+        }
+
+        .three-line-table td,
+        .three-line-table th {
+            border-left: none;
+            border-right: none;
+            padding: 0.3em 0.6em;
+        }
+
+        .three-line-table th {
+            font-weight: var(--fw-bold);
+            background: transparent;
+            font-size: var(--fs-tiny);
+        }
+
+        .num-cell {
+            text-align: right;
+            font-family: var(--ff-mono);
+        }
+
+        .table-note {
+            font-size: var(--fs-tiny);
+            color: var(--color-muted);
+            margin-bottom: 0.9em;
+        }
+        /* Disclaimer（免责声明） */
+
+        .disclaimer {
+            padding: 1.4em 2cm;
+            border-top: 1px solid var(--color-border);
+            font-size: var(--fs-body);
+            color: var(--color-muted);
+        }
+
+        .disclaimer-title {
+            font-size: var(--fs-section-header);
+            font-weight: var(--fw-bold);
+            color: var(--color-text);
+            margin-bottom: 0.5em;
+        }
+
+        .disclaimer p {
+            font-size: var(--fs-body);
+            margin-bottom: 0.4em;
+        }
+    </style>
+</head>
+
+<body data-page-node-id="OH2U4PIbukAFt1epa3HdrJ">
+    <!-- 封面 -->
+    <section role="cover" data-page-node-id="eKX0hSEufw4J4HFmjaEDUG">
+        <div class="cover-brand" data-page-node-id="vHE9MgRwEpeaFgzbB6A1GO">
+            <span class="cover-org" data-page-node-id="8W9exg8F2nHsTkuHiVdajc">公司研究报告（基于公开资料整理 · 非投资建议）</span>
+        </div>
+
+        <div class="cover-core" data-page-node-id="QtXrQqXjQjmFbsTBiwNcpR">
+            <p class="cover-category" data-page-node-id="v4rJJrIyOyilr4p8SD5Kb6">机器人行业 / 科创板 | 公司研究</p>
+            <p class="cover-stock" data-page-node-id="reM5556d28myejttQZwxI8">宇树科技（688836.SH）</p>
+            <p class="cover-rating" data-page-node-id="BAXO2273qqh1ODUcapTf1s">未评级（本报告不构成投资建议）</p>
+            <h1 class="cover-title" data-page-node-id="RyVJMs01KACbfvUN11qFqZ">人形机器人第一股的成长兑现与增速换挡</h1>
+        </div>
+
+        <div class="cover-data" data-page-node-id="DG3jGu3Hqf4XBcOpKh7KQj">
+            <table class="metrics-table" data-page-node-id="fk8SL87XgDauYhoyi41Uf7">
+                <tr data-page-node-id="jxwy2AuJRAXEPLZwAdMw2i">
+                    <td class="m-label" data-page-node-id="1nfQMdClma36M5QMyw7rIg">发行价</td>
+                    <td class="m-value" data-page-node-id="WjYq7XJlADlChylFI6q35g">150.80元/股</td>
+                    <td class="m-label" data-page-node-id="o1r3VvhV0uRkfuXQl6sYWt">上市首日收盘</td>
+                    <td class="m-value" data-page-node-id="7T8XTv21Xj1tOvAZChxCAn">845元/股</td>
+                    <td class="m-label" data-page-node-id="C8R78FmV2SUeQx1oiGKBiX">发行市盈率</td>
+                    <td class="m-value" data-page-node-id="1a93d4NrCo54QGsIwttBsB">约219倍</td>
+                    <td class="m-label" data-page-node-id="Z47mhDNfHWSKbJiDU9TA2m">拟募资总额</td>
+                    <td class="m-value" data-page-node-id="vmH1F85e0DdkB5CvjU5GDR">42.02亿元</td>
+                </tr>
+                <tr data-page-node-id="pino6W2PzfAwHeObo9ZaIL">
+                    <td class="m-label" data-page-node-id="EH8mvjIH8H8Au4alohQWCL">总股本（发行后）</td>
+                    <td class="m-value" data-page-node-id="DPd9kbMdpz0eQuiYEaaFLf">约4.04亿股</td>
+                    <td class="m-label" data-page-node-id="wJHcD8oQLR66KIaukOH6Pz">2025年营业收入</td>
+                    <td class="m-value" data-page-node-id="2k6m2AFTAIXKXnETxGzsvP">16.99亿元</td>
+                    <td class="m-label" data-page-node-id="PhD2urDYHeFWa7kzpl5Q7a">2026H1营业收入</td>
+                    <td class="m-value" data-page-node-id="wvuj7knVB9XBC4WjlY3cic">11.52亿元</td>
+                    <td class="m-label" data-page-node-id="uB2risA88dgseaqPpxrhha">2025年扣非归母</td>
+                    <td class="m-value" data-page-node-id="51CvUvsYNPoI4hqSDF3y4R">5.91亿元</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="cover-meta" data-page-node-id="CQWxIHdXYTV5eYny5xgpZi">
+            <p class="cover-author" data-page-node-id="2WydlKjTV8aO7Yeoa3jUhQ">报告性质：公司研究（AI 基于公开信息整理，不代表任何持牌机构观点）</p>
+            <p class="cover-cert" data-page-node-id="C9rSX4IMGJ5bpqfCzIJCIC">数据来源：招股说明书、上市公告书、定期报告及公开报道（详见文末来源列表）</p>
+            <p class="cover-contact" data-page-node-id="0Ulwq1bGNu1Zmuzw2pLuk0">数据截止日期：2026年8月30日</p>
+            <p class="cover-date" data-page-node-id="WZCW7Sbahr2Gg6pNE7b0NV">报告日期：2026年9月4日</p>
+        </div>
+    </section>
+
+    <!-- 正文 -->
+    <section role="body" data-page-restart="1" data-page-node-id="HizEFLHclG5tPszA5Udu1v">
+        <!-- 摘要 -->
+        <div class="section-header" data-page-node-id="xBuKARjCTiyQqH4RhYDvuQ">摘要</div>
+        <div class="research-body" data-page-node-id="yWk0cDd51Ahzu0K9AimLGg">
+            <table class="abstract-card" data-page-node-id="5L3cV4B1gPZQpdDBkUfKZh">
+                <tr data-page-node-id="C8MHd62oH0SqrgCllJNLjp">
+                    <td data-page-node-id="Ikk9o1uGoBeC9IZctVMFDs">
+                        <p data-page-node-id="K6EbvJlGl9fsofaqQPNrnN">宇树科技于2026年8月19日登陆科创板，成为A股首家以人形机器人整机为主营业务的上市公司。2022-2025年公司营业收入由1.23亿元增至16.99亿元（CAGR约140%），2024年扭亏后盈利快速放大，2025年扣非归母净利润达5.91亿元、扣非净利率约34.8%，毛利率升至约60%，是全球人形机器人行业中少数实现规模化销售与盈利的公司。2026年上半年营收同比增长48.54%，增速较2025年明显换挡；同期研发费用同比增长约152%、销售费用超过2025年全年，扣非净利润同比下降19.34%，呈现阶段性的"增收不增利"特征。公司人形机器人2025年出货量超5,500台、居全球第一，收入占比过半；但下游场景仍以科研教育为主（2025年前三季度占比73.6%），工业化落地、竞争加剧与高估值消化是后续核心跟踪变量。</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 一、核心观点 -->
+        <div class="section-header" data-page-node-id="uSARsF7szZAzQAGPsSw6NH">一、核心观点</div>
+        <div class="research-body" data-page-node-id="xyZYPn6SZQvIppV573BTAc">
+            <ol data-page-node-id="q3dgkglmbbPyFOAt1rRDP6">
+                <li data-page-node-id="m3qEsvqE6qZshL1ibRKALp"><strong data-page-node-id="EikDHq8KuMiBKhcrBEsqop">高成长已兑现，盈利质量行业稀缺</strong>。2022-2025年营收复合增速约140%，2024年起扭亏为盈，2025年扣非归母净利润5.91亿元（同比+652.78%），主营业务毛利率由44.18%升至约60.3%；在普遍"增收不增利"的具身智能行业，公司是少数实现规模化盈利的样本。</li>
+                <li data-page-node-id="Gmc59Eli61V9UswwNT3uqu"><strong data-page-node-id="eGyCDcNRvACiaT1XblRo1o">收入结构完成切换，人形机器人成为第一引擎</strong>。人形机器人收入占比由2023年的1.88%升至2025年的51.07%，2025年出货量超5,500台、居全球第一；境内收入占比2025年升至55.58%，扭转了此前境外占比过半的格局。</li>
+                <li data-page-node-id="jByGHf54nfri8E2FC4lX3R"><strong data-page-node-id="VmXpmsI7NoySlFB2DGyUFc">2026年进入"增速换挡+费用前置"阶段</strong>。2026年上半年营收同比+48.54%（2025年为+333%），研发费用同比+152%、销售费用超2025年全年，扣非净利润同比-19.34%；公司归因于营收基数抬升、行业热度缓和、竞争加剧及研发与品牌投入前置。</li>
+                <li data-page-node-id="XMIJSEx38MZmYVXmYbBmbr"><strong data-page-node-id="KUPgCSOZSg4QdSmPDgtzLj">关键跟踪变量</strong>：人形机器人工业/商用场景的订单兑现、毛利率走势（2026H1已回落至56.01%）、费用率回归节奏，以及约219倍发行市盈率对应的估值消化压力。</li>
+            </ol>
+        </div>
+
+        <!-- 二、主营业务与产品结构 -->
+        <div class="section-header" data-page-node-id="k4IxbPuNYisULb1oEhzKzs">二、主营业务与产品结构</div>
+        <div class="research-body" data-page-node-id="1dR52Z8WLZh3ApDh50Zqvj">
+            <h2 data-page-node-id="wCBxSRBMd9IWdgfTzvo2jK">2.1 公司概况</h2>
+            <p data-page-node-id="uZ7V6rSXxKXUwumusFZgmU">宇树科技股份有限公司（证券代码688836.SH，简称"宇树科技-W"）是一家高性能通用机器人公司，专注于高性能通用人形机器人、四足机器人、机器人组件及具身智能模型的研发、生产和销售。据公司公告（2026年8月），公司前身宇树有限成立于2016年8月26日，2025年5月28日整体变更设立股份公司，2026年正值成立十周年。</p>
+            <p data-page-node-id="8xRSh6habBsxBwreYo0sNh">公司IPO进程紧凑：2026年3月20日科创板IPO申请获上交所受理（为科创板"预先审阅"机制第二单），2026年6月1日通过上市委会议审议，2026年8月19日正式上市。本次发行新股不低于4,044.64万股，发行价150.80元/股，发行市盈率约219倍，拟募集资金42.02亿元，投向智能机器人模型研发、机器人本体研发、新型智能机器人产品开发及智能机器人制造基地建设四大项目。上市首日开盘1,100元/股（较发行价+629.44%），收盘845元/股，换手率85.28%，成交额231.60亿元。</p>
+            <p data-page-node-id="38cjmthZDowZTyVJuQfLvk">股权结构方面，据招股说明书（2026年3月），创始人王兴兴直接持有公司23.8216%的股份，为控股股东、实际控制人；据媒体披露（证券时报，2026年3月），其控制近七成表决权，机构股东涵盖美团、蚂蚁集团、红杉中国、腾讯、阿里等。</p>
+
+            <h2 data-page-node-id="nKS0zGJGFvBSDo22zkswkK">2.2 产品矩阵</h2>
+            <p data-page-node-id="BL4VEdGaGCECDXCrcEDT4r">公司产品体系呈"人形+四足+组件"三层结构：</p>
+            <ul data-page-node-id="t7qBbh1iPs0DlOOYSb4oYm">
+                <li data-page-node-id="ueRBbak7jXowbeqUHtrfDg"><strong data-page-node-id="JNBpy3uFEG7ZUIVfG67LMx">人形机器人</strong>：2023年8月推出首款通用人形机器人H1，2024年推出中型人形机器人G1并快速成为主力销售产品，其后又发布R1、H2等型号，目前已自研发布四款系列人形机器人（不含轮式）。产品应用于科学研究、应用开发、教育教学、文化表演、智能服务等场景。</li>
+                <li data-page-node-id="Dyr8aU5a1JBx3FUu2HVQ1j"><strong data-page-node-id="eChnCzjT90PMV6DQqF6COq">四足机器人</strong>：B系列行业级产品（B1/B2/B2-W等）与Go系列消费级产品（Go1/Go2/Go2-W、A2等），广泛应用于科学研究、工业巡检、应急救援、智能服务等领域，是公司最早建立优势的业务。</li>
+                <li data-page-node-id="z1FiZUR4Ellnc3IGg3JicU"><strong data-page-node-id="z5coy38nMdM4YPhI6oW3j3">机器人组件</strong>：关节模组、灵巧手、协作机械臂、感知传感器等核心部组件，既自用也对外销售，构成生态收入。</li>
+            </ul>
+            <p data-page-node-id="mtDF73Rl1xsXgiMh0cWZhc">技术渊源上，公司四足机器人的核心方案源自王兴兴硕士期间研制的全球首款低成本外转子无刷电机驱动四足机器人XDog。公司在运动表现与拟人化水平、抗冲击抗摔打能力、产品鲁棒性和集群调度能力等方面形成了差异化优势。</p>
+
+            <h2 data-page-node-id="pV3DYFFQ3TlEIcQlJP2KQB">2.3 收入结构：人形反超四足，境内反超境外</h2>
+            <p data-page-node-id="jKtRIo1Dj5K2ffk7zIE1HR"><strong data-page-node-id="ua6Dpv7Ypjv0Hfw2pMr5Cn">产品结构方面</strong>，人形机器人收入占比由2023年的1.88%（H1上市当年）快速提升至2024年的27.6%、2025年前三季度的51.53%（当期人形收入5.95亿元，同比+642.38%，首次反超四足）；据2025年年度报告，全年人形机器人收入8.68亿元、占比51.07%，四足机器人收入6.98亿元、占比41.05%，机器人组件收入1.04亿元、占比6.10%，人形机器人正式成为第一大收入来源。</p>
+            <p data-page-node-id="WYa7mlwwsAsHgAH0AL2Pbk"><strong data-page-node-id="Jwz4aOeDG1G3Pj5qHYeR2F">销量方面</strong>，据招股说明书，2022年至2025年9月公司四足机器人累计销量超3万台；2025年前三季度人形机器人销量3,551台（同比+1054.8%）；2025年全年人形机器人出货量超5,500台（纯人形，不含轮式双臂机器人），出货量全球第一。值得注意的是，随着G1等中低价位产品占比提升及公司主动下调产品价格，机器人销售均价连年下降，公司以价换量、做大规模摊薄成本的策略特征明显。</p>
+            <p data-page-node-id="DBihtFkQA2llzqAmULiIoN"><strong data-page-node-id="Dy6Bg2cIbnZtrEuEuPifmY">地域结构方面</strong>，2022-2024年公司境外收入占比均超50%；2025年年初央视春晚人形机器人演出后，公司在国内的品牌知名度与关注度持续提升，境内市场快速打开——2025年前三季度境内收入占比升至60.8%，全年境内收入9.44亿元、占比55.58%，境外收入7.32亿元、占比43.06%，市场重心由海外转向国内。</p>
+        </div>
+
+        <!-- 三、收入与盈利变化 -->
+        <div class="section-header" data-page-node-id="W4TEtE31QEAhRu33Qblbud">三、收入与盈利变化</div>
+        <div class="research-body" data-page-node-id="zDfr6c50TqTF5C0CiTVBI0">
+            <h2 data-page-node-id="UxIk7u9pUTld4iYzBLwTsV">3.1 营收：三年约14倍，2026年增速换挡</h2>
+            <table class="three-line-table" data-page-node-id="a3hMALijUYC6YSKN4OHhgD">
+                <thead data-page-node-id="RkRaihFfbL4gPWuSRQDwcG">
+                    <tr data-page-node-id="gHwkPV04mWPVkwkMfROnLs">
+                        <th data-page-node-id="gX8Xk6y8QqEXjMhTW2C16R">报告期</th>
+                        <th data-page-node-id="VOiVuW8LvZWveW42PeBupk">营业收入（万元）</th>
+                        <th data-page-node-id="HfSavmmPcpsdwxLYalz40l">同比增速</th>
+                        <th data-page-node-id="LRlS5VSpVNr4LKMeuidJ82">备注</th>
+                    </tr>
+                </thead>
+                <tbody data-page-node-id="IANB7emOdXKhi2cCej5auh">
+                    <tr data-page-node-id="X0KGG7A2bX9qncEXazdSKI">
+                        <td data-page-node-id="fH3jxmOvH5BAxcMjldHJfl">2022年度</td>
+                        <td class="num-cell" data-page-node-id="ZAZcJ3LKikSAoLyp9w9kAU">12,291.95</td>
+                        <td class="num-cell" data-page-node-id="ptyWMk8MVJ86LxPRzIFHyn">—</td>
+                        <td data-page-node-id="9GTExjP0BVw6y8m2zyagpM">招股书披露</td>
+                    </tr>
+                    <tr data-page-node-id="Yo7stvfNo2F3TQmjpuiC3M">
+                        <td data-page-node-id="wr3oBEzXFqpD6fKin33Hu5">2023年度</td>
+                        <td class="num-cell" data-page-node-id="rZsCuKGbCKho4kAhINCZn2">15,913.44</td>
+                        <td class="num-cell" data-page-node-id="Nl4Z28KTS10ukeV45dtgH3">+29.5%</td>
+                        <td data-page-node-id="XRuecdVGHDFJY6LoYZHpBH">招股书披露</td>
+                    </tr>
+                    <tr data-page-node-id="BrdWqJlHbuBGR3SiLerEal">
+                        <td data-page-node-id="2e663FxtzMxTEzdrxoElgh">2024年度</td>
+                        <td class="num-cell" data-page-node-id="DG6KOvULRqxAxoCaUMljPr">39,237.06</td>
+                        <td class="num-cell" data-page-node-id="CIDdB3TPIwkeEI2z2gev3Y">+146.6%</td>
+                        <td data-page-node-id="YVkMWWOEyyUeNqmZulfJle">招股书披露</td>
+                    </tr>
+                    <tr data-page-node-id="hK9xJPsvwRUWY38Zrrcn5r">
+                        <td data-page-node-id="tSLkw6j5i4Qh7P4w0S7BAB">2025年度</td>
+                        <td class="num-cell" data-page-node-id="QY5YXD2IFmJZTyW2O8qUns">169,926.93</td>
+                        <td class="num-cell" data-page-node-id="qmVVLqTfTuO6L89dj3BElD">+333%</td>
+                        <td data-page-node-id="y4NRDp3IDGHhOGGcD53nTH">年报口径（申报稿为17.08亿元）</td>
+                    </tr>
+                    <tr data-page-node-id="b4vVuQPsGhTckF30z0AEXn">
+                        <td data-page-node-id="yhXjuwbjrMZbdy6pz59E8E">2026Q1</td>
+                        <td class="num-cell" data-page-node-id="qiCmc75fYCfOyYBzYKYjAh">42,284.05</td>
+                        <td class="num-cell" data-page-node-id="gdB4CjAzLgkrKZYe4p3v3W">+68.49%</td>
+                        <td data-page-node-id="puPwrc021zaVEEfcymi2a4">一季报披露</td>
+                    </tr>
+                    <tr data-page-node-id="oo5KpQhbi3Z6mLkaMBu77A">
+                        <td data-page-node-id="R5TgCwfFKsvoqBsdVnXdXH">2026H1</td>
+                        <td class="num-cell" data-page-node-id="FqcDAxS5ijBjAgEgilUAMK">115,224.56</td>
+                        <td class="num-cell" data-page-node-id="PoSvCYqMHs3XMgyIT5PVOB">+48.54%</td>
+                        <td data-page-node-id="oTD72EdbErU8l3sT1yCIIn">上市公告书披露</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p data-page-node-id="3jILXVoFdV1fEyoz2X3MIK">2022-2025年公司营业收入复合增速约140%，2025年同比增长约333%（披露区间+332.64%~335.36%），由四足机器人稳步增长与人形机器人爆发式放量双轮驱动。进入2026年，增速明显换挡：一季度同比+68.49%、上半年同比+48.54%。据上市公告书（2026年8月17日），公司解释为"随着营收基数大幅提升、行业热度有所降温及市场竞争日趋激烈，营收同比增速较年度复合增长率有所下降"。公司同时提示存在增速放缓及经营业绩波动的风险。</p>
+
+            <h2 data-page-node-id="fC3Xfyqh9an0gaZ9oOls5M">3.2 盈利：2024年扭亏，2025年放大，2026年上半年扣非回落</h2>
+            <table class="three-line-table" data-page-node-id="77ymgT94WSBRk8cBIYC4fF">
+                <thead data-page-node-id="v1IQy811xs9KQe8KuAkTvH">
+                    <tr data-page-node-id="7isgzPtz1SPjUGKS8NIJEw">
+                        <th data-page-node-id="XYQArlpwYBGhaTKkx5SWS0">报告期</th>
+                        <th data-page-node-id="7Q16NLiEKET3SJTwPedTvB">归母净利润（万元）</th>
+                        <th data-page-node-id="UXHV1n4rZBVFwTUhoFcVtw">扣非归母净利润（万元）</th>
+                        <th data-page-node-id="zAUCefuWLq1uQATDP3fGNd">备注</th>
+                    </tr>
+                </thead>
+                <tbody data-page-node-id="vt95mIxcphwjnt4gOa3JHc">
+                    <tr data-page-node-id="LAnTUoqsCrggsqVcjRFr4s">
+                        <td data-page-node-id="8FguqUycCChl9nDPuRgFIq">2022年度</td>
+                        <td class="num-cell" data-page-node-id="jNIVPWhEW7LiYvAOHLbFHk">-2,210.05</td>
+                        <td class="num-cell" data-page-node-id="ktWN7aWFxX94nyDyiN4yko">-807</td>
+                        <td data-page-node-id="QJ9nOzibT84ndxFYki3Es9">亏损</td>
+                    </tr>
+                    <tr data-page-node-id="pvLElCZNgH3hbiNDm3wNrD">
+                        <td data-page-node-id="whvY5Hr7liwX4rrVNRlnvk">2023年度</td>
+                        <td class="num-cell" data-page-node-id="NOtYp9ryaQIa0GlKg3rb35">-1,114.51</td>
+                        <td class="num-cell" data-page-node-id="WJ4B4knndUtn7G1hHFaEVl">-1,801.91</td>
+                        <td data-page-node-id="a6El9765g9fZX5nQQOqIpJ">亏损</td>
+                    </tr>
+                    <tr data-page-node-id="6meklpyxX5VYG4LCkd0Bc1">
+                        <td data-page-node-id="GF3vY1oNzFIs8Gjpth5YTJ">2024年度</td>
+                        <td class="num-cell" data-page-node-id="wFC1x21LF80zpXeBYbPkEi">9,450.18</td>
+                        <td class="num-cell" data-page-node-id="BsoUnqDxEHXLLn8bPBISMA">7,750</td>
+                        <td data-page-node-id="HHTPKzikvRUN3TVxivXBgS">扭亏为盈</td>
+                    </tr>
+                    <tr data-page-node-id="CVICoickRITQ91adcJgrhZ">
+                        <td data-page-node-id="AR1eCy9lbITdU93TrKC9GR">2025年度</td>
+                        <td class="num-cell" data-page-node-id="QZe0oLaGbxuTHGFHt8uS4v">约27,800</td>
+                        <td class="num-cell" data-page-node-id="ZLVfZSar8WK53GDGOSVDpw">59,075.28</td>
+                        <td data-page-node-id="A46X9n2Ls4BJzRUnuWA1Sh">扣非同比+652.78%</td>
+                    </tr>
+                    <tr data-page-node-id="sKveKpzSGMxrcCg1J27C5L">
+                        <td data-page-node-id="ZbwMaXAI9sXxLxQK51IDJS">2026Q1</td>
+                        <td class="num-cell" data-page-node-id="JpbUJU19McCwha8rApEjMf">—（注）</td>
+                        <td class="num-cell" data-page-node-id="P8SEHm0lWGtpTFsGQdspc8">4,025.36</td>
+                        <td data-page-node-id="vT4iOBkZFFxLgfv488G47Y">扣非同比-52.55%</td>
+                    </tr>
+                    <tr data-page-node-id="E2ZJzG8PiDTi0DoVJSOzeK">
+                        <td data-page-node-id="Vmj2ua3vBx0uNQlWl2sosG">2026H1</td>
+                        <td class="num-cell" data-page-node-id="o7wWuqEEJxxrFsC60pyelZ">27,400.00</td>
+                        <td class="num-cell" data-page-node-id="Lbb6bDgBslKPqq1ZHnk8Cy">24,400</td>
+                        <td data-page-node-id="1PL4Cd0rvHRUnaJePnTjR5">归母扭亏，扣非同比-19.34%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note" data-page-node-id="FymNo1Yv0eUO5cdHF0NQKR">注：2026Q1归母净利润未纳入底稿核验范围，故留空；2023/2024年营收与利润同比增速为按底稿原始数据计算值。</p>
+            <p data-page-node-id="NoyJLpE8rQXvO7XY07ON9u">公司2024年实现扭亏（归母净利润9,450.18万元），2025年盈利快速放大（归母约2.78亿元、扣非5.91亿元）。需要特别说明的是口径问题：2025年公司确认了非经常性损益性质的股份支付费用34,906.55万元（股权激励平台上海宇翼增资，主要在2025年上半年确认），导致2025年上半年归母净利润为-3,202.45万元而扣非净利润为正，归母与扣非口径差异显著，阅读利润数据时须区分。</p>
+            <p data-page-node-id="tJaZOLIwUfHB5vjRdOSnS5">2026年上半年，公司归母净利润2.74亿元（较上年同期扭亏），但扣非净利润2.44亿元、同比下降19.34%；一季度扣非净利润4,025.36万元、同比下降52.55%。据上市公告书，扣非下滑主要系研发费用、销售费用等期间费用同比增幅较大所致。分季度看，据招股书业绩预告区间推算，2026年二季度扣非净利率已回升至31.11%-34.42%区间，较一季度的约9.5%明显修复，费用前置的影响集中在一季度。</p>
+
+            <h2 data-page-node-id="XvR91pcnjR3zfCjhnNm30I">3.3 盈利质量：毛利率升至60%后小幅回落</h2>
+            <p data-page-node-id="6uGbQVLBW38L8J3g7wZCLU">公司主营业务毛利率由2022年的44.18%、2023年的44.22%提升至2024年的56.41%、2025年的约60.3%（整体销售毛利率口径2025年为60.44%），扣非净利率2025年约34.8%。毛利率抬升的核心驱动：一是人形机器人放量带来的规模效应，人形机器人毛利率2023年高达87.7%，2024年为68.4%，2025年前三季度随G1量产与主动降价收窄至62.9%，但仍显著高于整体水平；二是核心部组件自研自产带来的成本下降，机器人组件毛利率由2023年的48.8%升至2025年前三季度的60.4%。</p>
+            <p data-page-node-id="0CZNvxapWFE4ibOpw3F9ek">2026年毛利率小幅回落：整体销售毛利率一季度58.42%、上半年56.01%。背后既有产品价格下调，也有市场竞争加剧的影响，毛利率走势是判断公司"以价换量"策略可持续性的核心指标。</p>
+
+            <h2 data-page-node-id="cmiHgbSAWFQ0ceEPyPwTWM">3.4 现金流与资产负债</h2>
+            <p data-page-node-id="uZHyyWBivaWbRGQgK9OBgi">盈利具备现金流支撑：2025年公司经营活动现金净流入超6.7亿元，较2024年增加约4.8亿元（据招股书，主要系收入规模快速增长）。截至2026年6月30日，公司资产总额38.45亿元（较2025年末增长19.85%），其中流动资产28.88亿元（增长30.13%），叠加IPO募集资金到位，资金面稳健，为研发投入提供了充足弹药。</p>
+        </div>
+
+        <!-- 公司主要财务信息 -->
+        <div class="section-header" data-page-node-id="hrbV0C2iFpt6uiac1ijPAT">公司主要财务信息</div>
+        <div class="research-body" data-page-node-id="QWD972QFCCXEqxyxaBn0xL">
+            <table class="three-line-table" data-page-node-id="Q4mXkOaGEgcx1V0XkXO3u4">
+                <thead data-page-node-id="wl38O8PNHDernel86YKDUD">
+                    <tr data-page-node-id="O7A8KZ8yG7KUzBLnng85yA">
+                        <th data-page-node-id="v8i3Eh1ISEIafH7SDiHHUU">指标</th>
+                        <th data-page-node-id="4ha6KsUkapBWIAtIgMNden">2022A</th>
+                        <th data-page-node-id="lYrH1FwckhM8sCx7qvDNfe">2023A</th>
+                        <th data-page-node-id="caNx93EHv71SLNUAOzSLPK">2024A</th>
+                        <th data-page-node-id="gQuUwS8n3mz1i61qXL4gGt">2025A</th>
+                        <th data-page-node-id="gOPUidDn3We2axKYs6Li0O">2026H1</th>
+                    </tr>
+                </thead>
+                <tbody data-page-node-id="IXytTRE1cBZ17hHXXTjjiW">
+                    <tr data-page-node-id="siquFO4D4eCoL0J8eoQqp6">
+                        <td data-page-node-id="Vgz0q93wPGTqD5XzkYQDml">营业收入（万元）</td>
+                        <td class="num-cell" data-page-node-id="AZWrEf42Vz254rNLcnvIP2">12,291.95</td>
+                        <td class="num-cell" data-page-node-id="8OEI4trnyfiZoAM1ZId2n9">15,913.44</td>
+                        <td class="num-cell" data-page-node-id="gVequeFZolDYHZMPe5XshG">39,237.06</td>
+                        <td class="num-cell" data-page-node-id="uJqskdzE2XZEdM29DaFKL9">169,926.93</td>
+                        <td class="num-cell" data-page-node-id="4LfxhFBWxGgPcaaihRyvFu">115,224.56</td>
+                    </tr>
+                    <tr data-page-node-id="WfcRcGDBJmMnL1cqGG7ydX">
+                        <td data-page-node-id="otDiL6YCbBfwBzVDFCxpyZ">营业收入同比（%）</td>
+                        <td class="num-cell" data-page-node-id="oOH2GnmlvObXequDn7rPpM">—</td>
+                        <td class="num-cell" data-page-node-id="lQVA37aTl14f6HhLI0AtlS">+29.5</td>
+                        <td class="num-cell" data-page-node-id="fLL0ffxviyCAEuERiBjnx0">+146.6</td>
+                        <td class="num-cell" data-page-node-id="cjbTHyzJkv8BohFWKZnoLB">+333</td>
+                        <td class="num-cell" data-page-node-id="jJ9dXSCqUHoscIeNNf0LAE">+48.54</td>
+                    </tr>
+                    <tr data-page-node-id="AwNQRVnQwW0xFjcFlVjrWu">
+                        <td data-page-node-id="WPpd3bVLnKMnQdr8wkqDpS">归母净利润（万元）</td>
+                        <td class="num-cell" data-page-node-id="ZeKqOjzHFEy1ji18kUszVw">-2,210.05</td>
+                        <td class="num-cell" data-page-node-id="wWAbkVe4lXPYIV9EPj9HuZ">-1,114.51</td>
+                        <td class="num-cell" data-page-node-id="rqUf3JZfbnpZoCBCuzjZFW">9,450.18</td>
+                        <td class="num-cell" data-page-node-id="NWLbaujabNf4MeGHdn7hUz">约27,800</td>
+                        <td class="num-cell" data-page-node-id="aDubYUuyrjVLFSC8C3Ytd3">27,400.00</td>
+                    </tr>
+                    <tr data-page-node-id="BynPjSdMYSgQHEhpyrxOt4">
+                        <td data-page-node-id="0UfJF8CBjIhvbrFTdIjdhM">扣非归母净利润（万元）</td>
+                        <td class="num-cell" data-page-node-id="UdFCaBJoIzEmaajx0jdDyw">-807</td>
+                        <td class="num-cell" data-page-node-id="8oFJKcBWyPELh6MyBHZbcO">-1,801.91</td>
+                        <td class="num-cell" data-page-node-id="MRvSGKoQsBYp0sCTH2mVgH">7,750</td>
+                        <td class="num-cell" data-page-node-id="PAlIjle4O1xTMA6Pqjsb3V">59,075.28</td>
+                        <td class="num-cell" data-page-node-id="qyJGzNGVDvJr44CsYfyz0r">24,400</td>
+                    </tr>
+                    <tr data-page-node-id="SNXDgX6ydfUtDUovS3Ig7O">
+                        <td data-page-node-id="vjDZaRiY1tio02REUKCw5Z">主营业务毛利率（%）</td>
+                        <td class="num-cell" data-page-node-id="WvCkRTFAhiYTAgUGsOGMY2">44.18</td>
+                        <td class="num-cell" data-page-node-id="CFA6j4oIhiBjRFACXviEUl">44.22</td>
+                        <td class="num-cell" data-page-node-id="5YIsvUALetBckTHvbNzEWE">56.41</td>
+                        <td class="num-cell" data-page-node-id="SwgXj2C3KZT4QSs4O3B7gE">约60.3</td>
+                        <td class="num-cell" data-page-node-id="5Kd6u7Esg5coOGathC6Yv9">56.01（整体口径）</td>
+                    </tr>
+                    <tr data-page-node-id="60TCJdqfJXqqAc9L660UrD">
+                        <td data-page-node-id="lFJkYTvKgX1j2hLSiDRVx4">研发费用（万元）</td>
+                        <td class="num-cell" data-page-node-id="4oZu4U6ZD1JxLdvaoBOhKG">—</td>
+                        <td class="num-cell" data-page-node-id="zE9eW98i7xgQbwJZ2SB9EZ">4,995.18</td>
+                        <td class="num-cell" data-page-node-id="dmWWbnhW8lqeL701OhrH6H">约6,983（推算）</td>
+                        <td class="num-cell" data-page-node-id="Yl0yvvdlOVQ3VIG2cuouyB">14,496.56</td>
+                        <td class="num-cell" data-page-node-id="l5l5hGDuGRfARkd3hgrZHT">13,590.65</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="table-note" data-page-node-id="s6aInsHGZitENF4BV4tn3J">注：以上数据均出自《宇树科技经营与财务分析底稿.xlsx》；2025年归母净利润为约数（年报口径），2024年研发费用为按费用率推算值，2026H1毛利率为整体销售毛利率口径。精确数值请以交易所披露原文为准。</p>
+        </div>
+
+        <!-- 四、研发投入分析 -->
+        <div class="section-header" data-page-node-id="QVFtwFt9j40cVG7owSG2bi">四、研发投入分析</div>
+        <div class="research-body" data-page-node-id="Ry8EyAZLzO97WU0od5yOg2">
+            <p data-page-node-id="D3EWDwkdfoFuAbYJXBVASg"><strong data-page-node-id="3d93yWnB1y06kj5cnBViRk">投入强度快速抬升，但横向对比仍偏低。</strong>公司研发费用2023年为4,995.18万元（占营收31.4%）、2024年约6,983万元（按17.8%费用率推算）、2025年14,496.56万元（占营收8.53%）、2026年上半年13,590.65万元（同比+152%，半年投入已接近2025年全年）。费用结构上，职工薪酬占研发费用约八成；2025年前三季度云算力租赁及云服务费增至835万元，为2024年全年（113万元）的近8倍，反映公司正加大具身智能大模型方向的算力投入。</p>
+            <p data-page-node-id="FOmJzrVb8Emr1wt6FXPHIR"><strong data-page-node-id="jkMUvDfnyMeebIV2mBdiHP">研发投入的结构性含义</strong>：据公司披露（上市公告书，2026年8月），公司在本体与结构研发、具身智能大模型、运动控制算法等领域持续加大投入并扩充研发团队。市场分析认为，公司传统强项在机器人本体、关节、电机与运动控制（业内所谓"小脑"），而具身大模型、视觉感知、任务规划等"大脑"能力需要补课，这是2026年研发费用大幅增长的深层原因。横向看，据证券时报（2026年）转引数据，优必选2025年研发支出5.1亿元、占收入超25%，越疆研发支出1.15亿元、占收入约23%，科创板企业2025年前三季度研发投入占营收比例中位数为12.5%——宇树2025年研发费用率8.53%明显偏低，2026年的研发投入加码既是主动布局，也是竞争压力下的必然选择。本次IPO拟募资42.02亿元，其中三个机器人研发类项目合计约36亿元，将为研发持续投入提供资金保障。</p>
+        </div>
+
+        <!-- 五、竞争优势 -->
+        <div class="section-header" data-page-node-id="TNjaX0BXhpJKU71hEocPLp">五、竞争优势</div>
+        <div class="research-body" data-page-node-id="IPeSdMGTZx4BCBHaHBOZKC">
+            <ol data-page-node-id="8DgBnBtdxCuw9nPSQ4H3Zd">
+                <li data-page-node-id="wJ3UgDRJbgJrozqvFRxnhQ"><strong data-page-node-id="ihkWJwwGxHGRuiuRHkeKzY">全栈自研自产与成本控制能力</strong>。公司在答复上交所问询中表示，通过核心部组件自研自产、逐步建立自有产线，实现对供应链的深度掌控，既保障产品与技术快速迭代，也显著降低物料采购与制造成本；公司已成为机器人领域产品定价的锚定者。这是其毛利率显著高于可比公司（优必选、越疆）的根本原因。</li>
+                <li data-page-node-id="FOWGqOrIdE0GhF6s84grvM"><strong data-page-node-id="DGtNfBmZOzV4hmFeqA5hmJ">规模化盈利的稀缺性</strong>。在普遍亏损烧钱的人形机器人行业，公司2024年起持续盈利，2025年扣非净利率约34.8%，经营现金流同步验证盈利质量，是全球少数实现"规模化销售+盈利"的机器人公司。</li>
+                <li data-page-node-id="NjHltvty28I4EDiBgtI5We"><strong data-page-node-id="sn57sYWDGggjgINpluhPVr">出货量全球领先的规模优势</strong>。四足机器人累计销量超3万台（2022-2025年9月），2025年人形机器人出货超5,500台、居全球第一；规模化出货带来的数据积累、供应链议价与品牌认知形成正循环。据21世纪经济报道（2026年9月）转引，海外头部公司Figure AI 2025年出货量约150台，仅为宇树的约1/36。</li>
+                <li data-page-node-id="ZAaQCTGPcrc2XAXIuO5uiw"><strong data-page-node-id="Oh0XsBzOjbGBPl1bRDuoGa">品牌与渠道势能</strong>。2025年央视春晚人形机器人演出实现"一战成名"，公司直言受益于品牌知名度提升，境内市场快速打开，2026年延续春晚等品牌推广策略。</li>
+                <li data-page-node-id="LfFh4FNXLSiey4D7ndTUuT"><strong data-page-node-id="HT7zmlaU3QPWWzp1OPcIul">资金与股东资源</strong>。IPO募资42.02亿元到账，叠加美团、蚂蚁、红杉中国、腾讯、阿里等产业与财务股东资源，为研发、产能与生态扩张提供支撑。</li>
+            </ol>
+        </div>
+
+        <!-- 六、增长变量 -->
+        <div class="section-header" data-page-node-id="CjyXyuGjaFrFVu148E3kmL">六、增长变量</div>
+        <div class="research-body" data-page-node-id="HNoCB5EtD3X8NuhsbNaxhD">
+            <ol data-page-node-id="VGjeut2VUrpTp9Ij7WhCxw">
+                <li data-page-node-id="KYwoWyb5iEprQV0K6dDEJB"><strong data-page-node-id="HIN7CmmQfWiEwXfGPgIMDo">人形机器人从科教走向工业/商用（最关键变量）</strong>。当前公司下游高度集中于科研教育（2025年前三季度占人形收入73.6%），工业场景需要现场测试、软件适配、系统集成和持续售后，获客与交付成本更高（2026年上半年销售费用激增已部分反映这一转型成本）。工业订单的实质性放量将决定营收能否重回高增长。</li>
+                <li data-page-node-id="tyN7xhRAancArnFf0OJRJA"><strong data-page-node-id="hfhlE7RzQIwQXooPkIGj9d">具身智能"大脑"能力的补强进度</strong>。募投约36亿元投向三个研发项目，具身大模型与运动控制的融合进度决定产品能否从"表演与科研"升级为"可干活的通用机器人"。</li>
+                <li data-page-node-id="QAvBYDm6DZ8AQdyQV4CrmE"><strong data-page-node-id="YN1maD9vMz4HFAMJhAf64X">海外市场渗透</strong>。境外收入占比2025年为43.06%，仍是最重要的收入来源之一；海外科研与开发者市场具备先发优势，但需关注贸易环境变化。</li>
+                <li data-page-node-id="qIfMgkvhSOaGttErRSayRS"><strong data-page-node-id="UtsMUepn2YIlnlyS9DSTzq">产品矩阵与组件生态扩张</strong>。轮式双臂机器人、灵巧手、协作机械臂等新品与组件业务（毛利率60%+）有望贡献第二增长曲线。</li>
+                <li data-page-node-id="lNwr6JH3el7BGkGHf4PnHg"><strong data-page-node-id="DS85WFLRhqJUWKzPLQz7ZU">价格策略与毛利率的平衡</strong>。公司以价换量做大规模，2026年上半年毛利率已回落至56.01%；若降价无法换来足够销量弹性，盈利中枢将下移。</li>
+            </ol>
+            <p data-page-node-id="H3Xb0nCtpPG0Ad0xcdsGWX">需要特别提示的是，市场机构对公司未来收入已有较高预期：据媒体转引（未经研报原文核验），野村预计2026-2028年营收分别为26.87亿、53.96亿、131.84亿元，招商证券预计分别为30.97亿、49.60亿、76.83亿元。<strong data-page-node-id="SIuqkAOJDglxwAST8NGbXF">上述均为机构预测，非已发生事实</strong>，且不同机构预测分歧较大，仅供参考方向，不应作为估值的确定依据。作为对照，公司2026年上半年实际营收11.52亿元，已超出招股书业绩预告区间上限（10.52-11.28亿元），实际扣非净利润2.44亿元落在预告区间内（2.36-2.83亿元）。</p>
+        </div>
+
+        <!-- 七、风险提示 -->
+        <div class="section-header" data-page-node-id="wIT1dqcAvAk4RD3z78FHXw">七、风险提示</div>
+        <div class="research-body" data-page-node-id="shM5FyrvvUDDvaqKoeXx5A">
+            <table class="abstract-card" data-page-node-id="P2AOp0sGKa5sXbOKO7EMRi">
+                <tr data-page-node-id="TWOIsfmvFLRM2eIEwYkXA8">
+                    <td data-page-node-id="BN5YXY9BwpeGFYETrDvCeP">
+                        <p class="card-title" data-page-node-id="kdWoUMfFYn1LFmzmQM9x5v">风险提示</p>
+                        <p data-page-node-id="UByTbjiDhKGG7D2FGR9CBX">1. <strong data-page-node-id="Xkkl0aUL4s2cxONCH6WCyM">行业竞争加剧导致份额与利润率承压的风险</strong>。国内多家整车制造企业与消费电子企业已正式布局人形机器人业务，智元、优必选等加速推进工业场景量产，海外特斯拉等持续加码。若竞争者在资源投入、市场推广与制造经验上的优势兑现，公司可能在产品定价、市场份额及利润率水平上承受压力，触发条件为竞争者工业级产品批量上市。</p>
+                        <p data-page-node-id="IF5trbQ1X1GQ3sE7h1xRiw">2. <strong data-page-node-id="c9T79mpMwm9Bo9rQM3upC5">业绩增速放缓与盈利波动的风险</strong>。2026年上半年营收增速已降至48.54%（2025年为+333%），扣非净利润同比下降19.34%；若行业热度进一步降温或费用投入持续前置，全年盈利增速可能继续低于市场预期，触发条件为后续季度扣非净利率无法回到30%以上水平（该阈值为基于招股书业绩预告区间的分析判断，非公司承诺指标）。</p>
+                        <p data-page-node-id="QNlBbEDjyunDldznJMUzOq">3. <strong data-page-node-id="NFxJeJW9osZEzXlgq53iFN">下游应用场景集中、工业化落地不及预期的风险</strong>。2025年前三季度人形机器人收入中科研教育领域占比达73.6%，需求存在集中于科教采购的结构性特征；若工业、商用场景拓展慢于预期，人形机器人收入增长的持续性将受影响。</p>
+                        <p data-page-node-id="rELkoON9dG3auxRAhIsPVZ">4. <strong data-page-node-id="b2L9RGFCcIB7lMUU4AnM1s">毛利率下行的风险</strong>。公司采取以价换量策略，销售均价连年下降，人形机器人毛利率已由2023年的87.7%收窄至2025年前三季度的62.9%，2026年上半年整体毛利率降至56.01%；若降价幅度超过成本下降速度，盈利质量将受损。</p>
+                        <p data-page-node-id="2flkSCFEe9pGKwh1tCvESk">5. <strong data-page-node-id="tNBWs8WESRjKlla1fUkX1F">高估值消化的风险</strong>。公司发行市盈率约219倍，上市首日开盘价1,100元/股后股价大幅回落，市场估值仍处于高位；若业绩兑现速度低于预期，估值存在继续回调的可能。</p>
+                        <p data-page-node-id="qLg0unmqDnXENLHLJ45K8i">6. <strong data-page-node-id="fg4GAkzLAyrOfhIr9mGd6m">技术迭代与供应链风险</strong>。具身智能技术路线快速演进，若公司在具身大模型等"大脑"能力上的投入产出不及预期，或关键元器件供应、海外贸易政策发生变化，可能影响产品竞争力与境外收入（2025年占比43.06%）。</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- 八、数据来源 -->
+        <div class="section-header" data-page-node-id="l94SD7xYEKUumq2JVIQJy7">八、数据来源</div>
+        <div class="research-body" data-page-node-id="o5jWIGmG0QcZPitlXHrG4U">
+            <ol data-page-node-id="UFD7Ysae8N19kFi1kgeFNf">
+                <li data-page-node-id="tRbC7e9nYjwR34rFodlJnv">宇树科技《首次公开发行股票并在科创板上市招股说明书（申报稿）》，上海证券交易所，2026年3月20日。</li>
+                <li data-page-node-id="bSvkX7sBCWjWErGsAc4ToP">宇树科技《首次公开发行股票科创板上市公告书》（含2026年上半年业绩更新），上海证券交易所，2026年8月17日。</li>
+                <li data-page-node-id="XIep95Vb1BCzxpEuzhhvqZ">宇树科技2025年年度报告、2026年第一季度报告（688836.SH），上海证券交易所披露。</li>
+                <li data-page-node-id="RxkUCpSkHrFXSqVMJ967sm">宇树科技官方网站（unitree.com）公开资料。</li>
+                <li data-page-node-id="GAuV7fRsqEb0MK6urG0S0R">证券时报《暴增674%！刚刚，宇树科技IPO获上交所受理！》，2026年3月20日；《具身智能先行者 宇树科技IPO过会》，2026年6月。</li>
+                <li data-page-node-id="stFa3EQFWa2jgUJapwlbBE">21世纪经济报道《宇树科技上市第11个交易日股价分析》，2026年9月2日（其中8月19日上市首日数据在截止日内）。</li>
+                <li data-page-node-id="bWOCCA2iv0OKIHBcZVATw4">中新经纬《V观财报｜宇树科技科创板IPO获受理，拟融资42.02亿》，2026年3月20日。</li>
+                <li data-page-node-id="btG5RNDpDMILVKysA3e3mv">中国经济网《拆解宇树IPO：一年赚6亿钱从哪里来》，2026年3月23日。</li>
+                <li data-page-node-id="q63hXiX3BkPxHvDgTuZjsB">广州日报大洋网《中一签赚47.46万！宇树科技开盘暴涨629.44%》，2026年8月19日。</li>
+                <li data-page-node-id="g55r24gQUvkrKbXW3PHpJN">华源证券研究所宇树科技研究报告（第三方知识库转引，用于费用率拆分与分产品毛利率交叉参考）。</li>
+                <li data-page-node-id="fZGecbir2GNDh4I8lCCcFQ">野村、招商证券盈利预测（媒体转引，未经研报原文核验；均为预测数据，非事实）。</li>
+            </ol>
+            <p data-page-node-id="OKVNujfcv8evClVLAFv0LK">数据说明：本报告所有财务数据以《宇树科技经营与财务分析底稿.xlsx》为唯一底稿，该底稿已标注每项数据的来源与性质（披露/媒体/推算）。存在口径差异的数据（如2025年营收申报稿17.08亿元与年报16.99亿元、2025年归母净利润2.78亿与2.88亿元两种表述、主营业务毛利率与整体销售毛利率两套口径）以年报/上市公告书口径为准并已在文中注明；推算值（如2024年研发费用、2025年上半年营收与扣非）均已标注"推算"字样。精确到元的数值建议以交易所披露原文为准。</p>
+        </div>
+
+        <!-- 九、免责声明 -->
+        <div class="disclaimer" data-page-node-id="PLZg4ylXLSIpiV7rx9dg9e">
+            <p class="disclaimer-title" data-page-node-id="8zHKcB7erDHkHAV9fuoU8P">九、免责声明</p>
+            <p data-page-node-id="bpt31gGvbIC9FB9XnHRJhB">1. <strong data-page-node-id="TrZcdMOzOtmIZazkrMqwrD">独立性声明</strong>：本报告由AI基于公开信息整理生成，不代表任何证券公司或持牌投资顾问机构的观点，报告撰写不存在任何利益冲突安排。</p>
+            <p data-page-node-id="83OV8WxyHM1au3RiALEoMd">2. <strong data-page-node-id="CG4irpJctXzYIMcRJPnQUj">信息来源免责</strong>：本报告信息均来源于公开渠道（上市公司公告、交易所披露、官方网站及权威财经媒体报道），虽已尽力核验并标注来源与数据性质，但不对信息的准确性、完整性和及时性作任何保证；标注"约数/推算/媒体转引"的数据请以官方披露原文为准。</p>
+            <p data-page-node-id="AN8VayPjzIoaET2P06jKpY">3. <strong data-page-node-id="AHIXX2JxrFg4IeVrHByWGd">投资建议免责</strong>：本报告不构成任何证券买卖的要约、要约邀请或个性化投资建议，文中涉及的盈利预测均为第三方机构观点且已明确标注为预测，不代表对未来业绩的承诺。投资者据此操作，风险自担。</p>
+            <p data-page-node-id="2Qor5Q7lqLKigF3QzMCLBh">4. <strong data-page-node-id="evJjyiCP0dE10VFbkiWSRd">风险警示</strong>：市场有风险，投资需谨慎。科创板股票波动较大，请投资者充分阅读公司招股说明书及定期报告中的风险提示章节，独立作出投资决策。</p>
+            <p data-page-node-id="IdGDLGwcjj9fL3A1isbz0R">5. <strong data-page-node-id="GB8uJPWpOuWtowPYQpTPtV">版权声明</strong>：本报告仅供个人学习与研究参考，未经书面许可不得以任何形式翻版、复制、刊登或转载。</p>
+        </div>
+    </section>
+</body>
+
+</html>

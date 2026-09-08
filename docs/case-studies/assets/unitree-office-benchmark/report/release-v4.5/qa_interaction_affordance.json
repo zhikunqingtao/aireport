@@ -1,0 +1,50 @@
+{
+  "status": "passed_with_runtime_limitation",
+  "scope": "v4.5交互提示呈现增强",
+  "scoringChanged": false,
+  "reportDataPayloadChanged": false,
+  "portableReportSha256": "3f6a1c3fb26d2c0ea8c474bfb02345b08a47e23887681022ecb214ffd5f25e25",
+  "sourceSelfContainedSha256": "9e70577e6452e2c6283837f071617f30d819df0ca01513cbb300aed3ec723603",
+  "counts": {
+    "artifacts": 30,
+    "scenarioRecords": 202,
+    "coverageItems": 324,
+    "findings": 200,
+    "evidence": 741,
+    "media": 710,
+    "facts": 32,
+    "sources": 11
+  },
+  "checks": [
+    {
+      "name": "JavaScript语法",
+      "status": "passed"
+    },
+    {
+      "name": "便携版内嵌数据逐字节守恒",
+      "status": "passed"
+    },
+    {
+      "name": "分数、排名、闸门、finding与证据对象摘要哈希",
+      "status": "passed"
+    },
+    {
+      "name": "真实交互元素自动分类与动态补标逻辑",
+      "status": "passed"
+    },
+    {
+      "name": "减少动态效果与打印隐藏规则",
+      "status": "passed"
+    },
+    {
+      "name": "本机绝对路径与file协议残留",
+      "status": "passed",
+      "detail": "0"
+    },
+    {
+      "name": "浏览器运行态复测",
+      "status": "not_run",
+      "detail": "浏览器安全策略禁止访问候选本地file路径；未绕过策略，沿用此前报告运行环境记录。"
+    }
+  ]
+}

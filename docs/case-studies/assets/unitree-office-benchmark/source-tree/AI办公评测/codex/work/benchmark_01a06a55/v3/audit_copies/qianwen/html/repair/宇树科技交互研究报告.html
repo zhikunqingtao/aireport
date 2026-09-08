@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宇树科技 688836.SH · 交互研究终端 | 数据截止 2026-08-30</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:root{
+  --bg:#070D1A; --panel:rgba(16,35,60,.62); --edge:#1E3A5C; --cy:#00C2FF; --au:#F7B731;
+  --rd:#FF7A6B; --gn:#35D0A5; --tx:#EAF2FB; --mu:#8CA3BF; --wh:#F5F8FC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:-1}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);background:rgba(7,13,26,.72);border-bottom:1px solid var(--edge)}
+nav .in{max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 24px}
+nav .logo{font-weight:800;letter-spacing:1px;color:var(--wh);font-size:15px;white-space:nowrap}
+nav .logo b{color:var(--cy)}
+nav .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+nav .links a{color:var(--mu);text-decoration:none;font-size:12.5px;padding:6px 10px;border-radius:6px;white-space:nowrap;transition:.2s}
+nav .links a:hover,nav .links a.on{color:var(--cy);background:rgba(0,194,255,.08)}
+/* hero */
+header{padding:150px 0 60px;position:relative}
+.kick{color:var(--cy);letter-spacing:5px;font-size:12px;font-weight:700}
+h1{font-size:52px;font-weight:800;letter-spacing:2px;margin:14px 0 10px;color:var(--wh)}
+h1 span{color:var(--au)}
+.sub{color:var(--mu);font-size:15px;letter-spacing:1px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{border:1px solid var(--edge);background:var(--panel);border-radius:999px;padding:8px 16px;font-size:12.5px;color:var(--mu)}
+.chip b{color:var(--wh)}
+.chip.cy b{color:var(--cy)} .chip.au b{color:var(--au)} .chip.gn b{color:var(--gn)}
+.scrollhint{margin-top:44px;color:var(--mu);font-size:11px;letter-spacing:3px;animation:blink 2s infinite}
+@keyframes blink{50%{opacity:.35}}
+/* sections */
+section{padding:64px 0 8px}
+.st{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.st .no{color:var(--au);font-weight:800;letter-spacing:2px;font-size:12px}
+.st h2{font-size:26px;font-weight:800;letter-spacing:1px;color:var(--wh)}
+.st .en{color:var(--mu);font-size:11px;letter-spacing:3px}
+.st .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--edge),transparent)}
+.lead{color:var(--mu);font-size:13.5px;line-height:1.9;margin:10px 0 22px;max-width:980px}
+.lead b{color:var(--wh)} .lead .cy{color:var(--cy)} .lead .au{color:var(--au)} .lead .rd{color:var(--rd)}
+/* cards */
+.grid{display:grid;gap:14px}
+.g6{grid-template-columns:repeat(6,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g3{grid-template-columns:repeat(3,1fr)} .g2{grid-template-columns:1fr 1fr}
+.card{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:18px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;backdrop-filter:blur(6px)}
+.card:hover{transform:translateY(-4px);border-color:rgba(0,194,255,.45);box-shadow:0 12px 32px rgba(0,194,255,.10)}
+.card::after{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:2px;background:var(--c,var(--cy))}
+.card .lb{font-size:11px;color:var(--mu);letter-spacing:1px}
+.card .v{font-size:30px;font-weight:800;margin:8px 0 6px;color:var(--c,var(--cy));font-variant-numeric:tabular-nums}
+.card .v small{font-size:13px;color:var(--mu);font-weight:600;margin-left:3px}
+.card .s{font-size:11px;color:var(--mu);line-height:1.7}
+/* chart box */
+.box{background:var(--panel);border:1px solid var(--edge);border-radius:12px;padding:16px;backdrop-filter:blur(6px)}
+.box h3{font-size:14px;font-weight:700;letter-spacing:1px;color:var(--wh);margin-bottom:4px}
+.box .u{font-size:10.5px;color:var(--mu);margin-bottom:8px}
+.ch{width:100%;height:340px}
+.ch.tall{height:400px}
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:12px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--edge);text-align:right;font-variant-numeric:tabular-nums}
+th{color:var(--cy);font-weight:700;letter-spacing:1px;background:rgba(0,194,255,.05)}
+td:first-child,th:first-child{text-align:left;color:var(--wh)}
+td{color:#CFE0F2}
+tr:hover td{background:rgba(0,194,255,.05)}
+/* tags */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{font-size:11.5px;border:1px solid var(--edge);border-radius:6px;padding:6px 10px;color:#CFE0F2;background:rgba(16,35,60,.5)}
+.tag.cy{border-color:rgba(0,194,255,.4);color:var(--cy)} .tag.au{border-color:rgba(247,183,49,.4);color:var(--au)} .tag.rd{border-color:rgba(255,122,107,.4);color:var(--rd)} .tag.gn{border-color:rgba(53,208,165,.4);color:var(--gn)}
+/* forecast bars */
+.fc{margin:14px 0}
+.fc .row{display:grid;grid-template-columns:130px 1fr 150px;gap:14px;align-items:center;margin:16px 0}
+.fc .nm{font-size:12.5px;color:var(--wh);font-weight:700}
+.fc .track{position:relative;height:26px;background:rgba(30,58,92,.5);border-radius:6px}
+.fc .band{position:absolute;top:5px;bottom:5px;background:linear-gradient(90deg,rgba(247,183,49,.28),rgba(247,183,49,.45));border:1px solid rgba(247,183,49,.6);border-radius:4px}
+.fc .act{position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--cy);box-shadow:0 0 12px var(--cy)}
+.fc .act::after{content:attr(data-v);position:absolute;top:-20px;left:50%;transform:translateX(-50%);font-size:10.5px;color:var(--cy);white-space:nowrap;font-weight:700}
+.fc .vt{font-size:11px;color:var(--mu);text-align:right}
+.fc .vt b{color:var(--gn)}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+/* caliber */
+.cal{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.cal span{font-size:11px;padding:6px 12px;border-radius:999px;border:1px solid}
+.cal .a{color:var(--gn);border-color:rgba(53,208,165,.5)} .cal .b{color:var(--cy);border-color:rgba(0,194,255,.5)} .cal .c{color:var(--au);border-color:rgba(247,183,49,.5)} .cal .d{color:var(--rd);border-color:rgba(255,122,107,.5)}
+footer{margin-top:70px;border-top:1px solid var(--edge);padding:30px 0 40px;color:var(--mu);font-size:11.5px;line-height:2}
+footer b{color:var(--wh)}
+@media(max-width:960px){.g6,.g4{grid-template-columns:repeat(2,1fr)}.g3,.g2{grid-template-columns:1fr}h1{font-size:36px}.fc .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<nav><div class="in">
+  <div class="logo">UNITREE <b>·</b> 688836.SH <b>·</b> 交互研究终端</div>
+  <div class="links">
+    <a href="#m" class="on">关键指标</a><a href="#g">增长结构</a><a href="#q">盈利质量</a><a href="#i">中期跟踪</a><a href="#r">研发护城河</a><a href="#c">发行资本</a><a href="#o">机会风险</a><a href="#s">来源口径</a>
+  </div>
+</div></nav>
+
+<header><div class="wrap">
+  <div class="kick">ONE-PAGE INTERACTIVE RESEARCH · 资料截止 2026-08-30</div>
+  <h1>宇树科技<span>｜</span>人形机器人第一股</h1>
+  <div class="sub">高增长 · 高毛利 · 高投入 —— 基于上海证券交易所披露的招股说明书与上市公告书</div>
+  <div class="chips">
+    <div class="chip cy">科创板上市 <b>2026-08-19</b></div>
+    <div class="chip">发行价 <b>150.80 元</b></div>
+    <div class="chip au">发行后市值 <b>≈609.93 亿元</b></div>
+    <div class="chip">发行市盈率 <b>219.23x</b></div>
+    <div class="chip gn">2025 人形出货 <b>5,511 台 · 全球第一</b></div>
+    <div class="chip">特别表决权 <b>1:10</b></div>
+  </div>
+  <div class="scrollhint">SCROLL ▾ 数据均可悬停交互</div>
+</div></header>
+
+<section id="m"><div class="wrap">
+  <div class="st rv"><span class="no">01</span><h2>关键指标</h2><span class="en">KEY METRICS</span><span class="ln"></span></div>
+  <p class="lead rv">2023-2025 年营业收入由 15,913.44 万元增至 169,926.93 万元，<b class="cy">CAGR 226.78%</b>；扣非归母净利润由 -1,801.91 万元增至 <b class="au">59,075.28 万元</b>。2025 年归母净利润 27,821.05 万元与扣非口径的差异，主因股份支付 34,906.55 万元（非经常性、无现金流出）。</p>
+  <div class="grid g6 rv" id="kpis"></div>
+</div></section>
+
+<section id="g"><div class="wrap">
+  <div class="st rv"><span class="no">02</span><h2>增长与结构</h2><span class="en">GROWTH & MIX · 2023-2025 经审计</span><span class="ln"></span></div>
+  <p class="lead rv">人形机器人 2025 年收入 86,783.19 万元、占主营 <b class="au">51.78%</b>，首次超越四足（41.62%）成为第一来源；“<b>降本—降价—放量</b>”在两条产品线均得到验证：四足单价 3.83→3.03 万元、销量 3,121→23,037 台（累计超 33,000 台）；人形单价 59.34→16.64 万元、销量 5→5,215 台。</p>
+  <div class="grid g2 rv"><div class="box"><h3>营业收入与同比增速</h3><div class="u">柱：亿元（左轴）　线：%（右轴）</div><div id="c1" class="ch"></div></div>
+  <div class="box"><h3>主营业务收入构成</h3><div class="u">堆叠：亿元　标签：占比%</div><div id="c2" class="ch"></div></div></div>
+  <div class="grid g2 rv" style="margin-top:14px"><div class="box"><h3>销量与平均单价</h3><div class="u">柱：台（左轴）　线：万元/台（右轴）</div><div id="c3" class="ch"></div></div>
+  <div class="box"><h3>主营业务收入明细（万元 / 占比）</h3><div class="u">来源：招股说明书（上会稿）</div>
+    <table><tr><th>产品</th><th>2023</th><th>占比</th><th>2024</th><th>占比</th><th>2025</th><th>占比</th></tr>
+    <tr><td>四足机器人</td><td>11,938.09</td><td>75.78%</td><td>23,054.37</td><td>59.47%</td><td>69,762.56</td><td>41.62%</td></tr>
+    <tr><td>人形机器人</td><td>296.71</td><td>1.88%</td><td>10,729.76</td><td>27.68%</td><td>86,783.19</td><td>51.78%</td></tr>
+    <tr><td>机器人组件</td><td>2,692.34</td><td>17.09%</td><td>4,453.82</td><td>11.49%</td><td>10,373.67</td><td>6.19%</td></tr>
+    <tr><td>其他</td><td>826.51</td><td>5.25%</td><td>529.33</td><td>1.37%</td><td>691.67</td><td>0.41%</td></tr>
+    <tr><td>合计</td><td>15,753.65</td><td>100%</td><td>38,767.28</td><td>100%</td><td>167,611.09</td><td>100%</td></tr></table>
+    <div class="tags"><span class="tag cy">境外收入占比 &gt;40%</span><span class="tag">美国 18.39%→19.54%→13.30%</span><span class="tag">前五大客户 12.08%（2025）</span><span class="tag">线下 89.28%（直销51.10%+经销38.18%）</span><span class="tag">线上 10.72%</span></div>
+  </div></div>
+</div></section>
+
+<section id="q"><div class="wrap">
+  <div class="st rv"><span class="no">03</span><h2>盈利质量</h2><span class="en">QUALITY · 毛利 / 费用 / 现金流 / 同业</span><span class="ln"></span></div>
+  <p class="lead rv">主营业务毛利率 44.22%→56.74%→<b class="au">60.13%</b>，2025 综合毛利率 60.44% 高于全部同行业可比公司（均值 44.44%）。人形毛利率 87.67%→63.18%（G1 占比提升+主动降价），四足 43.71%→56.72%（降本+结构）。2025 销售费用率 <b class="cy">8.31%</b>（行业均值 23.88%）；经营现金流 66,998.18 万元 ≈ 扣非净利 <b class="au">1.13 倍</b>。</p>
+  <div class="grid g2 rv"><div class="box"><h3>毛利率趋势 vs 同业均值</h3><div class="u">%</div><div id="c4" class="ch"></div></div>
+  <div class="box"><h3>期间费用率结构</h3><div class="u">%（2025 管理费用率含股份支付）</div><div id="c5" class="ch"></div></div></div>
+  <div class="grid g2 rv" style="margin-top:14px"><div class="box"><h3>经营现金流 vs 扣非归母（亿元）</h3><div class="u">盈利现金含量</div><div id="c6" class="ch"></div></div>
+  <div class="box"><h3>同行业公司对比（2025）</h3><div class="u">来源：招股说明书引用的同业披露</div>
+    <table><tr><th>公司</th><th>营业收入(万元)</th><th>综合毛利率</th></tr>
+    <tr><td>宇树科技</td><td>169,926.93</td><td>60.44%</td></tr>
+    <tr><td>优必选</td><td>200,099.90</td><td>37.67%</td></tr>
+    <tr><td>越疆</td><td>49,348.30</td><td>46.49%</td></tr>
+    <tr><td>云深处</td><td>33,749.06</td><td>52.83%</td></tr>
+    <tr><td>乐聚智能</td><td>25,818.79</td><td>40.78%</td></tr>
+    <tr><td>同业平均</td><td>77,254.01</td><td>44.44%</td></tr></table>
+    <div class="tags"><span class="tag gn">扣非加权ROE 28.70%（2025）</span><span class="tag">资产负债率 18.82%（2025末）</span><span class="tag cy">货币资金 ≈14.92 亿元（2026-06-30）</span></div>
+  </div></div>
+</div></section>
+
+<section id="i"><div class="wrap">
+  <div class="st rv"><span class="no">04</span><h2>中期跟踪</h2><span class="en">2026 INTERIM · 增速中枢与投入期利润</span><span class="ln"></span></div>
+  <div class="cal rv"><span class="b">2026Q1 经审阅</span><span class="c">2026H1 未经审计</span><span class="d">招股书预计＝管理层估计·不构成盈利预测</span></div>
+  <p class="lead rv">2026H1 营收 115,224.56 万元、<b class="cy">+48.54%</b>，高于招股书预计上限（105,200-112,800 万元）；扣非归母 24,393.03 万元、<b class="rd">-19.34%</b>，落于预计区间（23,600-28,300 万元）内。利润承压主因研发 +8,203.74 万元与春晚等品牌推广带来的销售费用大增。</p>
+  <div class="grid g6 rv" id="ikpis"></div>
+  <div class="box rv" style="margin-top:14px"><h3>招股书预计区间 vs 实际（2026H1，万元）</h3><div class="u">金色带＝预计区间　青色线＝实际</div><div class="fc" id="fc"></div></div>
+</div></section>
+
+<section id="r"><div class="wrap">
+  <div class="st rv"><span class="no">05</span><h2>研发与护城河</h2><span class="en">R&D & MOAT</span><span class="ln"></span></div>
+  <div class="grid g2 rv"><div class="box"><h3>研发费用（百万元）</h3><div class="u">累计 26,493.44 万元；2026H1 同比 +8,203.74 万元</div><div id="c7" class="ch"></div></div>
+  <div class="box"><h3>全栈自研护城河</h3><div class="u">本体 + 小脑 → 大脑</div>
+    <div class="tags" style="margin-top:4px">
+      <span class="tag cy">电机 / 减速器 / 灵巧手 / 激光雷达自研</span><span class="tag cy">关节模组 / 能源 / 计算 / 运动控制 / 感知</span>
+      <span class="tag au">2025H2 发布 WMA / VLA 具身大模型</span><span class="tag">研发人员 184/516 = 35.66%</span>
+      <span class="tag">注册专利 262 项（境内发明 20）</span><span class="tag gn">H1 奔跑 10 米/秒（2026）世界纪录</span>
+      <span class="tag gn">春晚《秧BOT》16台H1 / 《武BOT》24台G1+1台H2</span><span class="tag gn">世界机器人运动会 11 枚奖牌</span>
+      <span class="tag au">募投：模型研发 20.22 亿 + 本体研发 11.10 亿</span><span class="tag">制造基地 6.24 亿 + 新产品 4.45 亿</span>
+    </div>
+    <p class="lead" style="margin-top:14px">竞争优势归结为四点：<b>全栈自研</b>带来的成本与毛利率优势；<b>性能标杆</b>构筑的品牌拉力；<b>全球市场地位</b>（四足累计超 33,000 台、人形出货第一、境外&gt;40%）；<b>高性价比+低销售费用率</b>的规模化打法。风险口：专利数量偏少、具身大模型尚未规模化应用。</p>
+  </div></div>
+</div></section>
+
+<section id="c"><div class="wrap">
+  <div class="st rv"><span class="no">06</span><h2>发行与资本</h2><span class="en">IPO & CAPITAL</span><span class="ln"></span></div>
+  <div class="grid g2 rv"><div class="box"><h3>募集资金投向（万元）</h3><div class="u">拟使用募集资金合计 420,171.12 万元；实际净额 591,714.92 万元</div><div id="c8" class="ch"></div></div>
+  <div class="box"><h3>发行要素与股东结构</h3><div class="u">来源：上市公告书（2026-08-18）</div>
+    <table><tr><th>要素</th><th>数值</th></tr>
+    <tr><td>发行价格 / 每股面值</td><td>150.80 元 / 1.00 元</td></tr>
+    <tr><td>新股数量 / 发行后总股本</td><td>4,044.6434 万股 / 40,446.4340 万股</td></tr>
+    <tr><td>募资总额 / 净额 / 费用</td><td>609,932.22 / 591,714.92 / 18,217.31 万元</td></tr>
+    <tr><td>发行市盈率 / 市净率</td><td>219.23x / 7.16x</td></tr>
+    <tr><td>行业平均静态市盈率(T-3)</td><td>38.56x（C34）</td></tr>
+    <tr><td>上市标准</td><td>预计市值 ≥100 亿元（特别表决权）</td></tr>
+    <tr><td>发行前末轮投后估值(2025-06)</td><td>127 亿元</td></tr>
+    <tr><td>王兴兴持股 / 表决权</td><td>23.8216% 直接；表决权 68.7816%→≤65.3090%</td></tr>
+    <tr><td>上市初期无限售流通股占比</td><td>7.44%</td></tr></table>
+    <div class="tags"><span class="tag cy">战略配售 20%</span><span class="tag">社保基金</span><span class="tag">深度求索(36个月)</span><span class="tag">昆仑资本</span><span class="tag">南网产融</span><span class="tag">天翼资本</span><span class="tag">启善(腾讯关联)</span><span class="tag">中证投资</span><span class="tag">员工资管计划</span></div>
+  </div></div>
+</div></section>
+
+<section id="o"><div class="wrap">
+  <div class="st rv"><span class="no">07</span><h2>机会与风险</h2><span class="en">OUTLOOK</span><span class="ln"></span></div>
+  <div class="grid g2 rv">
+    <div class="box" style="border-color:rgba(53,208,165,.35)"><h3 style="color:var(--gn)">增长变量</h3>
+      <div class="tags"><span class="tag gn">人形场景渗透：科研/表演/巡检/服务</span><span class="tag gn">具身大模型突破 + 数据采集/场景实训</span><span class="tag gn">制造基地扩产 + 超募弹性</span><span class="tag gn">“以价换量”由四足向人形复制</span><span class="tag">2026H1 人形收入仍较快增长</span></div>
+    </div>
+    <div class="box" style="border-color:rgba(255,122,107,.35)"><h3 style="color:var(--rd)">主要风险</h3>
+      <div class="tags"><span class="tag rd">增速放缓：2026Q1 扣非 -52.55%</span><span class="tag rd">竞争：Optimus Gen-3 试产 / 国内车企入局</span><span class="tag rd">人形毛利率 87.67%→63.18%</span><span class="tag rd">FCC 2026-07-28 新规 / 美国占 13.30%</span><span class="tag rd">约20%原材料经代理进口</span><span class="tag">特别表决权集中 / 后续股份支付增费</span><span class="tag">初期流通股 7.44% / PE 219.23x</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="s"><div class="wrap">
+  <div class="st rv"><span class="no">08</span><h2>结论 · 口径 · 来源</h2><span class="en">CONCLUSION</span><span class="ln"></span></div>
+  <p class="lead rv">宇树科技是通用机器人行业少有的“<b class="cy">高增长、高毛利、正现金流</b>”样本：成长逻辑（人形放量+全栈自研）清晰；核心矛盾是<b class="au">高投入期利润承压</b>与增速中枢下移；估值（PE 219.23x、P/S≈35.9x）锚定高成长预期，兑现要求严苛。跟踪重点：人形毛利率企稳、具身大模型规模化、海外贸易政策、股份支付确认节奏。</p>
+  <div class="cal rv"><span class="a">2023-2025 经审计 · 容诚审字[2026]230Z1692号</span><span class="b">2026Q1 经审阅 · 容诚阅字[2026]230Z0038号</span><span class="c">2026H1 未经审计</span><span class="d">预计数据≠盈利预测</span></div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>主要来源</b>：[1] 宇树科技首次公开发行股票科创板上市公告书（2026-08-18，上交所披露）　[2] 首次公开发行股票并在科创板上市招股说明书（上会稿，上交所披露）　[3] 中国证监会注册批复 证监许可〔2026〕1612号　[4] 容诚会计师事务所审计/审阅报告　[5] 上市公告书附件二 2026年1-6月报表（未经审计）　[6] 配套《宇树科技经营与财务分析底稿.xlsx》《宇树科技公司研究报告.docx》《宇树科技内部汇报.pptx》<br>
+  本页面仅供投资人沟通参考，不构成投资建议。　|　UNITREE ROBOTICS · 688836.SH · DATA CUT-OFF 2026-08-30
+</div></footer>
+
+<script>
+/* ---------- 数据（与核验底稿一致） ---------- */
+const Y=['2023','2024','2025'];
+const D={
+ rev:[1.5913,3.9277,16.9927], yoy:[null,146.82,332.64],
+ mixQ:[1.1938,2.3054,6.9763], mixH:[0.0297,1.0730,8.6783], mixO:[0.3519,0.4983,1.1065],
+ mixQp:[75.78,59.47,41.62], mixHp:[1.88,27.68,51.78], mixOp:[22.34,12.86,6.60],
+ volQ:[3121,7136,23037], volH:[5,412,5215], aspQ:[3.83,3.23,3.03], aspH:[59.34,26.04,16.64],
+ gmMain:[44.22,56.74,60.13], gmQ:[43.71,51.65,56.72], gmH:[87.67,69.26,63.18], gmPeer:[40.98,39.92,44.44],
+ sell:[23.70,15.06,8.31], adm:[8.38,6.37,23.52], rnd:[31.39,17.83,8.53],
+ ocf:[0.0494,1.9239,6.6998], kf:[-0.1802,0.7848,5.9075],
+ rndAbs:[49.95,70.02,144.97,135.91]
+};
+const CY='#00C2FF',AU='#F7B731',RD='#FF7A6B',GN='#35D0A5',MU='#8CA3BF',WH='#F5F8FC';
+const fmtN=v=>v.toLocaleString('zh-CN',{maximumFractionDigits:2});
+
+/* ---------- KPI ---------- */
+const KPIS=[
+ ['2025 营业收入','16.99','亿元','CAGR 226.78% · 2026H1 11.52亿 +48.5%*',CY,16.99],
+ ['2025 扣非归母','5.91','亿元','2023 为 -1,801.91 万元 · 净利率≈34.8%',GN,5.91],
+ ['2025 主营毛利率','60.13','%','同业均值 44.44% · 2023 为 44.22%',AU,60.13],
+ ['2025 人形出货','5511','台','全球第一 · 销量5,215台 · 四足累计>33,000台',WH,5511],
+ ['发行后市值','609.93','亿元','PE 219.23x · 行业PE 38.56x · P/S≈35.9x',CY,609.93],
+ ['募资净额','59.17','亿元','募投42.02亿 · 模型+本体研发≈31.32亿',AU,59.17]];
+document.getElementById('kpis').innerHTML=KPIS.map(k=>`<div class="card" style="--c:${k[4]}"><div class="lb">${k[0]}</div><div class="v"><span data-n="${k[5]}" data-d="${k[5]<100&&k[5]!==5511?2:0}">0</span><small>${k[2]}</small></div><div class="s">${k[3]}</div></div>`).join('');
+const IK=[
+ ['2026Q1 营收YoY','+68.49%','审阅',CY],['2026Q1 扣非YoY','-52.55%','审阅',RD],
+ ['2026H1 营收','11.52亿元','+48.54% · 未审计',CY],['2026H1 归母','2.74亿元','上年 -3,202.45 万元',GN],
+ ['2026H1 扣非','2.44亿元','-19.34% · 未审计',RD],['2026H1 经营现金流','2.32亿元','-32.53% · 未审计',AU]];
+document.getElementById('ikpis').innerHTML=IK.map(k=>`<div class="card" style="--c:${k[3]}"><div class="lb">${k[0]}（${k[2].split('·')[1]?k[2].split('·')[1].trim():k[2]}）</div><div class="v" style="font-size:24px">${k[1]}</div><div class="s">${k[2]}</div></div>`).join('');
+
+/* ---------- 预计vs实际 ---------- */
+const FC=[
+ ['营业收入',105200,112800,115224.56,'实际高于预计上限'],
+ ['归母净利润',25800,30600,27399.99,'区间内'],
+ ['扣非归母',23600,28300,24393.03,'区间内']];
+document.getElementById('fc').innerHTML=FC.map(f=>{
+ const lo=f[1]*0.85,hi=f[2]*1.12,sc=v=>((v-lo)/(hi-lo)*100);
+ return `<div class="row"><div class="nm">${f[0]}</div><div class="track"><div class="band" style="left:${sc(f[1])}%;width:${sc(f[2])-sc(f[1])}%"></div><div class="act" style="left:${sc(f[3])}%" data-v="${fmtN(f[3])}"></div></div><div class="vt">预计 ${fmtN(f[1])}–${fmtN(f[2])}　<b>${f[4]}</b></div></div>`;
+}).join('');
+
+/* ---------- ECharts ---------- */
+const base={backgroundColor:'transparent',textStyle:{fontFamily:'PingFang SC,Microsoft YaHei'},
+ tooltip:{trigger:'axis',backgroundColor:'rgba(10,22,38,.92)',borderColor:'#1E3A5C',textStyle:{color:'#EAF2FB',fontSize:12}},
+ legend:{textStyle:{color:MU,fontSize:11},bottom:0},grid:{left:46,right:52,top:34,bottom:44}};
+function mk(id,opt){const c=echarts.init(document.getElementById(id));c.setOption(Object.assign({},base,opt));return c}
+const charts=[];
+charts.push(mk('c1',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:[{type:'value',name:'亿元',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+        {type:'value',name:'%',nameTextStyle:{color:MU},axisLabel:{color:AU},splitLine:{show:false}}],
+ series:[{name:'营业收入(亿元)',type:'bar',data:D.rev,barWidth:34,itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:CY},{offset:1,color:'rgba(0,194,255,.15)'}]),borderRadius:[4,4,0,0]},label:{show:true,position:'top',color:WH,fontSize:11}},
+         {name:'营收YoY(%)',type:'line',yAxisIndex:1,data:D.yoy,symbol:'circle',symbolSize:8,lineStyle:{color:AU,width:3},itemStyle:{color:AU},label:{show:true,color:AU,formatter:p=>p.value?p.value+'%':'',fontSize:10}}]}));
+charts.push(mk('c2',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:{type:'value',name:'亿元',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+ series:[{name:'四足',type:'bar',stack:'t',data:D.mixQ,itemStyle:{color:CY},label:{show:true,formatter:p=>D.mixQp[p.dataIndex]+'%',color:'#06263C',fontSize:10}},
+         {name:'人形',type:'bar',stack:'t',data:D.mixH,itemStyle:{color:AU},label:{show:true,formatter:p=>D.mixHp[p.dataIndex]+'%',color:'#06263C',fontSize:10}},
+         {name:'组件及其他',type:'bar',stack:'t',data:D.mixO,itemStyle:{color:'#5B7A9D'},label:{show:true,formatter:p=>D.mixOp[p.dataIndex]+'%',color:'#06263C',fontSize:10}}]}));
+charts.push(mk('c3',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:[{type:'value',name:'台',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+        {type:'value',name:'万元/台',nameTextStyle:{color:MU},axisLabel:{color:AU},splitLine:{show:false}}],
+ series:[{name:'四足销量(台)',type:'bar',data:D.volQ,itemStyle:{color:CY,borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:WH,fontSize:10,formatter:p=>fmtN(p.value)}},
+         {name:'人形销量(台)',type:'bar',data:D.volH,itemStyle:{color:AU,borderRadius:[3,3,0,0]},label:{show:true,position:'top',color:WH,fontSize:10,formatter:p=>fmtN(p.value)}},
+         {name:'四足单价',type:'line',yAxisIndex:1,data:D.aspQ,lineStyle:{color:'#7FD4FF',type:'dashed'},itemStyle:{color:'#7FD4FF'}},
+         {name:'人形单价',type:'line',yAxisIndex:1,data:D.aspH,lineStyle:{color:'#FFD98A',type:'dashed'},itemStyle:{color:'#FFD98A'}}]}));
+charts.push(mk('c4',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:{type:'value',max:100,name:'%',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+ series:[{name:'主营业务',type:'line',data:D.gmMain,lineStyle:{width:3,color:WH},itemStyle:{color:WH}},
+         {name:'四足',type:'line',data:D.gmQ,lineStyle:{width:3,color:CY},itemStyle:{color:CY}},
+         {name:'人形',type:'line',data:D.gmH,lineStyle:{width:3,color:AU},itemStyle:{color:AU}},
+         {name:'同业平均',type:'line',data:D.gmPeer,lineStyle:{width:2,color:RD,type:'dotted'},itemStyle:{color:RD}}]}));
+charts.push(mk('c5',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:{type:'value',name:'%',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+ series:[{name:'销售费用率',type:'line',data:D.sell,lineStyle:{width:3,color:CY},itemStyle:{color:CY}},
+         {name:'管理费用率',type:'line',data:D.adm,lineStyle:{width:3,color:AU},itemStyle:{color:AU}},
+         {name:'研发费用率',type:'line',data:D.rnd,lineStyle:{width:3,color:GN},itemStyle:{color:GN}}]}));
+charts.push(mk('c6',{xAxis:{type:'category',data:Y,axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:{type:'value',name:'亿元',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+ series:[{name:'经营现金流净额',type:'bar',data:D.ocf,itemStyle:{color:CY,borderRadius:[3,3,0,0]}},
+         {name:'扣非归母',type:'bar',data:D.kf,itemStyle:{color:AU,borderRadius:[3,3,0,0]}}]}));
+charts.push(mk('c7',{xAxis:{type:'category',data:['2023','2024','2025','2026H1'],axisLine:{lineStyle:{color:'#1E3A5C'}},axisLabel:{color:MU}},
+ yAxis:{type:'value',name:'百万元',nameTextStyle:{color:MU},axisLabel:{color:MU},splitLine:{lineStyle:{color:'rgba(30,58,92,.6)'}}},
+ series:[{name:'研发费用',type:'bar',data:D.rndAbs,barWidth:40,itemStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:GN},{offset:1,color:'rgba(53,208,165,.12)'}]),borderRadius:[4,4,0,0]},label:{show:true,position:'top',color:WH,fontSize:11}}],legend:{show:false}}));
+charts.push(mk('c8',{series:[{type:'pie',radius:['42%','70%'],center:['50%','46%'],
+ data:[{value:202245.93,name:'智能机器人模型研发',itemStyle:{color:CY}},{value:110973.80,name:'机器人本体研发',itemStyle:{color:AU}},{value:44540.00,name:'新型产品开发',itemStyle:{color:GN}},{value:62411.39,name:'制造基地建设',itemStyle:{color:'#5B7A9D'}}],
+ label:{color:MU,fontSize:11,formatter:p=>p.name+'\n'+fmtN(p.value)+' 万'},labelLine:{lineStyle:{color:'#1E3A5C'}},itemStyle:{borderColor:'#0A1626',borderWidth:2}}],
+ legend:{textStyle:{color:MU,fontSize:11},bottom:0},tooltip:{trigger:'item',backgroundColor:'rgba(10,22,38,.92)',borderColor:'#1E3A5C',textStyle:{color:'#EAF2FB'}}}));
+window.addEventListener('resize',()=>charts.forEach(c=>c.resize()));
+
+/* ---------- 数字滚动 ---------- */
+function countUp(el){const t=parseFloat(el.dataset.n),d=+el.dataset.d,st=performance.now();
+ const step=n=>{const p=Math.min(1,(n-st)/1200),e=1-Math.pow(1-p,3);el.textContent=(t*e).toLocaleString('zh-CN',{minimumFractionDigits:d,maximumFractionDigits:d});if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
+
+/* ---------- 滚动显现 & 导航高亮 ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');
+ e.target.querySelectorAll('[data-n]').forEach(countUp);io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const secs=[...document.querySelectorAll('section')];const links=[...document.querySelectorAll('nav a')];
+addEventListener('scroll',()=>{const y=scrollY+120;let cur=secs[0].id;secs.forEach(s=>{if(s.offsetTop<=y)cur=s.id});links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+cur))});
+
+/* ---------- 粒子背景 ---------- */
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');let W,H,P=[];
+function rs(){W=cv.width=innerWidth;H=cv.height=innerHeight}rs();addEventListener('resize',rs);
+for(let i=0;i<70;i++)P.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,r:Math.random()*1.6+.4});
+(function loop(){cx.clearRect(0,0,W,H);
+ for(const p of P){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+  cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fillStyle='rgba(0,194,255,.35)';cx.fill()}
+ for(let i=0;i<P.length;i++)for(let j=i+1;j<P.length;j++){const a=P[i],b=P[j],d=Math.hypot(a.x-b.x,a.y-b.y);
+  if(d<130){cx.strokeStyle=`rgba(0,194,255,${.12*(1-d/130)})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+ requestAnimationFrame(loop)})();
+</script>
+</body>
+</html>
