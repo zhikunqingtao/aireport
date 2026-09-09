@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "qa-print-v4.5.2-1.0",
+  "generatedAt": "2026-09-09T20:27:50+08:00",
+  "status": "passed",
+  "source": {
+    "path": "docs/case-studies/AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+    "bytes": 1539638,
+    "sha256": "6e456f8be3621719e396529a8e823b103c046c24d9212235cf591ccfb39bd3af"
+  },
+  "currentSourceAssessment": {
+    "source": {
+      "path": "docs/case-studies/AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+      "bytes": 1540886,
+      "sha256": "c1345a891920dab0a7f80fb38d18650af3738f477bec5d3c7dedc9bef4f408e1"
+    },
+    "changeScope": "introductory external tool links only",
+    "printImpact": "none; .participant-links is hidden by the print stylesheet",
+    "pdfReexported": false,
+    "validationPolicy": "User requested simplified link-only validation on 2026-09-09."
+  },
+  "renderer": "Microsoft Edge 151.0.4129.78 (Chromium 151, CDP Page.printToPDF)",
+  "temporaryOutput": {
+    "retainedInRepository": false,
+    "bytes": 8743578,
+    "sha256": "6445cfc9e4026c8544b097c29e2258fa8b6aff189a77857052d404631ff55a85"
+  },
+  "document": {
+    "pages": 85,
+    "pageSize": "A4",
+    "tagged": true,
+    "title": "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日"
+  },
+  "checks": [
+    {
+      "name": "cover-render",
+      "passed": true,
+      "detail": "首屏执行摘要封面完整呈现，标题、G0/G1/G2分布、两张正式排名、阅读路径与样本边界无裁切或重叠。"
+    },
+    {
+      "name": "running-header-version",
+      "passed": true,
+      "detail": "正文页眉显示v4.5.2｜资料截止2026-08-30。"
+    },
+    {
+      "name": "page-numbering",
+      "passed": true,
+      "detail": "正文页脚显示连续页码与总页数，例如第2 / 85页。"
+    },
+    {
+      "name": "text-extraction",
+      "passed": true,
+      "detail": "使用pypdf检查全部85页：85/85页均可提取文本，0空白页，0页少于100字符，单页最少159字符。"
+    },
+    {
+      "name": "pdf-integrity",
+      "passed": true,
+      "detail": "pdfinfo确认PDF 1.4、A4 594.96×841.92 pt、85页、Tagged=yes；文件尾包含完整%%EOF。"
+    },
+    {
+      "name": "print-assets-ready",
+      "passed": true,
+      "detail": "打印前等待document.fonts.ready并核验5张页面图像：5/5 complete、5/5 naturalWidth>0、0 broken。"
+    },
+    {
+      "name": "visual-smoke-key-pages",
+      "passed": true,
+      "detail": "以120 DPI重新渲染并人工检查第1–2、11–14、83–85页；封面、执行摘要、兼容性矩阵、验证状态与末页均未见裁切、重叠、黑块、乱码或不可读文字；对应关键页PNG与上一轮逐页cmp完全一致。"
+    },
+    {
+      "name": "compatibility-table-pagination",
+      "passed": true,
+      "detail": "第11–14页三阶段证据链与平台兼容性表续页完整，列宽、状态标签、长文本换行和表头延续正常，无横向裁切。"
+    },
+    {
+      "name": "verification-status-pagination",
+      "passed": true,
+      "detail": "第83–85页验证状态卡片完整，英文状态值与中文说明均正常换行；第85页虽留白较多但含最终两项状态与免责声明，不是空白页。"
+    },
+    {
+      "name": "formal-profile-content-stability",
+      "passed": true,
+      "detail": "与上一轮正式报告逐页比较：85页提取文本全部一致，9个关键页PNG逐页cmp一致；本次证据媒体文案修正未改变正式报告版式或分页。"
+    }
+  ]
+}

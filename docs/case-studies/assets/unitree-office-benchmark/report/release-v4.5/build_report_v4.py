@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the self-contained fixed-sample evidence-review report from v4.5.1 data.
+"""Build the v4.5.2 presentation from frozen v4.5.1 report data.
 
 The source JSON is never modified. Local evidence/media files referenced by the
 JSON are converted to data URIs in the in-memory copy before the single HTML is
@@ -25,7 +25,15 @@ from typing import Any, Iterable
 
 HERE = Path(__file__).resolve().parent
 DEFAULT_DATA = HERE / "report_v4.5_final.json"
+DEFAULT_UI_PATH = HERE / "report.ui.json"
+DEFAULT_PATH_MAP = HERE.parents[1] / "manifests" / "path-map.json"
 MAX_BYTES = 40 * 1024 * 1024
+DYNAMIC_HERO_FIELDS = ("title", "lead", "statusNote")
+TRANSPORT_FIELDS = {
+    "dataUri", "data_uri", "dataUriRef", "embedded", "externallyReferenced",
+    "embedError", "embedPath", "embedMimeType", "embeddedMimeType",
+    "embeddedSha256", "embeddedBytes", "displayCopyNote",
+}
 DISPLAY_MEDIA_FILES = {
     "media:native:8e71f292cb665ac44392": "zhikuncode_html_fullpage-display.webp",
     "media:native:9677746001be6e821b20": "workbuddy_html_fullpage-display.webp",
@@ -34,75 +42,29 @@ DISPLAY_MEDIA_FILES = {
     "media:native:ac6d0a14e3bcea3bf42b": "qoder_html_fullpage-display.webp",
 }
 
-DEFAULT_UI = {
-    "brand": "固定样本交付物比较",
-    "hero": {
-        "title": "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日",
-        "lead": "对5款工具共30件固定终稿（每款6件）的单次、单环境复核；结论仅代表本次样本表现，不外推为工具的一般表现。",
-        "statusNote": "两张终稿独立使用排名为正式固定样本结果；首次归责只作探索性非因果诊断。点估计配套单评审、非统计的单项一步判断敏感性。",
-    },
-    "nav": {"protocol": "测试流程", "executive": "执行摘要", "results": "比较结果", "profiles": "逐工具与逐文件", "native": "原生应用与兼容性", "issues": "问题、闸门与传播链", "facts": "事实基准与来源", "evidence": "方法、过程与全量证据", "challenges": "异议裁决"},
-    "metrics": {
-        "artifacts": "终稿样本", "artifactsNote": "5款 × 6类", "scenarios": "场景实测", "scenariosNote": "已完成/总数",
-        "coverage": "覆盖项", "coverageNote": "Sheet、页、幻灯片及视口", "nativePass": "原生打开通过", "nativePassNote": "指定应用首次打开",
-        "editSuccess": "编辑任务通过", "editSuccessNote": "编辑、联动、保存及重开",
-        "repairs": "修复提示", "repairsNote": "按文件特异性判定",
-    },
-    "sections": {
-        "process": {"kicker": "", "title": "全过程记录与录屏哈希", "copy": "五条分享记录用于还原任务上下文；另有8段、合计约7.40GB的完整过程录屏暂不公开，仅发布SHA-256索引。过程材料不替代终稿原件、原生应用实测或Excel独立事实账本，也不直接参与评分。"},
-        "context": {"kicker": "", "title": "本次任务配置与用量/费用旁证", "copy": "五款均有配置证据；四款有产品自身额度截图，ZhikunCode另有一张Kimi API账户日账单旁证。该账单混有其他任务，不能归因于本次六任务。全部资料均不计分，也不把本次比较误称为同模型、同算力或同成本控制实验。"},
-        "ranking": {"kicker": "", "title": "正式固定终稿排名与探索性诊断", "copy": "终稿独立使用的六任务等权和均衡投研实务两榜为正式结果；首次归责两组仅对已枚举完全继承项作探索性去重，不是因果或采购排名。四组均同步展示单评审者局部一步敏感性范围与近分组。"},
-        "heatmap": {"kicker": "", "title": "30件终稿连续质量分", "copy": "分数仅0–100线性加权，不应用59/39/69数值封顶；点击查看子测试、问题、闸门和证据。"},
-        "gates": {"kicker": "", "title": "G0 / G1 / G2 交付安全矩阵", "copy": "闸门不改写连续分：G0可按常规复核使用，G1修正后可用，G2禁止未经复核直接交付。核心标题绝对方向反转G2规则为观察后制定、再对五家对称复核，并非事前预注册。"},
-        "compatibility": {"kicker": "", "title": "平台兼容证据矩阵", "copy": "区分已观察的环境结果与未验证平台，不把Mac特定表现外推为通用文件结论。"},
-        "sensitivity": {"kicker": "", "title": "规则与权重敏感性", "copy": "展示HTML交互权重、千问Excel图表、v3历史封顶以及传播归责口径改变时的排名变化。"},
-        "native": {"kicker": "", "title": "原生打开与修复矩阵", "copy": "指定应用首次打开、修复提示和编辑任务在这里逐件可见；环境共性问题与文件特异问题分开记录。"},
-        "browser": {"kicker": "", "title": "场景、覆盖与问题复核浏览器", "copy": "按工具、产物、闸门、严重度和关键词查找可复现观察、谨慎解读与反证条件。"},
-        "evidence": {"kicker": "", "title": "原生实测证据", "copy": "缩略图全部内嵌并按内容哈希去重；点击可查看高清局部、应用版本、动作、定位和关联结论。"},
-        "lineage": {"kicker": "", "title": "根因与传播链（非计分归责）", "copy": "origin、exact_propagation、mutated和independently_reintroduced分开展示；完全继承不重复归责，但终端文件风险仍独立显示。"},
-        "risk": {"kicker": "", "title": "终端独立使用风险", "copy": "这是一层不计分的安全提示：下游产物即使忠实继承Excel，也可能在脱离底稿单独使用时传播错误。"},
-        "facts": {"kicker": "", "title": "Excel核心事实基准与覆盖边界", "copy": "公开32项基准的选取规则、来源定位与未覆盖范围；只称为核心事实核对，不宣称对工作簿全部数字完成全量鉴证。"},
-        "appendix": {"kicker": "", "title": "规则、版本变更、样本指纹与待核验", "copy": "每项扣分必须能回到子测试、finding和证据；v3→v4规则变化与旧新SHA公开。"},
-    },
-    "ranking": {
-        "equal": "六任务等权榜", "practical": "均衡投研实务榜", "provisional": "临时排名 · 原生实测未完", "final": "最终排名 · 验收完成", "provisionalLeader": "临时第1", "finalLeader": "本次样本第1",
-        "equalTaskNote": "六类终稿各占1/6；适合评价六个连续提示的总体完成度。",
-        "practicalNote": "Excel 25%、Word 20%、PPT 20%、普通图10%、水墨图10%、HTML 15%。",
-        "sensitivityTitle": "重大性判断敏感性",
-    },
-    "browser": {
-        "scenario": "场景实测", "coverage": "覆盖记录", "finding": "发现与扣分",
-        "scenarioNote": "一条记录对应一次真实操作：打开、重算、编辑、放映、缩放、点击或响应式测试。",
-        "coverageNote": "一条记录对应一个已复核或待复核的Sheet、原生页面、幻灯片、图片区域或HTML视口。",
-        "findingNote": "同一根因在同一文件只扣一个主维度；继承型finding强制不扣分、不封顶。",
-    },
-    "filters": {"tool": "工具", "kind": "产物", "status": "状态", "severity": "严重度", "search": "全文检索", "searchPlaceholder": "Sheet、页码、动作、问题、证据……"},
-    "status": {"pass": "通过", "warn": "有警告", "repair": "需修复", "fail": "失败", "blocked": "需协助", "pending": "待实测", "complete": "通过", "legacyStatic": "历史静态参考", "superseded": "由v3实测替代", "automated": "自动校验通过"},
-    "severity": {"critical": "关键", "major": "主要", "minor": "轻微", "info": "信息"},
-    "groups": {"reliability": "可靠性", "native_usability": "原生可用性", "delivery": "交付质量"},
-    "labels": {
-        "skip": "跳至正文", "mainNav": "主导航", "theme": "切换明暗主题", "close": "关闭", "all": "全部", "tool": "工具",
-        "rankingMode": "排名口径", "recordType": "记录类型", "pendingScore": "待实测", "final": "最终", "provisional": "临时/待验",
-        "noNativeRecord": "尚无原生打开记录", "records": "条记录", "scenario": "场景实测", "coverage": "覆盖记录", "finding": "复核发现",
-        "expected": "预期", "artifactDetail": "文件详情", "evidence": "证据", "evidencePending": "证据图片待嵌入", "propagation": "传播记录",
-        "noPath": "路径待登记", "notDeducted": "不计分", "source": "来源", "openSource": "打开原始来源 ↗", "yes": "是", "no": "否",
-        "artifact": "产物", "locator": "定位", "action": "动作", "application": "应用", "captured": "采集时间",
-        "cutoff": "资料截止", "environment": "实测环境",
-    },
-    "facts": {"metric": "指标", "period": "报告期", "value": "基准值", "unit": "统一单位", "attribute": "属性/财务审计状态", "source": "来源定位"},
-    "criteria": {"kind": "产物", "dimension": "评分维度", "weight": "权重", "group": "分组", "external": "可用外部事实"},
-    "manifest": {"tool": "工具", "kind": "产物", "file": "原件", "size": "大小", "hash": "SHA-256", "copies": "核验副本", "status": "评分状态"},
-    "modal": {"native": "原生实测与覆盖", "runs": "场景记录", "coverage": "覆盖记录", "findings": "发现", "fileIdentity": "文件标识", "fingerprintAppendix": "完整本地路径与SHA-256仅在折叠附录展示。", "scoring": "逐项评分", "baseScore": "基础分", "repairPenalty": "修复扣分", "cap": "封顶", "evidenceMeta": "证据元数据"},
-    "appendix": {"methodology": "固定评分原则", "verification": "仍需人工协助或核验", "criteria": "展开六类评分维度与权重", "manifest": "展开30件终稿原件指纹与核验副本"},
-    "empty": {"rankings": "暂无可计算排名。", "records": "当前筛选条件下没有记录。", "evidence": "尚无已登记证据。", "propagation": "尚无传播链记录。", "risks": "未登记终端独立使用风险。", "facts": "尚无事实账本数据。", "sources": "尚无来源记录。", "verification": "没有待人工处理事项。", "scores": "原生实测完成后生成逐项分。"},
-    "footer": "评测截止日与评分口径以本页方法说明为准。工具自评仅提供异议线索，不具有证据权重；本报告未取得厂商正式签字或认可，也不构成投资建议。",
-}
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=DEFAULT_DATA)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument(
+        "--ui",
+        type=Path,
+        default=DEFAULT_UI_PATH,
+        help="Canonical UI configuration. Input JSON meta.ui is never merged into it.",
+    )
+    parser.add_argument(
+        "--dynamic-hero-data",
+        type=Path,
+        default=DEFAULT_DATA,
+        help="Final release data supplying only title/lead/statusNote hero overrides.",
+    )
+    parser.add_argument(
+        "--path-map",
+        type=Path,
+        default=DEFAULT_PATH_MAP,
+        help="Repository path map used when a local absolute media path is unavailable.",
+    )
     parser.add_argument(
         "--allow-over-40mb",
         action="store_true",
@@ -126,13 +88,81 @@ def as_list(value: Any) -> list:
     return []
 
 
-def resolve_media_path(value: str, data_dir: Path) -> Path | None:
+def load_object(path: Path, label: str) -> dict:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(value, dict):
+        raise ValueError(f"{label} must be a JSON object: {path}")
+    return value
+
+
+def load_report_ui(ui_path: Path, dynamic_hero_data_path: Path) -> dict:
+    """Load the sole UI configuration plus an allowlisted final-data override."""
+    ui = copy.deepcopy(load_object(ui_path, "UI configuration"))
+    release = ui.get("release")
+    if not isinstance(release, dict):
+        raise ValueError(f"UI configuration has no release object: {ui_path}")
+    for field in ("presentationVersion", "version"):
+        if not isinstance(release.get(field), str) or not release[field].strip():
+            raise ValueError(f"UI release field must be a non-empty string: {field}")
+    variants = release.get("publicationVariants")
+    if not isinstance(variants, dict):
+        raise ValueError(f"UI release publicationVariants must be an object: {ui_path}")
+    for field in ("portable", "selfContained"):
+        if not isinstance(variants.get(field), str) or not variants[field].strip():
+            raise ValueError(f"UI release publication variant must be a non-empty string: {field}")
+    if not isinstance(ui.get("hero"), dict):
+        raise ValueError(f"UI configuration has no hero object: {ui_path}")
+    final_data = load_object(dynamic_hero_data_path, "dynamic hero data")
+    dynamic_hero = final_data.get("meta", {}).get("ui", {}).get("hero", {})
+    if dynamic_hero is not None and not isinstance(dynamic_hero, dict):
+        raise ValueError("final data meta.ui.hero must be an object")
+    for field in DYNAMIC_HERO_FIELDS:
+        if field in dynamic_hero:
+            if not isinstance(dynamic_hero[field], str) or not dynamic_hero[field].strip():
+                raise ValueError(f"final data dynamic hero field must be a non-empty string: {field}")
+            ui["hero"][field] = copy.deepcopy(dynamic_hero[field])
+        if not isinstance(ui["hero"].get(field), str) or not ui["hero"][field].strip():
+            raise ValueError(f"UI hero field must be a non-empty string: {field}")
+    return ui
+
+
+def load_path_map(path: Path | None) -> tuple[dict[str, str], Path | None]:
+    if path is None:
+        return {}, None
+    path = path.resolve()
+    mapping = load_object(path, "path map")
+    if not all(isinstance(source, str) and isinstance(target, str) for source, target in mapping.items()):
+        raise ValueError(f"path map keys and values must be strings: {path}")
+    try:
+        case_dir = path.parents[3]
+    except IndexError as error:
+        raise ValueError(f"cannot infer case-studies directory from path map: {path}") from error
+    return mapping, case_dir
+
+
+def resolve_media_path(
+    value: str,
+    data_dir: Path,
+    path_map: dict[str, str] | None = None,
+    path_map_root: Path | None = None,
+) -> Path | None:
     if not value or value.startswith(("data:", "http://", "https://")):
         return None
     candidate = Path(value).expanduser()
     if not candidate.is_absolute():
         candidate = data_dir / candidate
-    return candidate.resolve()
+    candidate = candidate.resolve()
+    if candidate.is_file():
+        return candidate
+    mapped_value = (path_map or {}).get(value) or (path_map or {}).get(str(candidate))
+    if mapped_value and path_map_root:
+        mapped = (path_map_root / mapped_value).resolve()
+        try:
+            mapped.relative_to(path_map_root.resolve())
+        except ValueError as error:
+            raise ValueError(f"mapped media path escapes case-studies directory: {mapped_value}") from error
+        return mapped
+    return candidate
 
 
 def sniff_mime(payload: bytes, path: Path, declared_mime: str | None = None) -> str:
@@ -176,7 +206,12 @@ def media_items(data: dict) -> Iterable[tuple[str, dict]]:
             yield key, item
 
 
-def embed_media(data: dict, data_dir: Path) -> dict:
+def embed_media(
+    data: dict,
+    data_dir: Path,
+    path_map: dict[str, str] | None = None,
+    path_map_root: Path | None = None,
+) -> dict:
     """Return a deep copy with all available local evidence embedded."""
     result = copy.deepcopy(data)
     normalized: dict[str, dict] = {}
@@ -198,7 +233,9 @@ def embed_media(data: dict, data_dir: Path) -> dict:
             display_name = DISPLAY_MEDIA_FILES.get(key)
             display_path = data_dir / "embedded-display" / display_name if display_name else None
             embed_path_value = str(display_path) if display_path and display_path.is_file() else (record.get("embedPath") or original_path_value)
-            path = resolve_media_path(str(embed_path_value or ""), data_dir)
+            path = resolve_media_path(
+                str(embed_path_value or ""), data_dir, path_map, path_map_root
+            )
             if path and path.is_file():
                 mime_hint = record.get("embedMimeType") or record.get("mime") or record.get("mimeType")
                 data_uri, mime, digest, size = encode_file(path, mime_hint)
@@ -239,7 +276,9 @@ def embed_media(data: dict, data_dir: Path) -> dict:
             continue
         original_path_value = item.get("path") or item.get("file") or item.get("src")
         embed_path_value = item.get("embedPath") or original_path_value
-        path = resolve_media_path(str(embed_path_value or ""), data_dir)
+        path = resolve_media_path(
+            str(embed_path_value or ""), data_dir, path_map, path_map_root
+        )
         if path and path.is_file():
             mime_hint = item.get("embedMimeType") or item.get("mime") or item.get("mimeType")
             data_uri, mime, digest, size = encode_file(path, mime_hint)
@@ -277,7 +316,9 @@ def embed_media(data: dict, data_dir: Path) -> dict:
             if not isinstance(response, dict):
                 continue
             source_value = response.get("screenshotEmbedPath") or response.get("screenshotPath")
-            path = resolve_media_path(str(source_value or ""), data_dir)
+            path = resolve_media_path(
+                str(source_value or ""), data_dir, path_map, path_map_root
+            )
             if not path or not path.is_file():
                 response["screenshotEmbedded"] = False
                 if source_value:
@@ -334,6 +375,43 @@ def script_json(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
 
 
+def inline_css_assets(css: str, css_path: Path) -> str:
+    """Inline local CSS assets and reject network-backed presentation assets."""
+    without_comments = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    if re.search(r"@import\b", without_comments, flags=re.I):
+        raise ValueError("report.css must not use @import; keep presentation assets local")
+
+    def replace(match: re.Match[str]) -> str:
+        raw = match.group("value").strip()
+        if not raw or raw.startswith(("data:", "#")):
+            return match.group(0)
+        if raw.startswith(("http://", "https://", "//")) or re.match(r"^[a-z][a-z0-9+.-]*:", raw, flags=re.I):
+            raise ValueError(f"external CSS asset is not allowed: {raw}")
+        asset = (css_path.parent / raw).resolve()
+        try:
+            asset.relative_to(HERE)
+        except ValueError as error:
+            raise ValueError(f"CSS asset escapes the release source directory: {raw}") from error
+        if not asset.is_file():
+            raise FileNotFoundError(f"CSS asset is missing: {asset}")
+        payload = asset.read_bytes()
+        mime = {
+            ".woff": "font/woff",
+            ".woff2": "font/woff2",
+            ".ttf": "font/ttf",
+            ".otf": "font/otf",
+        }.get(asset.suffix.lower()) or mimetypes.guess_type(asset.name)[0] or "application/octet-stream"
+        encoded = base64.b64encode(payload).decode("ascii")
+        return f'url("data:{mime};base64,{encoded}")'
+
+    return re.sub(
+        r"url\(\s*(?P<quote>['\"]?)(?P<value>.*?)(?P=quote)\s*\)",
+        replace,
+        css,
+        flags=re.I,
+    )
+
+
 def compact_css(value: str) -> str:
     """Losslessly remove comments and presentation-only whitespace."""
     value = re.sub(r"/\*.*?\*/", "", value, flags=re.S)
@@ -347,12 +425,88 @@ def compact_js(value: str) -> str:
     return "\n".join(line.lstrip() for line in value.splitlines() if line.strip())
 
 
-def merge_defaults(target: dict, defaults: dict) -> None:
-    for key, value in defaults.items():
-        if key not in target:
-            target[key] = copy.deepcopy(value)
-        elif isinstance(value, dict) and isinstance(target[key], dict):
-            merge_defaults(target[key], value)
+def canonical_json_sha256(value: Any) -> str:
+    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def semantic_projection(data: dict, path_map: dict[str, str]) -> dict:
+    """Remove only transport differences before cross-variant comparison."""
+    result = copy.deepcopy(data)
+    meta = result.get("meta", {})
+    meta.pop("publicationVariant", None)
+    meta.pop("portablePackage", None)
+
+    def normalize(value: Any) -> Any:
+        if isinstance(value, dict):
+            return {key: normalize(item) for key, item in value.items()}
+        if isinstance(value, list):
+            return [normalize(item) for item in value]
+        if isinstance(value, str):
+            return path_map.get(value, value)
+        return value
+
+    result = normalize(result)
+    media = result.get("media", {})
+    media_records = media if isinstance(media, dict) else {
+        str(item.get("id") or index): item
+        for index, item in enumerate(media)
+        if isinstance(item, dict)
+    }
+    result["media"] = {
+        media_id: {
+            key: value
+            for key, value in record.items()
+            if key not in TRANSPORT_FIELDS
+        }
+        for media_id, record in media_records.items()
+    }
+    challenges = result.get("challenges")
+    if isinstance(challenges, dict):
+        for response in as_list(challenges.get("responses")):
+            if not isinstance(response, dict):
+                continue
+            for field in (
+                "screenshotPath", "screenshotEmbedPath", "screenshotDataUri",
+                "screenshotMimeType", "screenshotEmbeddedSha256",
+                "screenshotEmbeddedBytes", "screenshotEmbedded",
+                "screenshotEmbedError",
+            ):
+                response.pop(field, None)
+    return result
+
+
+def prepare_report_data(
+    raw: dict,
+    data_path: Path,
+    ui_path: Path,
+    dynamic_hero_data_path: Path,
+    path_map_path: Path | None,
+) -> tuple[dict, dict[str, str]]:
+    path_map, path_map_root = load_path_map(path_map_path)
+    data = embed_media(raw, data_path.resolve().parent, path_map, path_map_root)
+    data.setdefault("meta", {})
+    if "toolOrder" not in data["meta"] and isinstance(data["meta"].get("tools"), list):
+        data["meta"]["toolOrder"] = copy.deepcopy(data["meta"]["tools"])
+    if "kindOrder" not in data["meta"] and isinstance(data["meta"].get("kinds"), list):
+        data["meta"]["kindOrder"] = copy.deepcopy(data["meta"]["kinds"])
+    data["meta"].setdefault(
+        "kindLabels",
+        {"excel": "Excel", "word": "Word", "ppt": "PPT", "image": "普通信息图", "ink": "水墨信息图", "html": "交互 HTML"},
+    )
+    data["meta"]["ui"] = load_report_ui(ui_path.resolve(), dynamic_hero_data_path.resolve())
+    release = data["meta"]["ui"]["release"]
+    data["meta"]["presentationVersion"] = release["presentationVersion"]
+    data["meta"]["version"] = release["version"]
+    variant_key = "portable" if raw.get("meta", {}).get("publicationVariant") else "selfContained"
+    data["meta"]["publicationVariant"] = release["publicationVariants"][variant_key]
+    hero = data["meta"]["ui"]["hero"]
+    data["meta"]["title"] = str(hero["title"])
+    data["meta"]["subtitle"] = str(hero["lead"])
+    status_note = str(hero["statusNote"])
+    data["meta"].setdefault("scoringNote", status_note)
+    data["meta"]["statusNote"] = status_note
+    return data, path_map
 
 
 def build(
@@ -360,8 +514,13 @@ def build(
     out_path: Path,
     allow_large: bool = False,
     compress_report_data: bool = False,
+    ui_path: Path = DEFAULT_UI_PATH,
+    dynamic_hero_data_path: Path = DEFAULT_DATA,
+    path_map_path: Path | None = DEFAULT_PATH_MAP,
 ) -> dict:
-    raw = json.loads(data_path.read_text(encoding="utf-8"))
+    data_path = data_path.resolve()
+    out_path = out_path.resolve()
+    raw = load_object(data_path, "report data")
     required = {
         "meta", "methodology", "sources", "facts", "artifacts", "scenarios",
         "scenarioRuns", "coverageItems", "criteriaDefinitions", "findings",
@@ -374,33 +533,18 @@ def build(
     if missing:
         raise ValueError(f"report data missing top-level keys: {', '.join(missing)}")
 
-    data = embed_media(raw, data_path.resolve().parent)
-    data.setdefault("meta", {})
-    if "toolOrder" not in data["meta"] and isinstance(data["meta"].get("tools"), list):
-        data["meta"]["toolOrder"] = copy.deepcopy(data["meta"]["tools"])
-    if "kindOrder" not in data["meta"] and isinstance(data["meta"].get("kinds"), list):
-        data["meta"]["kindOrder"] = copy.deepcopy(data["meta"]["kinds"])
-    data["meta"].setdefault(
-        "kindLabels",
-        {"excel": "Excel", "word": "Word", "ppt": "PPT", "image": "普通信息图", "ink": "水墨信息图", "html": "交互 HTML"},
+    data, path_map = prepare_report_data(
+        raw,
+        data_path,
+        ui_path,
+        dynamic_hero_data_path,
+        path_map_path,
     )
-    data["meta"].setdefault("ui", {})
-    merge_defaults(data["meta"]["ui"], DEFAULT_UI)
-    data["meta"].setdefault("version", "报告版本 4.2 · 固定样本证据复核")
-    # The fixed-sample framing is an invariant, not optional presentation copy:
-    # a single fixed sample must never be relabelled as general product ability.
-    data["meta"]["title"] = "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日"
-    data["meta"]["subtitle"] = data["meta"]["ui"]["hero"]["lead"]
-    status_note = data["meta"]["ui"]["hero"]["statusNote"]
-    # ``scoringNote`` is release metadata (for v4.5.1 it records that all 30
-    # point estimates are frozen). Keep it intact and expose UI copy through
-    # the separate status field instead of silently changing embedded data.
-    data["meta"].setdefault("scoringNote", status_note)
-    data["meta"]["statusNote"] = status_note
     template = (HERE / "report.template.html").read_text(encoding="utf-8")
-    css = compact_css((HERE / "report.css").read_text(encoding="utf-8"))
+    css_path = HERE / "report.css"
+    css = compact_css(inline_css_assets(css_path.read_text(encoding="utf-8"), css_path))
     js = compact_js((HERE / "report.js").read_text(encoding="utf-8"))
-    title = str(data.get("meta", {}).get("title") or DEFAULT_UI["hero"]["title"])
+    title = str(data["meta"]["ui"]["hero"]["title"])
     report_json = script_json(data)
 
     def assemble(report_payload: str, data_attributes: str = "") -> str:
@@ -458,6 +602,8 @@ def build(
         "deduplicatedMediaReferences": sum(1 for item in data["media"].values() if item.get("dataUriRef")),
         "missingMedia": media_kinds.count("unresolved"),
         "reportDataEncoding": "gzip-base64" if compressed_report_data else "json",
+        "uiSha256": canonical_json_sha256(data["meta"]["ui"]),
+        "semanticSha256": canonical_json_sha256(semantic_projection(data, path_map)),
     }
 
 
@@ -468,6 +614,9 @@ def main() -> None:
         args.out.resolve(),
         args.allow_over_40mb,
         args.compress_report_data,
+        args.ui.resolve(),
+        args.dynamic_hero_data.resolve(),
+        args.path_map.resolve() if args.path_map else None,
     )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 

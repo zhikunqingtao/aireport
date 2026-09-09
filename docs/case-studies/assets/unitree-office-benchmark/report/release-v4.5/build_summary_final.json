@@ -1,14 +1,14 @@
 {
   "path": "report/source-self-contained-v4.5.html",
-  "bytes": 39643828,
-  "sha256": "cb02f331343f698a3679bf1de33b28f5bffc1b48069b061e4cfdff1ceecce933",
+  "bytes": 40154198,
+  "sha256": "8e64e92a8566e7ae658939b3b36bf122817c75058ea4227e5f762d73caebb5fc",
   "embeddedMedia": 710,
   "missingMedia": 0,
   "reportDataEncoding": "gzip-base64",
   "portablePagesBuild": {
     "path": "../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
-    "bytes": 1030544,
-    "sha256": "37622ef8192703c7e4cb277d2ebe8a2ef154b00b90d598f52cfad5d2be39daaf",
+    "bytes": 1540886,
+    "sha256": "c1345a891920dab0a7f80fb38d18650af3738f477bec5d3c7dedc9bef4f408e1",
     "embeddedMedia": 0,
     "missingMedia": 0,
     "reportDataEncoding": "gzip-base64",
@@ -31,10 +31,10 @@
     "fixedSidebarMinWidthPx": 1180,
     "fixedSidebarExpandedWidthPx": 226,
     "fixedSidebarCollapsedWidthPx": 70,
-    "browserValidation": "user_reported_ok; not rerun by the v4.5.1 release pipeline"
+    "browserValidation": "v4.5.2_runtime_and_responsive_checks_passed; print_smoke_passed"
   },
-  "changeScope": "v4.5.1修正评分类别汇总、当前版本敏感性、正式/探索性排名角色与方法及过程披露；30件固定终稿的点估计未改变。",
-  "version": "4.5.1",
+  "changeScope": "v4.5.2仅升级出版物级视觉系统、执行摘要、导航、表格、弹窗、打印与无障碍交互；沿用v4.5.1冻结数据，30件终稿点估计及排名未改变。",
+  "version": "4.5.2",
   "compatibilityFilenameVersion": "4.5",
   "reportCounts": {
     "artifacts": 30,
@@ -49,18 +49,18 @@
   "dataFiles": {
     "final": {
       "path": "report/release-v4.5/report_v4.5_final.json",
-      "bytes": 7744446,
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec"
+      "bytes": 7744816,
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8"
     },
     "activity": {
       "path": "report/activity-report-data-v4.5.json",
-      "bytes": 7744446,
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec"
+      "bytes": 7744816,
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8"
     },
     "portable": {
       "path": "report/portable-report-data-v4.5.json",
-      "bytes": 8075209,
-      "sha256": "3c032b3708b25f4c074ce774dede60ead991ae94cca077b906985260fcf5f0a8"
+      "bytes": 8075579,
+      "sha256": "b05c02eb3f280b6ba72c4edf5123b05bff4dd3922e03e1714a98fac99a814261"
     }
   },
   "processVideoIndex": {

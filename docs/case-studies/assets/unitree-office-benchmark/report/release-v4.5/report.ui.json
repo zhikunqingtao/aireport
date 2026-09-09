@@ -1,0 +1,261 @@
+{
+  "release": {
+    "presentationVersion": "4.5.2",
+    "version": "报告版本 4.5.2 · 固定样本证据复核",
+    "publicationVariants": {
+      "portable": "github_portable_v4.5.2",
+      "selfContained": "self_contained_v4.5.2"
+    }
+  },
+  "brand": "固定样本交付物比较",
+  "hero": {
+    "title": "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日",
+    "lead": "5款工具各完成同一组六项连续任务，形成30件固定终稿。本报告在单次固定环境中复核交付质量、原生可用性与证据链；结论不外推为工具的一般表现。",
+    "statusNote": "终稿独立使用的六任务等权榜与均衡投研实务榜为正式结果；首次归责两组仅作探索性非因果诊断。点估计附单评审者的局部一步判断敏感性。"
+  },
+  "toolLinks": [
+    { "label": "千问办公", "url": "https://qwenwork.cn/" },
+    { "label": "Qoder", "url": "https://qoder.cn/" },
+    { "label": "豆包办公", "url": "https://www.doubao.com/work/group" },
+    { "label": "WorkBuddy", "url": "https://www.workbuddy.cn/" },
+    { "label": "ZhikunCode", "url": "https://github.com/zhikunqingtao/zhikuncode/" }
+  ],
+  "nav": {
+    "protocol": "测试流程",
+    "executive": "执行摘要",
+    "results": "比较结果",
+    "profiles": "逐工具与逐文件",
+    "native": "原生应用与兼容性",
+    "issues": "问题、闸门与传播链",
+    "facts": "事实基准与来源",
+    "evidence": "方法、过程与全量证据",
+    "challenges": "异议裁决"
+  },
+  "metrics": {
+    "artifacts": "终稿样本",
+    "artifactsNote": "5款 × 6类",
+    "scenarios": "场景实测",
+    "scenariosNote": "已完成/总数",
+    "coverage": "覆盖项",
+    "coverageNote": "Sheet、页、幻灯片及视口",
+    "nativePass": "原生打开通过",
+    "nativePassNote": "指定应用首次打开",
+    "editSuccess": "编辑任务通过",
+    "editSuccessNote": "编辑、联动、保存及重开",
+    "repairs": "修复提示",
+    "repairsNote": "按文件特异性判定"
+  },
+  "sections": {
+    "process": {
+      "kicker": "",
+      "title": "全过程记录与录屏哈希",
+      "copy": "五条分享记录用于还原任务上下文；8段完整过程录屏合计约7.40GB，暂不公开，仅发布SHA-256索引。过程材料不直接评分，也不替代终稿原件、原生应用实测或Excel独立事实账本。"
+    },
+    "context": {
+      "kicker": "",
+      "title": "本次任务配置与用量/费用旁证",
+      "copy": "本节记录五款工具的测试时点配置；四款另有产品额度截图，ZhikunCode另有一张混含其他任务、不能归因于本次六任务的Kimi API日账单。以上材料均不计分，也不支持同模型、同算力或同成本比较。"
+    },
+    "ranking": {
+      "kicker": "",
+      "title": "正式固定终稿排名与探索性诊断",
+      "copy": "六任务等权榜与均衡投研实务榜均以冻结终稿的独立使用质量为正式结果；首次归责视角仅对已枚举完全继承项作探索性去重，不构成因果或采购排名。四组均附单评审者局部一步敏感性范围与近分组。"
+    },
+    "heatmap": {
+      "kicker": "",
+      "title": "30件终稿连续质量分",
+      "copy": "分数为0–100线性加权，不使用59/39/69等历史数值封顶；交付闸门另列，不参与分数计算。"
+    },
+    "gates": {
+      "kicker": "",
+      "title": "G0 / G1 / G2 交付安全矩阵",
+      "copy": "连续分衡量质量，G0/G1/G2标示终稿独立交付风险；二者分别展示、互不换算。"
+    },
+    "compatibility": {
+      "kicker": "",
+      "title": "平台兼容证据矩阵",
+      "copy": "仅报告已实测的操作系统、应用与版本；未验证平台不作推断。"
+    },
+    "sensitivity": {
+      "kicker": "",
+      "title": "规则与权重敏感性",
+      "copy": "展示HTML交互权重、千问Excel图表、v3历史封顶以及传播归责口径改变时的排名变化。"
+    },
+    "native": {
+      "kicker": "",
+      "title": "原生打开与修复矩阵",
+      "copy": "指定应用首次打开、修复提示和编辑任务在这里逐件可见；环境共性问题与文件特异问题分开记录。"
+    },
+    "browser": {
+      "kicker": "",
+      "title": "场景、覆盖与问题复核浏览器",
+      "copy": "按工具、产物、闸门、严重度和关键词检索场景、覆盖、问题与证据记录。"
+    },
+    "evidence": {
+      "kicker": "",
+      "title": "原生实测证据",
+      "copy": "证据媒体按内容哈希去重并随版本发布；点击可查看高清局部、应用版本、动作、定位和关联结论。"
+    },
+    "lineage": {
+      "kicker": "",
+      "title": "根因与传播链（非计分归责）",
+      "copy": "origin、exact_propagation、mutated和independently_reintroduced分开展示；完全继承不重复归责，但终端文件风险仍独立显示。"
+    },
+    "risk": {
+      "kicker": "",
+      "title": "终端独立使用风险",
+      "copy": "终端独立使用风险不计分：下游产物即使忠实继承Excel，脱离底稿单独使用时仍可能传播错误。"
+    },
+    "facts": {
+      "kicker": "",
+      "title": "Excel核心事实基准与覆盖边界",
+      "copy": "本节列示32项核心事实的选取规则、来源定位与未覆盖范围；准确率仅针对Excel实际主张，不代表对五本工作簿全部数字的全量鉴证。"
+    },
+    "appendix": {
+      "kicker": "",
+      "title": "规则、版本变更、样本指纹与待核验",
+      "copy": "每项扣分必须能回到子测试、finding和证据；v3→v4规则变化与旧新SHA公开。"
+    }
+  },
+  "ranking": {
+    "equal": "六任务等权榜",
+    "practical": "均衡投研实务榜",
+    "provisional": "临时排名 · 原生实测未完",
+    "final": "最终排名 · 验收完成",
+    "provisionalLeader": "临时第1",
+    "finalLeader": "本次样本第1",
+    "equalTaskNote": "六类终稿各占1/6；适合评价六个连续提示的总体完成度。",
+    "practicalNote": "Excel 25%、Word 20%、PPT 20%、普通图10%、水墨图10%、HTML 15%。",
+    "sensitivityTitle": "重大性判断敏感性"
+  },
+  "browser": {
+    "scenario": "场景实测",
+    "coverage": "覆盖记录",
+    "finding": "发现与扣分",
+    "scenarioNote": "一条记录对应一次真实操作：打开、重算、编辑、放映、缩放、点击或响应式测试。",
+    "coverageNote": "一条记录对应一个已复核或待复核的Sheet、原生页面、幻灯片、图片区域或HTML视口。",
+    "findingNote": "同一根因在同一文件只扣一个主维度；继承型finding强制不扣分、不封顶。"
+  },
+  "filters": {
+    "tool": "工具",
+    "kind": "产物",
+    "status": "状态",
+    "severity": "严重度",
+    "search": "全文检索",
+    "searchPlaceholder": "Sheet、页码、动作、问题、证据……"
+  },
+  "status": {
+    "pass": "通过",
+    "warn": "有警告",
+    "repair": "需修复",
+    "fail": "失败",
+    "blocked": "需协助",
+    "pending": "待实测",
+    "complete": "通过",
+    "legacyStatic": "历史静态参考",
+    "superseded": "由v3实测替代",
+    "automated": "自动校验通过"
+  },
+  "severity": {
+    "critical": "关键",
+    "major": "主要",
+    "minor": "轻微",
+    "info": "信息"
+  },
+  "groups": {
+    "reliability": "可靠性",
+    "native_usability": "原生可用性",
+    "delivery": "交付质量"
+  },
+  "labels": {
+    "skip": "跳至正文",
+    "mainNav": "主导航",
+    "theme": "切换明暗主题",
+    "close": "关闭",
+    "all": "全部",
+    "tool": "工具",
+    "rankingMode": "排名口径",
+    "recordType": "记录类型",
+    "pendingScore": "待实测",
+    "final": "最终",
+    "provisional": "临时/待验",
+    "noNativeRecord": "尚无原生打开记录",
+    "records": "条记录",
+    "scenario": "场景实测",
+    "coverage": "覆盖记录",
+    "finding": "复核发现",
+    "expected": "预期",
+    "artifactDetail": "文件详情",
+    "evidence": "证据",
+    "evidencePending": "证据图片待嵌入",
+    "propagation": "传播记录",
+    "noPath": "路径待登记",
+    "notDeducted": "不计分",
+    "source": "来源",
+    "openSource": "打开原始来源 ↗",
+    "yes": "是",
+    "no": "否",
+    "artifact": "产物",
+    "locator": "定位",
+    "action": "动作",
+    "application": "应用",
+    "captured": "采集时间",
+    "cutoff": "资料截止",
+    "environment": "实测环境"
+  },
+  "facts": {
+    "metric": "指标",
+    "period": "报告期",
+    "value": "基准值",
+    "unit": "统一单位",
+    "attribute": "属性/财务审计状态",
+    "source": "来源定位"
+  },
+  "criteria": {
+    "kind": "产物",
+    "dimension": "评分维度",
+    "weight": "权重",
+    "group": "分组",
+    "external": "可用外部事实"
+  },
+  "manifest": {
+    "tool": "工具",
+    "kind": "产物",
+    "file": "原件",
+    "size": "大小",
+    "hash": "SHA-256",
+    "copies": "核验副本",
+    "status": "评分状态"
+  },
+  "modal": {
+    "native": "原生实测与覆盖",
+    "runs": "场景记录",
+    "coverage": "覆盖记录",
+    "findings": "发现",
+    "fileIdentity": "文件标识",
+    "fingerprintAppendix": "完整本地路径与SHA-256仅在折叠附录展示。",
+    "scoring": "逐项评分",
+    "baseScore": "基础分",
+    "repairPenalty": "修复扣分",
+    "cap": "封顶",
+    "evidenceMeta": "证据元数据"
+  },
+  "appendix": {
+    "methodology": "固定评分原则",
+    "verification": "仍需人工协助或核验",
+    "criteria": "展开六类评分维度与权重",
+    "manifest": "展开30件终稿原件指纹与核验副本"
+  },
+  "empty": {
+    "rankings": "暂无可计算排名。",
+    "records": "当前筛选条件下没有记录。",
+    "evidence": "尚无已登记证据。",
+    "propagation": "尚无传播链记录。",
+    "risks": "未登记终端独立使用风险。",
+    "facts": "尚无事实账本数据。",
+    "sources": "尚无来源记录。",
+    "verification": "没有待人工处理事项。",
+    "scores": "原生实测完成后生成逐项分。"
+  },
+  "footer": "评测截止日与评分口径以方法说明为准。工具自评仅作为异议线索，证据权重为0；本报告不将其视为厂商正式回应或认可，也不构成投资建议。"
+}

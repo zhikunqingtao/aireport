@@ -6,7 +6,7 @@
   "results": [
     {
       "path": "docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report_v4.5_final.json",
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8",
       "status": "passed",
       "checks": {
         "artifactPointEstimateCount": 30,
@@ -63,7 +63,7 @@
     },
     {
       "path": "docs/case-studies/assets/unitree-office-benchmark/report/activity-report-data-v4.5.json",
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8",
       "status": "passed",
       "checks": {
         "artifactPointEstimateCount": 30,
@@ -120,7 +120,7 @@
     },
     {
       "path": "docs/case-studies/assets/unitree-office-benchmark/report/portable-report-data-v4.5.json",
-      "sha256": "3c032b3708b25f4c074ce774dede60ead991ae94cca077b906985260fcf5f0a8",
+      "sha256": "b05c02eb3f280b6ba72c4edf5123b05bff4dd3922e03e1714a98fac99a814261",
       "status": "passed",
       "checks": {
         "artifactPointEstimateCount": 30,
@@ -269,5 +269,5 @@
     }
   ],
   "crossFileFailures": [],
-  "canonicalSummarySha256": "42ec4ae14f45689ab90178d66cf193a0a0ffddd83c0ac3f6d72cc8ae334bd914"
+  "canonicalSummarySha256": "b3f7be48cc49729f30e1dd2a1a38ef539b11ca497d718ef02b6fd44dccc4e50d"
 }

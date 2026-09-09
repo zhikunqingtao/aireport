@@ -13,7 +13,10 @@ const reportPath = join(caseDir, "AI办公工具对比测评_宇树科技_截至
 const evidencePagePath = join(repo, "docs", "evidence.html");
 const report = join(packageRoot, "report");
 const releaseDir = join(report, "release-v4.5");
+const reportCss = readFileSync(join(releaseDir, "report.css"), "utf8");
 const manifestsDir = join(packageRoot, "manifests");
+const ACTIVE_PRESENTATION_VERSION = "4.5.2";
+const FROZEN_DATA_VERSION = "4.5.1";
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
 const shaCache = new Map();
@@ -64,24 +67,24 @@ check(!html.includes("/Users/"), "portable report contains /Users/ path");
 check(!html.includes("file://"), "portable report contains file:// URL");
 check(!html.includes("unitree-office-benchmark-v4.3"), "portable report references legacy package directory");
 const evidencePage = readFileSync(evidencePagePath, "utf8");
-check(evidencePage.includes("<strong>1,604</strong><span>清单记录</span>"), "evidence landing page manifest count is not 1,604");
+check(evidencePage.includes("<strong>1,611</strong><span>清单记录</span>"), "evidence landing page manifest count is not 1,611");
 check(evidencePage.includes("manifests/process-video-index.json"), "evidence landing page omits the process-video index");
 for (const requiredText of [
-  "先看G0/G1/G2交付风险和两张正式排名",
-  "两张正式排名 + 两张探索性诊断已全部展开",
+  "先看交付闸门与两张正式排名",
+  "正式排名与首次归责诊断均分别列示",
   "探索性 · 非因果",
   "观察后规则披露",
   "规范规则ID",
   "完整过程录屏",
   "通过GitHub Issues联系申请核验",
   "近分组",
-  "报告版本 4.5.1",
+  "报告版本 4.5.2",
   "<details class=\"prompt-step\" open>",
   "sourceNote",
   "decorateTableSemantics",
   "aria-labelledby=\"executive-gate-title\"",
   "aria-labelledby=\"process-recording-title\"",
-]) check(html.includes(requiredText), `portable report is missing v4.5.1 UI/ARIA marker: ${requiredText}`);
+]) check(html.includes(requiredText), `portable report is missing v4.5.2 UI/ARIA marker: ${requiredText}`);
 check(/setAttribute\(["']scope["'],\s*["']col["']\)/.test(html), "portable report does not decorate column headers with scope=col");
 check(/setAttribute\(["']scope["'],\s*["']row["']\)/.test(html), "portable report does not decorate row headers with scope=row");
 check(/setAttribute\(["']aria-labelledby["']/.test(html), "portable report does not bind unlabeled tables to a nearby heading");
@@ -90,7 +93,7 @@ for (const forbiddenText of [
   "并列公布终稿独立使用与链路首次归责两种视角",
   "不指定唯一主榜",
   "每组均列出五款工具的完整排名",
-]) check(!html.includes(forbiddenText), `portable report retains misleading pre-v4.5.1 copy: ${forbiddenText}`);
+]) check(!html.includes(forbiddenText), `portable report retains misleading legacy copy: ${forbiddenText}`);
 const payloadMatch = html.match(/<script id="report-data" type="application\/json" data-encoding="gzip-base64">([\s\S]*?)<\/script>/);
 check(Boolean(payloadMatch), "portable report-data payload is missing");
 let data = {};
@@ -115,6 +118,8 @@ check(count(data.sources) === 11, `sources=${count(data.sources)} expected 11`);
 check(count(data.claimLedger?.records) === 180, `claimLedger=${count(data.claimLedger?.records)} expected 180`);
 check(data.meta?.schemaVersion === "4.5.1", `report schemaVersion=${data.meta?.schemaVersion ?? "missing"} expected 4.5.1`);
 check(data.meta?.dataVersion === "4.5.1", `report dataVersion=${data.meta?.dataVersion ?? "missing"} expected 4.5.1`);
+check(data.meta?.presentationVersion === ACTIVE_PRESENTATION_VERSION, `report presentationVersion=${data.meta?.presentationVersion ?? "missing"} expected ${ACTIVE_PRESENTATION_VERSION}`);
+check(data.meta?.publicationVariant === "github_portable_v4.5.2", "portable report publicationVariant is not github_portable_v4.5.2");
 check(data.meta?.status === "final_v451_offline_qa_passed", `report status=${data.meta?.status ?? "missing"} expected final v4.5.1`);
 const portableDataPath = join(report, "portable-report-data-v4.5.json");
 const portableDataFileText = existsSync(portableDataPath) ? readFileSync(portableDataPath, "utf8") : "{}";
@@ -158,10 +163,17 @@ for (const required of [
   "release-v4.5/revise_v451.py",
   "release-v4.5/stamp_v451.py",
   "release-v4.5/finalize_v451.py",
+  "release-v4.5/finalize_v452.py",
+  "release-v4.5/build_release_variants.py",
+  "release-v4.5/report.ui.json",
+  "release-v4.5/fonts/OFL.txt",
+  "release-v4.5/fonts/README.md",
+  "release-v4.5/fonts/aireport-editorial-serif-semibold-subset.woff2",
   "release-v4.5/qa_v451.py",
   "release-v4.5/qa_v451_candidate.json",
   "release-v4.5/qa_v451.json",
 ]) check(existsSync(join(report, required)), `required v4.5 file missing: ${required}`);
+check(existsSync(join(repo, "scripts", "verify-report-v452-preview.mjs")), "v4.5.2 presentation validator is missing");
 for (const forbidden of [
   "history", "pdfs", "build-and-qa", "release-v4.3", "release-v4.4",
   "source-self-contained-v4.3.html", "source-self-contained-v4.4.html",
@@ -183,7 +195,7 @@ const buildSummaryText = readFileSync(buildSummaryPath, "utf8");
 const buildSummary = JSON.parse(buildSummaryText);
 check(!buildSummaryText.includes("/Users/"), "build summary contains a local absolute path");
 check(!buildSummaryText.includes("file://"), "build summary contains a file URL");
-check(buildSummary.version === "4.5.1", "build summary version is not 4.5.1");
+check(buildSummary.version === ACTIVE_PRESENTATION_VERSION, "build summary version is not 4.5.2");
 check(buildSummary.compatibilityFilenameVersion === "4.5", "build summary compatibility filename version is not 4.5");
 check(buildSummary.path === "report/source-self-contained-v4.5.html", "build summary source HTML path is incorrect");
 descriptorMatches(buildSummary, sourceSelfContainedPath, "build summary source HTML");
@@ -224,8 +236,8 @@ check(buildSummary.processVideoIndex?.requestUrl === "https://github.com/zhikunq
 check(JSON.stringify(buildSummary.rankingPublication?.officialResultIds || []) === JSON.stringify(["standalone_equalTask", "standalone_practical"]), "build summary official ranking roles are incorrect");
 check(JSON.stringify(buildSummary.rankingPublication?.diagnosticResultIds || []) === JSON.stringify(["firstOrigin_equalTask", "firstOrigin_practical"]), "build summary diagnostic ranking roles are incorrect");
 check(buildSummary.rankingPublication?.artifactPointEstimatesChanged === false, "build summary does not freeze artifact point estimates");
-check(typeof buildSummary.changeScope === "string" && buildSummary.changeScope.includes("30件固定终稿的点估计未改变"), "build summary change scope omits the frozen point-estimate boundary");
-check(buildSummary.desktopExperience?.browserValidation === "user_reported_ok; not rerun by the v4.5.1 release pipeline", "build summary browser-validation provenance is incorrect");
+check(typeof buildSummary.changeScope === "string" && buildSummary.changeScope.includes("30件终稿点估计及排名未改变"), "build summary change scope omits the frozen point-estimate boundary");
+check(buildSummary.desktopExperience?.browserValidation === "v4.5.2_runtime_and_responsive_checks_passed; print_smoke_passed", "build summary browser/print validation provenance is incorrect");
 check(buildSummary.artifactAccess?.publishedAssetHeadChecks === "carried_forward_30_of_30_from_prior_release; asset paths unchanged", "build summary does not distinguish carried-forward asset checks");
 
 const releaseManifestPath = join(releaseDir, "release_manifest_v4.5.json");
@@ -233,20 +245,20 @@ const releaseManifestText = readFileSync(releaseManifestPath, "utf8");
 const releaseManifest = JSON.parse(releaseManifestText);
 check(!releaseManifestText.includes("/Users/"), "release manifest contains a local absolute path");
 check(!releaseManifestText.includes("file://"), "release manifest contains a file URL");
-check(releaseManifest.version === "4.5.1", "release manifest version is not 4.5.1");
+check(releaseManifest.version === ACTIVE_PRESENTATION_VERSION, "release manifest version is not 4.5.2");
 check(releaseManifest.compatibilityFilenameVersion === "4.5", "release manifest compatibility filename version is not 4.5");
-check(releaseManifest.status === "v451_release_files_finalized", "release manifest status is not v451_release_files_finalized");
+check(releaseManifest.status === "v452_release_files_finalized", "release manifest status is not v452_release_files_finalized");
 check(releaseManifest.finalizedAt === finalData.meta?.generatedAt, "release manifest finalizedAt differs from deterministic report generation time");
 check(releaseManifest.publicationMode === "single_version", "release manifest is not marked single_version");
 check(releaseManifest.gitCommitPerformed === false && releaseManifest.gitPushPerformed === false, "release manifest must describe the pre-commit/pre-push finalization instant");
-check(typeof releaseManifest.compatibilityNote === "string" && releaseManifest.compatibilityNote.includes("v4.5.1") && releaseManifest.compatibilityNote.includes("v4.5"), "release manifest compatibility role explanation is missing");
+check(typeof releaseManifest.compatibilityNote === "string" && releaseManifest.compatibilityNote.includes("v4.5.2") && releaseManifest.compatibilityNote.includes("v4.5.1") && releaseManifest.compatibilityNote.includes("v4.5"), "release manifest compatibility/data-version explanation is missing");
 check(typeof releaseManifest.provenanceNote === "string" && releaseManifest.provenanceNote.includes("provenance-inputs") && releaseManifest.provenanceNote.includes("不是并行发布"), "release manifest provenance role explanation is missing");
-check(typeof releaseManifest.historicalReferencePolicy === "string" && releaseManifest.historicalReferencePolicy.includes("仅保留为v4.5历史参考") && releaseManifest.historicalReferencePolicy.includes("不代表v4.5.1当前构建"), "release manifest does not distinguish historical v4.5 QA from current v4.5.1 QA");
+check(typeof releaseManifest.historicalReferencePolicy === "string" && releaseManifest.historicalReferencePolicy.includes("仅保留为v4.5历史参考") && releaseManifest.historicalReferencePolicy.includes("v4.5.1冻结数据依据") && releaseManifest.historicalReferencePolicy.includes("不代表v4.5.2当前展示构建"), "release manifest does not distinguish historical v4.5 material, frozen v4.5.1 data QA and current v4.5.2 presentation QA");
 check(typeof releaseManifest.publicationStateNote === "string" && releaseManifest.publicationStateNote.includes("Git提交与推送前") && releaseManifest.publicationStateNote.includes("GitHub Release"), "release manifest publication-state role explanation is missing");
 check(releaseManifest.presentationUpdate?.scoringChanged === false, "release manifest incorrectly reports a score change");
-check(releaseManifest.presentationUpdate?.reportDataChanged === true, "release manifest fails to disclose the v4.5.1 semantic data revision");
+check(releaseManifest.presentationUpdate?.reportDataChanged === false, "release manifest incorrectly reports a v4.5.2 data change");
 check(typeof releaseManifest.presentationUpdate?.reportDataChangeBoundary === "string" && releaseManifest.presentationUpdate.reportDataChangeBoundary.includes("30件点估计不变"), "release manifest data-change boundary is missing");
-check(releaseManifest.presentationUpdate?.browserRuntimeRetest === "not_rerun_user_reported_ok", "release manifest browser retest provenance is incorrect");
+check(releaseManifest.presentationUpdate?.browserRuntimeRetest === "passed_v452_preview_validator_and_user_visual_review", "release manifest browser retest provenance is incorrect");
 const expectedActiveTargets = {
   portableHtml: ["../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html", reportPath],
   sourceSelfContained: ["../source-self-contained-v4.5.html", sourceSelfContainedPath],
@@ -284,12 +296,31 @@ for (const item of releaseRecords) {
 }
 for (const path of releasePhysicalPaths) check(releaseRecordPaths.includes(path), `physical release file omitted from release manifest: ${path}`);
 for (const path of releaseRecordPaths) check(releasePhysicalPaths.has(path), `release manifest lists a non-physical release file: ${path}`);
-for (const requiredReleaseFile of ["finalize_v451.py", "qa_v451.py", "qa_v451.json", "report_v4.5_final.json", "build_summary_final.json"]) {
-  check(releaseRecordPaths.includes(requiredReleaseFile), `release manifest omits required v4.5.1 release file: ${requiredReleaseFile}`);
+for (const requiredReleaseFile of ["finalize_v452.py", "build_release_variants.py", "report.ui.json", "fonts/OFL.txt", "fonts/README.md", "fonts/aireport-editorial-serif-semibold-subset.woff2", "qa_print_v452.json", "qa_v451.py", "qa_v451.json", "report_v4.5_final.json", "build_summary_final.json"]) {
+  check(releaseRecordPaths.includes(requiredReleaseFile), `release manifest omits required v4.5.2 presentation or frozen-data file: ${requiredReleaseFile}`);
 }
+
+const printQaPath = join(releaseDir, "qa_print_v452.json");
+const printQa = readJson(printQaPath);
+check(printQa.schemaVersion === "qa-print-v4.5.2-1.0", "print QA schemaVersion is incorrect");
+check(printQa.status === "passed", "print QA status is not passed");
+const currentReportSha = sha(reportPath);
+const printQaSourceMatches = printQa.source?.sha256 === currentReportSha;
+const printExemption = printQa.currentSourceAssessment;
+const validPrintExemption = !printQaSourceMatches
+  && printExemption?.source?.sha256 === currentReportSha
+  && printExemption?.source?.bytes === statSync(reportPath).size
+  && printExemption?.changeScope === "introductory external tool links only"
+  && printExemption?.printImpact === "none; .participant-links is hidden by the print stylesheet"
+  && printExemption?.pdfReexported === false
+  && reportCss.includes(".participant-links { display: none !important; }");
+check(printQaSourceMatches || validPrintExemption, "print QA does not cover the current Pages HTML or a documented print-excluded link-only change");
+check(printQa.temporaryOutput?.retainedInRepository === false, "temporary print PDF is incorrectly marked as retained");
+check(printQa.document?.pages === 85 && printQa.document?.pageSize === "A4" && printQa.document?.tagged === true, "print QA document metadata is incomplete");
+check(Array.isArray(printQa.checks) && printQa.checks.length >= 5 && printQa.checks.every((item) => item.passed === true), "print QA checks are absent or not all passed");
 for (const historicalFile of ["adjudicate_v45.py", "stamp_v45.py", "qa_v45.py", "qa_interaction_affordance.json", "qa_report_postpublication_hardened.json", "recompute_summary.json"]) {
   const record = releaseRecords.find((item) => item.path === historicalFile);
-  check(record?.role === "historical_v4.5_reference_not_current_v4.5.1_qa", `release manifest does not mark historical v4.5 material: ${historicalFile}`);
+  check(record?.role === "historical_v4.5_reference_not_current_v4.5.2_release", `release manifest does not mark historical v4.5 material: ${historicalFile}`);
 }
 
 const finalQaPath = join(releaseDir, "qa_v451.json");
@@ -340,12 +371,12 @@ for (const raw of portableRefs) {
 }
 
 const manifest = readJson(join(manifestsDir, "files.json"));
-check(manifest.activeVersion === "4.5.1", "files manifest activeVersion is not 4.5.1");
+check(manifest.activeVersion === ACTIVE_PRESENTATION_VERSION, "files manifest activeVersion is not 4.5.2");
 check(manifest.compatibilityFilenameVersion === "4.5", "files manifest compatibility filename version is not 4.5");
 check(manifest.generatedAt === finalData.meta?.generatedAt, "files manifest generatedAt differs from deterministic report generation time");
 check(manifest.publicationMode === "single_version", "files manifest is not marked single_version");
 check(manifest.packageDirectory === "unitree-office-benchmark", "files manifest packageDirectory mismatch");
-check(typeof manifest.activeVersionBoundary === "string" && manifest.activeVersionBoundary.includes("v4.5.1") && manifest.activeVersionBoundary.includes("兼容路径") && manifest.activeVersionBoundary.includes("SHA256SUMS"), "files manifest active-version/compatibility role boundary is missing");
+check(typeof manifest.activeVersionBoundary === "string" && manifest.activeVersionBoundary.includes("v4.5.2") && manifest.activeVersionBoundary.includes("v4.5.1") && manifest.activeVersionBoundary.includes("兼容路径") && manifest.activeVersionBoundary.includes("SHA256SUMS"), "files manifest active-version/data-version/compatibility role boundary is missing");
 check(typeof manifest.v45PackagingBoundary === "string" && manifest.v45PackagingBoundary.includes("历史兼容字段") && manifest.v45PackagingBoundary.includes("8段完整过程录屏仅发布哈希索引"), "files manifest retains a stale v4.5 packaging boundary");
 const finalDataAbsolutePathOccurrences = finalDataText.split("/Users/").length - 1;
 check(manifest.sourceAbsolutePathOccurrences === finalDataAbsolutePathOccurrences, "files manifest absolute-path occurrence count differs from the intentionally preserved full final data");
@@ -358,6 +389,20 @@ const manifestPaths = (manifest.files || []).map((item) => item.relativePath);
 check(new Set(manifestPaths).size === manifestPaths.length, "files manifest contains duplicate relativePath values");
 check(!manifestPaths.includes("manifests/process-video-index.json"), "process-video-index must be covered by SHA256SUMS rather than self-referential files.json records");
 for (const requiredRecord of [
+  "report/release-v4.5/finalize_v452.py",
+  "report/release-v4.5/build_release_variants.py",
+  "report/release-v4.5/report.ui.json",
+  "report/release-v4.5/fonts/OFL.txt",
+  "report/release-v4.5/fonts/README.md",
+  "report/release-v4.5/fonts/aireport-editorial-serif-semibold-subset.woff2",
+  "report/release-v4.5/qa_print_v452.json",
+]) {
+  const record = (manifest.files || []).find((item) => item.relativePath === requiredRecord);
+  check(Boolean(record), `files manifest omits v4.5.2 release record: ${requiredRecord}`);
+  check(Array.isArray(record?.roles) && record.roles.some((role) => String(role).includes("v4.5.2")), `files manifest v4.5.2 role explanation is missing: ${requiredRecord}`);
+  check(typeof record?.sourcePathAtPackaging === "string" && record.sourcePathAtPackaging.startsWith("repository:"), `files manifest source role is not repository-relative: ${requiredRecord}`);
+}
+for (const requiredRecord of [
   "report/release-v4.5/finalize_v451.py",
   "report/release-v4.5/revise_v451.py",
   "report/release-v4.5/stamp_v451.py",
@@ -366,7 +411,7 @@ for (const requiredRecord of [
   "report/release-v4.5/qa_v451.json",
 ]) {
   const record = (manifest.files || []).find((item) => item.relativePath === requiredRecord);
-  check(Boolean(record), `files manifest omits v4.5.1 role record: ${requiredRecord}`);
+  check(Boolean(record), `files manifest omits frozen v4.5.1 role record: ${requiredRecord}`);
   check(Array.isArray(record?.roles) && record.roles.some((role) => String(role).includes("v4.5.1")), `files manifest v4.5.1 role explanation is missing: ${requiredRecord}`);
   check(typeof record?.sourcePathAtPackaging === "string" && record.sourcePathAtPackaging.startsWith("repository:"), `files manifest source role is not repository-relative: ${requiredRecord}`);
 }
@@ -374,7 +419,7 @@ for (const historicalFile of ["adjudicate_v45.py", "stamp_v45.py", "qa_v45.py", 
   const relativePath = `report/release-v4.5/${historicalFile}`;
   const record = (manifest.files || []).find((item) => item.relativePath === relativePath);
   check(record?.kind === "historical_release_reference", `files manifest historical kind is missing: ${relativePath}`);
-  check(Array.isArray(record?.roles) && record.roles.some((role) => String(role).includes("不是v4.5.1当前QA")), `files manifest historical role is missing: ${relativePath}`);
+  check(Array.isArray(record?.roles) && record.roles.some((role) => String(role).includes("不是v4.5.2当前展示QA")), `files manifest historical role is missing: ${relativePath}`);
 }
 for (const item of manifest.files || []) {
   check(typeof item.relativePath === "string" && item.relativePath && !item.relativePath.startsWith("/") && !item.relativePath.includes("\\") && !item.relativePath.includes("\0"), `unsafe files manifest path: ${item.relativePath ?? "missing"}`);
@@ -396,7 +441,7 @@ let videoIndex = {};
 try { videoIndex = JSON.parse(videoIndexText); } catch (error) { failures.push(`process video index is invalid JSON: ${error.message}`); }
 check(!videoIndexText.includes("/Users/"), "process video index contains a local absolute path");
 check(!videoIndexText.includes("file://"), "process video index contains a file URL");
-check(videoIndex.reportVersion === "4.5.1", "process video index reportVersion is not 4.5.1");
+check(videoIndex.reportVersion === FROZEN_DATA_VERSION, "process video index reportVersion is not the frozen data version 4.5.1");
 check(videoIndex.scope?.toolCount === 5 && videoIndex.scope?.taskCount === 6, "process video scope is not 5 tools x 6 tasks");
 check(videoIndex.summary?.fileCount === 8, "process video index file count is not 8");
 check(videoIndex.summary?.totalBytes === 7399913834, "process video index total bytes mismatch");
@@ -453,7 +498,8 @@ if (failures.length) {
 }
 console.log(JSON.stringify({
   status: "passed",
-  activeVersion: "4.5.1",
+  activeVersion: ACTIVE_PRESENTATION_VERSION,
+  frozenDataVersion: FROZEN_DATA_VERSION,
   publicationMode: "single_version",
   reportSha256: sha(reportPath),
   manifestRecords: count(manifest.files),

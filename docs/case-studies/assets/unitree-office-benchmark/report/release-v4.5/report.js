@@ -101,8 +101,19 @@
     evidenceLimit: 36,
     printProfile: new URLSearchParams(location.search).get("print") || "formal",
   };
-  let dialogReturnFocus = null;
+  const dialogReturnFocus = new WeakMap();
+  const materializedSections = new Set();
+  let currentArtifactIndex = -1;
+  let currentEvidenceIndex = -1;
   let printClosedDetails = [];
+  let fullPrintPreparation = null;
+
+  function announce(message) {
+    const target = $("#app-status");
+    if (!target) return;
+    target.textContent = "";
+    window.requestAnimationFrame(() => { target.textContent = String(message || ""); });
+  }
 
   function publicationLabel(value) {
     if (value === null || value === undefined) return "";
@@ -324,16 +335,47 @@
     }).sort((a, b) => (b.score ?? -1) - (a.score ?? -1)).map((row, index) => ({ ...row, rank: index + 1 }));
   }
 
-  function mediaUri(id) {
+  function executiveSnapshotMarkup() {
+    const counts = gateCounts();
+    const total = artifacts.length;
+    const meta = RAW.meta || {};
+    const summary = presentation.executiveSummary || {};
+    const boundary = summary.scope || meta.sampleBoundary || meta.scopeStatement || "5款工具、6类任务、30件固定终稿；仅代表本次固定样本。";
+    const gateLabels = new Map(arr(RAW.deliveryGates?.definitions || RAW.methodology?.deliveryGateDefinitions).map((item) => [item.code, item.label]));
+    const gateGuide = ["G0", "G1", "G2"].map((code) => `${code}${gateLabels.get(code) || ""}`).join("；");
+    const rankingSummary = (mode, label) => {
+      const rows = rankingRows("standalone", mode).slice(0, 2);
+      return `<article class="hero-ranking-brief" data-snapshot="ranking"><header><span>${esc(label)}</span><small>正式固定终稿排名</small></header><ol>${rows.map((row) => `<li><span class="hero-rank-position">${esc(row.rank)}</span><span><strong>${esc(row.tool)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></span><b>${fmt(row.score, 1)}</b></li>`).join("")}</ol></article>`;
+    };
+    const gateCodes = ["G0", "G1", "G2"];
+    const gateAria = gateCodes.map((code) => `${code} ${counts[code] || 0}件`).join("，");
+    return `<section class="executive-snapshot" aria-labelledby="executive-snapshot-title"><header class="executive-snapshot-head"><span>核心摘要</span><h2 id="executive-snapshot-title">先判断交付风险，再阅读正式排名</h2></header><div class="executive-data-cover">
+      <article class="hero-gate-figure" data-snapshot="gates"><header><span>${total}件终稿</span><strong>交付闸门分布</strong></header><dl class="hero-gate-values">${gateCodes.map((code) => `<div data-gate="${code}"><dt>${code}</dt><dd><strong>${counts[code] || 0}</strong><span>${esc(gateLabels.get(code) || "")}</span></dd></div>`).join("")}</dl><div class="hero-gate-bar" role="img" aria-label="${esc(gateAria)}">${gateCodes.map((code) => `<i data-gate="${code}" style="--gate-count:${counts[code] || 0}" aria-hidden="true"></i>`).join("")}</div><p>${esc(gateGuide)}</p></article>
+      <div class="hero-summary-detail"><div class="hero-ranking-pair">${rankingSummary("practical", "均衡投研实务")}${rankingSummary("equalTask", "六任务等权")}</div><article class="hero-reading-path" data-snapshot="scope"><div><span>阅读顺序</span><strong>闸门 → 连续质量分 → 证据与方法</strong></div><p>${esc(boundary)} 完整限制见下方“关键限制”。</p></article></div>
+    </div></section>`;
+  }
+
+  function resolveMedia(id) {
     let item = mediaMap.get(id); const seen = new Set();
     while (item && !item.dataUri && !item.data_uri && item.dataUriRef && !seen.has(item.dataUriRef)) {
       seen.add(item.dataUriRef); item = mediaMap.get(item.dataUriRef);
     }
+    return item;
+  }
+
+  function mediaUri(id) {
+    const item = resolveMedia(id);
     return item?.dataUri || item?.data_uri || "";
   }
 
   function evidenceUri(item) {
     return mediaUri(item?.mediaId || item?.media_id) || item?.dataUri || item?.data_uri || "";
+  }
+
+  function evidenceIsImage(item, uri = evidenceUri(item)) {
+    const media = resolveMedia(item?.mediaId || item?.media_id);
+    const mime = String(item?.mimeType || item?.mime_type || media?.mimeType || media?.mime_type || "").toLowerCase();
+    return mime.startsWith("image/") || /^data:image\//i.test(uri) || /\.(?:avif|gif|jpe?g|png|svg|webp)(?:[?#]|$)/i.test(uri);
   }
 
   function evidenceIds(value) {
@@ -447,10 +489,29 @@
     ];
   }
 
+  function navSubItems(chapterId) {
+    return {
+      executive: [["protocol", "测试协议"]],
+      results: [["ranking", "正式与探索性排名"], ["heatmap", "逐文件矩阵"]],
+      native: [["compatibility", "兼容性实测"], ["coverage", "覆盖完成度"]],
+      issues: [["gates", "交付闸门"], ["lineage", "错误传播链"], ["sensitivity", "规则与权重敏感性"], ["challenges", "异议复核"]],
+      evidence: [["method", "方法与内容守恒"], ["browser", "全量复核记录"], ["evidence-index", "证据与媒体索引"], ["process", "全过程记录"], ["context", "配置与用量旁证"], ["appendix", "版本与技术附录"]],
+    }[chapterId] || [];
+  }
+
+  function mobileNavMarkup() {
+    return navItems().map(([id, fallback], index) => {
+      const label = text(`nav.${id}`, fallback);
+      const children = navSubItems(id);
+      return `<option value="${id}">${String(index + 1).padStart(2, "0")} ${esc(label)}</option>${children.map(([childId, childLabel]) => `<option value="${childId}">　${esc(childLabel)}</option>`).join("")}`;
+    }).join("");
+  }
+
   function navMarkup() {
     return navItems().map(([id, fallback], index) => {
       const label = text(`nav.${id}`, fallback);
-      return `<a href="#${id}" aria-label="${esc(label)}" title="${esc(label)}"><span class="nav-index">${String(index + 1).padStart(2, "0")}</span><span class="nav-label">${esc(label)}</span></a>`;
+      const children = navSubItems(id);
+      return `<div class="nav-group" data-nav-chapter="${id}"><a class="nav-chapter-link" href="#${id}" aria-label="${esc(label)}" title="${esc(label)}"><span class="nav-index">${String(index + 1).padStart(2, "0")}</span><span class="nav-label">${esc(label)}</span></a>${children.length ? `<div class="nav-subnav" aria-label="${esc(`${label}子章节`)}">${children.map(([childId, childLabel]) => `<a class="nav-subsection-link" href="#${childId}" data-parent-chapter="${id}" ${["browser", "evidence-index", "process", "context", "appendix"].includes(childId) ? `data-reveal-section="${childId}"` : ""}>${esc(childLabel)}</a>`).join("")}</div>` : ""}</div>`;
     }).join("");
   }
 
@@ -551,7 +612,11 @@
     const chapters = navItems().map(([id]) => document.getElementById(id)).filter(Boolean);
     const links = new Map($$(".nav a[href^='#']").map((link) => [link.getAttribute("href").slice(1), link]));
     const labels = new Map(navItems().map(([id, fallback]) => [id, text(`nav.${id}`, fallback)]));
+    navItems().forEach(([id]) => navSubItems(id).forEach(([childId, childLabel]) => labels.set(childId, childLabel)));
     const currentLabel = $("#nav-current-label");
+    const progress = $("#nav-progress");
+    const progressLabel = $("#nav-progress-label");
+    const mobileNav = $("#mobile-nav");
     let scheduled = false;
     const update = () => {
       scheduled = false;
@@ -560,11 +625,29 @@
       chapters.forEach((chapter) => { if (chapter.getBoundingClientRect().top <= marker) active = chapter; });
       if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = chapters.at(-1);
       if (!active) return;
-      links.forEach((link, id) => {
-        if (id === active.id) link.setAttribute("aria-current", "location");
-        else link.removeAttribute("aria-current");
+      let activeSubsection = null;
+      navSubItems(active.id).forEach(([id]) => {
+        const section = document.getElementById(id);
+        if (section && section.getBoundingClientRect().top <= marker) activeSubsection = section;
       });
-      if (currentLabel) currentLabel.textContent = labels.get(active.id) || active.id;
+      const activeId = activeSubsection?.id || active.id;
+      links.forEach((link, id) => {
+        const isChapter = link.classList.contains("nav-chapter-link");
+        const isSubsection = link.classList.contains("nav-subsection-link");
+        if ((isChapter && id === active.id) || (isSubsection && id === activeId)) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+        if (isSubsection) link.dataset.current = String(id === activeId);
+      });
+      $$(".nav-group").forEach((group) => { group.dataset.current = String(group.dataset.navChapter === active.id); });
+      const chapterIndex = Math.max(0, chapters.indexOf(active)) + 1;
+      const chapterLabel = `${String(chapterIndex).padStart(2, "0")} · ${labels.get(active.id) || active.id}`;
+      if (currentLabel) currentLabel.textContent = activeSubsection ? `${chapterLabel} / ${labels.get(activeId) || activeId}` : chapterLabel;
+      if (mobileNav && [...mobileNav.options].some((option) => option.value === activeId)) mobileNav.value = activeId;
+      const scrollRoot = document.scrollingElement || document.documentElement;
+      const maximum = Math.max(1, scrollRoot.scrollHeight - window.innerHeight);
+      const percent = Math.max(0, Math.min(100, Math.round(scrollRoot.scrollTop / maximum * 100)));
+      if (progress) { progress.value = percent; progress.textContent = `${percent}%`; progress.setAttribute("aria-valuenow", String(percent)); }
+      if (progressLabel) progressLabel.textContent = `${percent}%`;
     };
     const schedule = () => {
       if (scheduled) return;
@@ -599,48 +682,51 @@
 
   function renderShell() {
     const meta = RAW.meta || {};
+    const darkTheme = document.documentElement.dataset.theme === "dark";
     const boundary = meta.sampleBoundary || meta.scopeStatement || "5款工具 × 6类任务 × 各1件固定终稿；单次任务链，不代表工具的一般表现。";
     const profiles = presentation.printProfiles || {};
     const titleParts = presentation.titleParts || { main: meta.title, subtitle: "宇树科技六任务 · 证据复核报告", cutoff: "资料截至2026年8月30日", accessibleFullTitle: meta.title };
     const pageFurniture = presentation.printPageFurniture || {};
+    const toolLinks = arr(UI.toolLinks).map((item) => ({ label: String(item?.label || "").trim(), url: safeHttpUrl(item?.url) })).filter((item) => item.label && item.url);
     $("#app").innerHTML = `
       <a class="skip-link" href="#main">跳至正文</a>
       <header class="topbar"><div class="shell topbar-inner">
         <div class="nav-heading"><div class="brand"><span class="brand-mark"></span><span class="brand-text">${esc(text("brand", "固定样本交付物比较"))}</span></div><button id="nav-collapse" class="nav-collapse" type="button" aria-controls="primary-nav" aria-expanded="true"><span class="nav-collapse-icon" aria-hidden="true">‹</span><span class="nav-collapse-label">折叠导航</span></button></div>
-        <div class="nav-status" aria-hidden="true"><span>当前章节</span><strong id="nav-current-label">执行摘要</strong></div>
+        <div class="nav-status"><span>当前章节 <b id="nav-progress-label">0%</b></span><strong id="nav-current-label">01 · 执行摘要</strong><progress id="nav-progress" max="100" value="0" aria-label="报告阅读进度">0%</progress></div>
         <nav id="primary-nav" class="nav" aria-label="主导航">${navMarkup()}</nav>
-        <select id="mobile-nav" class="mobile-nav" aria-label="章节导航"><option value="">导航</option>${navItems().map(([id, fallback]) => `<option value="${id}">${esc(text(`nav.${id}`, fallback))}</option>`).join("")}</select>
-        <div class="topbar-tools"><label class="print-profile"><span>打印</span><select id="print-profile" aria-label="打印模式">${Object.entries(profiles).map(([key, item]) => `<option value="${esc(key)}" ${state.printProfile === key ? "selected" : ""}>${esc(item.label || key)}</option>`).join("")}</select></label>
+        <select id="mobile-nav" class="mobile-nav" aria-label="章节导航">${mobileNavMarkup()}</select>
+        <div class="topbar-tools"><nav class="nav-utilities" aria-label="报告工具"><a href="#artifact-manifest" data-reveal-section="appendix">原件与指纹</a><a href="#evidence-index" data-reveal-section="evidence-index">证据索引</a><a href="#process" data-reveal-section="process">过程记录</a><a href="#main" class="back-to-top">返回顶部 ↑</a></nav><label class="print-profile"><span>打印</span><select id="print-profile" aria-label="打印模式">${Object.entries(profiles).map(([key, item]) => `<option value="${esc(key)}" ${state.printProfile === key ? "selected" : ""}>${esc(item.label || key)}</option>`).join("")}</select></label>
           <button id="print-report" class="text-button topbar-print" type="button" aria-label="打印报告">打印</button>
-          <button id="theme-toggle" class="icon-button" type="button" aria-label="切换明暗主题" aria-pressed="false">◐</button></div>
+          <button id="theme-toggle" class="icon-button" type="button" aria-label="${darkTheme ? "切换到浅色主题" : "切换到深色主题"}" aria-pressed="${darkTheme}">◐</button></div>
       </div></header>
       <main id="main">
         <header class="report-masthead"><div class="shell">
-          <div class="report-series">${esc(meta.version || "报告版本 4.5.1 · 固定样本证据复核")}</div>
+          <div class="report-series">${esc(meta.version || "报告版本 4.5.2 · 固定样本证据复核")}</div>
           <h1 aria-label="${esc(titleParts.accessibleFullTitle || meta.title)}"><span>${esc(titleParts.main)}</span><small>${esc(titleParts.subtitle)}</small></h1>
           <p class="report-cutoff">${esc(titleParts.cutoff)}</p>
+          ${toolLinks.length ? `<nav class="participant-links" aria-label="参评工具官方网站"><span>参评工具</span>${toolLinks.map((item) => `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(item.label)}<i aria-hidden="true">↗</i></a>`).join("")}</nav>` : ""}
+          <div id="executive-snapshot"></div>
           <a class="mobile-rank-jump" href="#executive-content">先看交付闸门与正式排名 ↓</a>
           <details class="report-boundary" open><summary>样本与核验边界</summary><dl class="report-meta"><div><dt>样本边界</dt><dd>${esc(boundary)}</dd></div><div><dt>资料截止</dt><dd>${esc(meta.cutoffDate || "2026-08-30")}</dd></div><div><dt>核验环境</dt><dd>${esc(meta.environmentSummary || "macOS 26.5.2 / Office 16.112.3 / Chrome 152")}</dd></div><div><dt>回应状态</dt><dd>${challengeRoot.meta ? `未收到厂商正式回应；已记录${challengeResponses.length}款工具的AI自评` : "未征求厂商正式回应"}</dd></div></dl></details>
-          <p class="summary-excerpt-note">${esc(pageFurniture.summaryExcerptNote || "")}</p>
-          <aside class="interaction-guide" aria-label="页面交互提示"><strong>交互提示</strong><span><b>点击任意分数卡 →</b>详情与原件</span><span><b>⌕ 点击查看</b>证据图片</span><span><b>⌄</b>展开内容</span><span><b>↗</b>外部来源</span><span><b>↔</b>筛选记录</span></aside>
+          <aside class="interaction-guide" aria-label="阅览方式"><strong>阅览方式</strong><span><b>分数卡</b>评分、风险与原件</span><span><b>⌕ 证据</b>查看图片</span><span><b>⌄ 折叠项</b>展开附录</span><span><b>↗ 来源</b>打开外部网页</span><span><b>↔ 筛选</b>缩小记录范围</span></aside>
         </div></header>
-        <section id="executive" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("01", "执行摘要", "先看G0/G1/G2交付风险和两张正式排名，再核对测试协议；点估计的小分差不作确定性强弱解释。")}<div id="executive-content"></div><div id="protocol" class="subsection"><div id="protocol-content"></div></div></div></section>
-        <section id="results" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("02", "比较结果", "分数、点估计名次、已分类专家/混合判断敏感性和闸门来自同一份活动JSON；不应用历史数值封顶。")}<div id="ranking" class="subsection">${sectionHead("ranking")}<div id="ranking-content"></div></div><div id="heatmap" class="subsection">${sectionHead("heatmap")}<div id="heatmap-content"></div></div></div></section>
-        <section id="profiles" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("03", "逐工具与逐文件表现", "逐件显示连续分、交付闸门和可复核入口；仅代表本次固定样本。")}<div id="profiles-content"></div></div></section>
-        <section id="native" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("04", "原生应用与兼容性", "以指定原生应用的实际打开、编辑、保存、重开和展示结果为准；未验证平台不推断。")}<div id="compatibility" class="subsection">${sectionHead("compatibility")}<div id="compatibility-content"></div></div><div id="coverage" class="subsection"><div id="coverage-content"></div></div></div></section>
+        <section id="executive" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("01", "执行摘要", "先看交付闸门与两张正式排名；小分差须结合近分组和判断敏感性阅读。")}<p class="summary-excerpt-note">${esc(pageFurniture.summaryExcerptNote || "")}</p><div id="executive-content"></div><div id="protocol" class="subsection"><div id="protocol-content"></div></div></div></section>
+        <section id="results" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("02", "比较结果", "正式排名、判断敏感性与交付闸门均来自同一冻结数据集；连续分不采用历史数值封顶。")}<div id="ranking" class="subsection">${sectionHead("ranking")}<div id="ranking-content"></div></div><div id="heatmap" class="subsection">${sectionHead("heatmap")}<div id="heatmap-content"></div></div></div></section>
+        <section id="profiles" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("03", "逐工具与逐文件表现", "逐件查看连续分、交付闸门、评分明细与证据入口。")}<div id="profiles-content"></div></div></section>
+        <section id="native" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("04", "原生应用与兼容性", "记录指定应用中的打开、编辑、保存、重开与展示结果。")}<div id="compatibility" class="subsection">${sectionHead("compatibility")}<div id="compatibility-content"></div></div><div id="coverage" class="subsection"><div id="coverage-content"></div></div></div></section>
         <section id="issues" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("05", "问题、闸门与传播链", "连续分回答质量差距，交付闸门回答能否直接交付，传播链回答错误从何处产生。")}<div id="gates" class="subsection">${sectionHead("gates")}<div id="gates-content"></div></div><div id="lineage" class="subsection" data-print-level="formal">${sectionHead("lineage")}<div id="lineage-content"></div></div><div id="sensitivity" class="subsection" data-print-level="formal">${sectionHead("sensitivity")}<div id="sensitivity-content"></div></div><div id="challenges" class="subsection" data-print-level="formal"><div id="challenges-content"></div></div></div></section>
-        <section id="facts" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("06", "事实基准与来源", "32项核心事实用于Excel复核，不宣称覆盖五本工作簿中的全部数字。")}${sectionHead("facts")}<div id="facts-content"></div></div></section>
-        <section id="evidence" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("07", "方法、过程与全量证据", "评分构成、操作记录、覆盖项、证据媒体、过程旁证和样本指纹均保留；高密度材料默认折叠。")}
+        <section id="facts" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("06", "事实基准与来源", "列示32项事实母表、逐主张重算及来源定位。")}${sectionHead("facts")}<div id="facts-content"></div></div></section>
+        <section id="evidence" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("07", "方法、过程与全量证据", "评分构成、操作记录、覆盖项、证据媒体、过程旁证与样本指纹均在本章完整保留。")}
           <div id="method" class="subsection"><div id="method-content"></div></div>
-          <details id="browser" class="evidence-index-block" data-print-level="full"><summary>全量场景、覆盖与问题复核浏览器</summary><div class="details-body">${sectionHead("browser")}${browserControls()}<div id="record-content"></div></div></details>
-          <details id="evidence-index" class="evidence-index-block" data-print-level="full"><summary>741项证据与710个媒体对象索引</summary><div class="details-body">${sectionHead("evidence")}<div id="evidence-content"></div></div></details>
-          <details id="process" class="evidence-index-block" data-print-level="formal"><summary>用户补充的全过程记录</summary><div class="details-body">${sectionHead("process")}<div id="process-content"></div></div></details>
-          <details id="context" class="evidence-index-block" data-print-level="formal"><summary>配置、额度与费用旁证（不计分）</summary><div class="details-body">${sectionHead("context")}<div id="context-content"></div></div></details>
-          <details id="appendix" class="evidence-index-block" data-print-level="formal"><summary>版本、原件指纹与完整技术附录</summary><div class="details-body">${sectionHead("appendix")}<div id="appendix-content"></div></div></details>
+          <details id="browser" class="evidence-index-block" data-print-level="full" data-lazy-render="browser"><summary>全量场景、覆盖与问题复核浏览器</summary><div class="details-body">${sectionHead("browser")}${browserControls()}<div id="record-content" aria-busy="true"></div></div></details>
+          <details id="evidence-index" class="evidence-index-block" data-print-level="full" data-lazy-render="evidence-index"><summary>741项证据与710个媒体对象索引</summary><div class="details-body">${sectionHead("evidence")}<div id="evidence-content" aria-busy="true"></div></div></details>
+          <details id="process" class="evidence-index-block" data-print-level="formal" data-lazy-render="process"><summary>用户补充的全过程记录</summary><div class="details-body">${sectionHead("process")}<div id="process-content" aria-busy="true"></div></div></details>
+          <details id="context" class="evidence-index-block" data-print-level="formal" data-lazy-render="context"><summary>配置、额度与费用旁证（不计分）</summary><div class="details-body">${sectionHead("context")}<div id="context-content" aria-busy="true"></div></div></details>
+          <details id="appendix" class="evidence-index-block" data-print-level="formal" data-lazy-render="appendix"><summary>版本、原件指纹与完整技术附录</summary><div class="details-body">${sectionHead("appendix")}<div id="appendix-content" aria-busy="true"></div></div></details>
           <div id="full-record-print" aria-hidden="true"></div>
         </div></section>
       </main>
-      <footer class="footer"><div class="shell">本报告为固定样本交付物比较与证据复核，不代表产品普遍能力，不构成投资建议。</div></footer>
+      <footer class="footer"><div class="shell">${esc(text("footer", "评测截止日与评分口径以方法说明为准；本报告不构成投资建议。"))}</div></footer>
       ${dialogsMarkup()}`;
     document.documentElement.dataset.printProfile = ["summary", "formal", "full"].includes(state.printProfile) ? state.printProfile : "formal";
   }
@@ -690,7 +776,7 @@
       return counts;
     }, {});
     const formalCount = num(meta.formalVendorResponsesReceived) ?? 0;
-    target.innerHTML = `<header class="subsection-head"><h3>工具自评异议与复核处理（首次）</h3><p>工具自评仅作为异议线索，证据权重为0；评分调整仅以固定原件、原生实测及五家对称规则为依据。</p></header>
+    target.innerHTML = `<header class="subsection-head"><h3>工具自评异议与复核处理（首次）</h3><p>${challengeItems.length}项异议逐项保留原始回复、裁决理由与评分处理。</p></header>
       <div class="challenge-policy"><strong>回应性质边界</strong><p>${esc(meta.responseNaturePolicy || "以下内容由五款AI工具读取报告后生成，不是相关厂商、负责人或员工的正式声明。工具自评仅作为异议线索，证据权重为0。")} 已收到厂商正式回应：${formalCount}；本报告不宣称厂商已认可。</p><div class="challenge-counts"><span>${challengeItems.length}项异议</span>${Object.entries(statusCounts).map(([status, count]) => `<span data-disposition="${esc(status)}">${esc(challengeStatusLabel(status))} ${count}</span>`).join("")}</div><p class="mono technical-only">结构版本 ${esc(meta.schemaVersion || "—")} · 处理状态 ${esc(meta.status || "—")} · 声称厂商认可 ${esc(displayScalar(meta.claimOfVendorAcceptance))}</p></div>
       <div class="challenge-response-grid">${challengeResponses.map((response) => `<article class="challenge-response" style="--tool:${toolColor.get(response.tool) || "var(--accent-2)"}">${responseScreenshot(response)}<div><header><span class="tool-label"><i class="tool-dot"></i>${esc(response.tool)}</span><small>${esc(response.responseNature || "AI工具自评 · 非厂商正式回应")}</small></header><p>${esc(response.summary || "—")}</p><dl><div><dt>复核结论</dt><dd>${esc(response.conclusion || "—")}</dd></div><div><dt>涉及异议</dt><dd>${arr(response.challengeIds).length}项</dd></div></dl><p class="mono technical-only">异议编号 ${esc(arr(response.challengeIds).join("、") || "—")} · 截图 SHA-256 ${esc(response.screenshotSha256 || "—")}</p></div></article>`).join("")}</div>
       <div class="challenge-ledger">${challengeItems.map((item, index) => {
@@ -728,23 +814,24 @@
     const recording = obj(testProtocol.processRecording);
     const recordingSize = num(recording.totalBytes) === null ? "约7.40 GB" : `${(Number(recording.totalBytes) / 1e9).toFixed(2)} GB`;
     const summaryRows = [
-      ["评价对象", summary.scope], ["排名解释", summary.rankingPolicy], ["质量与风险", summary.gatePolicy], ["证据口径", summary.evidencePolicy],
+      ["评价对象", summary.scope], ["排名口径", summary.rankingPolicy], ["闸门口径", summary.gatePolicy], ["证据口径", summary.evidencePolicy],
       ["过程录屏", summary.processPolicy || `${recording.segmentCount || 8}段完整过程录屏合计${recordingSize}，暂不公开；发布SHA-256索引，需要时通过GitHub Issues联系提供。`],
-      ["干预与选择边界", execution.interventionBoundary || "未事前登记统一的重试、超时、人工干预与多版本终稿选择规则；结果不代表生成稳定性。"],
+      ["执行与选择", execution.interventionBoundary || "未事前登记统一的重试、超时、人工干预与多版本终稿选择规则；结果不代表生成稳定性。"],
       ["评审者披露", summary.reviewerDisclosure || meta.reviewerDisclosure || RAW.methodology?.assessmentClassification?.raterDisclosure],
-      ["已分类判断敏感性", "一次只改变一个专家判断或混合判断评分项一个既定步长，并重算次序。它不是置信区间、概率预测、统计显著性或厂商能力区间。"],
     ];
-    $("#executive-content").innerHTML = `<section class="executive-gate-priority" aria-labelledby="executive-gate-title"><header><div><span>首要结论</span><h3 id="executive-gate-title">30件终稿交付闸门</h3></div><p>先按G0/G1/G2判断能否直接交付，再结合连续质量分阅读；闸门不参与分数计算。</p></header>${gateSummaryMarkup("executive-gate-summary")}</section>
+    const snapshot = $("#executive-snapshot");
+    if (snapshot) snapshot.innerHTML = executiveSnapshotMarkup();
+    $("#executive-content").innerHTML = `<section class="executive-gate-priority" aria-labelledby="executive-gate-title"><header><div><span>交付风险概览</span><h3 id="executive-gate-title">30件终稿闸门分布</h3></div><p>G0/G1/G2标示独立交付风险，不参与连续质量分计算。</p></header>${gateSummaryMarkup("executive-gate-summary")}</section>
       <div class="executive-layout"><figure class="publication-figure" id="visual-executive-rankings" aria-describedby="caption-executive-rankings"><div class="executive-rankings">${["practical", "equalTask"].map((mode) => rankingMini("standalone", mode)).join("")}</div>${figureCaption("executive-rankings")}</figure><aside class="executive-policy"><h3>阅读边界与披露</h3><dl>${summaryRows.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value || "—")}</dd></div>`).join("")}</dl></aside></div>
-      <div class="limitation-block"><h3>关键限制</h3><ol>${arr(meta.limitations).map((item) => `<li>${esc(item)}</li>`).join("")}</ol></div>`;
+      <div class="limitation-block" id="key-limitations"><h3>关键限制</h3><ol>${arr(meta.limitations).map((item) => `<li>${esc(item)}</li>`).join("")}</ol></div>`;
   }
 
   function renderProfiles() {
     const profileMap = obj(RAW.meta?.toolProfiles);
-    $("#profiles-content").innerHTML = `<figure class="publication-figure publication-table-block" id="visual-tool-profiles" aria-describedby="caption-tool-profiles"><div class="profile-ledger">${tools.map((tool) => {
+    $("#profiles-content").innerHTML = `<figure class="publication-figure publication-table-block profile-directory" id="visual-tool-profiles" aria-describedby="caption-tool-profiles"><div class="profile-ledger profile-dossier-list">${tools.map((tool) => {
       const profile = profileMap[tool] || {};
-      const rows = kinds.map((kind) => { const artifact = artifactFor(tool, kind); return artifact ? `<button type="button" data-open-artifact="${esc(artifact.id)}"><span>${esc(kindLabels[kind])}</span><strong>${fmt(artifactScore(artifact), 1)}</strong><small data-gate="${gateBase(gateCode(artifact))}">${esc(gateDisplay(gateCode(artifact)))} ${gateSymbol(gateCode(artifact))}</small></button>` : ""; }).join("");
-      return `<article class="profile-row" data-tool="${esc(tool)}"><header><span class="tool-label" style="--tool:${toolColor.get(tool)}"><i class="tool-dot"></i>${esc(tool)}</span><p>${esc(profile.summary || "")}</p></header><div class="profile-scores">${rows}</div><dl><div><dt>本样本优势</dt><dd>${esc(profile.strength || "—")}</dd></div><div><dt>主要摩擦</dt><dd>${esc(profile.friction || "—")}</dd></div><div><dt>不可忽视事项</dt><dd>${esc(profile.critical || "—")}</dd></div><div><dt>使用建议</dt><dd>${esc(profile.sampleUseRecommendation || "—")}</dd></div></dl></article>`;
+      const rows = kinds.map((kind) => { const artifact = artifactFor(tool, kind); return artifact ? `<button class="profile-artifact-card" type="button" data-open-artifact="${esc(artifact.id)}" aria-label="${esc(`${tool} ${kindLabels[kind]}，${fmt(artifactScore(artifact), 1)}分，${gateDisplay(gateCode(artifact))}，查看详情与原件`)}"><span>${esc(kindLabels[kind])}</span><strong>${fmt(artifactScore(artifact), 1)}</strong><small data-gate="${gateBase(gateCode(artifact))}">${esc(gateDisplay(gateCode(artifact)))} ${gateSymbol(gateCode(artifact))}</small></button>` : ""; }).join("");
+      return `<article class="profile-row profile-dossier" data-tool="${esc(tool)}"><header class="profile-dossier-intro"><span class="tool-label" style="--tool:${toolColor.get(tool)}"><i class="tool-dot"></i>${esc(tool)}</span><p>${esc(profile.summary || "")}</p></header><div class="profile-scores profile-dossier-scores" aria-label="${esc(`${tool}六类终稿分数与闸门`)}">${rows}</div><dl class="profile-dossier-insights"><div class="profile-insight profile-insight-strength"><dt>本样本优势</dt><dd>${esc(profile.strength || "—")}</dd></div><div class="profile-insight profile-insight-friction"><dt>主要摩擦</dt><dd>${esc(profile.friction || "—")}</dd></div><div class="profile-insight profile-insight-critical"><dt>不可忽视事项</dt><dd>${esc(profile.critical || "—")}</dd></div><div class="profile-insight profile-insight-recommendation"><dt>使用建议</dt><dd>${esc(profile.sampleUseRecommendation || "—")}</dd></div></dl></article>`;
     }).join("")}</div>${figureCaption("tool-profiles")}</figure>`;
   }
 
@@ -770,7 +857,7 @@
     const scenarioComposition = contentInventory.scenarioRecordComposition || {};
     const inventoryRows = ["artifacts", "scenarioRecords", "coverageItems", "findings", "evidence", "media", "facts", "sources"].map((key) => [key, contentInventory[key]]).filter(([, value]) => value);
     const invLabels = { artifacts: "终稿", scenarioRecords: "综合复核记录", coverageItems: "覆盖项", findings: "复核发现", evidence: "证据", media: "媒体对象", facts: "事实基准", sources: "来源" };
-    $("#method-content").innerHTML = `<figure class="publication-figure publication-table-block" id="visual-method-inventory" aria-describedby="caption-method-inventory"><div class="method-ledger"><article><h3>评分项分类与单评审者限制</h3><p>${esc(classification.purpose || "")}</p><div class="assessment-class-grid">${assessmentClasses.map(([key, label, definition]) => `<section data-assessment-class="${esc(key)}"><header><strong>${esc(label)}</strong><b>${esc(criterionCounts[key] ?? "—")}项</b><span>合计权重 ${esc(classWeights[key] ?? "—")} / 600</span></header><p>${esc(definition || "—")}</p></section>`).join("")}</div><div class="reviewer-disclosure"><strong>评审者披露</strong><p>${esc(classification.raterDisclosure || RAW.meta?.reviewerDisclosure || "单一评审者；未测量评审者间一致性。")}</p></div><p class="method-count">${esc(counts.scoreEffect || classification.scoreEffect || "分类不改变点估计；混合锚定判断与专家判断项进入局部一步敏感性重算。")}</p></article><article><h3>内容守恒清单</h3><table><thead><tr><th>对象</th><th>数量</th><th>页面入口</th></tr></thead><tbody>${inventoryRows.map(([key, value]) => `<tr><td>${esc(invLabels[key] || key)}</td><td>${esc(value.count)}</td><td>${esc(value.entry)}</td></tr>`).join("")}</tbody></table></article></div>${figureCaption("method-inventory")}</figure>
+    $("#method-content").innerHTML = `<figure class="publication-figure publication-table-block" id="visual-method-inventory" aria-describedby="caption-method-inventory"><div class="method-ledger"><article><h3>评分项分类与单评审者限制</h3><p>${esc(classification.purpose || "")}</p><div class="assessment-class-grid">${assessmentClasses.map(([key, label, definition]) => `<section data-assessment-class="${esc(key)}"><header><strong>${esc(label)}</strong><b>${esc(criterionCounts[key] ?? "—")}项</b><span>合计权重 ${esc(classWeights[key] ?? "—")} / 600</span></header><p>${esc(definition || "—")}</p></section>`).join("")}</div><div class="reviewer-disclosure"><strong>评审者披露</strong><p>${esc(classification.raterDisclosure || RAW.meta?.reviewerDisclosure || "单一评审者；未测量评审者间一致性。")}</p></div><p class="method-count">${esc(counts.scoreEffect || classification.scoreEffect || "分类不改变点估计；混合锚定判断与专家判断项进入局部一步敏感性重算。")}</p></article><article><h3>报告数据总览</h3><table><thead><tr><th>对象</th><th>数量</th><th>所在章节</th></tr></thead><tbody>${inventoryRows.map(([key, value]) => `<tr><td>${esc(invLabels[key] || key)}</td><td>${esc(value.count)}</td><td>${esc(value.entry)}</td></tr>`).join("")}</tbody></table></article></div>${figureCaption("method-inventory")}</figure>
       <figure class="publication-figure publication-table-block" id="visual-scenario-composition" aria-describedby="caption-scenario-composition"><h3>202项综合复核记录的组成</h3><p>${esc(scenarioComposition.formula || "")}</p><div class="table-wrap"><table><thead><tr><th>组成</th><th>计数</th><th>说明</th></tr></thead><tbody><tr><td>主场景运行</td><td class="numeric">${esc(scenarioComposition.primaryScenarioRuns?.count ?? "—")}</td><td>scenarioRuns逐次操作记录</td></tr><tr><td>补充规则场景</td><td class="numeric">${esc(scenarioComposition.supplementalScenarioRecords?.count ?? "—")}</td><td>Word检索、图片三档等补充规则</td></tr><tr><td>配对图片标签区族</td><td class="numeric">${esc(scenarioComposition.pairedImageZoneFamilies?.count ?? "—")}</td><td>${esc(scenarioComposition.pairedImageZoneFamilies?.definition || "")}</td></tr></tbody></table></div>${figureCaption("scenario-composition")}</figure>`;
   }
 
@@ -888,27 +975,27 @@
   }
 
   function dialogsMarkup() {
-    return `<dialog id="artifact-dialog" aria-labelledby="artifact-dialog-title"><div class="modal-head"><h2 id="artifact-dialog-title">文件详情</h2><button class="modal-close" type="button" data-close-dialog aria-label="关闭">×</button></div><div class="modal-body" id="artifact-dialog-body"></div></dialog>
-      <dialog id="evidence-dialog" aria-labelledby="evidence-dialog-title"><div class="modal-head"><h2 id="evidence-dialog-title">证据</h2><button class="modal-close" type="button" data-close-dialog aria-label="关闭">×</button></div><div class="modal-body" id="evidence-dialog-body"></div></dialog>`;
+    return `<dialog id="artifact-dialog" aria-labelledby="artifact-dialog-title"><div class="modal-head"><div class="modal-head-copy"><h2 id="artifact-dialog-title">文件详情</h2><span id="artifact-dialog-position" class="modal-position" aria-live="polite"></span></div><div class="modal-head-tools"><button class="text-button modal-step" type="button" data-dialog-kind="artifact" data-dialog-step="-1" aria-label="上一件终稿">上一件</button><button class="text-button modal-step" type="button" data-dialog-kind="artifact" data-dialog-step="1" aria-label="下一件终稿">下一件</button><span id="artifact-dialog-primary-action" class="modal-primary-action"></span><button class="modal-close" type="button" data-close-dialog aria-label="关闭文件详情">×</button></div></div><div class="modal-body" id="artifact-dialog-body"></div></dialog>
+      <dialog id="evidence-dialog" aria-labelledby="evidence-dialog-title"><div class="modal-head"><div class="modal-head-copy"><h2 id="evidence-dialog-title">证据</h2><span id="evidence-dialog-position" class="modal-position" aria-live="polite"></span></div><div class="modal-head-tools"><button class="text-button modal-step" type="button" data-dialog-kind="evidence" data-dialog-step="-1" aria-label="上一条证据">上一条</button><button class="text-button modal-step" type="button" data-dialog-kind="evidence" data-dialog-step="1" aria-label="下一条证据">下一条</button><div class="evidence-zoom-controls" role="group" aria-label="证据图片缩放"><button class="text-button" type="button" data-evidence-zoom="fit" aria-pressed="true">适合窗口</button><button class="text-button" type="button" data-evidence-zoom="100" aria-pressed="false">100%</button></div><span id="evidence-dialog-primary-action" class="modal-primary-action"></span><button class="modal-close" type="button" data-close-dialog aria-label="关闭证据详情">×</button></div></div><div class="modal-body" id="evidence-dialog-body"></div></dialog>`;
   }
 
   function renderRanking() {
     const perspectiveLabels = { standalone: "正式固定终稿排名", firstOrigin: "探索性首次归责诊断" };
     const perspectiveMeanings = {
-      standalone: "本报告的两张正式排名。每件冻结终稿按独立使用质量评价，同一问题进入多件终稿时可分别影响各文件分数。",
-      firstOrigin: "仅去重已枚举的完全继承项，用于观察归责口径变化；未建立生成时因果图，不是正式排名、采购名次或因果结论。",
+      standalone: "每件冻结终稿按独立使用质量评价；同一问题传播至多件终稿时，各终稿分别反映使用风险。",
+      firstOrigin: "仅对已枚举的完全继承项去重，用于观察归责口径变化；不是因果结论或采购排名。",
     };
-    $("#ranking-content").innerHTML = `<div class="ranking-all-guide"><strong>两张正式排名 + 两张探索性诊断已全部展开</strong><span>无需点击切换。正式结果仅为终稿独立使用视角；首次归责仅作非因果诊断，两类结果均各列出实务权重与六任务等权次序。</span></div>
-      <figure class="publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-perspective-stack">${["standalone", "firstOrigin"].map((perspective, perspectiveIndex) => { const role = perspective === "standalone" ? "official" : "diagnostic"; return `<section class="ranking-perspective-group" data-ranking-role="${role}" aria-labelledby="ranking-perspective-${perspective}"><header class="ranking-perspective-head"><span>评价视角 ${String(perspectiveIndex + 1).padStart(2, "0")}</span><div><div class="ranking-perspective-title"><h4 id="ranking-perspective-${perspective}">${esc(perspectiveLabels[perspective])}</h4><b class="ranking-role-badge" data-role="${role}">${role === "official" ? "正式结果" : "探索性 · 非因果"}</b></div><p>${esc(perspectiveMeanings[perspective])}</p></div></header><div class="ranking-static-grid">${["practical", "equalTask"].map((mode) => rankingStaticPanel(perspective, mode)).join("")}</div></section>`; }).join("")}</div>${figureCaption("ranking-main")}</figure>
-      <div class="uncertainty-legend ranking-shared-legend"><span><i class="legend-point"></i>圆点为连续分点估计，浅色线段为已分类专家/混合判断敏感性范围</span><span>近分组仅表示排序后相邻分差≤1分的描述性分组</span><span>不是评级、统计检验、并列或产品总体结论</span></div>`;
+    $("#ranking-content").innerHTML = `<div class="ranking-all-guide"><strong>阅读口径</strong><span>正式排名与首次归责诊断均分别列示均衡投研实务和六任务等权结果。</span></div>
+      <figure class="publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-perspective-stack">${["standalone", "firstOrigin"].map((perspective, perspectiveIndex) => { const role = perspective === "standalone" ? "official" : "diagnostic"; const emphasis = role === "official" ? "primary" : "secondary"; return `<section class="ranking-perspective-group ranking-perspective-${emphasis}" data-ranking-role="${role}" data-visual-priority="${emphasis}" aria-labelledby="ranking-perspective-${perspective}"><header class="ranking-perspective-head"><span>评价视角 ${String(perspectiveIndex + 1).padStart(2, "0")}</span><div><div class="ranking-perspective-title"><h4 id="ranking-perspective-${perspective}">${esc(perspectiveLabels[perspective])}</h4><b class="ranking-role-badge" data-role="${role}">${role === "official" ? "正式结果" : "探索性 · 非因果"}</b></div><p>${esc(perspectiveMeanings[perspective])}</p></div></header><div class="ranking-static-grid">${["practical", "equalTask"].map((mode) => rankingStaticPanel(perspective, mode)).join("")}</div></section>`; }).join("")}</div>${figureCaption("ranking-main")}</figure>
+      <div class="uncertainty-legend ranking-shared-legend"><span><i class="legend-point"></i>圆点为连续分点估计，浅色线段为已分类专家/混合判断敏感性范围</span><span>近分组仅表示排序后相邻分差≤1分；不等于并列、统计检验或产品总体结论</span></div>`;
   }
 
   function renderHeatmap() {
-    $("#heatmap-content").innerHTML = `<div class="matrix-click-guide" role="note"><strong><span aria-hidden="true">↗</span> 30个分数卡均可点击</strong><span>点击任一卡片查看逐项评分、问题、闸门与证据，并预览或下载对应原件。</span><em>选择一个分数开始 →</em></div><div class="matrix-legend"><span>当前：独立终稿正式分</span><span>连续分不应用数值封顶</span><span>闸门另行显示</span></div><div class="table-wrap"><table class="heat-table" id="visual-quality-matrix" aria-describedby="caption-quality-matrix">${tableCaption("quality-matrix")}<thead><tr><th>工具</th>${kinds.map((kind) => `<th>${esc(kindLabels[kind])}</th>`).join("")}</tr></thead><tbody>
+    $("#heatmap-content").innerHTML = `<div class="matrix-click-guide" role="note"><strong><span aria-hidden="true">↗</span> 打开评分卡</strong><span>选择任一单元格，查看逐项评分、问题、闸门、证据及对应原件。</span><em>查看详情 →</em></div><div class="matrix-legend"><span>当前：独立终稿正式分</span><span>连续分不应用数值封顶</span><span>闸门另行显示</span></div><div class="table-wrap"><table class="heat-table" id="visual-quality-matrix" aria-describedby="caption-quality-matrix">${tableCaption("quality-matrix")}<thead><tr><th>工具</th>${kinds.map((kind) => `<th>${esc(kindLabels[kind])}</th>`).join("")}</tr></thead><tbody>
       ${tools.map((tool, toolIndex) => `<tr><th><span class="tool-label" style="--tool:${toolColor.get(tool)}"><i class="tool-dot"></i>${esc(tool)}</span></th>${kinds.map((kind, kindIndex) => {
         const artifact = artifactFor(tool, kind); if (!artifact) return "<td>—</td>";
         const score = artifactScore(artifact); const gate = gateCode(artifact);
-        return `<td><button type="button" class="heat-cell" data-open-artifact="${esc(artifact.id)}" style="--score:${score ?? 0};--hint-delay:${((toolIndex * kinds.length + kindIndex) * .07).toFixed(2)}s" aria-label="${esc(`${tool} ${kindLabels[kind]} ${fmt(score, 1)}分 ${gateDisplay(gate)}，点击查看详情与原件`)}"><strong>${fmt(score, 1)}</strong><small>${esc(gateDisplay(gate))} ${gateSymbol(gate)}</small></button></td>`;
+        return `<td class="heat-cell-shell" data-artifact-cell="${esc(artifact.id)}"><button type="button" class="heat-cell" data-open-artifact="${esc(artifact.id)}" style="--score:${score ?? 0};--hint-delay:${((toolIndex * kinds.length + kindIndex) * .07).toFixed(2)}s" aria-label="${esc(`${tool} ${kindLabels[kind]} ${fmt(score, 1)}分 ${gateDisplay(gate)}，点击查看详情与原件`)}"><strong>${fmt(score, 1)}</strong><small>${esc(gateDisplay(gate))} ${gateSymbol(gate)}</small></button></td>`;
       }).join("")}</tr>`).join("")}</tbody></table></div>`;
   }
 
@@ -1160,9 +1247,12 @@
 
   function renderEvidence() {
     const visible = evidence.slice(0, state.evidenceLimit);
+    const eager = document.documentElement.dataset.printProfile === "full";
+    const imageAttributes = eager ? 'loading="eager" decoding="sync" fetchpriority="high"' : 'loading="lazy" decoding="async"';
     $("#evidence-content").innerHTML = evidence.length ? `<div class="evidence-grid">${visible.map((item) => {
-      const uri = evidenceUri(item); const artifact = artifactById.get(item.artifactId);
-      return `<article class="evidence-card" data-evidence-id="${esc(item.id)}"><button type="button" data-open-evidence="${esc(item.id)}"><div class="evidence-thumb">${uri ? `<img loading="lazy" src="${uri}" alt="${esc(item.title || item.caption || item.id)}">` : `<span class="evidence-missing">证据已登记，无缩略图</span>`}</div><div class="evidence-copy"><h3>${esc(item.title || item.caption || item.id)}</h3><p>${esc(artifact ? `${artifact.tool} · ${kindLabels[artifact.kind]}` : item.application || item.locator || "")}</p></div></button></article>`;
+      const uri = evidenceUri(item); const artifact = artifactById.get(item.artifactId); const image = evidenceIsImage(item, uri);
+      const preview = uri && image ? `<img ${imageAttributes} src="${uri}" alt="${esc(item.title || item.caption || item.id)}">` : `<span class="evidence-missing">${uri ? "结构化记录 · 无图像缩略图" : "证据已登记 · 无图像缩略图"}</span>`;
+      return `<article class="evidence-card" data-evidence-id="${esc(item.id)}"><button type="button" data-open-evidence="${esc(item.id)}"><div class="evidence-thumb">${preview}</div><div class="evidence-copy"><h3>${esc(item.title || item.caption || item.id)}</h3><p>${esc(artifact ? `${artifact.tool} · ${kindLabels[artifact.kind]}` : item.application || item.locator || "")}</p></div></button></article>`;
     }).join("")}</div>${visible.length < evidence.length ? `<div class="load-more"><button id="load-more-evidence" class="text-button" type="button">显示更多（${visible.length}/${evidence.length}）</button><button id="show-all-evidence" class="text-button" type="button">显示全部</button></div>` : ""}` : empty("尚无已登记证据。");
   }
 
@@ -1302,12 +1392,12 @@
     const verification = arr(RAW.verification);
     $("#appendix-content").innerHTML = `<div class="method-grid">
       <article class="panel panel-pad"><h3>现行固定评分原则</h3><ol>${methods.map((item) => `<li>${esc(item.rule)}</li>`).join("")}</ol></article>
-      <article class="panel panel-pad"><h3>显式限制</h3><ul><li>固定30件样本、单次任务链，不外推工具的一般表现。</li><li>以当前Mac Office与Chrome环境为准；Windows PowerPoint、Safari及独立重新下载未验证。</li><li>未征求厂商正式回应，不宣称厂商已认可。</li></ul></article>
+      <article class="panel panel-pad"><h3>限制与边界索引</h3><p>完整限制集中列于执行摘要；平台范围、回应性质与评分方法分别见对应章节。</p><ul><li><a href="#key-limitations">关键限制</a></li><li><a href="#compatibility">平台兼容证据</a></li><li><a href="#challenges">工具自评异议</a></li><li><a href="#method">评分方法</a></li></ul></article>
     </div>
     <details class="panel appendix-block" open><summary>v3 → v4 规则变更与版本指纹</summary><div class="appendix-body">${versionRows().length ? `<div class="table-wrap"><table><thead><tr><th>版本 / 变更</th><th>旧规则</th><th>新规则</th><th>摘要、理由与指纹</th></tr></thead><tbody>${versionRows().map((row) => `<tr><td>${esc(row.title || row.id || row.version || "—")}</td><td>${esc(row.before || row.v3 || row.old || "—")}</td><td>${esc(row.after || row.v4 || row.new || "—")}</td><td class="mono small">${esc(versionDescription(row))}</td></tr>`).join("")}</tbody></table></div>` : empty("未登记版本变更。")}</div></details>
     <details class="panel appendix-block"><summary>评分维度与子测试</summary><div class="appendix-body">${RAW.rubricSubtests?.principle ? `<p class="muted">${esc(RAW.rubricSubtests.principle)}</p>` : ""}<div class="table-wrap"><table class="criterion-table"><thead><tr><th>产物</th><th>维度 / 子测试</th><th>权重 / 满分</th><th>评价类型</th><th>验收方式</th></tr></thead><tbody>${criterionRows().map((row) => `<tr><td>${esc(kindLabels[row.kind])}</td><td>${esc(row.label || row.name || row.id)}</td><td>${esc(row.weight ?? "—")}</td><td>${esc(presentation.assessmentClassLabels?.[row.assessmentClass] || row.assessmentClass || "—")}</td><td>${esc(row.anchor || row.description || "—")}</td></tr>`).join("")}${rubricAppendixRows().map((row) => `<tr><td>${esc(kindLabels[row.kind] || row.kind || "子测试")}</td><td>${esc(`${row.criterionId || ""} / ${row.label || row.name || row.test || row.id || "子测试"}`)}</td><td>${esc(row.maxPoints ?? row.weight ?? "—")}</td><td>机械子测试</td><td>${esc(row.expected || row.anchor || row.description || row.result || "按原生实测结果得分")}</td></tr>`).join("")}</tbody></table></div></div></details>
     <details class="panel appendix-block"><summary>待人工复核与未验证项</summary><div class="appendix-body"><div class="verify-list">${verification.map((item) => `<div class="verify-item"><div>${statusChip(item.status)}</div><div><h3>${esc(item.item || item.title || item.id)}</h3><p>${esc(item.reason || item.description || "")}</p></div></div>`).join("")}</div></div></details>
-    <details class="panel appendix-block"><summary>30件终稿原件指纹与完整本地路径</summary><div class="appendix-body"><div class="table-wrap"><table class="manifest-table"><thead><tr><th>工具</th><th>产物</th><th>文件 / 完整路径</th><th>大小</th><th>SHA-256</th><th>闸门</th></tr></thead><tbody>${artifacts.map((artifact) => `<tr><td>${esc(artifact.tool)}</td><td>${esc(kindLabels[artifact.kind])}</td><td>${artifactInlineLink(artifact)}${artifactPath(artifact) ? `<div class="mono small">${esc(artifactPath(artifact))}</div>` : ""}</td><td>${bytes(artifactBytes(artifact))}</td><td class="mono">${esc(artifactSha256(artifact) || "—")}</td><td>${gateChip(gateCode(artifact))}</td></tr>`).join("")}</tbody></table></div></div></details>`;
+    <details id="artifact-manifest" class="panel appendix-block"><summary>30件终稿原件指纹与完整本地路径</summary><div class="appendix-body"><div class="table-wrap"><table class="manifest-table"><thead><tr><th>工具</th><th>产物</th><th>文件 / 完整路径</th><th>大小</th><th>SHA-256</th><th>闸门</th></tr></thead><tbody>${artifacts.map((artifact) => `<tr><td>${esc(artifact.tool)}</td><td>${esc(kindLabels[artifact.kind])}</td><td>${artifactInlineLink(artifact)}${artifactPath(artifact) ? `<div class="mono small">${esc(artifactPath(artifact))}</div>` : ""}</td><td>${bytes(artifactBytes(artifact))}</td><td class="mono">${esc(artifactSha256(artifact) || "—")}</td><td>${gateChip(gateCode(artifact))}</td></tr>`).join("")}</tbody></table></div></div></details>`;
   }
 
   function empty(message) { return `<div class="empty">${esc(message)}</div>`; }
@@ -1327,96 +1417,290 @@
     ];
   }
 
+  function updateDialogNavigation(kind, index, total) {
+    const dialog = $(`#${kind}-dialog`);
+    if (!dialog) return;
+    const position = $(`#${kind}-dialog-position`);
+    if (position) position.textContent = `${index + 1} / ${total}`;
+    $$(`[data-dialog-kind="${kind}"]`, dialog).forEach((button) => {
+      const direction = Number(button.dataset.dialogStep || 0);
+      button.disabled = direction < 0 ? index <= 0 : index >= total - 1;
+    });
+  }
+
+  function artifactPrimaryActionMarkup(artifact) {
+    const href = artifactHref(artifact);
+    if (!href) return "";
+    const profile = artifactAccessProfile(artifact);
+    const name = artifactFileName(artifact);
+    if (profile.previewable) return `<a class="artifact-action primary modal-cta" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(`打开${name}`)}">打开原件 ↗</a>`;
+    return `<a class="artifact-action primary modal-cta" href="${esc(href)}" download="${esc(name)}">下载原件 ↓</a>`;
+  }
+
+  function evidenceDialogTitle(item, artifact) {
+    return item.title || item.caption || compact([
+      artifact ? `${artifact.tool} · ${kindLabels[artifact.kind]}` : item.application,
+      item.locator || item.location || "证据",
+    ]).join("｜") || "证据";
+  }
+
+  function evidencePrimaryActionMarkup(uri, title, image = true) {
+    const action = image ? "打开原图" : "打开证据文件";
+    return uri ? `<a class="artifact-action primary modal-cta" href="${esc(uri)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(`${action}：${title}`)}">${action} ↗</a>` : "";
+  }
+
+  function setEvidenceZoom(mode, shouldAnnounce = true) {
+    const normalized = mode === "100" ? "100" : "fit";
+    const dialog = $("#evidence-dialog");
+    if (!dialog) return;
+    const image = $(".modal-image img", dialog);
+    if (!image) return;
+    dialog.dataset.imageMode = normalized;
+    image.dataset.zoom = normalized;
+    image.style.maxWidth = normalized === "fit" ? "100%" : "none";
+    image.style.maxHeight = normalized === "fit" ? "72vh" : "none";
+    image.style.width = "auto";
+    image.style.height = "auto";
+    $$('[data-evidence-zoom]', dialog).forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.evidenceZoom === normalized)));
+    if (shouldAnnounce) announce(normalized === "fit" ? "证据图片已适合窗口显示" : "证据图片已按原始尺寸显示");
+  }
+
+  function stepDialog(kind, direction) {
+    if (kind === "artifact") {
+      const next = currentArtifactIndex + direction;
+      if (next >= 0 && next < artifacts.length) openArtifact(artifacts[next].id);
+      return;
+    }
+    const next = currentEvidenceIndex + direction;
+    if (next >= 0 && next < evidence.length) openEvidence(evidence[next].id);
+  }
+
   function openArtifact(id) {
     const artifact = artifactById.get(id); if (!artifact) return;
+    currentArtifactIndex = artifacts.findIndex((item) => item.id === artifact.id);
     const legacy = legacyScoreRecord(artifact) || {};
     const qualityV4 = qualityRecord(artifact) || {};
     const quality = { ...legacy, ...qualityV4, criterionScores: qualityV4.criterionScores || legacy.criterionScores };
     const criteria = arr(quality.criterionScores || quality.criteria || quality.dimensions);
     const gate = gateRecord(artifact); const itemFindings = artifactFindings(artifact); const subtests = artifactSubtests(artifact);
     $("#artifact-dialog-title").textContent = `${artifact.tool} · ${kindLabels[artifact.kind]}`;
-    $("#artifact-dialog-body").innerHTML = `<div class="artifact-summary"><div><span>独立终稿连续分</span><strong>${fmt(artifactScore(artifact, "independent"), 2)}</strong><small>用于两张正式排名</small></div><div><span>终端独立使用闸门</span>${gateChip(gateCode(artifact), gate.reason || gate.summary)}<small>闸门描述交付风险，不是第二套分数</small></div></div>
-      <div class="modal-section"><h3>查看或下载原件</h3>${artifactFileCard(artifact)}</div>
-      <div class="modal-section"><h3>逐项评分</h3><div class="score-list">${criteria.length ? criteria.map((item) => { const definition = criteriaDefinitionMap.get(item.criterionId || item.id) || {}; const maximum = num(definition.weight) ?? num(item.weight) ?? 0; const earned = num(item.weighted) ?? 0; return `<article class="score-item"><header><strong>${esc(item.label || item.criterionLabel || definition.label || item.criterionId || item.id)}</strong><span>${fmt(earned, 2)} / ${fmt(maximum, 2)}分</span><b>${num(item.rating0To5) !== null ? `${fmt(item.rating0To5, 2)}/5` : ""}</b></header><i class="score-meter" style="--ratio:${maximum ? earned / maximum * 100 : 0}%"><i></i></i><p>${esc(item.basis || item.description || "")}</p></article>`; }).join("") : empty("无维度明细。")}</div></div>
-      <div class="modal-section"><h3>子测试</h3>${subtests.length ? `<div class="subtest-list">${subtests.map((item) => { const ids = evidenceIds(item.evidenceIds || item.evidence); const scored = num(item.earnedPoints) !== null || num(item.maxPoints) !== null; const expected = item.expected ? `预期：${item.expected}` : ""; const actual = item.actual || item.basis || item.description || ""; const detail = [item.criterionId || "", expected, actual ? `实际：${actual}` : ""].filter(Boolean).join(" · "); return `<div><span>${esc(item.label || item.name || item.test || item.id || "子测试")}</span><strong>${scored ? `${fmt(item.earnedPoints, 1)} / ${fmt(item.maxPoints, 1)}` : esc(displayScalar(item.status ?? item.result ?? item.score))}</strong><small>${esc(detail)}</small>${ids.length ? `<footer>${evidenceButtons(ids, 2)}</footer>` : ""}</div>`; }).join("")}</div>` : empty("无子测试记录。")}</div>
-      <div class="modal-section"><h3>复核发现、终端风险与归责</h3>${itemFindings.length ? `<div class="finding-detail-list">${itemFindings.map((finding) => { const attribution = findingAttribution(finding); return `<article data-severity="${esc(finding.severity || "info")}" data-finding-id="${esc(finding.id || "")}"><header>${gateChip(finding.terminalRiskCode || finding.gate || finding.deliveryGateRequest || gateCode(artifact))}<span class="chip">${esc(finding.severity || "info")}</span><span class="chip">${esc(finding.attributionTreatment || finding.lineageRole || "未归类")}</span>${attribution ? `<strong class="attribution-share" title="${esc(attribution.definition)}">机械缺口分摊 ${fmt(attribution.points)}分</strong>` : ""}</header><h4>${esc(finding.summary || finding.title || finding.id)}</h4>${findingBody(finding)}<footer>${evidenceButtons(evidenceIds(finding.evidenceIds || finding.evidence))}</footer></article>`; }).join("")}</div>` : empty("未登记问题。")}</div>`;
-    showDialog($("#artifact-dialog"));
+    $("#artifact-dialog-primary-action").innerHTML = artifactPrimaryActionMarkup(artifact);
+    updateDialogNavigation("artifact", currentArtifactIndex, artifacts.length);
+    $("#artifact-dialog-body").innerHTML = `<div class="artifact-modal-content"><nav class="modal-section-nav" aria-label="文件详情内容"><a href="#artifact-modal-file">原件</a><a href="#artifact-modal-scores">逐项评分</a><a href="#artifact-modal-subtests">子测试</a><a href="#artifact-modal-findings">发现与风险</a></nav><div class="artifact-summary"><div><span>独立终稿连续分</span><strong>${fmt(artifactScore(artifact, "independent"), 2)}</strong><small>用于两张正式排名</small></div><div><span>终端独立使用闸门</span>${gateChip(gateCode(artifact), gate.reason || gate.summary)}<small>闸门描述交付风险，不是第二套分数</small></div></div>
+      <div id="artifact-modal-file" class="modal-section"><h3>查看或下载原件</h3>${artifactFileCard(artifact)}</div>
+      <div id="artifact-modal-scores" class="modal-section"><h3>逐项评分</h3><div class="score-list">${criteria.length ? criteria.map((item) => { const definition = criteriaDefinitionMap.get(item.criterionId || item.id) || {}; const maximum = num(definition.weight) ?? num(item.weight) ?? 0; const earned = num(item.weighted) ?? 0; return `<article class="score-item"><header><strong>${esc(item.label || item.criterionLabel || definition.label || item.criterionId || item.id)}</strong><span>${fmt(earned, 2)} / ${fmt(maximum, 2)}分</span><b>${num(item.rating0To5) !== null ? `${fmt(item.rating0To5, 2)}/5` : ""}</b></header><i class="score-meter" style="--ratio:${maximum ? earned / maximum * 100 : 0}%"><i></i></i><p>${esc(item.basis || item.description || "")}</p></article>`; }).join("") : empty("无维度明细。")}</div></div>
+      <div id="artifact-modal-subtests" class="modal-section"><h3>子测试</h3>${subtests.length ? `<div class="subtest-list">${subtests.map((item) => { const ids = evidenceIds(item.evidenceIds || item.evidence); const scored = num(item.earnedPoints) !== null || num(item.maxPoints) !== null; const expected = item.expected ? `预期：${item.expected}` : ""; const actual = item.actual || item.basis || item.description || ""; const detail = [item.criterionId || "", expected, actual ? `实际：${actual}` : ""].filter(Boolean).join(" · "); return `<div><span>${esc(item.label || item.name || item.test || item.id || "子测试")}</span><strong>${scored ? `${fmt(item.earnedPoints, 1)} / ${fmt(item.maxPoints, 1)}` : esc(displayScalar(item.status ?? item.result ?? item.score))}</strong><small>${esc(detail)}</small>${ids.length ? `<footer>${evidenceButtons(ids, 2)}</footer>` : ""}</div>`; }).join("")}</div>` : empty("无子测试记录。")}</div>
+      <div id="artifact-modal-findings" class="modal-section"><h3>复核发现、终端风险与归责</h3>${itemFindings.length ? `<div class="finding-detail-list">${itemFindings.map((finding) => { const attribution = findingAttribution(finding); return `<article data-severity="${esc(finding.severity || "info")}" data-finding-id="${esc(finding.id || "")}"><header>${gateChip(finding.terminalRiskCode || finding.gate || finding.deliveryGateRequest || gateCode(artifact))}<span class="chip">${esc(finding.severity || "info")}</span><span class="chip">${esc(finding.attributionTreatment || finding.lineageRole || "未归类")}</span>${attribution ? `<strong class="attribution-share" title="${esc(attribution.definition)}">机械缺口分摊 ${fmt(attribution.points)}分</strong>` : ""}</header><h4>${esc(finding.summary || finding.title || finding.id)}</h4>${findingBody(finding)}<footer>${evidenceButtons(evidenceIds(finding.evidenceIds || finding.evidence))}</footer></article>`; }).join("")}</div>` : empty("未登记问题。")}</div></div>`;
+    showDialog($("#artifact-dialog"), `已打开${artifact.tool}${kindLabels[artifact.kind]}文件详情，第${currentArtifactIndex + 1}件，共${artifacts.length}件`);
   }
 
   function openEvidence(id) {
     const item = evidenceMap.get(id); if (!item) return;
-    const uri = evidenceUri(item); const artifact = artifactById.get(item.artifactId);
-    $("#evidence-dialog-title").textContent = item.title || item.caption || item.id;
-    $("#evidence-dialog-body").innerHTML = `<div class="modal-layout"><div class="modal-image">${uri ? `<img src="${uri}" alt="${esc(item.title || item.caption || item.id)}">` : `<span class="evidence-missing">未内嵌图像文件</span>`}</div><div><h3>${esc(artifact ? `${artifact.tool} · ${kindLabels[artifact.kind]}` : item.application || "证据元数据")}</h3><dl class="evidence-meta">${[["定位", item.locator || item.location], ["动作", item.action], ["应用", item.application], ["版本", item.applicationVersion || item.version], ["采集时间", item.capturedAt || item.captured], ["SHA-256", item.sha256]].filter(([, value]) => value).map(([label, value]) => `<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl><p>${esc(item.description || item.caption || "")}</p></div></div>`;
-    showDialog($("#evidence-dialog"));
+    currentEvidenceIndex = evidence.findIndex((entry) => entry.id === item.id);
+    const uri = safeAssetUrl(evidenceUri(item)); const imageUri = evidenceIsImage(item, uri) ? uri : ""; const artifact = artifactById.get(item.artifactId);
+    const dialog = $("#evidence-dialog");
+    const title = evidenceDialogTitle(item, artifact);
+    $("#evidence-dialog-title").textContent = title;
+    $("#evidence-dialog-primary-action").innerHTML = evidencePrimaryActionMarkup(uri, title, Boolean(imageUri));
+    updateDialogNavigation("evidence", currentEvidenceIndex, evidence.length);
+    $("#evidence-dialog-body").innerHTML = `<div class="modal-layout evidence-modal-layout"><div class="modal-image evidence-modal-image">${imageUri ? `<img src="${esc(imageUri)}" alt="${esc(title)}" data-zoom="fit">` : `<span class="evidence-missing">${uri ? "该证据为结构化记录，无图像预览" : "未内嵌图像文件"}</span>`}</div><div class="evidence-modal-copy"><h3>${esc(artifact ? `${artifact.tool} · ${kindLabels[artifact.kind]}` : item.application || "证据元数据")}</h3><dl class="evidence-meta">${[["证据ID", item.id], ["定位", item.locator || item.location], ["动作", item.action], ["应用", item.application], ["版本", item.applicationVersion || item.version], ["采集时间", item.capturedAt || item.captured], ["SHA-256", item.sha256]].filter(([, value]) => value).map(([label, value]) => `<div><dt>${label}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl><p>${esc(item.description || item.caption || "")}</p>${uri ? `<p class="evidence-original-action"><a href="${esc(uri)}" target="_blank" rel="noopener noreferrer">${imageUri ? "打开证据原图" : "打开证据文件"} ↗</a></p>` : ""}</div></div>`;
+    const zoomControls = $(".evidence-zoom-controls", dialog);
+    if (zoomControls) zoomControls.hidden = !imageUri;
+    $$('[data-evidence-zoom]', dialog).forEach((button) => {
+      button.disabled = !imageUri;
+      if (!imageUri) button.setAttribute("aria-pressed", "false");
+    });
+    if (imageUri) setEvidenceZoom("fit", false);
+    else delete dialog.dataset.imageMode;
+    showDialog(dialog, `已打开第${currentEvidenceIndex + 1}条证据，共${evidence.length}条`);
   }
 
-  function showDialog(dialog) {
+  function showDialog(dialog, message = "已打开详情") {
     if (!dialog) return;
-    dialogReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    dialog.showModal();
-    $("[data-close-dialog]", dialog)?.focus();
+    const firstOpen = !dialog.open;
+    if (firstOpen) {
+      dialogReturnFocus.set(dialog, document.activeElement instanceof HTMLElement ? document.activeElement : null);
+      dialog.showModal();
+    }
+    const body = $(".modal-body", dialog);
+    if (body) body.scrollTop = 0;
+    if (firstOpen) $("[data-close-dialog]", dialog)?.focus({ preventScroll: true });
+    announce(message);
   }
 
   function closeDialog(dialog) {
     if (!dialog?.open) return;
     dialog.close();
-    if (dialogReturnFocus?.isConnected) dialogReturnFocus.focus();
-    dialogReturnFocus = null;
+    const returnFocus = dialogReturnFocus.get(dialog);
+    if (returnFocus?.isConnected) returnFocus.focus({ preventScroll: true });
+    dialogReturnFocus.delete(dialog);
+    announce("详情已关闭");
+  }
+
+  function materializeSection(key) {
+    if (materializedSections.has(key)) return;
+    const renderers = {
+      browser: renderRecords,
+      "evidence-index": renderEvidence,
+      process: renderProcessRecords,
+      context: renderConfigurationUsage,
+      appendix: renderAppendix,
+      "full-record-print": renderFullPrintLedger,
+    };
+    const renderer = renderers[key];
+    if (!renderer) return;
+    renderer();
+    materializedSections.add(key);
+    const containerId = { browser: "record-content", "evidence-index": "evidence-content", process: "process-content", context: "context-content", appendix: "appendix-content" }[key];
+    const container = containerId ? document.getElementById(containerId) : null;
+    if (container) container.setAttribute("aria-busy", "false");
+    if (container) { decorateInteractiveElements(container); decorateTableSemantics(container); }
+  }
+
+  function materializeForPrint(profile = "formal") {
+    if (profile === "full") {
+      const evidenceWasMaterialized = materializedSections.has("evidence-index");
+      state.evidenceLimit = evidence.length;
+      ["browser", "evidence-index", "process", "context", "appendix", "full-record-print"].forEach(materializeSection);
+      if (evidenceWasMaterialized) renderEvidence();
+      primeImagesForPrint(profile);
+      return;
+    }
+    if (profile === "formal") ["process", "context", "appendix"].forEach(materializeSection);
+  }
+
+  function primeImagesForPrint(profile) {
+    if (profile !== "full") return [];
+    const images = $$("#app img");
+    images.forEach((image) => {
+      image.loading = "eager";
+      image.decoding = "sync";
+      try { image.fetchPriority = "high"; } catch (_) { /* optional browser hint */ }
+    });
+    return images;
+  }
+
+  function waitForImage(image) {
+    if (image.complete) return image.decode?.().catch(() => undefined) || Promise.resolve();
+    return new Promise((resolve) => {
+      const finish = () => {
+        image.removeEventListener("load", finish);
+        image.removeEventListener("error", finish);
+        Promise.resolve(image.decode?.()).catch(() => undefined).finally(resolve);
+      };
+      image.addEventListener("load", finish, { once: true });
+      image.addEventListener("error", finish, { once: true });
+    });
+  }
+
+  function prepareForPrint(profile = state.printProfile) {
+    materializeForPrint(profile);
+    if (profile !== "full") return Promise.resolve();
+    if (fullPrintPreparation) return fullPrintPreparation;
+    const images = primeImagesForPrint(profile);
+    document.documentElement.dataset.printReady = "loading";
+    fullPrintPreparation = Promise.race([
+      Promise.allSettled(images.map(waitForImage)),
+      new Promise((resolve) => setTimeout(resolve, 30000)),
+    ]).finally(() => { document.documentElement.dataset.printReady = "true"; });
+    return fullPrintPreparation;
+  }
+
+  async function requestPrint() {
+    const profile = document.documentElement.dataset.printProfile || state.printProfile;
+    announce(profile === "full" ? "正在准备全部证据与打印台账" : "正在准备打印版");
+    await prepareForPrint(profile);
+    announce("打印内容已准备完成");
+    window.print();
+  }
+
+  function detailsBelongsToPrintProfile(details, profile) {
+    if (profile === "full") return true;
+    if (profile === "formal") return !details.closest('[data-print-level="full"]');
+    return !details.closest('[data-print-level="formal"], [data-print-level="full"]');
+  }
+
+  function revealSection(sectionId, targetId = sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section?.matches("details")) section.open = true;
+    materializeSection(sectionId);
+    const target = document.getElementById(targetId) || section;
+    if (target?.matches("details")) target.open = true;
+    window.requestAnimationFrame(() => target?.scrollIntoView({ block: "start" }));
+    announce(`已前往${target?.querySelector?.(":scope > summary")?.textContent || target?.id || "目标部分"}`);
   }
 
   function renderAll() {
     renderProtocol(); renderExecutive(); renderRanking(); renderHeatmap(); renderProfiles(); renderCompatibility(); renderCoverage();
-    renderGates(); renderLineage(); renderSensitivity(); renderChallenges(); renderFacts(); renderMethod(); renderRecords();
-    renderEvidence(); renderProcessRecords(); renderConfigurationUsage(); renderAppendix(); renderFullPrintLedger();
+    renderGates(); renderLineage(); renderSensitivity(); renderChallenges(); renderFacts(); renderMethod();
   }
 
   function bindEvents() {
     document.addEventListener("click", (event) => {
       const artifact = event.target.closest("[data-open-artifact]"); if (artifact) { openArtifact(artifact.dataset.openArtifact); return; }
+      const artifactCell = event.target.closest("[data-artifact-cell]"); if (artifactCell) { openArtifact(artifactCell.dataset.artifactCell); return; }
       const evidenceButton = event.target.closest("[data-open-evidence]"); if (evidenceButton) { openEvidence(evidenceButton.dataset.openEvidence); return; }
       const close = event.target.closest("[data-close-dialog]"); if (close) { closeDialog(close.closest("dialog")); return; }
-      if (event.target.id === "load-more-evidence") { state.evidenceLimit += 36; renderEvidence(); return; }
-      if (event.target.id === "show-all-evidence") { state.evidenceLimit = evidence.length; renderEvidence(); return; }
-      if (event.target.id === "print-report") { window.print(); return; }
+      const step = event.target.closest("[data-dialog-step]"); if (step) { stepDialog(step.dataset.dialogKind, Number(step.dataset.dialogStep)); return; }
+      const zoom = event.target.closest("[data-evidence-zoom]"); if (zoom) { setEvidenceZoom(zoom.dataset.evidenceZoom); return; }
+      const reveal = event.target.closest("[data-reveal-section]");
+      if (reveal) { event.preventDefault(); revealSection(reveal.dataset.revealSection, (reveal.getAttribute("href") || "").replace(/^#/, "")); return; }
+      if (event.target.id === "load-more-evidence") { state.evidenceLimit += 36; renderEvidence(); announce(`已显示${Math.min(state.evidenceLimit, evidence.length)}条证据，共${evidence.length}条`); return; }
+      if (event.target.id === "show-all-evidence") { state.evidenceLimit = evidence.length; renderEvidence(); announce(`已显示全部${evidence.length}条证据`); return; }
+      if (event.target.id === "print-report") { void requestPrint(); return; }
       if (event.target.id === "theme-toggle") {
         const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
-        document.documentElement.dataset.theme = next; event.target.setAttribute("aria-pressed", String(next === "light"));
+        document.documentElement.dataset.theme = next;
+        event.target.setAttribute("aria-pressed", String(next === "dark"));
+        event.target.setAttribute("aria-label", next === "dark" ? "切换到浅色主题" : "切换到深色主题");
         try { localStorage.setItem("report-v4-theme", next); } catch (_) { /* local file privacy mode */ }
+        announce(next === "dark" ? "已切换为深色主题" : "已切换为浅色主题");
       }
       const navCollapse = event.target.closest("#nav-collapse");
-      if (navCollapse) { setNavigationCollapsed(document.documentElement.dataset.navCollapsed !== "true", true); }
+      if (navCollapse) { const collapsed = document.documentElement.dataset.navCollapsed !== "true"; setNavigationCollapsed(collapsed, true); announce(collapsed ? "章节导航已折叠" : "章节导航已展开"); }
     });
     document.addEventListener("change", (event) => {
       if (event.target.id === "mobile-nav" && event.target.value) {
-        document.getElementById(event.target.value)?.scrollIntoView({ block: "start" });
+        const target = document.getElementById(event.target.value);
+        if (target?.matches("details[data-lazy-render]")) revealSection(event.target.value);
+        else target?.scrollIntoView({ block: "start" });
         history.replaceState(null, "", `#${event.target.value}`);
-        event.target.value = "";
+        announce(`已前往${event.target.selectedOptions[0]?.textContent?.trim() || "所选章节"}`);
         return;
       }
       const map = { "filter-record-type": "browserType", "filter-tool": "tool", "filter-kind": "kind", "filter-gate": "gate", "filter-severity": "severity" };
-      if (map[event.target.id]) { state[map[event.target.id]] = event.target.value; renderRecords(); }
+      if (map[event.target.id]) { state[map[event.target.id]] = event.target.value; renderRecords(); announce(`筛选后显示${recordsForBrowser().length}条记录`); }
       if (event.target.id === "print-profile") {
         state.printProfile = event.target.value;
         document.documentElement.dataset.printProfile = state.printProfile;
+        if (state.printProfile === "full") void prepareForPrint("full");
+        announce(`打印模式已切换为${event.target.selectedOptions[0]?.textContent || state.printProfile}`);
       }
     });
-    document.addEventListener("input", (event) => { if (event.target.id === "filter-query") { state.query = event.target.value.trim(); renderRecords(); } });
-    document.addEventListener("keydown", (event) => { if (event.key === "Escape") $$('dialog[open]').forEach(closeDialog); });
+    document.addEventListener("input", (event) => { if (event.target.id === "filter-query") { state.query = event.target.value.trim(); renderRecords(); announce(`检索后显示${recordsForBrowser().length}条记录`); } });
     document.addEventListener("toggle", (event) => {
       if (!event.target.matches?.("details")) return;
       const summary = event.target.querySelector(":scope > summary");
       if (summary) summary.setAttribute("aria-expanded", String(event.target.open));
+      if (event.target.open && event.target.dataset.lazyRender) materializeSection(event.target.dataset.lazyRender);
     }, true);
-    $$('dialog').forEach((dialog) => dialog.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(dialog); }));
+    $$('dialog').forEach((dialog) => {
+      dialog.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(dialog); });
+      dialog.addEventListener("cancel", (event) => { event.preventDefault(); closeDialog(dialog); });
+    });
     window.addEventListener("beforeprint", () => {
       state.printProfile = document.documentElement.dataset.printProfile || state.printProfile;
-      printClosedDetails = $$('details:not([open])');
+      materializeForPrint(state.printProfile);
+      primeImagesForPrint(state.printProfile);
+      printClosedDetails = $$('details:not([open])').filter((details) => detailsBelongsToPrintProfile(details, state.printProfile));
       printClosedDetails.forEach((details) => { details.open = true; });
     });
     window.addEventListener("afterprint", () => {
       printClosedDetails.forEach((details) => { details.open = false; });
       printClosedDetails = [];
+      const ledger = $("#full-record-print");
+      if (ledger) ledger.innerHTML = "";
+      materializedSections.delete("full-record-print");
     });
   }
 
@@ -1443,5 +1727,27 @@
     observer.observe(app, { childList: true, subtree: true });
   }
 
+  function revealInitialHash() {
+    const id = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (!id) return;
+    if (id === "artifact-manifest") { revealSection("appendix", id); return; }
+    const target = document.getElementById(id);
+    if (target?.matches("details[data-lazy-render]")) revealSection(id);
+  }
+
   restoreTheme(); renderShell(); restoreNavigationState(); configureInitialViewport(); renderAll(); bindEvents(); decorateInteractiveElements(); decorateTableSemantics(); configureNavigationFeedback(); observeDynamicInteractions();
-})();
+  if (state.printProfile === "full") void prepareForPrint("full");
+  const app = $("#app");
+  if (app) app.setAttribute("aria-busy", "false");
+  announce("报告已载入");
+  window.requestAnimationFrame(revealInitialHash);
+})().catch((error) => {
+  const app = document.getElementById("app");
+  const status = document.getElementById("app-status");
+  if (app) {
+    app.setAttribute("aria-busy", "false");
+    app.textContent = `报告载入失败：${error?.message || "未知错误"}`;
+  }
+  if (status) status.textContent = "报告载入失败";
+  console.error(error);
+});

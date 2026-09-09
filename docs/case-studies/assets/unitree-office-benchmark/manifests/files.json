@@ -3,13 +3,13 @@
   "generatedAt": "2026-09-09T12:24:00+08:00",
   "frozenReport": {
     "relativePath": "report/source-self-contained-v4.5.html",
-    "bytes": 39643828,
-    "sha256": "cb02f331343f698a3679bf1de33b28f5bffc1b48069b061e4cfdff1ceecce933"
+    "bytes": 40154198,
+    "sha256": "8e64e92a8566e7ae658939b3b36bf122817c75058ea4227e5f762d73caebb5fc"
   },
   "portableReport": {
     "relativePath": "../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
-    "bytes": 1030544,
-    "sha256": "37622ef8192703c7e4cb277d2ebe8a2ef154b00b90d598f52cfad5d2be39daaf"
+    "bytes": 1540886,
+    "sha256": "c1345a891920dab0a7f80fb38d18650af3738f477bec5d3c7dedc9bef4f408e1"
   },
   "reportCounts": {
     "artifacts": 30,
@@ -24,9 +24,9 @@
   "sourceAbsolutePathOccurrences": 1696,
   "directReferencedFileCount": 1433,
   "mappedSourceFileCount": 1535,
-  "copiedRecordCount": 1604,
-  "uniqueContentCount": 1470,
-  "copiedBytes": 569856422,
+  "copiedRecordCount": 1611,
+  "uniqueContentCount": 1477,
+  "copiedBytes": 571316669,
   "excludedRecordCount": 1894,
   "mediaMapping": {
     "reusedSourceFiles": 682,
@@ -45,8 +45,8 @@
       "roles": [
         "GitHub发布适配主报告"
       ],
-      "bytes": 1030544,
-      "sha256": "37622ef8192703c7e4cb277d2ebe8a2ef154b00b90d598f52cfad5d2be39daaf",
+      "bytes": 1540886,
+      "sha256": "c1345a891920dab0a7f80fb38d18650af3738f477bec5d3c7dedc9bef4f408e1",
       "mimeType": "text/html",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -719,8 +719,8 @@
       "roles": [
         "v4.5活动数据"
       ],
-      "bytes": 7744446,
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "bytes": 7744816,
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8",
       "mimeType": "application/json",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -735,8 +735,8 @@
       "roles": [
         "v4.5 GitHub发布适配数据"
       ],
-      "bytes": 8075209,
-      "sha256": "3c032b3708b25f4c074ce774dede60ead991ae94cca077b906985260fcf5f0a8",
+      "bytes": 8075579,
+      "sha256": "b05c02eb3f280b6ba72c4edf5123b05bff4dd3922e03e1714a98fac99a814261",
       "mimeType": "application/json",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -749,7 +749,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "bytes": 82552,
       "sha256": "7300a572f4e9a1fbb032ea65b4eefb8da49948959f72ef544bc99abddb44b9c7",
@@ -762,128 +762,128 @@
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/build_report_v4.py",
       "relativePath": "report/release-v4.5/build_report_v4.py",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5可复现构建文件"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 27298,
-      "sha256": "bd933b1c85df1e930f00a4ea97d9aa46378d14ed36de0996a6acfc012fdb6510",
+      "bytes": 26376,
+      "sha256": "65ac5b57f5037fdea46094cd82a8e5a976089e02665171816d529edaa1e5f78e",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/build_summary_final.json",
       "relativePath": "report/release-v4.5/build_summary_final.json",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5本地发布材料"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 3034,
-      "sha256": "fd0b7ec80572edb959e59655e31448991f5a1ce832d87c6ec0ffb3cd5b483f7b",
+      "bytes": 3065,
+      "sha256": "6bbd766ab7e84ffb0dcb89221ff1e20c829b45d7f3a7e9828d4fa1acdf4514c0",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4/build_report_v4.py",
       "relativePath": "report/release-v4.5/provenance-inputs/base-builder.py",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 171741,
       "sha256": "a4d37cb360e11e5e8bcb2c00bc95dbac730593e7960a4cb0399571b1e514a1e3",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v3/report_v3.integrated.json",
       "relativePath": "report/release-v4.5/provenance-inputs/initial-integrated-report-input.json",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 2002272,
       "sha256": "aafed32edb2f7dbc571290914906d64780ea100b9f420c2825134a5eee777a63",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/benchmark_01a06a55/v4/report_v4.3_final.json",
       "relativePath": "report/release-v4.5/provenance-inputs/pre-unified-rule-report-input.json",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 2923894,
       "sha256": "9f078e753554b92a823dc6d26ae78075a357f541042c736482e62e2ae127b6ab",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/adjudication_v44/report_v4.4_final.json",
       "relativePath": "report/release-v4.5/provenance-inputs/pre-v45-adjudicated-input.json",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 4005129,
       "sha256": "6ce5afa46204c0f892fe881155d82175bc77acb48c47bb829bc530c595bc7f32",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/adjudication_v44/adjudicate_v44.py",
       "relativePath": "report/release-v4.5/provenance-inputs/prior-adjudication-script.py",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 139606,
       "sha256": "058969751f7b158f7f001b09118a767d6ae2989a893db6a15eda6b429cd36673",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/AI办公评测/codex/work/adjudication_v44/word_locator_retest/word_locator_v44.json",
       "relativePath": "report/release-v4.5/provenance-inputs/word-locator-checklist.json",
       "category": [
-        "v4.5_provenance_input"
+        "v4.5.2_release"
       ],
       "roles": [
-        "directly_referenced_calculation_input"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
       "bytes": 3951,
       "sha256": "5a8041a6452cb83d257736c7546334928c77734ccf80baa348e86a3efda10646",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "exact_provenance_copy",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
@@ -893,7 +893,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "mimeType": "application/json",
       "jsonPointers": [],
@@ -909,7 +909,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "bytes": 43269,
       "sha256": "405c9aea8302a45903684fcf1b95ce4c82ea4312b161d6fd62a596fb7ef70d18",
@@ -925,7 +925,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "bytes": 18988,
       "sha256": "ac9a57ac5884474e8250e0fbfa38c096380a55dee61f2b8832ce0144317557e9",
@@ -941,7 +941,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "bytes": 232257,
       "sha256": "c610084069fec402881a10488d4d6383a6d746eb01e3ba5de63856096f62f98f",
@@ -954,80 +954,80 @@
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/release_manifest_v4.5.json",
       "relativePath": "report/release-v4.5/release_manifest_v4.5.json",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5本地发布材料"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 8258,
-      "sha256": "65065fbf93c4f8db2fdb9a3ddc4932555e0937244b1a43dad91584ac4f2926f3",
+      "bytes": 9925,
+      "sha256": "787bc67d2cf836494679c683b2f20d568c45116518e9fc2992a320f5918900a8",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report.css",
       "relativePath": "report/release-v4.5/report.css",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5可复现构建文件"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 93370,
-      "sha256": "4cbdf9d3492b6465aa21e63e551823d8d7495049f6fdceeddbc8b32bf2f6d4c6",
+      "bytes": 137049,
+      "sha256": "a272d862c2d4b288e977e6bddedeeba6cdbb01437b0338239fe1ebbe31c83103",
       "mimeType": "text/css",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report.js",
       "relativePath": "report/release-v4.5/report.js",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5可复现构建文件"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 131909,
-      "sha256": "0cfe3f1ea6a7b7a7028682ed8f80ccae7d3ca13faf827105a41d592fd974f015",
+      "bytes": 154032,
+      "sha256": "f29ac0e4a8096cfccfcd0c7dfc6e9a76e9c3630328e3b06abc6f8dba3099d58a",
       "mimeType": "text/javascript",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report.template.html",
       "relativePath": "report/release-v4.5/report.template.html",
       "category": [
-        "v4.5_release"
+        "v4.5.2_release"
       ],
       "roles": [
-        "v4.5可复现构建文件"
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
       ],
-      "bytes": 807,
-      "sha256": "d1484c5509f7fd0e9670d6809cfdfb7b17dcd940d7d1d798979c4355a31bbbcf",
+      "bytes": 903,
+      "sha256": "845f5ea03bc06c74a012e25d9406aa1fa44a33a4ef1a6713067eb2169be2c6e8",
       "mimeType": "text/html",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "generated_release",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report_v4.5_final.json",
       "relativePath": "report/release-v4.5/report_v4.5_final.json",
       "category": [
-        "v4.5_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5本地发布材料"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
-      "bytes": 7744446,
-      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "bytes": 7744816,
+      "sha256": "b9de0be2a5c01c5db6a28362eed87e21216e69fad42f201c007b8b312bccb4c8",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "incremental_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
@@ -1037,7 +1037,7 @@
         "v4.5_historical_reference"
       ],
       "roles": [
-        "v4.5历史参考；不是v4.5.1当前QA或构建结论"
+        "v4.5历史参考；不是v4.5.2当前展示QA或构建结论"
       ],
       "bytes": 2726,
       "sha256": "8e09a0265f06f412df5a85ddb17467f55ccf1330f3253c377d232992732f3512",
@@ -1055,8 +1055,8 @@
       "roles": [
         "v4.5冻结自包含报告"
       ],
-      "bytes": 39643828,
-      "sha256": "cb02f331343f698a3679bf1de33b28f5bffc1b48069b061e4cfdff1ceecce933",
+      "bytes": 40154198,
+      "sha256": "8e64e92a8566e7ae658939b3b36bf122817c75058ea4227e5f762d73caebb5fc",
       "mimeType": "text/html",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -28849,106 +28849,218 @@
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/finalize_v451.py",
       "relativePath": "report/release-v4.5/finalize_v451.py",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1可复现修订与发布脚本"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
-      "bytes": 25632,
-      "sha256": "4352cabc3d267e7b97314e5979f76deebfe189cfaf6b9803b972b5d4f9b4d458",
+      "bytes": 26573,
+      "sha256": "88e86999c7297455bc390616e14da800b1b0e8e9c5a393160b11463331ed7a95",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "generated_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/qa_v451.json",
       "relativePath": "report/release-v4.5/qa_v451.json",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1最终QA材料"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
       "bytes": 9351,
-      "sha256": "4c0714198c04813292a68e20ab98496d044f3f5ec8afb31c3eb446c4b495e064",
+      "sha256": "ad2c46f92af303dc8d127911a2e084aee3a55354d85a505f9ac7f136edc9f113",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "generated_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/qa_v451.py",
       "relativePath": "report/release-v4.5/qa_v451.py",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1最终QA材料"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
       "bytes": 31057,
       "sha256": "c474cf61a1a019f0713a4a4363e16ea7e913d3265060138fcfa889026dae1215",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "generated_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/qa_v451_candidate.json",
       "relativePath": "report/release-v4.5/qa_v451_candidate.json",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1最终QA材料"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
       "bytes": 9355,
       "sha256": "025719bd19faa78d5f12d5eb19bf67e24fcc5571eedf03d2f6324ba1c705fbff",
       "mimeType": "application/json",
       "jsonPointers": [],
-      "kind": "generated_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/revise_v451.py",
       "relativePath": "report/release-v4.5/revise_v451.py",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1可复现修订与发布脚本"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
       "bytes": 26896,
       "sha256": "5a8abf48706f2fe5d9b6eb731bcaa16fc011b42244771756887a0bdfd2e57160",
       "mimeType": "text/x-python",
       "jsonPointers": [],
-      "kind": "generated_release",
+      "kind": "frozen_semantic_release_basis",
       "duplicateOf": null
     },
     {
       "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/stamp_v451.py",
       "relativePath": "report/release-v4.5/stamp_v451.py",
       "category": [
-        "v4.5.1_release"
+        "v4.5.1_frozen_data_basis"
       ],
       "roles": [
-        "v4.5.1可复现修订与发布脚本"
+        "v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"
       ],
       "bytes": 8904,
       "sha256": "f886c5a5c22ec0cb7ebdc027e394011eba78e0bf6a9460620997e7acb932cfe6",
       "mimeType": "text/x-python",
+      "jsonPointers": [],
+      "kind": "frozen_semantic_release_basis",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/build_release_variants.py",
+      "relativePath": "report/release-v4.5/build_release_variants.py",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 11425,
+      "sha256": "fffe2580d3a804ebbb60ee65d1c15565469d9b23bdb9feae248da05d6a630882",
+      "mimeType": "text/x-python",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/finalize_v452.py",
+      "relativePath": "report/release-v4.5/finalize_v452.py",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 187,
+      "sha256": "047a00ecf6dff0a8703f61da2d20d8a531b4e99641d21927b52edc48525b77b0",
+      "mimeType": "text/x-python",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/fonts/OFL.txt",
+      "relativePath": "report/release-v4.5/fonts/OFL.txt",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 4463,
+      "sha256": "9ff5bb567e1b92c801fc1069e5fbf992ff8efccacb9db94e5959a5b3ba9bb903",
+      "mimeType": "text/plain",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/fonts/README.md",
+      "relativePath": "report/release-v4.5/fonts/README.md",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 1039,
+      "sha256": "2b5f3f70945c329d0dc040d10804f806785fcb4340e0a1bd37ba5ec4a820851c",
+      "mimeType": "application/octet-stream",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/fonts/aireport-editorial-serif-semibold-subset.woff2",
+      "relativePath": "report/release-v4.5/fonts/aireport-editorial-serif-semibold-subset.woff2",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 339588,
+      "sha256": "7d7470206c340f8cfa6e1984ef35094ffcb6c7091c3fbf964aaaa6e0ed235dac",
+      "mimeType": "application/octet-stream",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report.ui.json",
+      "relativePath": "report/release-v4.5/report.ui.json",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 10521,
+      "sha256": "42f1ce1395a0795dd3e9063086329bf4dd50ae40bb83ab57fd36d7b0cd439da7",
+      "mimeType": "application/json",
+      "jsonPointers": [],
+      "kind": "generated_release",
+      "duplicateOf": null
+    },
+    {
+      "sourcePathAtPackaging": "repository:docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/qa_print_v452.json",
+      "relativePath": "report/release-v4.5/qa_print_v452.json",
+      "category": [
+        "v4.5.2_release"
+      ],
+      "roles": [
+        "v4.5.2展示层、构建、字体、配置或发布校验材料"
+      ],
+      "bytes": 3587,
+      "sha256": "457cda67808e1dc8310508796f4aa307eabb17ddf22bf6d8b28a383f9a227d2e",
+      "mimeType": "application/json",
       "jsonPointers": [],
       "kind": "generated_release",
       "duplicateOf": null
     }
   ],
   "supplementalMaterialCount": 5,
-  "activeVersion": "4.5.1",
-  "v45PackagingBoundary": "历史兼容字段：基础证据包沿用v4.5目录与文件名；v4.5.1仅修订报告、方法和发布材料。8段完整过程录屏仅发布哈希索引，视频本体及其余排除项不纳入仓库。",
+  "activeVersion": "4.5.2",
+  "v45PackagingBoundary": "历史兼容字段：基础证据包沿用v4.5目录与文件名；v4.5.2仅升级展示层，评分数据沿用v4.5.1。8段完整过程录屏仅发布哈希索引，视频本体及其余排除项不纳入仓库。",
   "gitCommitPerformed": false,
   "gitPushPerformed": false,
   "publicationMode": "single_version",
   "packageDirectory": "unitree-office-benchmark",
   "compatibilityFilenameVersion": "4.5",
-  "activeVersionBoundary": "内容元数据为v4.5.1；兼容路径保留v4.5文件名。process-video-index.json属于包内生成清单，仅由SHA256SUMS覆盖。"
+  "activeVersionBoundary": "活动展示版本为v4.5.2，冻结评分数据版本为v4.5.1；兼容路径保留v4.5文件名。process-video-index.json属于包内生成清单，仅由SHA256SUMS覆盖。"
 }

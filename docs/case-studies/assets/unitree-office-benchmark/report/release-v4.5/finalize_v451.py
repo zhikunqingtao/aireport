@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Finalize deterministic v4.5.1 build and integrity manifests.
+"""Finalize the deterministic v4.5.2 presentation and integrity manifests.
 
 The repository intentionally retains the public/internal ``v4.5`` filenames so
-existing links remain stable.  This script records ``4.5.1`` as the content
-version, refreshes hashes and sizes after the final HTML build, and closes the
+existing links remain stable.  The frozen scoring data remains ``4.5.1`` while
+this script records ``4.5.2`` as the presentation release, refreshes hashes and sizes, and closes the
 package-wide SHA-256 inventory without creating a self-referential hash cycle.
 
 The default mode is read-only.  Pass ``--write`` to replace the four generated
@@ -24,7 +24,8 @@ from pathlib import Path
 from typing import Any, Iterable
 
 
-REPORT_VERSION = "4.5.1"
+REPORT_VERSION = "4.5.2"
+DATA_VERSION = "4.5.1"
 COMPATIBILITY_FILENAME_VERSION = "4.5"
 PACKAGE_RELATIVE = Path(
     "docs/case-studies/assets/unitree-office-benchmark"
@@ -114,9 +115,9 @@ def assert_content_version(path: Path, data: dict[str, Any]) -> None:
         str(meta.get("presentationVersion", "")),
         str(meta.get("dataVersion", "")),
     }
-    if REPORT_VERSION not in observed:
+    if DATA_VERSION not in observed:
         raise ValueError(
-            f"{path} does not identify content version {REPORT_VERSION}; "
+            f"{path} does not identify frozen data version {DATA_VERSION}; "
             f"observed={sorted(observed)}"
         )
 
@@ -147,13 +148,13 @@ def release_file_descriptor(
     descriptor = bytes_descriptor(content) if content is not None else file_descriptor(path)
     relative = path.relative_to(release_dir).as_posix()
     if relative in HISTORICAL_V45_FILES:
-        role = "historical_v4.5_reference_not_current_v4.5.1_qa"
+        role = "historical_v4.5_reference_not_current_v4.5.2_release"
     elif relative.startswith("provenance-inputs/"):
         role = "calculation_provenance_input"
     elif "v451" in path.name or path.name == "report_v4.5_final.json":
-        role = "current_v4.5.1_release_pipeline_or_data"
+        role = "frozen_v4.5.1_semantic_qa_or_data_for_v4.5.2"
     else:
-        role = "current_v4.5.1_presentation_source"
+        role = "current_v4.5.2_presentation_source"
     return {"path": relative, "role": role, **descriptor}
 
 
@@ -171,11 +172,11 @@ def mime_type(path: Path) -> str:
 def new_release_record(package_root: Path, path: Path) -> dict[str, Any]:
     relative = path.relative_to(package_root).as_posix()
     if path.name.startswith("qa_"):
-        roles = ["v4.5.1最终QA材料"]
+        roles = ["v4.5.2发布校验材料"]
     elif path.suffix == ".py":
-        roles = ["v4.5.1可复现修订与发布脚本"]
+        roles = ["v4.5.2可复现构建与发布脚本"]
     else:
-        roles = ["v4.5.1本地发布材料"]
+        roles = ["v4.5.2本地发布材料"]
     return {
         "sourcePathAtPackaging": f"repository:{PACKAGE_RELATIVE.as_posix()}/{relative}",
         "relativePath": relative,
@@ -246,8 +247,8 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
         raise ValueError("final report data has no deterministic meta.generatedAt")
 
     video_index = load_json(paths["video_index"])
-    if video_index.get("reportVersion") != REPORT_VERSION:
-        raise ValueError("process-video-index reportVersion is not 4.5.1")
+    if video_index.get("reportVersion") != DATA_VERSION:
+        raise ValueError(f"process-video-index reportVersion is not frozen data version {DATA_VERSION}")
     video_summary = video_index.get("summary") or {}
     if video_summary.get("fileCount") != 8 or video_summary.get("totalBytes") != 7_399_913_834:
         raise ValueError("process-video-index summary is not the confirmed 8-file/7,399,913,834-byte set")
@@ -315,8 +316,8 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
                 "artifactPointEstimatesChanged": False,
             },
             "changeScope": (
-                "v4.5.1修正评分类别汇总、当前版本敏感性、正式/探索性排名角色与"
-                "方法及过程披露；30件固定终稿的点估计未改变。"
+                "v4.5.2仅升级出版物级视觉系统、执行摘要、导航、表格、弹窗、"
+                "打印与无障碍交互；沿用v4.5.1冻结数据，30件终稿点估计及排名未改变。"
             ),
         }
     )
@@ -340,7 +341,7 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
     summary["artifactAccess"] = artifact_access
     desktop_experience = deepcopy(summary.get("desktopExperience") or {})
     desktop_experience["browserValidation"] = (
-        "user_reported_ok; not rerun by the v4.5.1 release pipeline"
+        "v4.5.2_runtime_and_responsive_checks_passed; print_smoke_passed"
     )
     summary["desktopExperience"] = desktop_experience
     summary_bytes = json_bytes(summary)
@@ -350,11 +351,11 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
         {
             "version": REPORT_VERSION,
             "compatibilityFilenameVersion": COMPATIBILITY_FILENAME_VERSION,
-            "status": "v451_release_files_finalized",
+            "status": "v452_release_files_finalized",
             "finalizedAt": deterministic_time,
             "publicationMode": "single_version",
             "compatibilityNote": (
-                "内容版本为v4.5.1；为保持既有GitHub Pages与证据引用稳定，"
+                "展示版本为v4.5.2，冻结评分数据版本为v4.5.1；为保持既有GitHub Pages与证据引用稳定，"
                 "内部目录及文件名继续使用release-v4.5和*-v4.5.*。"
             ),
             "active": {
@@ -380,8 +381,8 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
             "historicalReferencePolicy": (
                 "adjudicate_v45.py、stamp_v45.py、qa_v45.py、"
                 "qa_interaction_affordance.json、qa_report_postpublication_hardened.json和"
-                "recompute_summary.json仅保留为v4.5历史参考；其中旧HTML哈希和浏览器QA"
-                "不代表v4.5.1当前构建。"
+                "recompute_summary.json仅保留为v4.5历史参考；v451脚本和QA保留为v4.5.1"
+                "冻结数据依据，旧HTML哈希与浏览器QA不代表v4.5.2当前展示构建。"
             ),
             # These booleans describe the instant at which this deterministic
             # manifest is finalized; the Git commit and push happen afterwards.
@@ -389,14 +390,14 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
             "gitPushPerformed": False,
             "publicationStateNote": "清单在Git提交与推送前闭合；发布结果由tag与GitHub Release记录。",
             "presentationUpdate": {
-                "scope": "执行摘要先展示交付闸门与两张正式榜；两张首次归责结果明确标为探索性非因果诊断；桌面端保留四组结果直显、强点击引导与可折叠固定侧栏。",
+                "scope": "研究出版与科技数据视觉系统；真实数据首屏、四榜直显、30项矩阵、可折叠固定侧栏、证据弹窗与打印版式统一升级。",
                 "scoringChanged": False,
-                "reportDataChanged": True,
-                "reportDataChangeBoundary": "仅修正分类汇总、敏感性、排名角色和方法/过程披露；30件点估计不变。",
-                "browserRuntimeRetest": "not_rerun_user_reported_ok",
-                "desktopSidebar": "fixed_at_1180px_and_above_collapsible_226px_to_70px",
+                "reportDataChanged": False,
+                "reportDataChangeBoundary": "沿用v4.5.1冻结评分数据；30件点估计不变，排名、闸门、事实、证据与来源均不变。",
+                "browserRuntimeRetest": "passed_v452_preview_validator_and_user_visual_review",
+                "desktopSidebar": "248px_at_1440_plus_216px_at_1180_to_1439_collapsible_to_72px",
                 "rankingPresentation": "two_official_plus_two_exploratory_static_panels_no_switch_controls",
-                "heatmapAffordance": "30_high_contrast_animated_click_targets",
+                "heatmapAffordance": "30_full_cell_click_targets_with_once_only_motion_and_reduced_motion_support",
                 "publishedAssetHeadChecks": "carried_forward_30_of_30_asset_paths_unchanged",
             },
         }
@@ -456,8 +457,19 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
         )
         if release_relative in HISTORICAL_V45_FILES:
             item["category"] = ["v4.5_historical_reference"]
-            item["roles"] = ["v4.5历史参考；不是v4.5.1当前QA或构建结论"]
+            item["roles"] = ["v4.5历史参考；不是v4.5.2当前展示QA或构建结论"]
             item["kind"] = "historical_release_reference"
+        elif release_relative and (
+            "v451" in Path(release_relative).name
+            or Path(release_relative).name == "report_v4.5_final.json"
+        ):
+            item["category"] = ["v4.5.1_frozen_data_basis"]
+            item["roles"] = ["v4.5.1冻结评分数据、语义QA或复算脚本；供v4.5.2展示层沿用"]
+            item["kind"] = "frozen_semantic_release_basis"
+        elif release_relative:
+            item["category"] = ["v4.5.2_release"]
+            item["roles"] = ["v4.5.2展示层、构建、字体、配置或发布校验材料"]
+            item["kind"] = "generated_release"
 
     files_manifest.update(
         {
@@ -480,12 +492,12 @@ def build_expected(repo: Path) -> tuple[dict[Path, bytes], dict[str, Any]]:
             "uniqueContentCount": len({str(item["sha256"]) for item in records}),
             "copiedBytes": sum(int(item["bytes"]) for item in records),
             "activeVersionBoundary": (
-                "内容元数据为v4.5.1；兼容路径保留v4.5文件名。"
+                "活动展示版本为v4.5.2，冻结评分数据版本为v4.5.1；兼容路径保留v4.5文件名。"
                 "process-video-index.json属于包内生成清单，仅由SHA256SUMS覆盖。"
             ),
             "v45PackagingBoundary": (
-                "历史兼容字段：基础证据包沿用v4.5目录与文件名；v4.5.1仅修订报告、"
-                "方法和发布材料。8段完整过程录屏仅发布哈希索引，视频本体及其余排除项"
+                "历史兼容字段：基础证据包沿用v4.5目录与文件名；v4.5.2仅升级展示层，"
+                "评分数据沿用v4.5.1。8段完整过程录屏仅发布哈希索引，视频本体及其余排除项"
                 "不纳入仓库。"
             ),
             "inventoryScope": (

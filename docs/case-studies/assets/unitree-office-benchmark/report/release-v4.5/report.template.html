@@ -10,7 +10,8 @@
   <style>__REPORT_CSS__</style>
 </head>
 <body>
-  <div id="app" aria-live="polite">正在载入报告数据…</div>
+  <div id="app" aria-busy="true">正在载入报告数据…</div>
+  <div id="app-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
   <noscript>此报告需要启用 JavaScript，评分数据、样式和脚本均已内嵌。</noscript>
   <script id="report-data" type="application/json" __REPORT_DATA_ATTRIBUTES__>__REPORT_JSON__</script>
   <script>__REPORT_JS__</script>
