@@ -1,23 +1,26 @@
 {
   "path": "report/source-self-contained-v4.5.html",
-  "bytes": 39578460,
-  "sha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b",
+  "bytes": 39643828,
+  "sha256": "cb02f331343f698a3679bf1de33b28f5bffc1b48069b061e4cfdff1ceecce933",
   "embeddedMedia": 710,
   "missingMedia": 0,
   "reportDataEncoding": "gzip-base64",
   "portablePagesBuild": {
     "path": "../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
-    "bytes": 966352,
-    "sha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f",
-    "embeddedMedia": 707,
-    "missingMedia": 3,
-    "reportDataEncoding": "gzip-base64"
+    "bytes": 1030544,
+    "sha256": "37622ef8192703c7e4cb277d2ebe8a2ef154b00b90d598f52cfad5d2be39daaf",
+    "embeddedMedia": 0,
+    "missingMedia": 0,
+    "reportDataEncoding": "gzip-base64",
+    "mediaTotal": 710,
+    "externalMedia": 710,
+    "deduplicatedMediaReferences": 3
   },
   "artifactAccess": {
     "officeDownloads": 15,
     "imagePreviewsAndDownloads": 10,
     "htmlOpenAndDownloads": 5,
-    "publishedAssetHeadChecks": "30/30 HTTP 200"
+    "publishedAssetHeadChecks": "carried_forward_30_of_30_from_prior_release; asset paths unchanged"
   },
   "desktopExperience": {
     "protocolPromptsOpenByDefault": 6,
@@ -27,7 +30,61 @@
     "heatmapClickTargets": 30,
     "fixedSidebarMinWidthPx": 1180,
     "fixedSidebarExpandedWidthPx": 226,
-    "fixedSidebarCollapsedWidthPx": 70
+    "fixedSidebarCollapsedWidthPx": 70,
+    "browserValidation": "user_reported_ok; not rerun by the v4.5.1 release pipeline"
   },
-  "changeScope": "桌面端六任务默认展开、四组排名同时展示、30个评分卡强化点击引导，并将导航改为可折叠固定左栏；未重新评分，活动数据未改变。"
+  "changeScope": "v4.5.1修正评分类别汇总、当前版本敏感性、正式/探索性排名角色与方法及过程披露；30件固定终稿的点估计未改变。",
+  "version": "4.5.1",
+  "compatibilityFilenameVersion": "4.5",
+  "reportCounts": {
+    "artifacts": 30,
+    "scenarioRecords": 202,
+    "coverageItems": 324,
+    "findings": 200,
+    "evidence": 741,
+    "media": 710,
+    "facts": 32,
+    "sources": 11
+  },
+  "dataFiles": {
+    "final": {
+      "path": "report/release-v4.5/report_v4.5_final.json",
+      "bytes": 7744446,
+      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec"
+    },
+    "activity": {
+      "path": "report/activity-report-data-v4.5.json",
+      "bytes": 7744446,
+      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec"
+    },
+    "portable": {
+      "path": "report/portable-report-data-v4.5.json",
+      "bytes": 8075209,
+      "sha256": "3c032b3708b25f4c074ce774dede60ead991ae94cca077b906985260fcf5f0a8"
+    }
+  },
+  "processVideoIndex": {
+    "path": "manifests/process-video-index.json",
+    "bytes": 2631,
+    "sha256": "f9f18eb2299f2e7ff2fc83ea9ebae99788d18bde9b3f22cbe88f5f37a012f88c",
+    "fileCount": 8,
+    "totalBytes": 7399913834,
+    "videosIncludedInRepository": 0,
+    "publicAvailability": "hash_index_only_videos_withheld_by_owner",
+    "requestUrl": "https://github.com/zhikunqingtao/aireport/issues"
+  },
+  "rankingPublication": {
+    "officialResultIds": [
+      "standalone_equalTask",
+      "standalone_practical"
+    ],
+    "diagnosticResultIds": [
+      "firstOrigin_equalTask",
+      "firstOrigin_practical"
+    ],
+    "artifactPointEstimatesChanged": false
+  },
+  "mediaTotal": 710,
+  "externalMedia": 0,
+  "deduplicatedMediaReferences": 3
 }

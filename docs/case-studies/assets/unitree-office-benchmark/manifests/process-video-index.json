@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "process-video-index-1.0",
+  "reportVersion": "4.5.1",
+  "generatedAt": "2026-09-09T12:24:00+08:00",
+  "scope": {
+    "toolCount": 5,
+    "taskCount": 6,
+    "segmentCount": 8,
+    "coverageStatement": "用户确认：以下8段视频合计完整记录本次5款AI办公软件完成6项连续任务的全过程。",
+    "segmentMappingLimit": "仅确认8段合计覆盖完整过程；本索引不额外推断每一段与单一工具或单一任务的一一对应关系。",
+    "scoreEffect": "none"
+  },
+  "publication": {
+    "included": false,
+    "reason": "withheld_by_owner_due_to_size",
+    "note": "视频合计约7.40GB，暂不上传GitHub。公开仓库仅保留文件名、字节数与SHA-256，用于按需核对原件。",
+    "requestUrl": "https://github.com/zhikunqingtao/aireport/issues",
+    "requestMethod": "需要核验原视频时，请通过仓库GitHub Issues联系提供。"
+  },
+  "summary": {
+    "fileCount": 8,
+    "totalBytes": 7399913834,
+    "allSha256Recorded": true
+  },
+  "files": [
+    {
+      "segment": 1,
+      "fileName": "钉钉录屏_2026-09-04 001812.mp4",
+      "bytes": 772188011,
+      "sha256": "9c3595c9fde0265395290836490f4c4e404eb7567800fd2237afea59d1740366"
+    },
+    {
+      "segment": 2,
+      "fileName": "钉钉录屏_2026-09-04 012326.mp4",
+      "bytes": 557333887,
+      "sha256": "1c87353a217cfb251a51e55ba115396b2e0c73e385c86848bd391405f9ed23ca"
+    },
+    {
+      "segment": 3,
+      "fileName": "钉钉录屏_2026-09-04 055945.mp4",
+      "bytes": 920545757,
+      "sha256": "0669df7bfdc1e0bc8ff7ef0a808af3c4e09a44c9b10671f5c6e79ccbd65c50a0"
+    },
+    {
+      "segment": 4,
+      "fileName": "钉钉录屏_2026-09-04 090149.mp4",
+      "bytes": 1062126323,
+      "sha256": "e329704d0d45693c0e9e6a20de30ad5834fe7a6a10a351ae738c9d622dfaac68"
+    },
+    {
+      "segment": 5,
+      "fileName": "钉钉录屏_2026-09-04 104130.mp4",
+      "bytes": 184632518,
+      "sha256": "089d14d995f29e48f784894ccb8680c4ca78985da18807ae03d64960401af931"
+    },
+    {
+      "segment": 6,
+      "fileName": "钉钉录屏_2026-09-04 110042.mp4",
+      "bytes": 729936197,
+      "sha256": "b505804f3be38f7c5ee03f9bcd1bf77f51a21e0252a8f4054a92485228669e51"
+    },
+    {
+      "segment": 7,
+      "fileName": "钉钉录屏_2026-09-04 120106.mp4",
+      "bytes": 3066455016,
+      "sha256": "675aa2119f66489b27524292f53b814fa758df784bf9f1b111e9ce7204275189"
+    },
+    {
+      "segment": 8,
+      "fileName": "钉钉录屏_2026-09-07 003849.mp4",
+      "bytes": 106696125,
+      "sha256": "87f908ec08cf27de51a5d8a830c8ef701abafe197af3867004cbb0523c1d275b"
+    }
+  ]
+}

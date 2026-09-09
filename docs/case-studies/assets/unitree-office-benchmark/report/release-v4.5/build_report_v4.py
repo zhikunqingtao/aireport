@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the self-contained fixed-sample evidence-review report from report_v4.json.
+"""Build the self-contained fixed-sample evidence-review report from v4.5.1 data.
 
 The source JSON is never modified. Local evidence/media files referenced by the
 JSON are converted to data URIs in the in-memory copy before the single HTML is
@@ -24,7 +24,7 @@ from typing import Any, Iterable
 
 
 HERE = Path(__file__).resolve().parent
-DEFAULT_DATA = HERE.parent / "v4" / "report_v4.json"
+DEFAULT_DATA = HERE / "report_v4.5_final.json"
 MAX_BYTES = 40 * 1024 * 1024
 DISPLAY_MEDIA_FILES = {
     "media:native:8e71f292cb665ac44392": "zhikuncode_html_fullpage-display.webp",
@@ -39,7 +39,7 @@ DEFAULT_UI = {
     "hero": {
         "title": "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日",
         "lead": "对5款工具共30件固定终稿（每款6件）的单次、单环境复核；结论仅代表本次样本表现，不外推为工具的一般表现。",
-        "statusNote": "正式比较只使用独立终稿连续分；点估计顺序同时配套单评审、非统计的单项一步判断敏感性，避免把微小分差解释为确定性优劣。",
+        "statusNote": "两张终稿独立使用排名为正式固定样本结果；首次归责只作探索性非因果诊断。点估计配套单评审、非统计的单项一步判断敏感性。",
     },
     "nav": {"protocol": "测试流程", "executive": "执行摘要", "results": "比较结果", "profiles": "逐工具与逐文件", "native": "原生应用与兼容性", "issues": "问题、闸门与传播链", "facts": "事实基准与来源", "evidence": "方法、过程与全量证据", "challenges": "异议裁决"},
     "metrics": {
@@ -49,11 +49,11 @@ DEFAULT_UI = {
         "repairs": "修复提示", "repairsNote": "按文件特异性判定",
     },
     "sections": {
-        "process": {"kicker": "", "title": "用户补充的全过程记录", "copy": "五条分享记录用于还原任务上下文与提供复核入口；它们不替代终稿原件、原生应用实测或Excel独立事实账本，也不直接参与评分。"},
+        "process": {"kicker": "", "title": "全过程记录与录屏哈希", "copy": "五条分享记录用于还原任务上下文；另有8段、合计约7.40GB的完整过程录屏暂不公开，仅发布SHA-256索引。过程材料不替代终稿原件、原生应用实测或Excel独立事实账本，也不直接参与评分。"},
         "context": {"kicker": "", "title": "本次任务配置与用量/费用旁证", "copy": "五款均有配置证据；四款有产品自身额度截图，ZhikunCode另有一张Kimi API账户日账单旁证。该账单混有其他任务，不能归因于本次六任务。全部资料均不计分，也不把本次比较误称为同模型、同算力或同成本控制实验。"},
-        "ranking": {"kicker": "", "title": "独立终稿点估计比较", "copy": "仅发布六任务等权和均衡投研实务两种正式比较；同步展示一次改变一个已分类专家/混合判断维度的非统计敏感性范围、S组和情景重算次序。旧传播恢复值仅留在历史附录，不再作为活动排名。"},
+        "ranking": {"kicker": "", "title": "正式固定终稿排名与探索性诊断", "copy": "终稿独立使用的六任务等权和均衡投研实务两榜为正式结果；首次归责两组仅对已枚举完全继承项作探索性去重，不是因果或采购排名。四组均同步展示单评审者局部一步敏感性范围与近分组。"},
         "heatmap": {"kicker": "", "title": "30件终稿连续质量分", "copy": "分数仅0–100线性加权，不应用59/39/69数值封顶；点击查看子测试、问题、闸门和证据。"},
-        "gates": {"kicker": "", "title": "G0 / G1 / G2 交付安全矩阵", "copy": "闸门不改写连续分：G0可按常规复核使用，G1修正后可用，G2禁止未经复核直接交付。完全继承不重复归责，也不自动升级闸门；只有符合已公开的对称G2规则才可升级。"},
+        "gates": {"kicker": "", "title": "G0 / G1 / G2 交付安全矩阵", "copy": "闸门不改写连续分：G0可按常规复核使用，G1修正后可用，G2禁止未经复核直接交付。核心标题绝对方向反转G2规则为观察后制定、再对五家对称复核，并非事前预注册。"},
         "compatibility": {"kicker": "", "title": "平台兼容证据矩阵", "copy": "区分已观察的环境结果与未验证平台，不把Mac特定表现外推为通用文件结论。"},
         "sensitivity": {"kicker": "", "title": "规则与权重敏感性", "copy": "展示HTML交互权重、千问Excel图表、v3历史封顶以及传播归责口径改变时的排名变化。"},
         "native": {"kicker": "", "title": "原生打开与修复矩阵", "copy": "指定应用首次打开、修复提示和编辑任务在这里逐件可见；环境共性问题与文件特异问题分开记录。"},
@@ -187,6 +187,12 @@ def embed_media(data: dict, data_dir: Path) -> dict:
         existing = record.get("dataUri") or record.get("data_uri")
         if existing:
             record["dataUri"] = existing
+        elif record.get("dataUriRef"):
+            # Portable data intentionally deduplicates a few repeated payloads
+            # through another media record. Do not misclassify a valid alias as
+            # a missing local file merely because its original source path is
+            # expressed relative to the published case-study page.
+            record.pop("embedError", None)
         else:
             original_path_value = record.get("path") or record.get("file") or record.get("src")
             display_name = DISPLAY_MEDIA_FILES.get(key)
@@ -289,9 +295,38 @@ def embed_media(data: dict, data_dir: Path) -> dict:
                 "screenshotEmbedded": True,
             })
 
+    for media_id, record in normalized.items():
+        if not record.get("dataUriRef"):
+            continue
+        resolution = media_resolution_kind(normalized, media_id)
+        record["embedded"] = resolution == "inline"
+        record["externallyReferenced"] = resolution == "external"
+        if resolution == "unresolved":
+            record["embedError"] = "去重媒体引用不存在或形成循环"
+        else:
+            record.pop("embedError", None)
+
     result["evidence"] = evidence
     result["media"] = normalized
     return result
+
+
+def media_resolution_kind(media: dict[str, dict], media_id: str) -> str:
+    """Classify a media record as inline, external, or unresolved.
+
+    ``dataUriRef`` aliases inherit the classification of their canonical
+    record. Cycles and missing targets are treated as unresolved.
+    """
+    seen: set[str] = set()
+    current = media_id
+    while current and current not in seen:
+        seen.add(current)
+        record = media.get(current) or {}
+        value = record.get("dataUri") or record.get("data_uri")
+        if value:
+            return "inline" if str(value).startswith("data:") else "external"
+        current = str(record.get("dataUriRef") or "")
+    return "unresolved"
 
 
 def script_json(value: Any) -> str:
@@ -337,7 +372,7 @@ def build(
     }
     missing = sorted(required - set(raw))
     if missing:
-        raise ValueError(f"report_v4.json missing top-level keys: {', '.join(missing)}")
+        raise ValueError(f"report data missing top-level keys: {', '.join(missing)}")
 
     data = embed_media(raw, data_path.resolve().parent)
     data.setdefault("meta", {})
@@ -356,12 +391,12 @@ def build(
     # a single fixed sample must never be relabelled as general product ability.
     data["meta"]["title"] = "五款AI办公工具固定样本交付物比较评测与证据复核报告——宇树科技六任务，截至2026年8月30日"
     data["meta"]["subtitle"] = data["meta"]["ui"]["hero"]["lead"]
-    scoring_note = data["meta"]["ui"]["hero"]["statusNote"]
-    data["meta"]["scoringNote"] = scoring_note
-    if not str(data["meta"].get("status", "")).startswith("final"):
-        data["meta"]["statusNote"] = scoring_note
-    else:
-        data["meta"].setdefault("statusNote", scoring_note)
+    status_note = data["meta"]["ui"]["hero"]["statusNote"]
+    # ``scoringNote`` is release metadata (for v4.5.1 it records that all 30
+    # point estimates are frozen). Keep it intact and expose UI copy through
+    # the separate status field instead of silently changing embedded data.
+    data["meta"].setdefault("scoringNote", status_note)
+    data["meta"]["statusNote"] = status_note
     template = (HERE / "report.template.html").read_text(encoding="utf-8")
     css = compact_css((HERE / "report.css").read_text(encoding="utf-8"))
     js = compact_js((HERE / "report.js").read_text(encoding="utf-8"))
@@ -384,7 +419,9 @@ def build(
         # Losslessly compress the complete in-page JSON.  This preserves every
         # evidence byte while keeping the single-file deliverable below the
         # repository limit; the report script inflates it before parsing.
-        compressed = gzip.compress(report_json.encode("utf-8"), compresslevel=9)
+        # A fixed gzip timestamp keeps otherwise identical HTML builds byte-for-byte
+        # reproducible across runs and machines.
+        compressed = gzip.compress(report_json.encode("utf-8"), compresslevel=9, mtime=0)
         report_payload = base64.b64encode(compressed).decode("ascii")
         html = assemble(report_payload, 'data-encoding="gzip-base64"')
         encoded = html.encode("utf-8")
@@ -410,12 +447,16 @@ def build(
             pass
         raise
 
+    media_kinds = [media_resolution_kind(data["media"], media_id) for media_id in data["media"]]
     return {
         "path": str(out_path.resolve()),
         "bytes": len(encoded),
         "sha256": hashlib.sha256(encoded).hexdigest(),
-        "embeddedMedia": sum(1 for item in data["media"].values() if item.get("embedded")),
-        "missingMedia": sum(1 for item in data["media"].values() if item.get("embedded") is False),
+        "mediaTotal": len(media_kinds),
+        "embeddedMedia": media_kinds.count("inline"),
+        "externalMedia": media_kinds.count("external"),
+        "deduplicatedMediaReferences": sum(1 for item in data["media"].values() if item.get("dataUriRef")),
+        "missingMedia": media_kinds.count("unresolved"),
         "reportDataEncoding": "gzip-base64" if compressed_report_data else "json",
     }
 

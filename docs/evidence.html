@@ -81,9 +81,9 @@
     <p class="lead">本包记录五款 AI 办公工具在同一组六项连续任务中的固定样本交付物、复核材料、报告数据和文件级完整性清单。</p>
 
     <div class="grid" aria-label="证据包摘要">
-      <div class="metric"><strong>v4.5</strong><span>唯一正式报告版本</span></div>
+      <div class="metric"><strong>v4.5.1</strong><span>当前活动报告版本</span></div>
       <div class="metric"><strong>30</strong><span>固定终稿样本</span></div>
-      <div class="metric"><strong>1,598</strong><span>清单记录</span></div>
+      <div class="metric"><strong>1,604</strong><span>清单记录</span></div>
     </div>
 
     <section>
@@ -95,6 +95,7 @@
         <li><code>external-snapshots/</code>：打包时取得的静态外部资料。</li>
         <li><code>stakeholder-responses/</code>：非计分的工具自评回复材料。</li>
         <li><code>manifests/</code>：来源、路径、SHA-256、重复组与排除记录。</li>
+        <li><code>manifests/process-video-index.json</code>：8段完整过程录屏的文件名、字节数与SHA-256；视频本体未上传。</li>
       </ul>
     </section>
 
@@ -104,8 +105,14 @@
     </section>
 
     <section class="warning">
-      <h2>完整原始证据保留说明</h2>
-      <p>完整证据包含未经脱敏的截图、日志、文档和网页快照，可能涉及个人信息、本机路径、第三方配置、Office 作者元数据以及第三方版权。发布者选择保留这些原始材料；访问、下载或再发布者应自行评估相关风险。</p>
+      <h2>发布范围与过程录屏</h2>
+      <p>本仓库完整保留已纳入发布范围的冻结证据。8段视频合计完整记录本次5款工具完成6项任务的全过程，因约7.40GB暂不公开；<a href="case-studies/assets/unitree-office-benchmark/manifests/process-video-index.json">查看哈希索引</a>。需要原视频时，请通过<a href="https://github.com/zhikunqingtao/aireport/issues">GitHub Issues</a>联系提供。</p>
+      <p>已发布的截图、日志、文档和网页快照未经脱敏，可能涉及个人信息、本机路径、第三方配置、Office 作者元数据以及第三方版权。访问、下载或再发布者应自行评估相关风险。</p>
+    </section>
+
+    <section>
+      <h2>结果角色与评审限制</h2>
+      <p>两张终稿独立使用排名为正式固定样本结果；首次归责仅为探索性非因果诊断。评测由单一评审者完成，评测者可能与部分参评工具存在未公开的利益相关，请结合冻结原件与可复算数据独立判断。</p>
     </section>
 
     <nav class="actions" aria-label="相关入口">

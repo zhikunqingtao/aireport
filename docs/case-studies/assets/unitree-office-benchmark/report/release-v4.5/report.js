@@ -137,7 +137,7 @@
   }
 
   function sensitivityGroupLabel(row) {
-    return row?.sensitivityGroup || row?.uncertaintyGroup ? `敏感组 ${row.sensitivityGroup || row.uncertaintyGroup}` : "";
+    return row?.sensitivityGroup || row?.uncertaintyGroup ? `近分组 ${row.sensitivityGroup || row.uncertaintyGroup}` : "";
   }
 
   function sensitivityRankLabel(row) {
@@ -242,6 +242,21 @@
     const base = gateBase(code);
     const labels = { G0: "G0 · 可按常规复核使用", G1: "G1 · 修正后可用", G2: "G2 · 禁止未复核交付" };
     return `<span class="gate-chip" data-gate="${base}" title="${esc(note)}">${esc(String(code).toUpperCase() === base ? labels[base] : gateDisplay(code))}</span>`;
+  }
+
+  function gateCounts() {
+    const counts = { G0: 0, G1: 0, G2: 0 };
+    artifacts.forEach((artifact) => { counts[gateBase(gateCode(artifact))] += 1; });
+    return counts;
+  }
+
+  function gateSummaryMarkup(extraClass = "") {
+    const meanings = {
+      G0: "未发现交付前必须修正的重大问题，仍需常规专业复核。",
+      G1: "存在明确局部问题，完成针对性修正和复核后使用。",
+      G2: "存在核心错误或重大交付风险，禁止未经独立复核直接使用。",
+    };
+    return `<div class="gate-summary ${esc(extraClass)}">${Object.entries(gateCounts()).map(([gate, count]) => `<article class="gate-summary-card panel" data-gate="${gate}">${gateChip(gate)}<strong>${count}</strong><span>件终稿${gate === "G2" ? "（含G2-Mac）" : ""}</span><p>${esc(meanings[gate])}</p></article>`).join("")}</div>`;
   }
 
   function gateSymbol(code) {
@@ -401,7 +416,7 @@
   }
 
   const sectionFallbacks = {
-    ranking: ["四组可复算比较", "并列公布终稿独立使用与链路首次归责两种视角；每种视角分别采用六任务等权和均衡投研实务权重。"],
+    ranking: ["两张正式排名与两张探索性诊断", "终稿独立使用视角形成两张正式排名；首次归责仅去重已枚举完全继承项，作为非因果探索性诊断。"],
     heatmap: ["逐文件质量分与交付闸门", "同一矩阵并列显示30件终稿的连续分和独立使用风险。"],
     compatibility: ["兼容性实测矩阵", "观察只适用于记录的操作系统、应用和版本；未验证平台不外推。"],
     native: ["覆盖完成度", "以明确分母显示Sheet、页面、幻灯片、图片区和HTML行为的实际检查范围。"],
@@ -504,6 +519,34 @@
     });
   }
 
+  let tableLabelSequence = 0;
+
+  function decorateTableSemantics(root = document) {
+    const tables = [];
+    if (root instanceof Element && root.matches("table")) tables.push(root);
+    if (root.querySelectorAll) tables.push(...root.querySelectorAll("table"));
+    tables.forEach((table) => {
+      table.querySelectorAll("thead th").forEach((cell) => cell.setAttribute("scope", "col"));
+      table.querySelectorAll("tbody th").forEach((cell) => cell.setAttribute("scope", "row"));
+      if (table.querySelector(":scope > caption") || table.hasAttribute("aria-labelledby") || table.hasAttribute("aria-label")) return;
+      const figure = table.closest("figure");
+      const details = table.closest("details");
+      const article = table.closest("article");
+      const section = table.closest("section, .subsection");
+      const label = figure?.querySelector(":scope > figcaption")
+        || figure?.querySelector(":scope > h3, :scope > header h3, :scope > header h4")
+        || details?.querySelector(":scope > summary")
+        || article?.querySelector(":scope > h3, :scope > header h3, :scope > header h4")
+        || section?.querySelector(":scope > .subsection-head h3, :scope > header h2, :scope > header h3");
+      if (label) {
+        if (!label.id) { tableLabelSequence += 1; label.id = `table-context-${tableLabelSequence}`; }
+        table.setAttribute("aria-labelledby", label.id);
+      } else {
+        table.setAttribute("aria-label", "报告数据表");
+      }
+    });
+  }
+
   function configureNavigationFeedback() {
     const chapters = navItems().map(([id]) => document.getElementById(id)).filter(Boolean);
     const links = new Map($$(".nav a[href^='#']").map((link) => [link.getAttribute("href").slice(1), link]));
@@ -573,15 +616,15 @@
       </div></header>
       <main id="main">
         <header class="report-masthead"><div class="shell">
-          <div class="report-series">${esc(meta.version || "报告版本 4.2 · 固定样本证据复核")}</div>
+          <div class="report-series">${esc(meta.version || "报告版本 4.5.1 · 固定样本证据复核")}</div>
           <h1 aria-label="${esc(titleParts.accessibleFullTitle || meta.title)}"><span>${esc(titleParts.main)}</span><small>${esc(titleParts.subtitle)}</small></h1>
           <p class="report-cutoff">${esc(titleParts.cutoff)}</p>
-          <a class="mobile-rank-jump" href="#executive-content">查看正式排名 ↓</a>
+          <a class="mobile-rank-jump" href="#executive-content">先看交付闸门与正式排名 ↓</a>
           <details class="report-boundary" open><summary>样本与核验边界</summary><dl class="report-meta"><div><dt>样本边界</dt><dd>${esc(boundary)}</dd></div><div><dt>资料截止</dt><dd>${esc(meta.cutoffDate || "2026-08-30")}</dd></div><div><dt>核验环境</dt><dd>${esc(meta.environmentSummary || "macOS 26.5.2 / Office 16.112.3 / Chrome 152")}</dd></div><div><dt>回应状态</dt><dd>${challengeRoot.meta ? `未收到厂商正式回应；已记录${challengeResponses.length}款工具的AI自评` : "未征求厂商正式回应"}</dd></div></dl></details>
           <p class="summary-excerpt-note">${esc(pageFurniture.summaryExcerptNote || "")}</p>
           <aside class="interaction-guide" aria-label="页面交互提示"><strong>交互提示</strong><span><b>点击任意分数卡 →</b>详情与原件</span><span><b>⌕ 点击查看</b>证据图片</span><span><b>⌄</b>展开内容</span><span><b>↗</b>外部来源</span><span><b>↔</b>筛选记录</span></aside>
         </div></header>
-        <section id="executive" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("01", "执行摘要", "先看测试协议、正式排名、交付闸门和关键限制；点估计的小分差不作确定性强弱解释。")}<div id="protocol" class="subsection"><div id="protocol-content"></div></div><div id="executive-content"></div></div></section>
+        <section id="executive" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("01", "执行摘要", "先看G0/G1/G2交付风险和两张正式排名，再核对测试协议；点估计的小分差不作确定性强弱解释。")}<div id="executive-content"></div><div id="protocol" class="subsection"><div id="protocol-content"></div></div></div></section>
         <section id="results" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("02", "比较结果", "分数、点估计名次、已分类专家/混合判断敏感性和闸门来自同一份活动JSON；不应用历史数值封顶。")}<div id="ranking" class="subsection">${sectionHead("ranking")}<div id="ranking-content"></div></div><div id="heatmap" class="subsection">${sectionHead("heatmap")}<div id="heatmap-content"></div></div></div></section>
         <section id="profiles" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("03", "逐工具与逐文件表现", "逐件显示连续分、交付闸门和可复核入口；仅代表本次固定样本。")}<div id="profiles-content"></div></div></section>
         <section id="native" class="chapter" data-print-level="formal"><div class="shell">${chapterHead("04", "原生应用与兼容性", "以指定原生应用的实际打开、编辑、保存、重开和展示结果为准；未验证平台不推断。")}<div id="compatibility" class="subsection">${sectionHead("compatibility")}<div id="compatibility-content"></div></div><div id="coverage" class="subsection"><div id="coverage-content"></div></div></div></section>
@@ -662,26 +705,37 @@
 
   function rankingMini(perspective, mode) {
     const modeLabels = { practical: "均衡投研实务", equalTask: "六任务等权" };
-    const perspectiveLabels = { standalone: "终稿独立使用", firstOrigin: "链路首次归责" };
+    const perspectiveLabels = { standalone: "正式固定终稿排名", firstOrigin: "探索性首次归责诊断" };
     const rows = rankingRows(perspective, mode);
-    return `<article class="executive-ranking"><header><h3>${perspectiveLabels[perspective]} · ${modeLabels[mode]}</h3><span>连续分点估计 · 0–100分</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，${sensitivityGroupLabel(row)}`)}"><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}</article>`;
+    const role = perspective === "standalone" ? "official" : "diagnostic";
+    const roleLabel = perspective === "standalone" ? "正式" : "探索性 · 非因果";
+    return `<article class="executive-ranking" data-ranking-role="${role}"><header><div><span class="ranking-role-badge" data-role="${role}">${roleLabel}</span><h3>${perspectiveLabels[perspective]} · ${modeLabels[mode]}</h3></div><span>连续分点估计 · 0–100分</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，${sensitivityGroupLabel(row)}`)}"><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}</article>`;
   }
 
   function rankingStaticPanel(perspective, mode) {
     const modeLabels = { practical: "均衡投研实务", equalTask: "六任务等权" };
     const rows = rankingRows(perspective, mode);
     const weights = weightsFor(mode, perspective);
-    return `<article class="executive-ranking ranking-static-card panel" data-ranking-view="${perspective}:${mode}"><header><div><span>权重模式</span><h3>${esc(modeLabels[mode])}</h3></div><span>完整排名 · 0–100分</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，已分类专家/混合判断敏感性范围${fmt(reviewResolution(row).lower, 1)}至${fmt(reviewResolution(row).upper, 1)}分`)}"><i class="review-range"></i><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}<div class="ranking-static-weights"><strong>六类任务权重</strong><div class="weight-list">${kinds.map((kind) => `<div class="weight-line"><span>${esc(kindLabels[kind])}</span><i style="width:${Number(weights[kind] || 0) * 100}%"></i><b>${fmt(Number(weights[kind] || 0) * 100, 1)}%</b></div>`).join("")}</div></div></article>`;
+    const role = perspective === "standalone" ? "official" : "diagnostic";
+    const roleLabel = perspective === "standalone" ? "正式排名" : "探索性次序 · 非因果";
+    return `<article class="executive-ranking ranking-static-card panel" data-ranking-view="${perspective}:${mode}" data-ranking-role="${role}"><header><div><span>权重模式</span><h3>${esc(modeLabels[mode])}</h3></div><span class="ranking-role-badge" data-role="${role}">${roleLabel}</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，已分类专家/混合判断敏感性范围${fmt(reviewResolution(row).lower, 1)}至${fmt(reviewResolution(row).upper, 1)}分`)}"><i class="review-range"></i><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}<div class="ranking-static-weights"><strong>六类任务权重</strong><div class="weight-list">${kinds.map((kind) => `<div class="weight-line"><span>${esc(kindLabels[kind])}</span><i style="width:${Number(weights[kind] || 0) * 100}%"></i><b>${fmt(Number(weights[kind] || 0) * 100, 1)}%</b></div>`).join("")}</div></div></article>`;
   }
 
   function renderExecutive() {
     const summary = presentation.executiveSummary || {};
     const meta = RAW.meta || {};
+    const execution = obj(testProtocol.executionDisclosure);
+    const recording = obj(testProtocol.processRecording);
+    const recordingSize = num(recording.totalBytes) === null ? "约7.40 GB" : `${(Number(recording.totalBytes) / 1e9).toFixed(2)} GB`;
     const summaryRows = [
       ["评价对象", summary.scope], ["排名解释", summary.rankingPolicy], ["质量与风险", summary.gatePolicy], ["证据口径", summary.evidencePolicy],
+      ["过程录屏", summary.processPolicy || `${recording.segmentCount || 8}段完整过程录屏合计${recordingSize}，暂不公开；发布SHA-256索引，需要时通过GitHub Issues联系提供。`],
+      ["干预与选择边界", execution.interventionBoundary || "未事前登记统一的重试、超时、人工干预与多版本终稿选择规则；结果不代表生成稳定性。"],
+      ["评审者披露", summary.reviewerDisclosure || meta.reviewerDisclosure || RAW.methodology?.assessmentClassification?.raterDisclosure],
       ["已分类判断敏感性", "一次只改变一个专家判断或混合判断评分项一个既定步长，并重算次序。它不是置信区间、概率预测、统计显著性或厂商能力区间。"],
     ];
-    $("#executive-content").innerHTML = `<div class="executive-layout"><figure class="publication-figure" id="visual-executive-rankings" aria-describedby="caption-executive-rankings"><div class="executive-rankings">${["standalone", "firstOrigin"].flatMap((perspective) => ["practical", "equalTask"].map((mode) => rankingMini(perspective, mode))).join("")}</div>${figureCaption("executive-rankings")}</figure><aside class="executive-policy"><h3>阅读边界</h3><dl>${summaryRows.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value || "—")}</dd></div>`).join("")}</dl></aside></div>
+    $("#executive-content").innerHTML = `<section class="executive-gate-priority" aria-labelledby="executive-gate-title"><header><div><span>首要结论</span><h3 id="executive-gate-title">30件终稿交付闸门</h3></div><p>先按G0/G1/G2判断能否直接交付，再结合连续质量分阅读；闸门不参与分数计算。</p></header>${gateSummaryMarkup("executive-gate-summary")}</section>
+      <div class="executive-layout"><figure class="publication-figure" id="visual-executive-rankings" aria-describedby="caption-executive-rankings"><div class="executive-rankings">${["practical", "equalTask"].map((mode) => rankingMini("standalone", mode)).join("")}</div>${figureCaption("executive-rankings")}</figure><aside class="executive-policy"><h3>阅读边界与披露</h3><dl>${summaryRows.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value || "—")}</dd></div>`).join("")}</dl></aside></div>
       <div class="limitation-block"><h3>关键限制</h3><ol>${arr(meta.limitations).map((item) => `<li>${esc(item)}</li>`).join("")}</ol></div>`;
   }
 
@@ -705,11 +759,18 @@
 
   function renderMethod() {
     const classification = RAW.methodology?.assessmentClassification || {};
-    const counts = contentInventory.assessmentClasses || {};
+    const counts = classification.summary || contentInventory.assessmentClasses || {};
+    const criterionCounts = obj(counts.criterionCount);
+    const classWeights = obj(counts.aggregateWeightAcrossSixRubrics);
+    const assessmentClasses = [
+      ["mechanical", "机械项", classification.mechanical],
+      ["mixed_anchored_judgment", "混合锚定判断", classification.mixed_anchored_judgment],
+      ["expert_judgment", "专家判断", classification.expert_judgment],
+    ];
     const scenarioComposition = contentInventory.scenarioRecordComposition || {};
     const inventoryRows = ["artifacts", "scenarioRecords", "coverageItems", "findings", "evidence", "media", "facts", "sources"].map((key) => [key, contentInventory[key]]).filter(([, value]) => value);
     const invLabels = { artifacts: "终稿", scenarioRecords: "综合复核记录", coverageItems: "覆盖项", findings: "复核发现", evidence: "证据", media: "媒体对象", facts: "事实基准", sources: "来源" };
-    $("#method-content").innerHTML = `<figure class="publication-figure publication-table-block" id="visual-method-inventory" aria-describedby="caption-method-inventory"><div class="method-ledger"><article><h3>机械验证项 / 专家判断项</h3><p>${esc(classification.purpose || "")}</p><dl><div><dt>机械验证项</dt><dd>${esc(classification.mechanical || "—")}</dd></div><div><dt>专家判断项</dt><dd>${esc(classification.expert_judgment || "—")}</dd></div><div><dt>评审者限制</dt><dd>${esc(classification.raterDisclosure || "单一评审者")}</dd></div></dl><p class="method-count">评分维度：机械 ${esc(counts.criterionCount?.mechanical ?? "—")} 项 / 专家判断 ${esc(counts.criterionCount?.expert_judgment ?? "—")} 项；此分类不改变任何分值。</p></article><article><h3>内容守恒清单</h3><table><thead><tr><th>对象</th><th>数量</th><th>页面入口</th></tr></thead><tbody>${inventoryRows.map(([key, value]) => `<tr><td>${esc(invLabels[key] || key)}</td><td>${esc(value.count)}</td><td>${esc(value.entry)}</td></tr>`).join("")}</tbody></table></article></div>${figureCaption("method-inventory")}</figure>
+    $("#method-content").innerHTML = `<figure class="publication-figure publication-table-block" id="visual-method-inventory" aria-describedby="caption-method-inventory"><div class="method-ledger"><article><h3>评分项分类与单评审者限制</h3><p>${esc(classification.purpose || "")}</p><div class="assessment-class-grid">${assessmentClasses.map(([key, label, definition]) => `<section data-assessment-class="${esc(key)}"><header><strong>${esc(label)}</strong><b>${esc(criterionCounts[key] ?? "—")}项</b><span>合计权重 ${esc(classWeights[key] ?? "—")} / 600</span></header><p>${esc(definition || "—")}</p></section>`).join("")}</div><div class="reviewer-disclosure"><strong>评审者披露</strong><p>${esc(classification.raterDisclosure || RAW.meta?.reviewerDisclosure || "单一评审者；未测量评审者间一致性。")}</p></div><p class="method-count">${esc(counts.scoreEffect || classification.scoreEffect || "分类不改变点估计；混合锚定判断与专家判断项进入局部一步敏感性重算。")}</p></article><article><h3>内容守恒清单</h3><table><thead><tr><th>对象</th><th>数量</th><th>页面入口</th></tr></thead><tbody>${inventoryRows.map(([key, value]) => `<tr><td>${esc(invLabels[key] || key)}</td><td>${esc(value.count)}</td><td>${esc(value.entry)}</td></tr>`).join("")}</tbody></table></article></div>${figureCaption("method-inventory")}</figure>
       <figure class="publication-figure publication-table-block" id="visual-scenario-composition" aria-describedby="caption-scenario-composition"><h3>202项综合复核记录的组成</h3><p>${esc(scenarioComposition.formula || "")}</p><div class="table-wrap"><table><thead><tr><th>组成</th><th>计数</th><th>说明</th></tr></thead><tbody><tr><td>主场景运行</td><td class="numeric">${esc(scenarioComposition.primaryScenarioRuns?.count ?? "—")}</td><td>scenarioRuns逐次操作记录</td></tr><tr><td>补充规则场景</td><td class="numeric">${esc(scenarioComposition.supplementalScenarioRecords?.count ?? "—")}</td><td>Word检索、图片三档等补充规则</td></tr><tr><td>配对图片标签区族</td><td class="numeric">${esc(scenarioComposition.pairedImageZoneFamilies?.count ?? "—")}</td><td>${esc(scenarioComposition.pairedImageZoneFamilies?.definition || "")}</td></tr></tbody></table></div>${figureCaption("scenario-composition")}</figure>`;
   }
 
@@ -761,6 +822,11 @@
 
   function renderProcessRecords() {
     const root = RAW.meta?.processRecords || {};
+    const recording = obj(testProtocol.processRecording);
+    const execution = obj(testProtocol.executionDisclosure);
+    const manifestHref = safeAssetUrl(recording.manifest);
+    const requestUrl = safeHttpUrl(recording.requestUrl);
+    const recordingSize = num(recording.totalBytes) === null ? "约7.40 GB" : `${(Number(recording.totalBytes) / 1e9).toFixed(2)} GB`;
     const statusLabel = (record) => {
       const labels = {
         accessible_and_six_prompts_matched: "页面可读 · 六提示均命中",
@@ -773,12 +839,13 @@
       return labels[record.automatedStatus] || record.automatedStatus || "已登记";
     };
     const layers = [
-      ["过程记录", "还原输入、回复与任务链；本区五条链接均不直接计分。"],
+      ["过程记录", "还原输入、回复与任务链；分享记录和过程录屏均不直接计分。"],
       ["终稿原件与原生实测", "决定各产物连续质量分、交付闸门与兼容性结论。"],
       ["独立事实基准", "仅用于Excel事实核验；过程记录不能覆盖上交所等一级来源。"],
     ];
     $("#process-content").innerHTML = `<div class="evidence-layer-grid">${layers.map(([title, copy], index) => `<article><span>层级 ${index + 1}</span><strong>${esc(title)}</strong><p>${esc(copy)}</p></article>`).join("")}</div>
       <div class="process-policy"><strong>证据使用规则</strong><span>${esc(root.policy?.completenessRule || "全过程是用户提供的标注；自动检查范围单独披露。")}</span></div>
+      ${recording.segmentCount ? `<section class="process-recording-disclosure" aria-labelledby="process-recording-title"><header><div><span>完整过程录屏</span><h3 id="process-recording-title">${esc(recording.segmentCount)}段 · ${esc(recordingSize)}</h3></div><b>暂不公开视频文件</b></header><p>${esc(recording.coverage || "用户确认：这些视频合计完整记录本次5款AI办公软件完成6项连续任务的全过程。")}</p><div class="process-recording-actions">${manifestHref ? `<a href="${esc(manifestHref)}" target="_blank" rel="noopener">查看文件名、字节数与SHA-256索引 ↗</a>` : ""}${requestUrl ? `<a href="${esc(requestUrl)}" target="_blank" rel="noopener noreferrer">通过GitHub Issues联系申请核验 ↗</a>` : ""}</div><dl>${[["评分影响", "不计分；用于核验任务链"], ["干预边界", execution.interventionBoundary], ["Qoder继续消息", execution.qoderContinuationMessages], ["终稿选择", execution.selectionBoundary]].filter(([, value]) => value).map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl></section>` : ""}
       ${processRecords.length ? `<div class="process-grid">${processRecords.map((record) => {
         const url = safeHttpUrl(record.url);
         const sha = record.sha256 ? String(record.sha256).slice(0, 16) + "…" : "动态页面，未固化全文哈希";
@@ -826,14 +893,14 @@
   }
 
   function renderRanking() {
-    const perspectiveLabels = { standalone: "终稿独立使用", firstOrigin: "链路首次归责" };
+    const perspectiveLabels = { standalone: "正式固定终稿排名", firstOrigin: "探索性首次归责诊断" };
     const perspectiveMeanings = {
-      standalone: "每件终稿按独立交付风险评价；同一问题进入多件终稿时，可分别影响各文件分数。",
-      firstOrigin: "同一错误只在首次产生或首次语义改变的节点归责；后续原样继承只显示终稿风险，不重复影响该视角的总分。",
+      standalone: "本报告的两张正式排名。每件冻结终稿按独立使用质量评价，同一问题进入多件终稿时可分别影响各文件分数。",
+      firstOrigin: "仅去重已枚举的完全继承项，用于观察归责口径变化；未建立生成时因果图，不是正式排名、采购名次或因果结论。",
     };
-    $("#ranking-content").innerHTML = `<div class="ranking-all-guide"><strong>四组结果已全部展开</strong><span>两种评价视角 × 两种权重模式同时展示，无需点击切换；每组均列出五款工具的完整排名与任务权重。</span></div>
-      <figure class="publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-perspective-stack">${["standalone", "firstOrigin"].map((perspective, perspectiveIndex) => `<section class="ranking-perspective-group" aria-labelledby="ranking-perspective-${perspective}"><header class="ranking-perspective-head"><span>评价视角 ${String(perspectiveIndex + 1).padStart(2, "0")}</span><div><h4 id="ranking-perspective-${perspective}">${esc(perspectiveLabels[perspective])}</h4><p>${esc(perspectiveMeanings[perspective])}</p></div></header><div class="ranking-static-grid">${["practical", "equalTask"].map((mode) => rankingStaticPanel(perspective, mode)).join("")}</div></section>`).join("")}</div>${figureCaption("ranking-main")}</figure>
-      <div class="uncertainty-legend ranking-shared-legend"><span><i class="legend-point"></i>圆点为连续分点估计，浅色线段为已分类专家/混合判断敏感性范围</span><span>敏感组仅表示排序后相邻分差≤1分的描述性分组</span><span>不是评级、统计检验、并列或产品总体结论</span></div>`;
+    $("#ranking-content").innerHTML = `<div class="ranking-all-guide"><strong>两张正式排名 + 两张探索性诊断已全部展开</strong><span>无需点击切换。正式结果仅为终稿独立使用视角；首次归责仅作非因果诊断，两类结果均各列出实务权重与六任务等权次序。</span></div>
+      <figure class="publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-perspective-stack">${["standalone", "firstOrigin"].map((perspective, perspectiveIndex) => { const role = perspective === "standalone" ? "official" : "diagnostic"; return `<section class="ranking-perspective-group" data-ranking-role="${role}" aria-labelledby="ranking-perspective-${perspective}"><header class="ranking-perspective-head"><span>评价视角 ${String(perspectiveIndex + 1).padStart(2, "0")}</span><div><div class="ranking-perspective-title"><h4 id="ranking-perspective-${perspective}">${esc(perspectiveLabels[perspective])}</h4><b class="ranking-role-badge" data-role="${role}">${role === "official" ? "正式结果" : "探索性 · 非因果"}</b></div><p>${esc(perspectiveMeanings[perspective])}</p></div></header><div class="ranking-static-grid">${["practical", "equalTask"].map((mode) => rankingStaticPanel(perspective, mode)).join("")}</div></section>`; }).join("")}</div>${figureCaption("ranking-main")}</figure>
+      <div class="uncertainty-legend ranking-shared-legend"><span><i class="legend-point"></i>圆点为连续分点估计，浅色线段为已分类专家/混合判断敏感性范围</span><span>近分组仅表示排序后相邻分差≤1分的描述性分组</span><span>不是评级、统计检验、并列或产品总体结论</span></div>`;
   }
 
   function renderHeatmap() {
@@ -846,11 +913,11 @@
   }
 
   function renderGates() {
-    const counts = { G0: 0, G1: 0, G2: 0 };
-    artifacts.forEach((artifact) => { counts[gateBase(gateCode(artifact))] += 1; });
     const definitions = arr(RAW.deliveryGates?.definitions || RAW.methodology?.deliveryGateDefinitions).filter((item) => ["G0", "G1", "G2", "G2-Mac"].includes(item.code));
-    $("#gates-content").innerHTML = `<div class="gate-summary">${Object.entries(counts).map(([gate, count]) => `<div class="gate-summary-card panel" data-gate="${gate}">${gateChip(gate)}<strong>${count}</strong><span>件终稿${gate === "G2" ? "（含G2-Mac）" : ""}</span></div>`).join("")}</div>
+    const postObservation = obj(RAW.methodology?.postObservationRuleDisclosure);
+    $("#gates-content").innerHTML = `${gateSummaryMarkup()}
       ${definitions.length ? `<div class="gate-definitions">${definitions.map((item) => `<article><strong>${esc(item.code)} · ${esc(item.label || "")}</strong><p>${esc(item.definition || "")}</p></article>`).join("")}</div>` : ""}
+      ${postObservation.ruleId || postObservation.statement ? `<aside class="gate-rule-disclosure" role="note"><div><span>观察后规则披露</span><strong>${esc(postObservation.statement || "该G2规则不是事前预注册规则，而是在观察样本问题后制定并对五家对称复核。")}</strong></div><dl><div><dt>规范规则ID</dt><dd class="mono">${esc(postObservation.ruleId || "—")}</dd></div><div><dt>预注册</dt><dd>${postObservation.preRegistered === false ? "否" : esc(displayScalar(postObservation.preRegistered))}</dd></div><div><dt>分数影响</dt><dd>${esc(postObservation.scoreEffect === "none" ? "不改变连续分" : displayScalar(postObservation.scoreEffect))}</dd></div></dl></aside>` : ""}
       <div class="table-wrap"><table class="gate-table" id="visual-delivery-gates" aria-describedby="caption-delivery-gates">${tableCaption("delivery-gates")}<thead><tr><th>工具</th>${kinds.map((kind) => `<th>${esc(kindLabels[kind])}</th>`).join("")}</tr></thead><tbody>${tools.map((tool) => `<tr><th>${esc(tool)}</th>${kinds.map((kind) => {
         const artifact = artifactFor(tool, kind); if (!artifact) return "<td>—</td>";
         const record = gateRecord(artifact); const code = gateCode(artifact);
@@ -1368,10 +1435,13 @@
     const app = $("#app");
     if (!app || !("MutationObserver" in window)) return;
     const observer = new MutationObserver((records) => records.forEach((record) => record.addedNodes.forEach((node) => {
-      if (node.nodeType === Node.ELEMENT_NODE) decorateInteractiveElements(node);
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        decorateInteractiveElements(node);
+        decorateTableSemantics(node);
+      }
     })));
     observer.observe(app, { childList: true, subtree: true });
   }
 
-  restoreTheme(); renderShell(); restoreNavigationState(); configureInitialViewport(); renderAll(); bindEvents(); decorateInteractiveElements(); configureNavigationFeedback(); observeDynamicInteractions();
+  restoreTheme(); renderShell(); restoreNavigationState(); configureInitialViewport(); renderAll(); bindEvents(); decorateInteractiveElements(); decorateTableSemantics(); configureNavigationFeedback(); observeDynamicInteractions();
 })();

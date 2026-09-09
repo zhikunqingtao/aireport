@@ -1,0 +1,273 @@
+{
+  "schemaVersion": "qa-v4.5.1-2.0",
+  "generatedAt": "2026-09-09T12:40:00+08:00",
+  "phase": "final",
+  "status": "passed",
+  "results": [
+    {
+      "path": "docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/report_v4.5_final.json",
+      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "status": "passed",
+      "checks": {
+        "artifactPointEstimateCount": 30,
+        "artifactPointEstimateFingerprint": "78c230a328e351f7728da6250399e1ffb16b4330c8bb7b4570054da9626057e8",
+        "criterionScoreLedgerFingerprint": "69e20053543f74551f6675a91a8d84828ac30494a2b366a4263cf9cfc0f346c4",
+        "rankingPointEstimateFingerprint": "d4080cd5d8342dc4db388fe5f3b4b2674affe7aaca4ee37c28122686fe2e4ecb",
+        "rankingDetailLedgerFingerprint": "657788bc6d348aea8fc0a646d502b6d1a69ebaf95c0491c381126ef3a9cd144b",
+        "scoreImpactLedgerFingerprint": "998500bed65dbf39824480654ec36d254e4844d6e2254a9b83a230e146636385",
+        "scoreMirrorsEqual": true,
+        "officialRankings": [
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "exploratoryDiagnostics": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical"
+        ],
+        "assessmentClassCounts": {
+          "mechanical": 9,
+          "mixed_anchored_judgment": 36,
+          "expert_judgment": 12
+        },
+        "assessmentClassWeights": {
+          "mechanical": 98.0,
+          "mixed_anchored_judgment": 353.0,
+          "expert_judgment": 149.0
+        },
+        "declaredJudgmentWeights": {
+          "excel": 39.0,
+          "word": 85.0,
+          "ppt": 78.0,
+          "image": 100.0,
+          "ink": 100.0,
+          "html": 100.0
+        },
+        "effectiveSensitivityWeights": {
+          "excel": 39.0,
+          "word": 60.0,
+          "ppt": 53.0,
+          "image": 75.0,
+          "ink": 75.0,
+          "html": 75.0
+        },
+        "sensitivityModes": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical",
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "processVideoSegments": 8,
+        "processVideoBytes": 7399913834
+      },
+      "failures": []
+    },
+    {
+      "path": "docs/case-studies/assets/unitree-office-benchmark/report/activity-report-data-v4.5.json",
+      "sha256": "6249a6aaa69b6c9c75f4b76db56456036a8310168842f5f9dd5859aa49478fec",
+      "status": "passed",
+      "checks": {
+        "artifactPointEstimateCount": 30,
+        "artifactPointEstimateFingerprint": "78c230a328e351f7728da6250399e1ffb16b4330c8bb7b4570054da9626057e8",
+        "criterionScoreLedgerFingerprint": "69e20053543f74551f6675a91a8d84828ac30494a2b366a4263cf9cfc0f346c4",
+        "rankingPointEstimateFingerprint": "d4080cd5d8342dc4db388fe5f3b4b2674affe7aaca4ee37c28122686fe2e4ecb",
+        "rankingDetailLedgerFingerprint": "657788bc6d348aea8fc0a646d502b6d1a69ebaf95c0491c381126ef3a9cd144b",
+        "scoreImpactLedgerFingerprint": "998500bed65dbf39824480654ec36d254e4844d6e2254a9b83a230e146636385",
+        "scoreMirrorsEqual": true,
+        "officialRankings": [
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "exploratoryDiagnostics": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical"
+        ],
+        "assessmentClassCounts": {
+          "mechanical": 9,
+          "mixed_anchored_judgment": 36,
+          "expert_judgment": 12
+        },
+        "assessmentClassWeights": {
+          "mechanical": 98.0,
+          "mixed_anchored_judgment": 353.0,
+          "expert_judgment": 149.0
+        },
+        "declaredJudgmentWeights": {
+          "excel": 39.0,
+          "word": 85.0,
+          "ppt": 78.0,
+          "image": 100.0,
+          "ink": 100.0,
+          "html": 100.0
+        },
+        "effectiveSensitivityWeights": {
+          "excel": 39.0,
+          "word": 60.0,
+          "ppt": 53.0,
+          "image": 75.0,
+          "ink": 75.0,
+          "html": 75.0
+        },
+        "sensitivityModes": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical",
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "processVideoSegments": 8,
+        "processVideoBytes": 7399913834
+      },
+      "failures": []
+    },
+    {
+      "path": "docs/case-studies/assets/unitree-office-benchmark/report/portable-report-data-v4.5.json",
+      "sha256": "3c032b3708b25f4c074ce774dede60ead991ae94cca077b906985260fcf5f0a8",
+      "status": "passed",
+      "checks": {
+        "artifactPointEstimateCount": 30,
+        "artifactPointEstimateFingerprint": "78c230a328e351f7728da6250399e1ffb16b4330c8bb7b4570054da9626057e8",
+        "criterionScoreLedgerFingerprint": "69e20053543f74551f6675a91a8d84828ac30494a2b366a4263cf9cfc0f346c4",
+        "rankingPointEstimateFingerprint": "d4080cd5d8342dc4db388fe5f3b4b2674affe7aaca4ee37c28122686fe2e4ecb",
+        "rankingDetailLedgerFingerprint": "657788bc6d348aea8fc0a646d502b6d1a69ebaf95c0491c381126ef3a9cd144b",
+        "scoreImpactLedgerFingerprint": "998500bed65dbf39824480654ec36d254e4844d6e2254a9b83a230e146636385",
+        "scoreMirrorsEqual": true,
+        "officialRankings": [
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "exploratoryDiagnostics": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical"
+        ],
+        "assessmentClassCounts": {
+          "mechanical": 9,
+          "mixed_anchored_judgment": 36,
+          "expert_judgment": 12
+        },
+        "assessmentClassWeights": {
+          "mechanical": 98.0,
+          "mixed_anchored_judgment": 353.0,
+          "expert_judgment": 149.0
+        },
+        "declaredJudgmentWeights": {
+          "excel": 39.0,
+          "word": 85.0,
+          "ppt": 78.0,
+          "image": 100.0,
+          "ink": 100.0,
+          "html": 100.0
+        },
+        "effectiveSensitivityWeights": {
+          "excel": 39.0,
+          "word": 60.0,
+          "ppt": 53.0,
+          "image": 75.0,
+          "ink": 75.0,
+          "html": 75.0
+        },
+        "sensitivityModes": [
+          "firstOrigin_equalTask",
+          "firstOrigin_practical",
+          "standalone_equalTask",
+          "standalone_practical"
+        ],
+        "processVideoSegments": 8,
+        "processVideoBytes": 7399913834
+      },
+      "failures": []
+    }
+  ],
+  "crossFileChecks": [
+    {
+      "name": "release-files:expected-three",
+      "passed": true,
+      "detail": "found=['activity-report-data-v4.5.json', 'portable-report-data-v4.5.json', 'report_v4.5_final.json']"
+    },
+    {
+      "name": "release-files:full-activity-byte-identical",
+      "passed": true,
+      "detail": "full and activity JSON must be exact mirrors"
+    },
+    {
+      "name": "portable-projection:criteriaDefinitions",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:rankings",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:rankingPerspectives",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:scoreSensitivity",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:sensitivity",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:methodology",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:testProtocol",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:deliveryGates",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:propagationStatus",
+      "passed": true,
+      "detail": "portable semantic subtree must equal full source"
+    },
+    {
+      "name": "portable-projection:qualityScores-criterion-ledger",
+      "passed": true,
+      "detail": "portable paths may differ, scoring values may not"
+    },
+    {
+      "name": "portable-projection:scores-criterion-ledger",
+      "passed": true,
+      "detail": "portable paths may differ, scoring values may not"
+    },
+    {
+      "name": "portable-projection:score-impacts",
+      "passed": true,
+      "detail": "score-impact values must be identical"
+    },
+    {
+      "name": "portable-projection:release-metadata",
+      "passed": true,
+      "detail": "portable release metadata must match full source"
+    },
+    {
+      "name": "portable-hygiene:no-absolute-user-path",
+      "passed": true,
+      "detail": "portable JSON must not contain macOS user paths"
+    },
+    {
+      "name": "portable-hygiene:no-file-uri",
+      "passed": true,
+      "detail": "portable JSON must not contain file URIs"
+    },
+    {
+      "name": "portable-hygiene:publication-variant",
+      "passed": true,
+      "detail": "portable publication variant must identify v4.5.1"
+    }
+  ],
+  "crossFileFailures": [],
+  "canonicalSummarySha256": "42ec4ae14f45689ab90178d66cf193a0a0ffddd83c0ac3f6d72cc8ae334bd914"
+}
