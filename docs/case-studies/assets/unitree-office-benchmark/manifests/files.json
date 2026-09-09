@@ -3,13 +3,13 @@
   "generatedAt": "2026-09-08T15:42:07.514408+00:00",
   "frozenReport": {
     "relativePath": "report/source-self-contained-v4.5.html",
-    "bytes": 39561482,
-    "sha256": "9e70577e6452e2c6283837f071617f30d819df0ca01513cbb300aed3ec723603"
+    "bytes": 39578460,
+    "sha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b"
   },
   "portableReport": {
     "relativePath": "../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
-    "bytes": 949066,
-    "sha256": "57b6fcb8dd2bdc654d1512404864942dcd0fb4d5201b4f3922530dd483340972"
+    "bytes": 966352,
+    "sha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f"
   },
   "reportCounts": {
     "artifacts": 30,
@@ -45,8 +45,8 @@
       "roles": [
         "GitHub发布适配主报告"
       ],
-      "bytes": 954912,
-      "sha256": "9a0c12eaf75895999e6f62357a8bd4295405c29c096276d97b222230d0df7629",
+      "bytes": 966352,
+      "sha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f",
       "mimeType": "text/html",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -783,8 +783,8 @@
       "roles": [
         "v4.5本地发布材料"
       ],
-      "bytes": 861,
-      "sha256": "fe5f52e9544283e1a643a99a517918be59a9f1424e0b21f54e21d0f5ae037392",
+      "bytes": 1243,
+      "sha256": "69a12e57c46a4cdf588c391839c8911e7c944f0d9b08acb2f24cfffc12e0be74",
       "mimeType": "application/json",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -899,8 +899,8 @@
       "jsonPointers": [],
       "kind": "incremental_release",
       "duplicateOf": null,
-      "bytes": 1908,
-      "sha256": "e454cf3a222d7f0fc173003326d7e03a052a7c2d05231c2650fc426fa3400979"
+      "bytes": 3115,
+      "sha256": "7e1a620460b3fe97eccdbd450de0a96d3bf6c362f4a4cbc983eeb3db3820fbc1"
     },
     {
       "sourcePathAtPackaging": "/Users/guoqingtao/Desktop/dev/code/zhikuncode/docs/case-studies/assets/unitree-office-benchmark/report/release-v4.5/qa_report_postpublication_hardened.json",
@@ -959,8 +959,8 @@
       "roles": [
         "v4.5本地发布材料"
       ],
-      "bytes": 4177,
-      "sha256": "2466eb2f4c26c633b8d39646f95086c611294ff5a6d0a2f09ed105125d7057ed",
+      "bytes": 4451,
+      "sha256": "415ad1ebed3722533f73c30e9df129a326a2f1704653e461a840f3a0f00ac47a",
       "mimeType": "application/json",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -975,8 +975,8 @@
       "roles": [
         "v4.5可复现构建文件"
       ],
-      "bytes": 76155,
-      "sha256": "c2d403720e070f04a47d7bb419c2b22c293fdd1a9657700051afa4e7fb9e7c91",
+      "bytes": 87154,
+      "sha256": "9ae137c7b55215d869ecef7aa11387a2f48580d02887454dfe00698f3d7b72ad",
       "mimeType": "text/css",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -991,8 +991,8 @@
       "roles": [
         "v4.5可复现构建文件"
       ],
-      "bytes": 122999,
-      "sha256": "f2d97beca47da9ab24c99c8fb0d367dea9ec3c30bc8aa6f3f4008c5173dc544c",
+      "bytes": 124740,
+      "sha256": "49619969b0ecb1278a4f85dc18d7ff897fc5be375cbb1b6840cc4bb93b8ed103",
       "mimeType": "text/javascript",
       "jsonPointers": [],
       "kind": "incremental_release",
@@ -1055,8 +1055,8 @@
       "roles": [
         "v4.5冻结自包含报告"
       ],
-      "bytes": 39567020,
-      "sha256": "ce207a5e45fb2d0182fa821fb332d6f46ff531f269db058c2ff062880efc2e35",
+      "bytes": 39578460,
+      "sha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b",
       "mimeType": "text/html",
       "jsonPointers": [],
       "kind": "incremental_release",

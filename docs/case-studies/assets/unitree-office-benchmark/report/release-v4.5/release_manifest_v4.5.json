@@ -1,7 +1,7 @@
 {
   "version": "4.5",
   "publicationMode": "single_version",
-  "status": "github_pages_artifact_access_update_prepared",
+  "status": "github_pages_desktop_experience_update_prepared",
   "active": {
     "portableHtml": "../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
     "sourceSelfContained": "../source-self-contained-v4.5.html",
@@ -10,12 +10,12 @@
   },
   "activeHashes": {
     "portableHtml": {
-      "bytes": 954912,
-      "sha256": "9a0c12eaf75895999e6f62357a8bd4295405c29c096276d97b222230d0df7629"
+      "bytes": 966352,
+      "sha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f"
     },
     "sourceSelfContained": {
-      "bytes": 39567020,
-      "sha256": "ce207a5e45fb2d0182fa821fb332d6f46ff531f269db058c2ff062880efc2e35"
+      "bytes": 39578460,
+      "sha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b"
     }
   },
   "provenanceNote": "provenance-inputs仅保存v4.5活动数据直接引用的精确计算输入和脚本，不是并行发布的旧版报告。",
@@ -32,8 +32,8 @@
     },
     {
       "path": "build_summary_final.json",
-      "bytes": 861,
-      "sha256": "fe5f52e9544283e1a643a99a517918be59a9f1424e0b21f54e21d0f5ae037392"
+      "bytes": 1243,
+      "sha256": "69a12e57c46a4cdf588c391839c8911e7c944f0d9b08acb2f24cfffc12e0be74"
     },
     {
       "path": "provenance-inputs/base-builder.py",
@@ -67,8 +67,8 @@
     },
     {
       "path": "qa_interaction_affordance.json",
-      "bytes": 1908,
-      "sha256": "e454cf3a222d7f0fc173003326d7e03a052a7c2d05231c2650fc426fa3400979"
+      "bytes": 3115,
+      "sha256": "7e1a620460b3fe97eccdbd450de0a96d3bf6c362f4a4cbc983eeb3db3820fbc1"
     },
     {
       "path": "qa_report_postpublication_hardened.json",
@@ -87,13 +87,13 @@
     },
     {
       "path": "report.css",
-      "bytes": 76155,
-      "sha256": "c2d403720e070f04a47d7bb419c2b22c293fdd1a9657700051afa4e7fb9e7c91"
+      "bytes": 87154,
+      "sha256": "9ae137c7b55215d869ecef7aa11387a2f48580d02887454dfe00698f3d7b72ad"
     },
     {
       "path": "report.js",
-      "bytes": 122999,
-      "sha256": "f2d97beca47da9ab24c99c8fb0d367dea9ec3c30bc8aa6f3f4008c5173dc544c"
+      "bytes": 124740,
+      "sha256": "49619969b0ecb1278a4f85dc18d7ff897fc5be375cbb1b6840cc4bb93b8ed103"
     },
     {
       "path": "report.template.html",
@@ -114,10 +114,13 @@
   "gitCommitPerformed": true,
   "gitPushPerformed": true,
   "presentationUpdate": {
-    "scope": "30件终稿原件在线预览、下载与附录直达入口",
+    "scope": "桌面端六任务默认展开、四组排名并列、评分卡强引导与可折叠固定侧栏",
     "scoringChanged": false,
     "reportDataChanged": false,
-    "browserRuntimeRetest": "passed_local_http",
+    "browserRuntimeRetest": "passed_local_http_1920_1440_1280_1100",
+    "desktopSidebar": "fixed_at_1180px_and_above_collapsible_226px_to_70px",
+    "rankingPresentation": "four_static_panels_no_switch_controls",
+    "heatmapAffordance": "30_high_contrast_animated_click_targets",
     "publishedAssetHeadChecks": "30/30 HTTP 200"
   }
 }

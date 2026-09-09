@@ -1,14 +1,14 @@
 {
   "path": "report/source-self-contained-v4.5.html",
-  "bytes": 39567020,
-  "sha256": "ce207a5e45fb2d0182fa821fb332d6f46ff531f269db058c2ff062880efc2e35",
+  "bytes": 39578460,
+  "sha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b",
   "embeddedMedia": 710,
   "missingMedia": 0,
   "reportDataEncoding": "gzip-base64",
   "portablePagesBuild": {
     "path": "../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
-    "bytes": 954912,
-    "sha256": "9a0c12eaf75895999e6f62357a8bd4295405c29c096276d97b222230d0df7629",
+    "bytes": 966352,
+    "sha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f",
     "embeddedMedia": 707,
     "missingMedia": 3,
     "reportDataEncoding": "gzip-base64"
@@ -19,5 +19,15 @@
     "htmlOpenAndDownloads": 5,
     "publishedAssetHeadChecks": "30/30 HTTP 200"
   },
-  "changeScope": "增加30件终稿的安全同源预览/下载入口与附录直达链接；未重新评分，活动数据未改变。"
+  "desktopExperience": {
+    "protocolPromptsOpenByDefault": 6,
+    "rankingPanelsAlwaysVisible": 4,
+    "rankingRowsAlwaysVisible": 20,
+    "rankingSwitchControls": 0,
+    "heatmapClickTargets": 30,
+    "fixedSidebarMinWidthPx": 1180,
+    "fixedSidebarExpandedWidthPx": 226,
+    "fixedSidebarCollapsedWidthPx": 70
+  },
+  "changeScope": "桌面端六任务默认展开、四组排名同时展示、30个评分卡强化点击引导，并将导航改为可折叠固定左栏；未重新评分，活动数据未改变。"
 }

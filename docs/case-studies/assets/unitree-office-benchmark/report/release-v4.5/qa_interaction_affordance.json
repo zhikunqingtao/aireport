@@ -1,16 +1,21 @@
 {
   "status": "passed",
-  "scope": "v4.5终稿原件在线预览与下载增强",
+  "scope": "v4.5桌面端信息展开、静态排名、评分卡引导与固定侧栏增强",
   "scoringChanged": false,
   "reportDataPayloadChanged": false,
-  "portableReportSha256": "9a0c12eaf75895999e6f62357a8bd4295405c29c096276d97b222230d0df7629",
-  "sourceSelfContainedSha256": "ce207a5e45fb2d0182fa821fb332d6f46ff531f269db058c2ff062880efc2e35",
+  "portableReportSha256": "03850c662aca92aab44eabdb59b3114c5660a45f7f340572f5eefc4cce9a4f8f",
+  "sourceSelfContainedSha256": "b2a695a06f68bb19988871327d7dece0bded60418745f9242f8b9fd11afb949b",
   "counts": {
     "artifacts": 30,
     "officeDownloadEntries": 15,
     "imagePreviewAndDownloadEntries": 10,
     "htmlOpenAndDownloadEntries": 5,
     "appendixArtifactLinks": 30,
+    "protocolPromptsOpenByDefault": 6,
+    "rankingPanelsAlwaysVisible": 4,
+    "rankingRowsAlwaysVisible": 20,
+    "rankingSwitchControls": 0,
+    "heatmapAnimatedClickTargets": 30,
     "scenarioRecords": 202,
     "coverageItems": 324,
     "findings": 200,
@@ -33,6 +38,26 @@
       "status": "passed"
     },
     {
+      "name": "六任务协议默认展开",
+      "status": "passed",
+      "detail": "6/6个任务正文首次加载即展示，同时保留用户手动收起能力。"
+    },
+    {
+      "name": "四组排名无切换器并列展示",
+      "status": "passed",
+      "detail": "终稿独立使用/链路首次归责 × 均衡投研实务/六任务等权共4个面板、20条排名，DOM无重复ID。"
+    },
+    {
+      "name": "桌面固定侧栏、折叠与滚动定位",
+      "status": "passed",
+      "detail": "1920、1440、1280宽度为226px固定左栏；可折叠至70px并持久化；1100宽度安全回退顶部栏；章节高亮随滚动更新。"
+    },
+    {
+      "name": "30个评分卡点击引导",
+      "status": "passed",
+      "detail": "30/30均显示高对比点击CTA、错峰呼吸与扫光动画，且保留prefers-reduced-motion降级；代表性卡片可正常打开文件详情。"
+    },
+    {
       "name": "发布路径仅限assets/unitree-office-benchmark目录并逐路径段编码",
       "status": "passed"
     },
@@ -44,7 +69,7 @@
     {
       "name": "浏览器运行态复测",
       "status": "passed",
-      "detail": "已验证Word下载入口、PNG内嵌预览/新窗口/下载入口、交互HTML在线打开/下载入口及30条附录链接。"
+      "detail": "已验证六任务默认展开、四组排名同时显示、评分卡详情、侧栏折叠持久化与多档桌面宽度；原有Word下载、PNG预览和交互HTML入口不受影响。"
     },
     {
       "name": "本机绝对路径与file协议残留",

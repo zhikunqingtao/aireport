@@ -280,8 +280,8 @@
     return null;
   }
 
-  function weightsFor(mode) {
-    const node = rankingNode(state.rankingPerspective, mode);
+  function weightsFor(mode, perspective = state.rankingPerspective) {
+    const node = rankingNode(perspective, mode);
     if (node?.weights) return node.weights;
     if (RAW.rankings?.[mode]?.weights) return RAW.rankings[mode].weights;
     if (mode === "practical") return { excel: .25, word: .20, ppt: .20, image: .10, ink: .10, html: .15 };
@@ -294,7 +294,7 @@
     if (supplied.length && supplied.every((row) => row.tool && num(row.score) !== null)) {
       return supplied.slice().sort((a, b) => (num(a.rank) ?? 999) - (num(b.rank) ?? 999) || num(b.score) - num(a.score));
     }
-    const weights = weightsFor(mode);
+    const weights = weightsFor(mode, perspective);
     return tools.map((tool) => {
       const artifactScores = {};
       let total = 0;
@@ -433,13 +433,16 @@
   }
 
   function navMarkup() {
-    return navItems().map(([id, fallback]) => `<a href="#${id}">${esc(text(`nav.${id}`, fallback))}</a>`).join("");
+    return navItems().map(([id, fallback], index) => {
+      const label = text(`nav.${id}`, fallback);
+      return `<a href="#${id}" aria-label="${esc(label)}" title="${esc(label)}"><span class="nav-index">${String(index + 1).padStart(2, "0")}</span><span class="nav-label">${esc(label)}</span></a>`;
+    }).join("");
   }
 
   const affordanceTitles = {
     detail: "查看文件评分、闸门与证据明细",
     evidence: "点击查看证据原图与元数据",
-    file: "查看该文件的复核明细",
+    file: "下载或打开该原件",
     expand: "展开或收起此部分",
     external: "在新窗口打开外部来源",
     switch: "切换评价视角、权重或筛选条件",
@@ -454,7 +457,7 @@
     if (element.matches(".flow-node[data-open-artifact]")) return "file";
     if (element.matches("[data-open-artifact]")) return "detail";
     if (element.matches("summary")) return "expand";
-    if (element.matches("[data-ranking-perspective], [data-weight-mode], select, input")) return "switch";
+    if (element.matches("select, input")) return "switch";
     if (element.matches("a[href]")) {
       const href = element.getAttribute("href") || "";
       return /^(https?:)?\/\//i.test(href) || element.target === "_blank" ? "external" : "navigation";
@@ -502,18 +505,53 @@
   }
 
   function configureNavigationFeedback() {
-    if (!("IntersectionObserver" in window)) return;
     const chapters = navItems().map(([id]) => document.getElementById(id)).filter(Boolean);
     const links = new Map($$(".nav a[href^='#']").map((link) => [link.getAttribute("href").slice(1), link]));
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-      if (!visible) return;
+    const labels = new Map(navItems().map(([id, fallback]) => [id, text(`nav.${id}`, fallback)]));
+    const currentLabel = $("#nav-current-label");
+    let scheduled = false;
+    const update = () => {
+      scheduled = false;
+      const marker = Math.min(180, window.innerHeight * .22);
+      let active = chapters[0];
+      chapters.forEach((chapter) => { if (chapter.getBoundingClientRect().top <= marker) active = chapter; });
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) active = chapters.at(-1);
+      if (!active) return;
       links.forEach((link, id) => {
-        if (id === visible.target.id) link.setAttribute("aria-current", "location");
+        if (id === active.id) link.setAttribute("aria-current", "location");
         else link.removeAttribute("aria-current");
       });
-    }, { rootMargin: "-18% 0px -68%", threshold: [0, .1, .35] });
-    chapters.forEach((chapter) => observer.observe(chapter));
+      if (currentLabel) currentLabel.textContent = labels.get(active.id) || active.id;
+    };
+    const schedule = () => {
+      if (scheduled) return;
+      scheduled = true;
+      window.requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
+  }
+
+  function setNavigationCollapsed(collapsed, persist = false) {
+    document.documentElement.dataset.navCollapsed = String(Boolean(collapsed));
+    const button = $("#nav-collapse");
+    if (button) {
+      button.setAttribute("aria-expanded", String(!collapsed));
+      button.setAttribute("aria-label", collapsed ? "展开章节导航" : "折叠章节导航");
+      button.title = collapsed ? "展开章节导航" : "折叠章节导航";
+      const label = button.querySelector(".nav-collapse-label");
+      if (label) label.textContent = collapsed ? "展开导航" : "折叠导航";
+    }
+    if (persist) {
+      try { localStorage.setItem("report-v4-nav-collapsed", collapsed ? "true" : "false"); } catch (_) { /* local file privacy mode */ }
+    }
+  }
+
+  function restoreNavigationState() {
+    let collapsed = false;
+    try { collapsed = localStorage.getItem("report-v4-nav-collapsed") === "true"; } catch (_) { /* local file privacy mode */ }
+    setNavigationCollapsed(collapsed);
   }
 
   function renderShell() {
@@ -525,12 +563,13 @@
     $("#app").innerHTML = `
       <a class="skip-link" href="#main">跳至正文</a>
       <header class="topbar"><div class="shell topbar-inner">
-        <div class="brand"><span class="brand-mark"></span>${esc(text("brand", "固定样本交付物比较"))}</div>
-        <nav class="nav" aria-label="主导航">${navMarkup()}</nav>
+        <div class="nav-heading"><div class="brand"><span class="brand-mark"></span><span class="brand-text">${esc(text("brand", "固定样本交付物比较"))}</span></div><button id="nav-collapse" class="nav-collapse" type="button" aria-controls="primary-nav" aria-expanded="true"><span class="nav-collapse-icon" aria-hidden="true">‹</span><span class="nav-collapse-label">折叠导航</span></button></div>
+        <div class="nav-status" aria-hidden="true"><span>当前章节</span><strong id="nav-current-label">执行摘要</strong></div>
+        <nav id="primary-nav" class="nav" aria-label="主导航">${navMarkup()}</nav>
         <select id="mobile-nav" class="mobile-nav" aria-label="章节导航"><option value="">导航</option>${navItems().map(([id, fallback]) => `<option value="${id}">${esc(text(`nav.${id}`, fallback))}</option>`).join("")}</select>
-        <label class="print-profile"><span>打印</span><select id="print-profile" aria-label="打印模式">${Object.entries(profiles).map(([key, item]) => `<option value="${esc(key)}" ${state.printProfile === key ? "selected" : ""}>${esc(item.label || key)}</option>`).join("")}</select></label>
-        <button id="print-report" class="text-button topbar-print" type="button" aria-label="打印报告">打印</button>
-        <button id="theme-toggle" class="icon-button" type="button" aria-label="切换明暗主题" aria-pressed="false">◐</button>
+        <div class="topbar-tools"><label class="print-profile"><span>打印</span><select id="print-profile" aria-label="打印模式">${Object.entries(profiles).map(([key, item]) => `<option value="${esc(key)}" ${state.printProfile === key ? "selected" : ""}>${esc(item.label || key)}</option>`).join("")}</select></label>
+          <button id="print-report" class="text-button topbar-print" type="button" aria-label="打印报告">打印</button>
+          <button id="theme-toggle" class="icon-button" type="button" aria-label="切换明暗主题" aria-pressed="false">◐</button></div>
       </div></header>
       <main id="main">
         <header class="report-masthead"><div class="shell">
@@ -540,7 +579,7 @@
           <a class="mobile-rank-jump" href="#executive-content">查看正式排名 ↓</a>
           <details class="report-boundary" open><summary>样本与核验边界</summary><dl class="report-meta"><div><dt>样本边界</dt><dd>${esc(boundary)}</dd></div><div><dt>资料截止</dt><dd>${esc(meta.cutoffDate || "2026-08-30")}</dd></div><div><dt>核验环境</dt><dd>${esc(meta.environmentSummary || "macOS 26.5.2 / Office 16.112.3 / Chrome 152")}</dd></div><div><dt>回应状态</dt><dd>${challengeRoot.meta ? `未收到厂商正式回应；已记录${challengeResponses.length}款工具的AI自评` : "未征求厂商正式回应"}</dd></div></dl></details>
           <p class="summary-excerpt-note">${esc(pageFurniture.summaryExcerptNote || "")}</p>
-          <aside class="interaction-guide" aria-label="页面交互提示"><strong>交互提示</strong><span><b>查看详情 ›</b>评分与文件</span><span><b>⌕ 点击查看</b>证据图片</span><span><b>⌄</b>展开内容</span><span><b>↗</b>外部来源</span><span><b>↔</b>切换与筛选</span></aside>
+          <aside class="interaction-guide" aria-label="页面交互提示"><strong>交互提示</strong><span><b>点击任意分数卡 →</b>详情与原件</span><span><b>⌕ 点击查看</b>证据图片</span><span><b>⌄</b>展开内容</span><span><b>↗</b>外部来源</span><span><b>↔</b>筛选记录</span></aside>
         </div></header>
         <section id="executive" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("01", "执行摘要", "先看测试协议、正式排名、交付闸门和关键限制；点估计的小分差不作确定性强弱解释。")}<div id="protocol" class="subsection"><div id="protocol-content"></div></div><div id="executive-content"></div></div></section>
         <section id="results" class="chapter" data-print-level="summary"><div class="shell">${chapterHead("02", "比较结果", "分数、点估计名次、已分类专家/混合判断敏感性和闸门来自同一份活动JSON；不应用历史数值封顶。")}<div id="ranking" class="subsection">${sectionHead("ranking")}<div id="ranking-content"></div></div><div id="heatmap" class="subsection">${sectionHead("heatmap")}<div id="heatmap-content"></div></div></div></section>
@@ -575,7 +614,7 @@
       ["实验边界", design.notControlled],
     ].filter(([, value]) => value);
     target.innerHTML = `<div class="protocol-overview"><header><span>测试协议</span><h3>${esc(testProtocol.title || "六任务连续工作流与样本配置")}</h3><p>五款工具依次接收同一组六条连续指令。后续任务承接本工具此前产物，构成从底稿到终端呈现的真实办公链路。</p></header><dl>${designRows.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl></div>
-      <div class="prompt-flow" aria-label="六任务连续工作流">${prompts.map((item, index) => `<details class="prompt-step"><summary><span class="prompt-number">${esc(item.step ?? index + 1)}</span><span><small>${esc(kindLabels[item.artifactKind] || item.artifactKind || "任务")}</small><strong>${esc(item.title || `任务${index + 1}`)}</strong></span><em>原始指令</em></summary><div class="prompt-body"><p>${esc(item.prompt || "—")}</p></div></details>`).join("")}</div>`;
+      <div class="prompt-flow" aria-label="六任务连续工作流">${prompts.map((item, index) => `<details class="prompt-step" open><summary><span class="prompt-number">${esc(item.step ?? index + 1)}</span><span><small>${esc(kindLabels[item.artifactKind] || item.artifactKind || "任务")}</small><strong>${esc(item.title || `任务${index + 1}`)}</strong></span><em>原始指令</em></summary><div class="prompt-body"><p>${esc(item.prompt || "—")}</p></div></details>`).join("")}</div>`;
   }
 
   function challengeStatusLabel(status) {
@@ -626,6 +665,13 @@
     const perspectiveLabels = { standalone: "终稿独立使用", firstOrigin: "链路首次归责" };
     const rows = rankingRows(perspective, mode);
     return `<article class="executive-ranking"><header><h3>${perspectiveLabels[perspective]} · ${modeLabels[mode]}</h3><span>连续分点估计 · 0–100分</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，${sensitivityGroupLabel(row)}`)}"><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}</article>`;
+  }
+
+  function rankingStaticPanel(perspective, mode) {
+    const modeLabels = { practical: "均衡投研实务", equalTask: "六任务等权" };
+    const rows = rankingRows(perspective, mode);
+    const weights = weightsFor(mode, perspective);
+    return `<article class="executive-ranking ranking-static-card panel" data-ranking-view="${perspective}:${mode}"><header><div><span>权重模式</span><h3>${esc(modeLabels[mode])}</h3></div><span>完整排名 · 0–100分</span></header><ol>${rows.map((row) => `<li><span class="rank-number">${esc(row.rank)}</span><span class="tool-label" style="--tool:${toolColor.get(row.tool)}"><i class="tool-dot"></i>${esc(row.tool)}</span><span class="dot-axis" style="${rankingStyle(row)}" aria-label="${esc(`点估计${fmt(row.score, 1)}分，已分类专家/混合判断敏感性范围${fmt(reviewResolution(row).lower, 1)}至${fmt(reviewResolution(row).upper, 1)}分`)}"><i class="review-range"></i><i class="score-point"></i></span><strong>${fmt(row.score, 1)}</strong><small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></li>`).join("")}</ol>${axisMarkup("mini-score-axis")}<div class="ranking-static-weights"><strong>六类任务权重</strong><div class="weight-list">${kinds.map((kind) => `<div class="weight-line"><span>${esc(kindLabels[kind])}</span><i style="width:${Number(weights[kind] || 0) * 100}%"></i><b>${fmt(Number(weights[kind] || 0) * 100, 1)}%</b></div>`).join("")}</div></div></article>`;
   }
 
   function renderExecutive() {
@@ -780,36 +826,22 @@
   }
 
   function renderRanking() {
-    const rows = rankingRows(state.rankingPerspective, state.weightMode);
-    const weights = weightsFor(state.weightMode);
-    const modeLabels = { equalTask: "六任务等权", practical: "均衡投研实务" };
     const perspectiveLabels = { standalone: "终稿独立使用", firstOrigin: "链路首次归责" };
-    const snapshots = ["standalone", "firstOrigin"].flatMap((perspective) => ["practical", "equalTask"].map((mode) => ({ perspective, mode, rows: rankingRows(perspective, mode) })));
-    const activeNode = rankingNode(state.rankingPerspective, state.weightMode) || {};
-    const perspectiveMeaning = state.rankingPerspective === "firstOrigin"
-      ? "同一错误只在首次产生或首次语义改变的节点归责；后续原样继承只显示终稿风险，不重复影响该视角的总分。"
-      : "每件终稿按独立交付风险评价；同一问题进入多件终稿时，可分别影响各文件分数。";
-    $("#ranking-content").innerHTML = `<div class="control-row" aria-label="排名选项">
-      <span class="control-label">评价视角</span><div class="segmented" role="group" aria-label="评价视角">
-        ${Object.entries(perspectiveLabels).map(([key, label]) => `<button type="button" data-ranking-perspective="${key}" aria-pressed="${state.rankingPerspective === key}">${label}</button>`).join("")}
-      </div><span class="control-label">权重模式</span><div class="segmented" role="group" aria-label="权重模式">
-        ${Object.entries(modeLabels).map(([key, label]) => `<button type="button" data-weight-mode="${key}" aria-pressed="${state.weightMode === key}">${label}</button>`).join("")}
-      </div></div>
-      <div class="ranking-layout"><figure class="panel panel-pad publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-list" id="ranking-list">
-        ${rows.map((row) => { const range = reviewResolution(row); return `<div class="rank-row" style="${rankingStyle(row, `--tool:${toolColor.get(row.tool)};`)}" data-uncertainty-group="${esc(row.uncertaintyGroup || "")}"><span class="rank-index" title="点估计名次">${esc(row.rank)}</span><span class="tool-label"><i class="tool-dot"></i>${esc(row.tool)}</span><i class="rank-track" aria-label="${esc(`点估计${fmt(row.score, 1)}分，已分类专家/混合判断敏感性范围${fmt(range.lower, 1)}至${fmt(range.upper, 1)}分`)}"><i class="review-range"></i><i class="score-point"></i></i><strong class="rank-score">${fmt(row.score, 1)}</strong><span class="rank-state"><b>${esc(sensitivityGroupLabel(row) || "未分组")}</b><small>${esc(sensitivityRankLabel(row))}</small></span></div>`; }).join("")}
-        ${axisMarkup()}
-      </div>${figureCaption("ranking-main")}</figure><aside class="panel ranking-note"><h3>${esc(perspectiveLabels[state.rankingPerspective])}视角</h3><p>${esc(perspectiveMeaning)}</p><div class="uncertainty-legend"><span><i class="legend-point"></i>连续分点估计</span><span>敏感组：排序后相邻分差≤1分的描述性分组</span><span>不是评级、统计检验、并列或产品总体结论</span></div>
-        <figure class="publication-figure compact-figure" id="visual-ranking-weights" aria-describedby="caption-ranking-weights"><div class="weight-list">${kinds.map((kind) => `<div class="weight-line"><span>${esc(kindLabels[kind])}</span><i style="width:${Number(weights[kind] || 0) * 100}%"></i><b>${fmt(Number(weights[kind] || 0) * 100, 0)}%</b></div>`).join("")}</div>${figureCaption("ranking-weights")}</figure>
-      </aside></div>
-      <div class="snapshot-grid" aria-label="四组可复算比较快照">${snapshots.map((snap) => `<article class="snapshot-card panel"><span>${esc(perspectiveLabels[snap.perspective])}</span><strong>${esc(modeLabels[snap.mode])}</strong><ol>${snap.rows.map((row) => `<li><span>${esc(row.tool)}<small>${esc(`${sensitivityGroupLabel(row)} · ${sensitivityRankLabel(row)}`)}</small></span><b>${fmt(row.score, 1)}</b></li>`).join("")}</ol></article>`).join("")}</div>`;
+    const perspectiveMeanings = {
+      standalone: "每件终稿按独立交付风险评价；同一问题进入多件终稿时，可分别影响各文件分数。",
+      firstOrigin: "同一错误只在首次产生或首次语义改变的节点归责；后续原样继承只显示终稿风险，不重复影响该视角的总分。",
+    };
+    $("#ranking-content").innerHTML = `<div class="ranking-all-guide"><strong>四组结果已全部展开</strong><span>两种评价视角 × 两种权重模式同时展示，无需点击切换；每组均列出五款工具的完整排名与任务权重。</span></div>
+      <figure class="publication-figure" id="visual-ranking-main" aria-describedby="caption-ranking-main"><div class="ranking-perspective-stack">${["standalone", "firstOrigin"].map((perspective, perspectiveIndex) => `<section class="ranking-perspective-group" aria-labelledby="ranking-perspective-${perspective}"><header class="ranking-perspective-head"><span>评价视角 ${String(perspectiveIndex + 1).padStart(2, "0")}</span><div><h4 id="ranking-perspective-${perspective}">${esc(perspectiveLabels[perspective])}</h4><p>${esc(perspectiveMeanings[perspective])}</p></div></header><div class="ranking-static-grid">${["practical", "equalTask"].map((mode) => rankingStaticPanel(perspective, mode)).join("")}</div></section>`).join("")}</div>${figureCaption("ranking-main")}</figure>
+      <div class="uncertainty-legend ranking-shared-legend"><span><i class="legend-point"></i>圆点为连续分点估计，浅色线段为已分类专家/混合判断敏感性范围</span><span>敏感组仅表示排序后相邻分差≤1分的描述性分组</span><span>不是评级、统计检验、并列或产品总体结论</span></div>`;
   }
 
   function renderHeatmap() {
-    $("#heatmap-content").innerHTML = `<div class="matrix-legend"><span>当前：独立终稿正式分</span><span>连续分不应用数值封顶</span><span>闸门另行显示</span></div><div class="table-wrap"><table class="heat-table" id="visual-quality-matrix" aria-describedby="caption-quality-matrix">${tableCaption("quality-matrix")}<thead><tr><th>工具</th>${kinds.map((kind) => `<th>${esc(kindLabels[kind])}</th>`).join("")}</tr></thead><tbody>
-      ${tools.map((tool) => `<tr><th><span class="tool-label" style="--tool:${toolColor.get(tool)}"><i class="tool-dot"></i>${esc(tool)}</span></th>${kinds.map((kind) => {
+    $("#heatmap-content").innerHTML = `<div class="matrix-click-guide" role="note"><strong><span aria-hidden="true">↗</span> 30个分数卡均可点击</strong><span>点击任一卡片查看逐项评分、问题、闸门与证据，并预览或下载对应原件。</span><em>选择一个分数开始 →</em></div><div class="matrix-legend"><span>当前：独立终稿正式分</span><span>连续分不应用数值封顶</span><span>闸门另行显示</span></div><div class="table-wrap"><table class="heat-table" id="visual-quality-matrix" aria-describedby="caption-quality-matrix">${tableCaption("quality-matrix")}<thead><tr><th>工具</th>${kinds.map((kind) => `<th>${esc(kindLabels[kind])}</th>`).join("")}</tr></thead><tbody>
+      ${tools.map((tool, toolIndex) => `<tr><th><span class="tool-label" style="--tool:${toolColor.get(tool)}"><i class="tool-dot"></i>${esc(tool)}</span></th>${kinds.map((kind, kindIndex) => {
         const artifact = artifactFor(tool, kind); if (!artifact) return "<td>—</td>";
         const score = artifactScore(artifact); const gate = gateCode(artifact);
-        return `<td><button type="button" class="heat-cell" data-open-artifact="${esc(artifact.id)}" style="--score:${score ?? 0}" aria-label="${esc(`${tool} ${kindLabels[kind]} ${fmt(score, 1)}分 ${gateDisplay(gate)}`)}"><strong>${fmt(score, 1)}</strong><small>${esc(gateDisplay(gate))} ${gateSymbol(gate)}</small></button></td>`;
+        return `<td><button type="button" class="heat-cell" data-open-artifact="${esc(artifact.id)}" style="--score:${score ?? 0};--hint-delay:${((toolIndex * kinds.length + kindIndex) * .07).toFixed(2)}s" aria-label="${esc(`${tool} ${kindLabels[kind]} ${fmt(score, 1)}分 ${gateDisplay(gate)}，点击查看详情与原件`)}"><strong>${fmt(score, 1)}</strong><small>${esc(gateDisplay(gate))} ${gateSymbol(gate)}</small></button></td>`;
       }).join("")}</tr>`).join("")}</tbody></table></div>`;
   }
 
@@ -1274,10 +1306,6 @@
 
   function bindEvents() {
     document.addEventListener("click", (event) => {
-      const rankingPerspective = event.target.closest("[data-ranking-perspective]");
-      if (rankingPerspective) { state.rankingPerspective = rankingPerspective.dataset.rankingPerspective; renderRanking(); return; }
-      const weightMode = event.target.closest("[data-weight-mode]");
-      if (weightMode) { state.weightMode = weightMode.dataset.weightMode; renderRanking(); return; }
       const artifact = event.target.closest("[data-open-artifact]"); if (artifact) { openArtifact(artifact.dataset.openArtifact); return; }
       const evidenceButton = event.target.closest("[data-open-evidence]"); if (evidenceButton) { openEvidence(evidenceButton.dataset.openEvidence); return; }
       const close = event.target.closest("[data-close-dialog]"); if (close) { closeDialog(close.closest("dialog")); return; }
@@ -1289,6 +1317,8 @@
         document.documentElement.dataset.theme = next; event.target.setAttribute("aria-pressed", String(next === "light"));
         try { localStorage.setItem("report-v4-theme", next); } catch (_) { /* local file privacy mode */ }
       }
+      const navCollapse = event.target.closest("#nav-collapse");
+      if (navCollapse) { setNavigationCollapsed(document.documentElement.dataset.navCollapsed !== "true", true); }
     });
     document.addEventListener("change", (event) => {
       if (event.target.id === "mobile-nav" && event.target.value) {
@@ -1343,5 +1373,5 @@
     observer.observe(app, { childList: true, subtree: true });
   }
 
-  restoreTheme(); renderShell(); configureInitialViewport(); renderAll(); bindEvents(); decorateInteractiveElements(); configureNavigationFeedback(); observeDynamicInteractions();
+  restoreTheme(); renderShell(); restoreNavigationState(); configureInitialViewport(); renderAll(); bindEvents(); decorateInteractiveElements(); configureNavigationFeedback(); observeDynamicInteractions();
 })();
