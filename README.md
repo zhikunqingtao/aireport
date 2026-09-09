@@ -6,15 +6,14 @@
 
 ## 查看报告
 
-- [交互式 HTML 报告](docs/case-studies/AI办公工具对比测评_宇树科技_截至2026-08-30.html)
-- [证据包浏览说明](docs/evidence.html)
+- [打开在线交互式报告](https://zhikunqingtao.github.io/aireport/case-studies/AI%E5%8A%9E%E5%85%AC%E5%B7%A5%E5%85%B7%E5%AF%B9%E6%AF%94%E6%B5%8B%E8%AF%84_%E5%AE%87%E6%A0%91%E7%A7%91%E6%8A%80_%E6%88%AA%E8%87%B32026-08-30.html)
+- [报告发布入口](https://zhikunqingtao.github.io/aireport/)
+- [证据包浏览说明](https://zhikunqingtao.github.io/aireport/evidence.html)
 - [证据包原始 README](docs/case-studies/assets/unitree-office-benchmark/README.md)
 
-如果后续启用 GitHub Pages，仓库入口预计为：
+GitHub Pages 已从 `main` 分支的 `/docs` 目录发布：
 
 <https://zhikunqingtao.github.io/aireport/>
-
-当前 GitHub Pages 尚未启用；以上地址仅用于说明预期发布方式。
 
 ## 目录结构
 
