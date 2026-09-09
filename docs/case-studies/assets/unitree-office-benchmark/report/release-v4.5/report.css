@@ -483,6 +483,20 @@ dialog::backdrop { background: rgba(2, 7, 13, .78); backdrop-filter: blur(5px); 
 .artifact-summary small { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; }
 .modal-section { margin-top: 18px; }
 .modal-section > h3 { margin: 0 0 9px; }
+.artifact-file-card { display: grid; gap: 12px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); }
+.artifact-file-meta { display: grid; gap: 6px; min-width: 0; }
+.artifact-file-meta strong { font-size: 16px; }
+.artifact-file-meta span { color: var(--muted); font-size: 11px; overflow-wrap: anywhere; }
+.artifact-file-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.artifact-action { display: inline-flex; min-height: 42px; align-items: center; justify-content: center; padding: 8px 13px; border: 1px solid var(--accent); border-radius: 6px; background: var(--surface); color: var(--accent); font-weight: 760; text-decoration: none; }
+.artifact-action.primary { background: var(--accent); color: #fff; }
+.artifact-action:hover { box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 22%, transparent); transform: translateY(-1px); }
+.artifact-preview { position: relative; display: grid; min-height: 220px; max-height: 58vh; place-items: center; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #dfe5ea; }
+.artifact-preview img { display: block; max-height: 58vh; object-fit: contain; }
+.artifact-preview span { position: absolute; right: 10px; bottom: 10px; padding: 5px 8px; border: 1px solid var(--line-strong); background: color-mix(in srgb, var(--surface) 94%, transparent); color: var(--accent); font-size: 10px; font-weight: 780; }
+.artifact-file-note, .artifact-file-unavailable { margin: 0; color: var(--muted); font-size: 11px; }
+.artifact-manifest-link { display: inline-flex; align-items: center; gap: 7px; }
+.artifact-manifest-link > span { padding: 1px 5px; border: 1px solid var(--line); color: var(--accent); font-size: 9px; font-weight: 760; text-decoration: none; }
 .subtest-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
 .subtest-list > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 9px; padding: 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface-2); }
 .subtest-list small { grid-column: 1 / -1; color: var(--muted); }
@@ -913,7 +927,7 @@ details[open] > summary[data-affordance="expand"]::after,
 .gate-cell[data-affordance="detail"]::after,
 .native-cell button[data-affordance="detail"]::after,
 .profile-scores button[data-affordance="detail"]::after {
-  content: "查看详情 ›";
+  content: attr(data-file-action) " ›";
   position: absolute;
   right: 7px;
   bottom: 6px;

@@ -1,12 +1,22 @@
 {
   "version": "4.5",
   "publicationMode": "single_version",
-  "status": "prepared_locally_no_git_commit",
+  "status": "github_pages_artifact_access_update_prepared",
   "active": {
-    "portableHtml": "../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
+    "portableHtml": "../../../../AI办公工具对比测评_宇树科技_截至2026-08-30.html",
     "sourceSelfContained": "../source-self-contained-v4.5.html",
     "activityData": "../activity-report-data-v4.5.json",
     "portableData": "../portable-report-data-v4.5.json"
+  },
+  "activeHashes": {
+    "portableHtml": {
+      "bytes": 954912,
+      "sha256": "9a0c12eaf75895999e6f62357a8bd4295405c29c096276d97b222230d0df7629"
+    },
+    "sourceSelfContained": {
+      "bytes": 39567020,
+      "sha256": "ce207a5e45fb2d0182fa821fb332d6f46ff531f269db058c2ff062880efc2e35"
+    }
   },
   "provenanceNote": "provenance-inputs仅保存v4.5活动数据直接引用的精确计算输入和脚本，不是并行发布的旧版报告。",
   "releaseFiles": [
@@ -17,13 +27,13 @@
     },
     {
       "path": "build_report_v4.py",
-      "bytes": 24880,
-      "sha256": "49b0fe8cc38a1b0a824806df9f31c6cfbfa3cbd1f7c806570070a9cff95ed768"
+      "bytes": 25220,
+      "sha256": "559cb3cbdece994442d775988d4093026cd9601e210e81d5779bb0f01fbf4f4b"
     },
     {
       "path": "build_summary_final.json",
-      "bytes": 363,
-      "sha256": "940d9a88be2b359e4c0f508905cb4ba0938431744c6ec45a231eb4aed480b8df"
+      "bytes": 861,
+      "sha256": "fe5f52e9544283e1a643a99a517918be59a9f1424e0b21f54e21d0f5ae037392"
     },
     {
       "path": "provenance-inputs/base-builder.py",
@@ -57,8 +67,8 @@
     },
     {
       "path": "qa_interaction_affordance.json",
-      "bytes": 1369,
-      "sha256": "415045bc459235f4e5a5ce94e550bd007bbcdae59d5641419e94c24bc2ae31c5"
+      "bytes": 1908,
+      "sha256": "e454cf3a222d7f0fc173003326d7e03a052a7c2d05231c2650fc426fa3400979"
     },
     {
       "path": "qa_report_postpublication_hardened.json",
@@ -77,13 +87,13 @@
     },
     {
       "path": "report.css",
-      "bytes": 74373,
-      "sha256": "2f18995cf4ce8b2793b98ebf3a70f26d4ff2470f02f91b57db8becdf043efa5a"
+      "bytes": 76155,
+      "sha256": "c2d403720e070f04a47d7bb419c2b22c293fdd1a9657700051afa4e7fb9e7c91"
     },
     {
       "path": "report.js",
-      "bytes": 118855,
-      "sha256": "cc09059603beca98ef632f056ab9fe4c972f16b653e230171902f62ad070eee6"
+      "bytes": 122999,
+      "sha256": "f2d97beca47da9ab24c99c8fb0d367dea9ec3c30bc8aa6f3f4008c5173dc544c"
     },
     {
       "path": "report.template.html",
@@ -101,12 +111,13 @@
       "sha256": "8e09a0265f06f412df5a85ddb17467f55ccf1330f3253c377d232992732f3512"
     }
   ],
-  "gitCommitPerformed": false,
-  "gitPushPerformed": false,
+  "gitCommitPerformed": true,
+  "gitPushPerformed": true,
   "presentationUpdate": {
-    "scope": "可点击性与动效提示增强",
+    "scope": "30件终稿原件在线预览、下载与附录直达入口",
     "scoringChanged": false,
     "reportDataChanged": false,
-    "browserRuntimeRetest": "not_run_browser_policy_blocked"
+    "browserRuntimeRetest": "passed_local_http",
+    "publishedAssetHeadChecks": "30/30 HTTP 200"
   }
 }

@@ -108,6 +108,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Build even when the resulting HTML exceeds the 40 MiB acceptance target.",
     )
+    parser.add_argument(
+        "--compress-report-data",
+        action="store_true",
+        help="Always gzip the embedded JSON payload, including portable Pages builds below 40 MiB.",
+    )
     return parser.parse_args()
 
 
@@ -315,7 +320,12 @@ def merge_defaults(target: dict, defaults: dict) -> None:
             merge_defaults(target[key], value)
 
 
-def build(data_path: Path, out_path: Path, allow_large: bool = False) -> dict:
+def build(
+    data_path: Path,
+    out_path: Path,
+    allow_large: bool = False,
+    compress_report_data: bool = False,
+) -> dict:
     raw = json.loads(data_path.read_text(encoding="utf-8"))
     required = {
         "meta", "methodology", "sources", "facts", "artifacts", "scenarios",
@@ -370,7 +380,7 @@ def build(data_path: Path, out_path: Path, allow_large: bool = False) -> dict:
     html = assemble(report_json)
     encoded = html.encode("utf-8")
     compressed_report_data = False
-    if len(encoded) > MAX_BYTES:
+    if len(encoded) > MAX_BYTES or compress_report_data:
         # Losslessly compress the complete in-page JSON.  This preserves every
         # evidence byte while keeping the single-file deliverable below the
         # repository limit; the report script inflates it before parsing.
@@ -412,7 +422,12 @@ def build(data_path: Path, out_path: Path, allow_large: bool = False) -> dict:
 
 def main() -> None:
     args = parse_args()
-    summary = build(args.data.resolve(), args.out.resolve(), args.allow_over_40mb)
+    summary = build(
+        args.data.resolve(),
+        args.out.resolve(),
+        args.allow_over_40mb,
+        args.compress_report_data,
+    )
     print(json.dumps(summary, ensure_ascii=False, indent=2))
 
 

@@ -337,6 +337,63 @@
     return artifact?.bytes || artifact?.size || artifact?.original?.bytes || 0;
   }
 
+  function artifactFileName(artifact) {
+    const path = artifactPath(artifact).replaceAll("\\", "/");
+    return artifact?.name || artifact?.filename || path.split("/").pop() || artifact?.id || "原件";
+  }
+
+  function artifactExtension(artifact) {
+    const match = artifactFileName(artifact).toLowerCase().match(/\.([a-z0-9]+)$/);
+    return match?.[1] || "";
+  }
+
+  function artifactHref(artifact) {
+    const raw = artifactPath(artifact).trim().replaceAll("\\", "/");
+    if (!raw || raw.includes("\0")) return "";
+    const normalized = raw.replace(/^\.\/+/, "");
+    const segments = normalized.split("/");
+    if (!normalized.startsWith("assets/unitree-office-benchmark/") || segments.some((segment) => !segment || segment === "." || segment === "..")) return "";
+    return segments.map((segment) => encodeURIComponent(segment)).join("/");
+  }
+
+  function artifactAccessProfile(artifact) {
+    const extension = artifactExtension(artifact);
+    const image = ["image", "ink"].includes(artifact?.kind) || ["png", "jpg", "jpeg", "webp", "gif"].includes(extension);
+    const html = artifact?.kind === "html" || ["html", "htm"].includes(extension);
+    const pdf = extension === "pdf";
+    const office = ["excel", "word", "ppt"].includes(artifact?.kind) || ["xlsx", "xls", "docx", "doc", "pptx", "ppt"].includes(extension);
+    return { extension, image, html, pdf, office, previewable: image || html || pdf };
+  }
+
+  function artifactActionLabel(artifact) {
+    const profile = artifactAccessProfile(artifact);
+    return profile.previewable ? "预览 / 下载" : "下载原件";
+  }
+
+  function artifactInlineLink(artifact) {
+    const href = artifactHref(artifact);
+    const name = artifactFileName(artifact);
+    if (!href) return esc(name);
+    const profile = artifactAccessProfile(artifact);
+    const action = profile.previewable ? "打开" : "下载";
+    const behavior = profile.previewable ? 'target="_blank" rel="noopener noreferrer"' : `download="${esc(name)}"`;
+    return `<a class="table-link artifact-manifest-link" href="${esc(href)}" ${behavior} aria-label="${esc(`${action}${name}`)}">${esc(name)}<span>${action}</span></a>`;
+  }
+
+  function artifactFileCard(artifact) {
+    const href = artifactHref(artifact);
+    const name = artifactFileName(artifact);
+    const path = artifactPath(artifact);
+    const sha256 = artifactSha256(artifact) || "—";
+    if (!href) return `<div class="artifact-file-card"><div class="artifact-file-meta"><strong>${esc(name)}</strong>${path ? `<span class="mono">${esc(path)}</span>` : ""}<span class="mono">SHA-256 ${esc(sha256)}</span></div><p class="artifact-file-unavailable">当前版本未登记可安全访问的发布路径。</p></div>`;
+    const profile = artifactAccessProfile(artifact);
+    const preview = profile.image ? `<a class="artifact-preview" href="${esc(href)}" target="_blank" rel="noopener noreferrer" aria-label="打开${esc(name)}原图"><img src="${esc(href)}" alt="${esc(name)}" loading="lazy" decoding="async"><span>点击查看原图</span></a>` : "";
+    const openLabel = profile.image ? "新窗口查看原图" : profile.html ? "打开交互 HTML" : profile.pdf ? "在线查看 PDF" : "";
+    const downloadLabel = profile.office ? `下载 ${esc(kindLabels[artifact.kind] || "Office")} 原件` : profile.image ? "下载原图" : profile.html ? "下载 HTML" : profile.pdf ? "下载 PDF" : "下载原件";
+    const openAction = openLabel ? `<a class="artifact-action primary" href="${esc(href)}" target="_blank" rel="noopener noreferrer">${openLabel} ↗</a>` : "";
+    return `<div class="artifact-file-card">${preview}<div class="artifact-file-meta"><strong>${esc(name)}</strong><span class="mono">${esc(path)}</span><span class="mono">SHA-256 ${esc(sha256)}</span></div><div class="artifact-file-actions">${openAction}<a class="artifact-action" href="${esc(href)}" download="${esc(name)}">${downloadLabel} ↓</a></div><p class="artifact-file-note">图片、HTML 与 PDF 可在线打开；Office 文件将下载到本机后使用相应应用查看。</p></div>`;
+  }
+
   function statusChip(value) {
     const normalized = String(value || "pending").toLowerCase();
     const labels = { pass: "通过", passed: "通过", success: "通过", complete: "完成", verified: "已验证", warn: "有警告", partial: "部分通过", repair: "需修复", fail: "失败", failed: "失败", error: "错误", blocked: "需协助", pending: "待验" };
@@ -393,6 +450,7 @@
 
   function affordanceType(element) {
     if (element.matches("[data-open-evidence], .challenge-image")) return "evidence";
+    if (element.matches("a[download]")) return "file";
     if (element.matches(".flow-node[data-open-artifact]")) return "file";
     if (element.matches("[data-open-artifact]")) return "detail";
     if (element.matches("summary")) return "expand";
@@ -428,6 +486,10 @@
       const type = affordanceType(element);
       element.dataset.affordance = type;
       element.dataset.affordanceReady = "true";
+      if (type === "detail" && element.dataset.openArtifact) {
+        const artifact = artifactById.get(element.dataset.openArtifact);
+        if (artifact) element.dataset.fileAction = artifactActionLabel(artifact);
+      }
       if (type === "external" && (element.textContent || "").includes("↗")) element.dataset.affordanceSymbol = "present";
       if (!element.title) element.title = affordanceTitles[type];
       if (element.matches("summary")) {
@@ -546,7 +608,7 @@
       return counts;
     }, {});
     const formalCount = num(meta.formalVendorResponsesReceived) ?? 0;
-    target.innerHTML = `<header class="subsection-head"><h3>工具自评异议与复核处理</h3><p>工具自评仅作为异议线索，证据权重为0；评分调整仅以固定原件、原生实测及五家对称规则为依据。</p></header>
+    target.innerHTML = `<header class="subsection-head"><h3>工具自评异议与复核处理（首次）</h3><p>工具自评仅作为异议线索，证据权重为0；评分调整仅以固定原件、原生实测及五家对称规则为依据。</p></header>
       <div class="challenge-policy"><strong>回应性质边界</strong><p>${esc(meta.responseNaturePolicy || "以下内容由五款AI工具读取报告后生成，不是相关厂商、负责人或员工的正式声明。工具自评仅作为异议线索，证据权重为0。")} 已收到厂商正式回应：${formalCount}；本报告不宣称厂商已认可。</p><div class="challenge-counts"><span>${challengeItems.length}项异议</span>${Object.entries(statusCounts).map(([status, count]) => `<span data-disposition="${esc(status)}">${esc(challengeStatusLabel(status))} ${count}</span>`).join("")}</div><p class="mono technical-only">结构版本 ${esc(meta.schemaVersion || "—")} · 处理状态 ${esc(meta.status || "—")} · 声称厂商认可 ${esc(displayScalar(meta.claimOfVendorAcceptance))}</p></div>
       <div class="challenge-response-grid">${challengeResponses.map((response) => `<article class="challenge-response" style="--tool:${toolColor.get(response.tool) || "var(--accent-2)"}">${responseScreenshot(response)}<div><header><span class="tool-label"><i class="tool-dot"></i>${esc(response.tool)}</span><small>${esc(response.responseNature || "AI工具自评 · 非厂商正式回应")}</small></header><p>${esc(response.summary || "—")}</p><dl><div><dt>复核结论</dt><dd>${esc(response.conclusion || "—")}</dd></div><div><dt>涉及异议</dt><dd>${arr(response.challengeIds).length}项</dd></div></dl><p class="mono technical-only">异议编号 ${esc(arr(response.challengeIds).join("、") || "—")} · 截图 SHA-256 ${esc(response.screenshotSha256 || "—")}</p></div></article>`).join("")}</div>
       <div class="challenge-ledger">${challengeItems.map((item, index) => {
@@ -1146,7 +1208,7 @@
     <details class="panel appendix-block" open><summary>v3 → v4 规则变更与版本指纹</summary><div class="appendix-body">${versionRows().length ? `<div class="table-wrap"><table><thead><tr><th>版本 / 变更</th><th>旧规则</th><th>新规则</th><th>摘要、理由与指纹</th></tr></thead><tbody>${versionRows().map((row) => `<tr><td>${esc(row.title || row.id || row.version || "—")}</td><td>${esc(row.before || row.v3 || row.old || "—")}</td><td>${esc(row.after || row.v4 || row.new || "—")}</td><td class="mono small">${esc(versionDescription(row))}</td></tr>`).join("")}</tbody></table></div>` : empty("未登记版本变更。")}</div></details>
     <details class="panel appendix-block"><summary>评分维度与子测试</summary><div class="appendix-body">${RAW.rubricSubtests?.principle ? `<p class="muted">${esc(RAW.rubricSubtests.principle)}</p>` : ""}<div class="table-wrap"><table class="criterion-table"><thead><tr><th>产物</th><th>维度 / 子测试</th><th>权重 / 满分</th><th>评价类型</th><th>验收方式</th></tr></thead><tbody>${criterionRows().map((row) => `<tr><td>${esc(kindLabels[row.kind])}</td><td>${esc(row.label || row.name || row.id)}</td><td>${esc(row.weight ?? "—")}</td><td>${esc(presentation.assessmentClassLabels?.[row.assessmentClass] || row.assessmentClass || "—")}</td><td>${esc(row.anchor || row.description || "—")}</td></tr>`).join("")}${rubricAppendixRows().map((row) => `<tr><td>${esc(kindLabels[row.kind] || row.kind || "子测试")}</td><td>${esc(`${row.criterionId || ""} / ${row.label || row.name || row.test || row.id || "子测试"}`)}</td><td>${esc(row.maxPoints ?? row.weight ?? "—")}</td><td>机械子测试</td><td>${esc(row.expected || row.anchor || row.description || row.result || "按原生实测结果得分")}</td></tr>`).join("")}</tbody></table></div></div></details>
     <details class="panel appendix-block"><summary>待人工复核与未验证项</summary><div class="appendix-body"><div class="verify-list">${verification.map((item) => `<div class="verify-item"><div>${statusChip(item.status)}</div><div><h3>${esc(item.item || item.title || item.id)}</h3><p>${esc(item.reason || item.description || "")}</p></div></div>`).join("")}</div></div></details>
-    <details class="panel appendix-block"><summary>30件终稿原件指纹与完整本地路径</summary><div class="appendix-body"><div class="table-wrap"><table class="manifest-table"><thead><tr><th>工具</th><th>产物</th><th>文件 / 完整路径</th><th>大小</th><th>SHA-256</th><th>闸门</th></tr></thead><tbody>${artifacts.map((artifact) => `<tr><td>${esc(artifact.tool)}</td><td>${esc(kindLabels[artifact.kind])}</td><td>${esc(artifact.name || artifact.filename || artifact.id)}${artifactPath(artifact) ? `<div class="mono small">${esc(artifactPath(artifact))}</div>` : ""}</td><td>${bytes(artifactBytes(artifact))}</td><td class="mono">${esc(artifactSha256(artifact) || "—")}</td><td>${gateChip(gateCode(artifact))}</td></tr>`).join("")}</tbody></table></div></div></details>`;
+    <details class="panel appendix-block"><summary>30件终稿原件指纹与完整本地路径</summary><div class="appendix-body"><div class="table-wrap"><table class="manifest-table"><thead><tr><th>工具</th><th>产物</th><th>文件 / 完整路径</th><th>大小</th><th>SHA-256</th><th>闸门</th></tr></thead><tbody>${artifacts.map((artifact) => `<tr><td>${esc(artifact.tool)}</td><td>${esc(kindLabels[artifact.kind])}</td><td>${artifactInlineLink(artifact)}${artifactPath(artifact) ? `<div class="mono small">${esc(artifactPath(artifact))}</div>` : ""}</td><td>${bytes(artifactBytes(artifact))}</td><td class="mono">${esc(artifactSha256(artifact) || "—")}</td><td>${gateChip(gateCode(artifact))}</td></tr>`).join("")}</tbody></table></div></div></details>`;
   }
 
   function empty(message) { return `<div class="empty">${esc(message)}</div>`; }
@@ -1175,7 +1237,7 @@
     const gate = gateRecord(artifact); const itemFindings = artifactFindings(artifact); const subtests = artifactSubtests(artifact);
     $("#artifact-dialog-title").textContent = `${artifact.tool} · ${kindLabels[artifact.kind]}`;
     $("#artifact-dialog-body").innerHTML = `<div class="artifact-summary"><div><span>独立终稿连续分</span><strong>${fmt(artifactScore(artifact, "independent"), 2)}</strong><small>用于两张正式排名</small></div><div><span>终端独立使用闸门</span>${gateChip(gateCode(artifact), gate.reason || gate.summary)}<small>闸门描述交付风险，不是第二套分数</small></div></div>
-      <div class="modal-section"><h3>文件标识</h3><p>${esc(artifact.name || artifact.filename || artifact.id)}</p>${artifactPath(artifact) ? `<p class="mono small">${esc(artifactPath(artifact))}</p>` : ""}<p class="mono small">SHA-256 ${esc(artifactSha256(artifact) || "—")}</p></div>
+      <div class="modal-section"><h3>查看或下载原件</h3>${artifactFileCard(artifact)}</div>
       <div class="modal-section"><h3>逐项评分</h3><div class="score-list">${criteria.length ? criteria.map((item) => { const definition = criteriaDefinitionMap.get(item.criterionId || item.id) || {}; const maximum = num(definition.weight) ?? num(item.weight) ?? 0; const earned = num(item.weighted) ?? 0; return `<article class="score-item"><header><strong>${esc(item.label || item.criterionLabel || definition.label || item.criterionId || item.id)}</strong><span>${fmt(earned, 2)} / ${fmt(maximum, 2)}分</span><b>${num(item.rating0To5) !== null ? `${fmt(item.rating0To5, 2)}/5` : ""}</b></header><i class="score-meter" style="--ratio:${maximum ? earned / maximum * 100 : 0}%"><i></i></i><p>${esc(item.basis || item.description || "")}</p></article>`; }).join("") : empty("无维度明细。")}</div></div>
       <div class="modal-section"><h3>子测试</h3>${subtests.length ? `<div class="subtest-list">${subtests.map((item) => { const ids = evidenceIds(item.evidenceIds || item.evidence); const scored = num(item.earnedPoints) !== null || num(item.maxPoints) !== null; const expected = item.expected ? `预期：${item.expected}` : ""; const actual = item.actual || item.basis || item.description || ""; const detail = [item.criterionId || "", expected, actual ? `实际：${actual}` : ""].filter(Boolean).join(" · "); return `<div><span>${esc(item.label || item.name || item.test || item.id || "子测试")}</span><strong>${scored ? `${fmt(item.earnedPoints, 1)} / ${fmt(item.maxPoints, 1)}` : esc(displayScalar(item.status ?? item.result ?? item.score))}</strong><small>${esc(detail)}</small>${ids.length ? `<footer>${evidenceButtons(ids, 2)}</footer>` : ""}</div>`; }).join("")}</div>` : empty("无子测试记录。")}</div>
       <div class="modal-section"><h3>复核发现、终端风险与归责</h3>${itemFindings.length ? `<div class="finding-detail-list">${itemFindings.map((finding) => { const attribution = findingAttribution(finding); return `<article data-severity="${esc(finding.severity || "info")}" data-finding-id="${esc(finding.id || "")}"><header>${gateChip(finding.terminalRiskCode || finding.gate || finding.deliveryGateRequest || gateCode(artifact))}<span class="chip">${esc(finding.severity || "info")}</span><span class="chip">${esc(finding.attributionTreatment || finding.lineageRole || "未归类")}</span>${attribution ? `<strong class="attribution-share" title="${esc(attribution.definition)}">机械缺口分摊 ${fmt(attribution.points)}分</strong>` : ""}</header><h4>${esc(finding.summary || finding.title || finding.id)}</h4>${findingBody(finding)}<footer>${evidenceButtons(evidenceIds(finding.evidenceIds || finding.evidence))}</footer></article>`; }).join("")}</div>` : empty("未登记问题。")}</div>`;
